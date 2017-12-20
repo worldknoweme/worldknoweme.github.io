@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java,intellijidea," />
 
 
 
@@ -79,17 +79,26 @@
 
 
 
-<meta name="description" content="故不积跬步无以至千里">
+<meta name="description" content="intellij idea真是让人又爱又恨，界面美观舒服，编码提示友好，开发效率高。但是最近发现一个很不爽的问题，使用springboot的时候无法实现热部署，于是乎，即使修改html一个标点符号，也得点击右上角启动。 妥协妥协先这么将就着用吧。有时候人就这样，不到逼不得已就不会做出改变。 爆发吧各种百度，找到如下解决方案，按照我说的步骤，必定实现热部署。  确保setting compile下">
+<meta name="keywords" content="java,intellijidea">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo">
-<meta property="og:url" content="http://yoursite.com/2017/12/13/hexo/index.html">
+<meta property="og:title" content="idea如何实现热部署">
+<meta property="og:url" content="http://yoursite.com/2017/12/20/idea如何实现热部署/index.html">
 <meta property="og:site_name" content="傲寒">
-<meta property="og:description" content="故不积跬步无以至千里">
+<meta property="og:description" content="intellij idea真是让人又爱又恨，界面美观舒服，编码提示友好，开发效率高。但是最近发现一个很不爽的问题，使用springboot的时候无法实现热部署，于是乎，即使修改html一个标点符号，也得点击右上角启动。 妥协妥协先这么将就着用吧。有时候人就这样，不到逼不得已就不会做出改变。 爆发吧各种百度，找到如下解决方案，按照我说的步骤，必定实现热部署。  确保setting compile下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-13T01:10:54.115Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-f3af5a709a8dcde5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-49c2e08d86b20b9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-d3d73b4b16fffe5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-440825eddc3dcf8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-4e3b4e132669b2ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-1d87264f911fd81c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-0c3d16ea01ec05d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-20T01:57:06.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo">
-<meta name="twitter:description" content="故不积跬步无以至千里">
+<meta name="twitter:title" content="idea如何实现热部署">
+<meta name="twitter:description" content="intellij idea真是让人又爱又恨，界面美观舒服，编码提示友好，开发效率高。但是最近发现一个很不爽的问题，使用springboot的时候无法实现热部署，于是乎，即使修改html一个标点符号，也得点击右上角启动。 妥协妥协先这么将就着用吧。有时候人就这样，不到逼不得已就不会做出改变。 爆发吧各种百度，找到如下解决方案，按照我说的步骤，必定实现热部署。  确保setting compile下">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9493059-f3af5a709a8dcde5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -119,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/13/hexo/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/20/idea如何实现热部署/"/>
 
 
 
 
 
-  <title>hexo | 傲寒</title>
+  <title>idea如何实现热部署 | 傲寒</title>
   
 
 
@@ -262,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/13/hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/idea如何实现热部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ony Wang">
@@ -279,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo</h1>
+          <h1 class="post-title" itemprop="name headline">idea如何实现热部署</h1>
         
 
         <div class="post-meta">
@@ -291,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-13T09:10:54+08:00">
-                2017-12-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T09:49:08+08:00">
+                2017-12-20
               </time>
             
 
@@ -301,6 +310,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -329,7 +360,27 @@
       
 
       
-        
+        <blockquote>
+<p>intellij idea真是让人又爱又恨，界面美观舒服，编码提示友好，开发效率高。但是最近发现一个很不爽的问题，使用springboot的时候无法实现热部署，于是乎，即使修改html一个标点符号，也得点击右上角启动。</p>
+<h1 id="妥协妥协"><a href="#妥协妥协" class="headerlink" title="妥协妥协"></a>妥协妥协</h1><p>先这么将就着用吧。<br>有时候人就这样，不到逼不得已就不会做出改变。</p>
+<h1 id="爆发吧"><a href="#爆发吧" class="headerlink" title="爆发吧"></a>爆发吧</h1><p>各种百度，找到如下解决方案，按照我说的步骤，必定实现热部署。</p>
+<ol>
+<li>确保setting compile下面的自动构建打钩，一般默认都会打钩，这里检查一遍，以防万一。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f3af5a709a8dcde5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="setting设置.png"></li>
+<li>ctrl+shift+a呼出搜索界面，一定要选择     第一个，然后回车：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-49c2e08d86b20b9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>找到如下图所示的选项，勾选<br><img src="http://upload-images.jianshu.io/upload_images/9493059-d3d73b4b16fffe5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>设置完成，重启intellij idea</li>
+</ol>
+</blockquote>
+<h1 id="重点来了"><a href="#重点来了" class="headerlink" title="重点来了"></a>重点来了</h1><ol>
+<li>修改pom配置文件，添加devtools，注意optional节点设置为true<br><img src="http://upload-images.jianshu.io/upload_images/9493059-440825eddc3dcf8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>添加configuration节点<br><img src="http://upload-images.jianshu.io/upload_images/9493059-4e3b4e132669b2ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>谷歌浏览器设置一下不带缓存<br><img src="http://upload-images.jianshu.io/upload_images/9493059-1d87264f911fd81c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>设置Thymleaf不带缓存<br><img src="http://upload-images.jianshu.io/upload_images/9493059-0c3d16ea01ec05d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ol>
+<blockquote>
+<p>OK 我们不在妥协了，和黑暗恶势力理直气壮的说了一句NO，please遵守老子的规则。</p>
+</blockquote>
+
       
     </div>
     
@@ -344,6 +395,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/intellijidea/" rel="tag"># intellijidea</a>
+          
+        </div>
+      
 
       
       
@@ -353,8 +412,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/12/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/12/20/Thymleaf里面如何使用onclick事件/" rel="next" title="Thymleaf里面如何使用onclick事件">
+                <i class="fa fa-chevron-left"></i> Thymleaf里面如何使用onclick事件
               </a>
             
           </div>
@@ -362,10 +421,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/13/Hexo搭建个人博客/" rel="prev" title="'Hexo搭建个人博客'">
-                'Hexo搭建个人博客' <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -417,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -484,6 +548,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#妥协妥协"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x59A5;&#x534F;&#x59A5;&#x534F;" class="headerlink" title="&#x59A5;&#x534F;&#x59A5;&#x534F;"></a>&#x59A5;&#x534F;&#x59A5;&#x534F;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爆发吧"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x7206;&#x53D1;&#x5427;" class="headerlink" title="&#x7206;&#x53D1;&#x5427;"></a>&#x7206;&#x53D1;&#x5427;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重点来了"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x91CD;&#x70B9;&#x6765;&#x4E86;" class="headerlink" title="&#x91CD;&#x70B9;&#x6765;&#x4E86;"></a>&#x91CD;&#x70B9;&#x6765;&#x4E86;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

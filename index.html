@@ -229,16 +229,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            公益404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -258,6 +248,645 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/idea如何实现热部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="傲寒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/20/idea如何实现热部署/" itemprop="url">idea如何实现热部署</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T09:49:08+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>intellij idea真是让人又爱又恨，界面美观舒服，编码提示友好，开发效率高。但是最近发现一个很不爽的问题，使用springboot的时候无法实现热部署，于是乎，即使修改html一个标点符号，也得点击右上角启动。</p>
+<h1 id="妥协妥协"><a href="#妥协妥协" class="headerlink" title="妥协妥协"></a>妥协妥协</h1><p>先这么将就着用吧。<br>有时候人就这样，不到逼不得已就不会做出改变。</p>
+<h1 id="爆发吧"><a href="#爆发吧" class="headerlink" title="爆发吧"></a>爆发吧</h1><p>各种百度，找到如下解决方案，按照我说的步骤，必定实现热部署。</p>
+<ol>
+<li>确保setting compile下面的自动构建打钩，一般默认都会打钩，这里检查一遍，以防万一。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f3af5a709a8dcde5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="setting设置.png"></li>
+<li>ctrl+shift+a呼出搜索界面，一定要选择     第一个，然后回车：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-49c2e08d86b20b9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>找到如下图所示的选项，勾选<br><img src="http://upload-images.jianshu.io/upload_images/9493059-d3d73b4b16fffe5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>设置完成，重启intellij idea</li>
+</ol>
+</blockquote>
+<h1 id="重点来了"><a href="#重点来了" class="headerlink" title="重点来了"></a>重点来了</h1><ol>
+<li>修改pom配置文件，添加devtools，注意optional节点设置为true<br><img src="http://upload-images.jianshu.io/upload_images/9493059-440825eddc3dcf8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>添加configuration节点<br><img src="http://upload-images.jianshu.io/upload_images/9493059-4e3b4e132669b2ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>谷歌浏览器设置一下不带缓存<br><img src="http://upload-images.jianshu.io/upload_images/9493059-1d87264f911fd81c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>设置Thymleaf不带缓存<br><img src="http://upload-images.jianshu.io/upload_images/9493059-0c3d16ea01ec05d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ol>
+<blockquote>
+<p>OK 我们不在妥协了，和黑暗恶势力理直气壮的说了一句NO，please遵守老子的规则。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/Thymleaf里面如何使用onclick事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="傲寒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/20/Thymleaf里面如何使用onclick事件/" itemprop="url">Thymleaf里面如何使用onclick事件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T09:48:35+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>不得不说springboot+Thymleaf是一个超级开发神器。再加上mybatis自动生成，一般的小项目分分钟搞定的节奏。</p>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>不过，最近遇到一个问题，问题如下：<br>在Thymleaf下面如何触发js的点击事件？一通百度之后，得到如下解决方案：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span th:text=&quot;$&#123;classType.classname&#125; th:onclick=&quot;&apos;javascript:test(\&apos;&apos;+$&#123;classType.id&#125;+&apos;\&apos;)&apos;&quot;&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>使用th:onclick标签，最终调取如下js函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function test(aaa) &#123;</span><br><span class="line">        window.location.href = &quot;alllist?classid=&quot;+aaa;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>以上js正常写即可。</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ol>
+<li>th:onclick之后一定要记得加javascript:，否则不会生效</li>
+<li>javascript开头的要用’’包括起来。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/构建工具Gradle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="傲寒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/20/构建工具Gradle/" itemprop="url">构建工具Gradle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T09:47:52+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>更严格意义上来说应该叫做：androidstudio下面的gradle介绍  </p>
+<ul>
+<li>敲黑板：在androidstudio的terminal命令行里面运行gradle的命令为：gradlew，比如：<code>gradlew -v</code><br><img src="http://upload-images.jianshu.io/upload_images/9493059-fdce26aa645c714b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="terminal位置.png"><h1 id="gradle的概念"><a href="#gradle的概念" class="headerlink" title="gradle的概念"></a>gradle的概念</h1></li>
+<li>构建工具，使用java编程的各位应该对大名鼎鼎的maven比较熟悉，这俩干的活是一样的。</li>
+<li>面向java语言<h1 id="gradle的仓库"><a href="#gradle的仓库" class="headerlink" title="gradle的仓库"></a>gradle的仓库</h1><h2 id="仓库类型及配置"><a href="#仓库类型及配置" class="headerlink" title="仓库类型及配置"></a>仓库类型及配置</h2>盗用一张图，里面有各种仓库：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-0d4b719d3da5220a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="资源仓库.png"><br>具体的仓库位置配置如下（app下面的build构建文件）：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-2e0623f19fcbd6a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ul>
+</blockquote>
+<p>插一句，在各位使用maven的时候，将仓库地址替换成阿里云的镜像是不是快了很多？当然这里我们也可以采用和上图一样的配置使用阿里云镜像，构建过程瞬间提速有木有？</p>
+<h2 id="导入jar包"><a href="#导入jar包" class="headerlink" title="导入jar包"></a>导入jar包</h2><ol>
+<li>我们需要获取资源地址，推荐阿里云中央仓库，从此处可以搜到绝大多数的资源，<a href="http://mvnrepository.com/artifact/com.aliyun" target="_blank" rel="noopener">传送而去吧！</a></li>
+<li>搜索到jar包资源之后，查看gradle构建语句：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-516ffdd6f15edad6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查看构建语句.png"></li>
+<li>在app的build文件引入资源：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-ffc127db6237e479.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>好了，可以查看到我们的资源并且使用我们的资源了。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-de9158e498a50358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>瞬间变得很简单了有木有？不用抓狂的搜索资源，下载资源，然后丢到libs里面了！感谢maven，感谢gradle。</li>
+</ol>
+<p>荆轲刺秦王，感谢扈三娘。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/排队填单一体机解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="傲寒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/20/排队填单一体机解决方案/" itemprop="url">排队填单一体机解决方案</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T09:45:54+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/方案/" itemprop="url" rel="index">
+                    <span itemprop="name">方案</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p> 银行网点的人流量越来越大，办理业务人员也越来越多，办理的业务也越来越繁琐和复杂。传统的排队机和传统的填单机各自为政，已经无法处理当前需要两者协同作业的业务，随着这些业务的日渐繁多，排队填单一体机的建设逐步的被提上日程。</p>
+<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><ul>
+<li>各大银行网点<h1 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h1></li>
+</ul>
+<ol>
+<li>排队</li>
+<li>预填单<h1 id="疑难杂症"><a href="#疑难杂症" class="headerlink" title="疑难杂症"></a>疑难杂症</h1></li>
+</ol>
+<ul>
+<li>首先是目前银行太多太杂，各自的信息化建设水平层次不同。有的银行信息化程度高，已经存在一个总行级别的管理后台，将信息做了整体汇总。代表行：工行。</li>
+<li>业务各不相同，各个行对应的业务无论是复杂度还是繁琐程度各不相同。<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><blockquote>
+<p>区分P、C、V端。</p>
+</blockquote>
+</li>
+<li>V端主要进行设备的管理，设备的监控和填单模板的配置。目前bcmv系统基本可以满足要求，但是欠缺的是填单模板部分。填单模板采用uedit扩展插件，拖拽的形式进行模板的配置。最终将模板以html的格式存入到数据库之中。</li>
+<li>P端主要进行报文的收发，接收C端报文，发往V端获取数据，之后将报文再反馈给C端。</li>
+<li>C端主要面向客户，提供取号业务和预填单业务。主要介绍一下预填单业务。客户选择预填单模板之后，显示对应的模板界面，操作完成之后，将模板填充并打印。<blockquote>
+<p>技术方案      </p>
+</blockquote>
+</li>
+</ul>
+<p>C端使用基于arm的软件架构，基于android进行软件开发。<br>需要调取如下硬件：</p>
+<ol>
+<li>读卡器（读取二代证和银行卡，多合一）</li>
+<li>凭条打印机</li>
+<li>激光打印机<br>调取驱动SP主要是基于JNI，调取C编程的底层驱动SP，达到调取硬件的目的。<h2 id="模块化开发"><a href="#模块化开发" class="headerlink" title="模块化开发"></a>模块化开发</h2><img src="http://upload-images.jianshu.io/upload_images/9493059-85550adfaba5611f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="区分开发模块.png"><h3 id="UI展示模块"><a href="#UI展示模块" class="headerlink" title="UI展示模块"></a>UI展示模块</h3>封装常用的UI控件<h3 id="报文交互模块"><a href="#报文交互模块" class="headerlink" title="报文交互模块"></a>报文交互模块</h3>进行与P端通讯，获取服务端数据<h3 id="调取硬件模块"><a href="#调取硬件模块" class="headerlink" title="调取硬件模块"></a>调取硬件模块</h3>JNI调用底层硬件库，完成硬件模块的调用<h2 id="技术学习"><a href="#技术学习" class="headerlink" title="技术学习"></a>技术学习</h2></li>
+<li>gradle构建（组件化开发）之前一直使用maven，gradle没有仔细研究过。</li>
+<li>ndk打包</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -688,14 +1317,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
