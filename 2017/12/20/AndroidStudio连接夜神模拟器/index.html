@@ -86,18 +86,20 @@
 
 
 
-<meta name="description" content="运行-cmd，进入夜神模拟器安装目录，进入目录下的bin 执行Nox_adb.exe connect 127.0.0.1:62001命令，connect左右都有空格。 执行命令后就可以连接到夜神模拟器。">
+<meta name="description" content="运行-cmd，进入夜神模拟器安装目录，进入目录下的bin 执行Nox_adb.exe connect 127.0.0.1:62001命令，connect左右都有空格。 执行命令后就可以连接到夜神模拟器。    2017-12-23增加eclipse连接夜神模拟器相关信息  eclipse连接夜神模拟器注意事项 和androidstudio方法一样 需要首先启动eclipse，然后再启动夜神模拟器">
 <meta name="keywords" content="-androidstudio -夜神模拟器 -随笔">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AndroidStudio连接夜神模拟器">
 <meta property="og:url" content="http://wangjianlin1989.top/2017/12/20/AndroidStudio连接夜神模拟器/index.html">
 <meta property="og:site_name" content="傲寒">
-<meta property="og:description" content="运行-cmd，进入夜神模拟器安装目录，进入目录下的bin 执行Nox_adb.exe connect 127.0.0.1:62001命令，connect左右都有空格。 执行命令后就可以连接到夜神模拟器。">
+<meta property="og:description" content="运行-cmd，进入夜神模拟器安装目录，进入目录下的bin 执行Nox_adb.exe connect 127.0.0.1:62001命令，connect左右都有空格。 执行命令后就可以连接到夜神模拟器。    2017-12-23增加eclipse连接夜神模拟器相关信息  eclipse连接夜神模拟器注意事项 和androidstudio方法一样 需要首先启动eclipse，然后再启动夜神模拟器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-20T07:49:48.678Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-029ddadd3af82c7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-23T08:24:01.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AndroidStudio连接夜神模拟器">
-<meta name="twitter:description" content="运行-cmd，进入夜神模拟器安装目录，进入目录下的bin 执行Nox_adb.exe connect 127.0.0.1:62001命令，connect左右都有空格。 执行命令后就可以连接到夜神模拟器。">
+<meta name="twitter:description" content="运行-cmd，进入夜神模拟器安装目录，进入目录下的bin 执行Nox_adb.exe connect 127.0.0.1:62001命令，connect左右都有空格。 执行命令后就可以连接到夜神模拟器。    2017-12-23增加eclipse连接夜神模拟器相关信息  eclipse连接夜神模拟器注意事项 和androidstudio方法一样 需要首先启动eclipse，然后再启动夜神模拟器">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9493059-029ddadd3af82c7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -353,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  59
+                  229
                 </span>
               
 
@@ -395,6 +397,24 @@
 <li>执行<code>Nox_adb.exe connect 127.0.0.1:62001</code>命令，connect左右都有空格。</li>
 <li>执行命令后就可以连接到夜神模拟器。</li>
 </ol>
+<hr>
+<blockquote>
+<p>2017-12-23增加eclipse连接夜神模拟器相关信息</p>
+</blockquote>
+<h1 id="eclipse连接夜神模拟器注意事项"><a href="#eclipse连接夜神模拟器注意事项" class="headerlink" title="eclipse连接夜神模拟器注意事项"></a>eclipse连接夜神模拟器注意事项</h1><ul>
+<li>和androidstudio方法一样</li>
+<li>需要首先启动eclipse，然后再启动夜神模拟器</li>
+<li>注意，如果此时启动的时候没有正常连接，可以尝试如下的操作，我使用如下的操作方法，成功的连接上了模拟器。</li>
+</ul>
+<blockquote>
+<p>操作方法如下:</p>
+</blockquote>
+<ol>
+<li>进入DDMS模式，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-029ddadd3af82c7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DDMS模式.png"></li>
+<li>单击左侧的devices栏倒三角，上图标注的位置。</li>
+<li>选择reset adb</li>
+<li>重复连接模拟器的步骤，即：进cmd，进入模拟器bin目录，使用命令行进行模拟器的连接。</li>
+</ol>
 
       
     </div>
@@ -423,7 +443,7 @@
   <p><span>本文标题:</span><a href="/2017/12/20/AndroidStudio连接夜神模拟器/">AndroidStudio连接夜神模拟器</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
   <p><span>发布时间:</span>2017年12月20日 - 15:12</p>
-  <p><span>最后更新:</span>2017年12月20日 - 15:12</p>
+  <p><span>最后更新:</span>2017年12月23日 - 16:12</p>
   <p><span>原始链接:</span><a href="/2017/12/20/AndroidStudio连接夜神模拟器/" title="AndroidStudio连接夜神模拟器">http://wangjianlin1989.top/2017/12/20/AndroidStudio连接夜神模拟器/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2017/12/20/AndroidStudio连接夜神模拟器/"  aria-label="复制成功！"></i></span>
   </p>
@@ -468,8 +488,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/20/Studio连接夜神模拟器/" rel="next" title="Studio连接夜神模拟器">
-                <i class="fa fa-chevron-left"></i> Studio连接夜神模拟器
+              <a href="/2017/12/20/idea如何实现热部署/" rel="next" title="idea如何实现热部署">
+                <i class="fa fa-chevron-left"></i> idea如何实现热部署
               </a>
             
           </div>
@@ -537,8 +557,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -557,7 +586,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -579,7 +608,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -604,6 +633,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#eclipse连接夜神模拟器注意事项"><span class="nav-number">1.</span> <span class="nav-text"><a href="#eclipse&#x8FDE;&#x63A5;&#x591C;&#x795E;&#x6A21;&#x62DF;&#x5668;&#x6CE8;&#x610F;&#x4E8B;&#x9879;" class="headerlink" title="eclipse&#x8FDE;&#x63A5;&#x591C;&#x795E;&#x6A21;&#x62DF;&#x5668;&#x6CE8;&#x610F;&#x4E8B;&#x9879;"></a>eclipse&#x8FDE;&#x63A5;&#x591C;&#x795E;&#x6A21;&#x62DF;&#x5668;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -648,7 +693,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.2k字</span>
+  <span class="post-count">博客全站共4.0k字</span>
 </div>
         
 
