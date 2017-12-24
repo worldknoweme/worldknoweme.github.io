@@ -269,6 +269,398 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="傲寒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/24/css解释及chrome使用详解/" itemprop="url">css解释及chrome使用详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T21:46:02+08:00">
+                2017-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,240
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。  </p>
+<h1 id="CSS解释"><a href="#CSS解释" class="headerlink" title="CSS解释"></a>CSS解释</h1><h2 id="html和css是如何建立联系的？"><a href="#html和css是如何建立联系的？" class="headerlink" title="html和css是如何建立联系的？"></a>html和css是如何建立联系的？</h2><p>这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。</p>
+<h3 id="css文件不是必须的。"><a href="#css文件不是必须的。" class="headerlink" title="css文件不是必须的。"></a>css文件不是必须的。</h3><p>我们完全可以把样式写到html里面，比如这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;width:100%;color:red&quot;&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>div的样式是可以完成通过style标签去定义的。那么，我们为什么要使用css文件来“画蛇添足”呢？初学者肯定觉得不可思议，写到一个html文件里面多好？省事，方便，也不会出现诸如文件未找到之类的错误。<br>其实，随着我们后续接触项目，慢慢就会发现这其中的奥妙了。</p>
+<h3 id="使用css文件的优点"><a href="#使用css文件的优点" class="headerlink" title="使用css文件的优点"></a>使用css文件的优点</h3><p>诸位可以设想一下这样的场景，我有100个html网页，其中顶部的样式完全一样，比如均使用类似百度的样式，右上角的按钮排列样式。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我有100个网页，每个网页里面我都需要去添加style吗？就算是复制粘贴也能把人累死。<br>更严重的是，假如后续我改了样式，那么我是不是需要改100遍html网页呢？想想都头大。为了解决这个问题，css文件就应运而生了。我只要这般写网页就可以了：<code>&lt;div class=&quot;test&quot;&gt;&lt;/div&gt;</code>，在css文件里面定义test样式就可以了：<code>.test{width:100%;}</code>。<br>如果有一天，客户彪了，提出了新的需求，要求width全部改成50%，我们只需要改一下css文件就好了：<code>.test{width:50%}</code><br>综上，css文件的好处显而易见：</p>
+<ol>
+<li>消灭重复代码</li>
+<li>修改需求方便<h3 id="html和css建立联系"><a href="#html和css建立联系" class="headerlink" title="html和css建立联系"></a>html和css建立联系</h3><blockquote>
+<p>废话落落了那么多，具体是如何建立联系的呢？</p>
+</blockquote>
+</li>
+<li>使用link标签将css文件引入进来</li>
+<li>css文件里面定义样式</li>
+<li>html里面使用样式<h2 id="css定义样式的方式"><a href="#css定义样式的方式" class="headerlink" title="css定义样式的方式"></a>css定义样式的方式</h2><h3 id="class定义"><a href="#class定义" class="headerlink" title="class定义"></a>class定义</h3>.定义法，在css文件使用<code>.样式名{}</code>的形式来定义样式，在html里面则使用<code>class=&#39;样式名&#39;</code>来引入样式<h3 id="id定义法"><a href="#id定义法" class="headerlink" title="id定义法"></a>id定义法</h3>‘#定义法’，在css文件里面使用<code>#样式名{}</code>的形式来定义样式，在html里面则使用<code>id=&#39;样式名&#39;</code>来引入样式<h3 id="标签定义法"><a href="#标签定义法" class="headerlink" title="标签定义法"></a>标签定义法</h3>标签名定义法，如<code>div{width:100%}</code>或者<code>input{width:100%}</code>，以html标签直接定义，之后只要通过link将文件成功引入，那么对应的所有的标签都会使用该样式。<h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><blockquote>
+<p>一定要记得在样式名中间加空格，非常重要。否则就引用不到。  </p>
+</blockquote>
+</li>
+</ol>
+<p>通过了解上文说的定义样式的方式，相信这里就非常好理解了，举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.a .b .c &#123;</span><br><span class="line">这里表示样式a之下样式b之下样式c的样式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对应的html应该这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;a&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      其中的元素会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;aaaa&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      这里面的元素则不会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>假如，我的css文件这样写，就会全部生效了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.c&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同样，我可以混合样式的定义方式使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.a #abc&#123;&#125;</span><br><span class="line">.a div&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="chrome的使用"><a href="#chrome的使用" class="headerlink" title="chrome的使用"></a>chrome的使用</h1><blockquote>
+<p>chrome是html的神器了，可以即时的修改css，查看样式，同时还可以调试脚本，好用的一塌糊涂。</p>
+</blockquote>
+<h2 id="f12"><a href="#f12" class="headerlink" title="f12"></a>f12</h2><p>按一下f12键，一切网页无法遁形：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-64be5096ee89e03e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>介绍一个各个功能栏</p>
+<h3 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h3><p>这里可以查看到所有的元素：<br>鼠标滑到每一个标签，左侧的网页都会高亮显示：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f84b00a847393331.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>同时我们还可以看到css：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-e238d6aa021569ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>红框框起来的地方为css，当然，我们可以修改css，左侧实时就显示出效果了，比如，我们把float浮动效果去掉：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-5d64f6ffbe1f4c3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>是不是变得不一样了？</p>
+<h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><p>此为控制台，主要打印日志，js日志可以从这里打印出来。报错信息也可以打印出来：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-8f20fd5df3995c13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我修改一下css引用路径：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-ece82cc007deab4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>再打开网页，在控制台就报错了：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-70442524420519e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>报错信息为：无法加载文件，错误在第五行。</p>
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p>此为资源展示界面，可以在该界面进行js的调试。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-840d2a639ef6a4dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>比如，我在第七行加一个断点，f5刷新之后，程序会在第七行停止，然后等待我们去执行。<br>左下方的两个常用按钮为跳到下一个断点，和跳到下一行。假如我们定义了两个断点，第一个按钮点击之后就会到下一个断点。第二个按钮则会到下一行。</p>
+<p>简单说这些，希望对初学者有帮助。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+    </div>
+	<div>
+      
+	</div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2017/12/24/小王子的眼泪/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="傲寒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/24/小王子的眼泪/" itemprop="url">小王子的眼泪</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T21:21:38+08:00">
+                2017-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  452
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>如果有人爱上了一朵花，天上的星星有亿万颗，而这朵花只长在其中一颗上，这足以让他在仰望星空时感到很快乐。他会告诉自己：在星空的某处有我的花。但如果绵羊把花吃掉了，对他来说就等于所有的星星突然熄灭了！</p>
+</blockquote>
+<p>我仿佛看到了一个孩子在低声的倾诉，没有咆哮，没有眼泪甚至没有大声呼喊，只是低声的诉说。却足以让任何听到他声音的人动容。我印象中的小王子，一定有一双清澈如水的眼睛，一定要有从容的气质。他说话的时候一脸的认真，并且肯定注视着对方的眼睛，一眨不眨。<br>忽然想到了前几天看的至爱梵高，很难想象，全世界都无法理解自己时候的孤苦无依。特别是，周围熙熙攘攘，全部都是人，但好像又全都不是人。全都是怪物，无法理解自己的怪物。全世界的星星全部熄灭了，恰好又让自己一个人看到了，大概就是这种心情吧。<br>2017年很快就要过去了，对我这种人而言需要刻骨铭心去记住的事情不多。无非是2016年傲寒的降生，2017年傲寒又长了一岁罢了。再让我感到心情好一点的就是2016年可以枕着《大鱼海棠》和《你的名字》安静的去怀念，2017年可以拥抱着《至爱梵高》和《烟花》努力的去感同身受，之后又努力的让全世界的星星再次点亮吧。<br>2018，抬头仰望星空的时候一定要很快乐，一定要记得微笑。  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+    </div>
+	<div>
+      
+	</div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2017/12/23/SpringBoot在Ubuntu下以服务方式启动/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1808,404 +2200,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2017/12/20/排队填单一体机解决方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ony Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="傲寒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/20/排队填单一体机解决方案/" itemprop="url">排队填单一体机解决方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T09:45:54+08:00">
-                2017-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/方案/" itemprop="url" rel="index">
-                    <span itemprop="name">方案</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  606
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p> 银行网点的人流量越来越大，办理业务人员也越来越多，办理的业务也越来越繁琐和复杂。传统的排队机和传统的填单机各自为政，已经无法处理当前需要两者协同作业的业务，随着这些业务的日渐繁多，排队填单一体机的建设逐步的被提上日程。</p>
-<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><ul>
-<li>各大银行网点<h1 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h1></li>
-</ul>
-<ol>
-<li>排队</li>
-<li>预填单<h1 id="疑难杂症"><a href="#疑难杂症" class="headerlink" title="疑难杂症"></a>疑难杂症</h1></li>
-</ol>
-<ul>
-<li>首先是目前银行太多太杂，各自的信息化建设水平层次不同。有的银行信息化程度高，已经存在一个总行级别的管理后台，将信息做了整体汇总。代表行：工行。</li>
-<li>业务各不相同，各个行对应的业务无论是复杂度还是繁琐程度各不相同。<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><blockquote>
-<p>区分P、C、V端。</p>
-</blockquote>
-</li>
-<li>V端主要进行设备的管理，设备的监控和填单模板的配置。目前bcmv系统基本可以满足要求，但是欠缺的是填单模板部分。填单模板采用uedit扩展插件，拖拽的形式进行模板的配置。最终将模板以html的格式存入到数据库之中。</li>
-<li>P端主要进行报文的收发，接收C端报文，发往V端获取数据，之后将报文再反馈给C端。</li>
-<li>C端主要面向客户，提供取号业务和预填单业务。主要介绍一下预填单业务。客户选择预填单模板之后，显示对应的模板界面，操作完成之后，将模板填充并打印。<blockquote>
-<p>技术方案      </p>
-</blockquote>
-</li>
-</ul>
-<p>C端使用基于arm的软件架构，基于android进行软件开发。<br>需要调取如下硬件：</p>
-<ol>
-<li>读卡器（读取二代证和银行卡，多合一）</li>
-<li>凭条打印机</li>
-<li>激光打印机<br>调取驱动SP主要是基于JNI，调取C编程的底层驱动SP，达到调取硬件的目的。<h2 id="模块化开发"><a href="#模块化开发" class="headerlink" title="模块化开发"></a>模块化开发</h2><img src="http://upload-images.jianshu.io/upload_images/9493059-85550adfaba5611f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="区分开发模块.png"><h3 id="UI展示模块"><a href="#UI展示模块" class="headerlink" title="UI展示模块"></a>UI展示模块</h3>封装常用的UI控件<h3 id="报文交互模块"><a href="#报文交互模块" class="headerlink" title="报文交互模块"></a>报文交互模块</h3>进行与P端通讯，获取服务端数据<h3 id="调取硬件模块"><a href="#调取硬件模块" class="headerlink" title="调取硬件模块"></a>调取硬件模块</h3>JNI调用底层硬件库，完成硬件模块的调用<h2 id="技术学习"><a href="#技术学习" class="headerlink" title="技术学习"></a>技术学习</h2></li>
-<li>gradle构建（组件化开发）之前一直使用maven，gradle没有仔细研究过。</li>
-<li>ndk打包</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-	<div>
-    
-    </div>
-	<div>
-      
-	</div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2017/12/13/Hexo搭建个人博客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ony Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="傲寒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/13/Hexo搭建个人博客/" itemprop="url">'Hexo搭建个人博客'</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-13T18:09:49+08:00">
-                2017-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  587
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>看了一些基于hexo的博客，瞬间觉得漂亮的不像话，主要是阅读文章的时候体验比较好，右边的导航栏好用的不要不要的。上一张读博客时候的图片看一下：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-5784bac83bd519bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo效果.png"><br>于是乎，决定折腾一下。  </p>
-<h1 id="Hexo的安装步骤"><a href="#Hexo的安装步骤" class="headerlink" title="Hexo的安装步骤"></a>Hexo的安装步骤</h1><ol>
-<li>安装nodeJS</li>
-<li>安装Hexo</li>
-<li>下载喜欢的Hexo模板</li>
-<li>如果是用github做服务器（或者支持markdown解析），可以直接上传md文件，如果放到自己的服务器上，就需要进行静态网页的发布，先将源代码发布为html文件，然后安装发布软件进行发布（我用的nginx，这是说明一下nginx的安装）<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2>主要介绍一下window和ubuntu的安装。<h3 id="window安装"><a href="#window安装" class="headerlink" title="window安装"></a>window安装</h3></li>
-<li>直接从官网下载安装文件即可，可以从该网站下载所需安装包<a href="http://nodejs.cn/download/" target="_blank" rel="noopener">node中文网下载</a>。傻瓜式安装，一路next直到安装成功。</li>
-<li>安装完成之后，会有一个nodejs的命令窗口，打开命令窗口，下载hexo。如下图所示：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-47706a8328560b28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="nodejs命令窗口.png"><br><img src="http://upload-images.jianshu.io/upload_images/9493059-fc6dd99b213f0128.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打开效果如下.png"></li>
-<li>下载hexo资源<br>输入<code>npm install -g hexo</code><br>此处搞清楚了依赖关系，hexo是依赖于node的，想要安装使用hexo，必须得先安装node，之后使用npm进行hexo的安装下载。</li>
-<li>初始化hexo<br>输入<code>hexo init</code><br>这样会在你当前目录下生成hexo的初始化资源，因此在执行该条语句之前，需要先cd到指定目录。</li>
-<li>现在安装的hexo都是3.0版本，<font color="red">3.0版本的hexo有一个明显的改变就是把server进行了分离，安装hexo之后，还需要安装server</font>，使用如下命令进行安装即可：<code>npm install hexo-server --save</code>   </li>
-<li>启动hexo<br>默认4000端口启动：<code>hexo s</code><br>指定端口启动：<code>hexo s -p 4001</code><br>不出意外，访问localhost:4000就可以看到美的冒泡的博客了吧。 <h3 id="Ubuntu安装"><a href="#Ubuntu安装" class="headerlink" title="Ubuntu安装"></a>Ubuntu安装</h3>安装顺序跟上面类似，依次获取资源命令如下：<br><code>apt-get install nodejs</code><br><code>npm install -g hexo</code><br><code>hexo init</code><br><code>npm install hexo-server --save</code><br>有可能出现apt-get失败的情况，这时候将资源包进行一下更新即可：<br><code>apt-get update</code><br><code>apt-get upgrade</code><br>好了，到此为止hexo就安装完成了。下面需要美化我们的个人博客。下一遍继续更新。</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-	<div>
-    
-    </div>
-	<div>
-      
-	</div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2260,7 +2254,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2282,7 +2276,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2351,7 +2345,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共4.0k字</span>
+  <span class="post-count">博客全站共5.7k字</span>
 </div>
         
 

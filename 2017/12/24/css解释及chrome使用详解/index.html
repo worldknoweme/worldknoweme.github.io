@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS,Chrome," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。   CSS解释html和css是如何建立联系的？这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。 css文件不是必须的。我们完全可以把样式写到html里面，比如这样：12&amp;lt;div style=&amp;quot;width:100%;color:red&amp;quo">
+<meta name="keywords" content="CSS,Chrome">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css解释及chrome使用详解">
+<meta property="og:url" content="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/index.html">
+<meta property="og:site_name" content="傲寒">
+<meta property="og:description" content="简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。   CSS解释html和css是如何建立联系的？这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。 css文件不是必须的。我们完全可以把样式写到html里面，比如这样：12&amp;lt;div style=&amp;quot;width:100%;color:red&amp;quo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-64be5096ee89e03e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-f84b00a847393331.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-e238d6aa021569ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-5d64f6ffbe1f4c3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-8f20fd5df3995c13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-ece82cc007deab4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-70442524420519e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-840d2a639ef6a4dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-24T14:33:21.888Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css解释及chrome使用详解">
+<meta name="twitter:description" content="简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。   CSS解释html和css是如何建立联系的？这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。 css文件不是必须的。我们完全可以把样式写到html里面，比如这样：12&amp;lt;div style=&amp;quot;width:100%;color:red&amp;quo">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/"/>
+
+
+
+
+
+  <title>css解释及chrome使用详解 | 傲寒</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">傲寒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">请高效的活着</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="傲寒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css解释及chrome使用详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T21:46:02+08:00">
+                2017-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,240
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。  </p>
+<h1 id="CSS解释"><a href="#CSS解释" class="headerlink" title="CSS解释"></a>CSS解释</h1><h2 id="html和css是如何建立联系的？"><a href="#html和css是如何建立联系的？" class="headerlink" title="html和css是如何建立联系的？"></a>html和css是如何建立联系的？</h2><p>这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。</p>
+<h3 id="css文件不是必须的。"><a href="#css文件不是必须的。" class="headerlink" title="css文件不是必须的。"></a>css文件不是必须的。</h3><p>我们完全可以把样式写到html里面，比如这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;width:100%;color:red&quot;&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>div的样式是可以完成通过style标签去定义的。那么，我们为什么要使用css文件来“画蛇添足”呢？初学者肯定觉得不可思议，写到一个html文件里面多好？省事，方便，也不会出现诸如文件未找到之类的错误。<br>其实，随着我们后续接触项目，慢慢就会发现这其中的奥妙了。</p>
+<h3 id="使用css文件的优点"><a href="#使用css文件的优点" class="headerlink" title="使用css文件的优点"></a>使用css文件的优点</h3><p>诸位可以设想一下这样的场景，我有100个html网页，其中顶部的样式完全一样，比如均使用类似百度的样式，右上角的按钮排列样式。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我有100个网页，每个网页里面我都需要去添加style吗？就算是复制粘贴也能把人累死。<br>更严重的是，假如后续我改了样式，那么我是不是需要改100遍html网页呢？想想都头大。为了解决这个问题，css文件就应运而生了。我只要这般写网页就可以了：<code>&lt;div class=&quot;test&quot;&gt;&lt;/div&gt;</code>，在css文件里面定义test样式就可以了：<code>.test{width:100%;}</code>。<br>如果有一天，客户彪了，提出了新的需求，要求width全部改成50%，我们只需要改一下css文件就好了：<code>.test{width:50%}</code><br>综上，css文件的好处显而易见：</p>
+<ol>
+<li>消灭重复代码</li>
+<li>修改需求方便<h3 id="html和css建立联系"><a href="#html和css建立联系" class="headerlink" title="html和css建立联系"></a>html和css建立联系</h3><blockquote>
+<p>废话落落了那么多，具体是如何建立联系的呢？</p>
+</blockquote>
+</li>
+<li>使用link标签将css文件引入进来</li>
+<li>css文件里面定义样式</li>
+<li>html里面使用样式<h2 id="css定义样式的方式"><a href="#css定义样式的方式" class="headerlink" title="css定义样式的方式"></a>css定义样式的方式</h2><h3 id="class定义"><a href="#class定义" class="headerlink" title="class定义"></a>class定义</h3>.定义法，在css文件使用<code>.样式名{}</code>的形式来定义样式，在html里面则使用<code>class=&#39;样式名&#39;</code>来引入样式<h3 id="id定义法"><a href="#id定义法" class="headerlink" title="id定义法"></a>id定义法</h3>‘#定义法’，在css文件里面使用<code>#样式名{}</code>的形式来定义样式，在html里面则使用<code>id=&#39;样式名&#39;</code>来引入样式<h3 id="标签定义法"><a href="#标签定义法" class="headerlink" title="标签定义法"></a>标签定义法</h3>标签名定义法，如<code>div{width:100%}</code>或者<code>input{width:100%}</code>，以html标签直接定义，之后只要通过link将文件成功引入，那么对应的所有的标签都会使用该样式。<h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><blockquote>
+<p>一定要记得在样式名中间加空格，非常重要。否则就引用不到。  </p>
+</blockquote>
+</li>
+</ol>
+<p>通过了解上文说的定义样式的方式，相信这里就非常好理解了，举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.a .b .c &#123;</span><br><span class="line">这里表示样式a之下样式b之下样式c的样式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对应的html应该这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;a&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      其中的元素会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;aaaa&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      这里面的元素则不会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>假如，我的css文件这样写，就会全部生效了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.c&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同样，我可以混合样式的定义方式使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.a #abc&#123;&#125;</span><br><span class="line">.a div&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="chrome的使用"><a href="#chrome的使用" class="headerlink" title="chrome的使用"></a>chrome的使用</h1><blockquote>
+<p>chrome是html的神器了，可以即时的修改css，查看样式，同时还可以调试脚本，好用的一塌糊涂。</p>
+</blockquote>
+<h2 id="f12"><a href="#f12" class="headerlink" title="f12"></a>f12</h2><p>按一下f12键，一切网页无法遁形：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-64be5096ee89e03e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>介绍一个各个功能栏</p>
+<h3 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h3><p>这里可以查看到所有的元素：<br>鼠标滑到每一个标签，左侧的网页都会高亮显示：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f84b00a847393331.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>同时我们还可以看到css：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-e238d6aa021569ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>红框框起来的地方为css，当然，我们可以修改css，左侧实时就显示出效果了，比如，我们把float浮动效果去掉：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-5d64f6ffbe1f4c3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>是不是变得不一样了？</p>
+<h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><p>此为控制台，主要打印日志，js日志可以从这里打印出来。报错信息也可以打印出来：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-8f20fd5df3995c13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我修改一下css引用路径：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-ece82cc007deab4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>再打开网页，在控制台就报错了：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-70442524420519e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>报错信息为：无法加载文件，错误在第五行。</p>
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p>此为资源展示界面，可以在该界面进行js的调试。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-840d2a639ef6a4dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>比如，我在第七行加一个断点，f5刷新之后，程序会在第七行停止，然后等待我们去执行。<br>左下方的两个常用按钮为跳到下一个断点，和跳到下一行。假如我们定义了两个断点，第一个按钮点击之后就会到下一个断点。第二个按钮则会到下一行。</p>
+<p>简单说这些，希望对初学者有帮助。</p>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2017/12/24/css解释及chrome使用详解/">css解释及chrome使用详解</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
+  <p><span>发布时间:</span>2017年12月24日 - 21:12</p>
+  <p><span>最后更新:</span>2017年12月24日 - 22:12</p>
+  <p><span>原始链接:</span><a href="/2017/12/24/css解释及chrome使用详解/" title="css解释及chrome使用详解">http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+          
+            <a href="/tags/Chrome/" rel="tag"><i class="fa fa-tag"></i> Chrome</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/24/小王子的眼泪/" rel="next" title="小王子的眼泪">
+                <i class="fa fa-chevron-left"></i> 小王子的眼泪
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjU2Mi85MTIz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ony Wang" />
+            
+              <p class="site-author-name" itemprop="name">Ony Wang</p>
+              <p class="site-description motion-element" itemprop="description">仙人抚我顶，结发授长生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS解释"><span class="nav-number">1.</span> <span class="nav-text"><a href="#CSS&#x89E3;&#x91CA;" class="headerlink" title="CSS&#x89E3;&#x91CA;"></a>CSS&#x89E3;&#x91CA;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#html和css是如何建立联系的？"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#html&#x548C;css&#x662F;&#x5982;&#x4F55;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x7684;&#xFF1F;" class="headerlink" title="html&#x548C;css&#x662F;&#x5982;&#x4F55;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x7684;&#xFF1F;"></a>html&#x548C;css&#x662F;&#x5982;&#x4F55;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x7684;&#xFF1F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#css文件不是必须的。"><span class="nav-number">1.1.1.</span> <span class="nav-text"><a href="#css&#x6587;&#x4EF6;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;" class="headerlink" title="css&#x6587;&#x4EF6;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;"></a>css&#x6587;&#x4EF6;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用css文件的优点"><span class="nav-number">1.1.2.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;css&#x6587;&#x4EF6;&#x7684;&#x4F18;&#x70B9;" class="headerlink" title="&#x4F7F;&#x7528;css&#x6587;&#x4EF6;&#x7684;&#x4F18;&#x70B9;"></a>&#x4F7F;&#x7528;css&#x6587;&#x4EF6;&#x7684;&#x4F18;&#x70B9;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html和css建立联系"><span class="nav-number">1.1.3.</span> <span class="nav-text"><a href="#html&#x548C;css&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;" class="headerlink" title="html&#x548C;css&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;"></a>html&#x548C;css&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css定义样式的方式"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#css&#x5B9A;&#x4E49;&#x6837;&#x5F0F;&#x7684;&#x65B9;&#x5F0F;" class="headerlink" title="css&#x5B9A;&#x4E49;&#x6837;&#x5F0F;&#x7684;&#x65B9;&#x5F0F;"></a>css&#x5B9A;&#x4E49;&#x6837;&#x5F0F;&#x7684;&#x65B9;&#x5F0F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#class定义"><span class="nav-number">1.2.1.</span> <span class="nav-text"><a href="#class&#x5B9A;&#x4E49;" class="headerlink" title="class&#x5B9A;&#x4E49;"></a>class&#x5B9A;&#x4E49;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id定义法"><span class="nav-number">1.2.2.</span> <span class="nav-text"><a href="#id&#x5B9A;&#x4E49;&#x6CD5;" class="headerlink" title="id&#x5B9A;&#x4E49;&#x6CD5;"></a>id&#x5B9A;&#x4E49;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签定义法"><span class="nav-number">1.2.3.</span> <span class="nav-text"><a href="#&#x6807;&#x7B7E;&#x5B9A;&#x4E49;&#x6CD5;" class="headerlink" title="&#x6807;&#x7B7E;&#x5B9A;&#x4E49;&#x6CD5;"></a>&#x6807;&#x7B7E;&#x5B9A;&#x4E49;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签选择器"><span class="nav-number">1.2.4.</span> <span class="nav-text"><a href="#&#x6807;&#x7B7E;&#x9009;&#x62E9;&#x5668;" class="headerlink" title="&#x6807;&#x7B7E;&#x9009;&#x62E9;&#x5668;"></a>&#x6807;&#x7B7E;&#x9009;&#x62E9;&#x5668;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chrome的使用"><span class="nav-number">2.</span> <span class="nav-text"><a href="#chrome&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="chrome&#x7684;&#x4F7F;&#x7528;"></a>chrome&#x7684;&#x4F7F;&#x7528;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#f12"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#f12" class="headerlink" title="f12"></a>f12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Elements"><span class="nav-number">2.1.1.</span> <span class="nav-text"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Console"><span class="nav-number">2.1.2.</span> <span class="nav-text"><a href="#Console" class="headerlink" title="Console"></a>Console</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source"><span class="nav-number">2.1.3.</span> <span class="nav-text"><a href="#Source" class="headerlink" title="Source"></a>Source</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; Tue Dec 12 2017 08:00:00 GMT+0800 (中国标准时间) &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ony Wang</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+-->
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共5.7k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
