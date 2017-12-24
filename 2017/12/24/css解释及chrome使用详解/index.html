@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-ece82cc007deab4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-70442524420519e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-840d2a639ef6a4dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-12-24T14:41:29.294Z">
+<meta property="og:updated_time" content="2017-12-24T16:15:24.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css解释及chrome使用详解">
 <meta name="twitter:description" content="简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。  CSS解释html和css是如何建立联系的？ 这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。  css文件不是必须的。我们完全可以把样式写到html里面，比如这样：12&amp;lt;div style=&amp;quot;width:100%;color:red&amp;qu">
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,240
+                  1,241
                 </span>
               
 
@@ -411,17 +411,22 @@
 <h3 id="使用css文件的优点"><a href="#使用css文件的优点" class="headerlink" title="使用css文件的优点"></a>使用css文件的优点</h3><p>诸位可以设想一下这样的场景，我有100个html网页，其中顶部的样式完全一样，比如均使用类似百度的样式，右上角的按钮排列样式。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我有100个网页，每个网页里面我都需要去添加style吗？就算是复制粘贴也能把人累死。<br>更严重的是，假如后续我改了样式，那么我是不是需要改100遍html网页呢？想想都头大。为了解决这个问题，css文件就应运而生了。我只要这般写网页就可以了：<code>&lt;div class=&quot;test&quot;&gt;&lt;/div&gt;</code>，在css文件里面定义test样式就可以了：<code>.test{width:100%;}</code>。<br>如果有一天，客户彪了，提出了新的需求，要求width全部改成50%，我们只需要改一下css文件就好了：<code>.test{width:50%}</code><br>综上，css文件的好处显而易见：</p>
 <ol>
 <li>消灭重复代码</li>
-<li>修改需求方便<h3 id="html和css建立联系"><a href="#html和css建立联系" class="headerlink" title="html和css建立联系"></a>html和css建立联系</h3><blockquote>
+<li>修改需求方便</li>
+</ol>
+<h3 id="html和css建立联系"><a href="#html和css建立联系" class="headerlink" title="html和css建立联系"></a>html和css建立联系</h3><blockquote>
 <p>废话落落了那么多，具体是如何建立联系的呢？</p>
 </blockquote>
-</li>
+<ol>
 <li>使用link标签将css文件引入进来</li>
 <li>css文件里面定义样式</li>
-<li>html里面使用样式<h2 id="css定义样式的方式"><a href="#css定义样式的方式" class="headerlink" title="css定义样式的方式"></a>css定义样式的方式</h2><h3 id="class定义"><a href="#class定义" class="headerlink" title="class定义"></a>class定义</h3>.定义法，在css文件使用<code>.样式名{}</code>的形式来定义样式，在html里面则使用<code>class=&#39;样式名&#39;</code>来引入样式<h3 id="id定义法"><a href="#id定义法" class="headerlink" title="id定义法"></a>id定义法</h3>‘#定义法’，在css文件里面使用<code>#样式名{}</code>的形式来定义样式，在html里面则使用<code>id=&#39;样式名&#39;</code>来引入样式<h3 id="标签定义法"><a href="#标签定义法" class="headerlink" title="标签定义法"></a>标签定义法</h3>标签名定义法，如<code>div{width:100%}</code>或者<code>input{width:100%}</code>，以html标签直接定义，之后只要通过link将文件成功引入，那么对应的所有的标签都会使用该样式。<h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><blockquote>
-<p>一定要记得在样式名中间加空格，非常重要。否则就引用不到。  </p>
-</blockquote>
-</li>
+<li>html里面使用样式</li>
 </ol>
+<h2 id="css定义样式的方式"><a href="#css定义样式的方式" class="headerlink" title="css定义样式的方式"></a>css定义样式的方式</h2><h3 id="class定义"><a href="#class定义" class="headerlink" title="class定义"></a>class定义</h3><p>.定义法，在css文件使用<code>.样式名{}</code>的形式来定义样式，在html里面则使用<code>class=&#39;样式名&#39;</code>来引入样式</p>
+<h3 id="id定义法"><a href="#id定义法" class="headerlink" title="id定义法"></a>id定义法</h3><p>‘#定义法’，在css文件里面使用<code>#样式名{}</code>的形式来定义样式，在html里面则使用<code>id=&#39;样式名&#39;</code>来引入样式</p>
+<h3 id="标签定义法"><a href="#标签定义法" class="headerlink" title="标签定义法"></a>标签定义法</h3><p>标签名定义法，如<code>div{width:100%}</code>或者<code>input{width:100%}</code>，以html标签直接定义，之后只要通过link将文件成功引入，那么对应的所有的标签都会使用该样式。</p>
+<h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><blockquote>
+<p>一定要记得在样式名中间加空格，非常重要。否则就引用不到。</p>
+</blockquote>
 <p>通过了解上文说的定义样式的方式，相信这里就非常好理解了，举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.a .b .c &#123;</span><br><span class="line">这里表示样式a之下样式b之下样式c的样式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>对应的html应该这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;a&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      其中的元素会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;aaaa&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      这里面的元素则不会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></p>
 <p>假如，我的css文件这样写，就会全部生效了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.c&#123;&#125;</span><br></pre></td></tr></table></figure></p>
@@ -462,7 +467,7 @@
   <p><span>本文标题:</span><a href="/2017/12/24/css解释及chrome使用详解/">css解释及chrome使用详解</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
   <p><span>发布时间:</span>2017年12月24日 - 21:12</p>
-  <p><span>最后更新:</span>2017年12月24日 - 22:12</p>
+  <p><span>最后更新:</span>2017年12月25日 - 00:12</p>
   <p><span>原始链接:</span><a href="/2017/12/24/css解释及chrome使用详解/" title="css解释及chrome使用详解">http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/"  aria-label="复制成功！"></i></span>
   </p>
