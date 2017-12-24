@@ -394,10 +394,12 @@
         
           
             <blockquote>
-<p>简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。  </p>
-<h1 id="CSS解释"><a href="#CSS解释" class="headerlink" title="CSS解释"></a>CSS解释</h1><h2 id="html和css是如何建立联系的？"><a href="#html和css是如何建立联系的？" class="headerlink" title="html和css是如何建立联系的？"></a>html和css是如何建立联系的？</h2><p>这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。</p>
-<h3 id="css文件不是必须的。"><a href="#css文件不是必须的。" class="headerlink" title="css文件不是必须的。"></a>css文件不是必须的。</h3><p>我们完全可以把样式写到html里面，比如这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;width:100%;color:red&quot;&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。</p>
 </blockquote>
+<h1 id="CSS解释"><a href="#CSS解释" class="headerlink" title="CSS解释"></a>CSS解释</h1><h2 id="html和css是如何建立联系的？"><a href="#html和css是如何建立联系的？" class="headerlink" title="html和css是如何建立联系的？"></a>html和css是如何建立联系的？</h2><blockquote>
+<p>这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。</p>
+</blockquote>
+<h3 id="css文件不是必须的。"><a href="#css文件不是必须的。" class="headerlink" title="css文件不是必须的。"></a>css文件不是必须的。</h3><p>我们完全可以把样式写到html里面，比如这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;width:100%;color:red&quot;&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <p>div的样式是可以完成通过style标签去定义的。那么，我们为什么要使用css文件来“画蛇添足”呢？初学者肯定觉得不可思议，写到一个html文件里面多好？省事，方便，也不会出现诸如文件未找到之类的错误。<br>其实，随着我们后续接触项目，慢慢就会发现这其中的奥妙了。</p>
 <h3 id="使用css文件的优点"><a href="#使用css文件的优点" class="headerlink" title="使用css文件的优点"></a>使用css文件的优点</h3><p>诸位可以设想一下这样的场景，我有100个html网页，其中顶部的样式完全一样，比如均使用类似百度的样式，右上角的按钮排列样式。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我有100个网页，每个网页里面我都需要去添加style吗？就算是复制粘贴也能把人累死。<br>更严重的是，假如后续我改了样式，那么我是不是需要改100遍html网页呢？想想都头大。为了解决这个问题，css文件就应运而生了。我只要这般写网页就可以了：<code>&lt;div class=&quot;test&quot;&gt;&lt;/div&gt;</code>，在css文件里面定义test样式就可以了：<code>.test{width:100%;}</code>。<br>如果有一天，客户彪了，提出了新的需求，要求width全部改成50%，我们只需要改一下css文件就好了：<code>.test{width:50%}</code><br>综上，css文件的好处显而易见：</p>
 <ol>
