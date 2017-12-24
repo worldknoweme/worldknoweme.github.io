@@ -393,42 +393,21 @@
       
         
           
-            <blockquote>
-<p>简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。</p>
-</blockquote>
-<h1 id="CSS解释"><a href="#CSS解释" class="headerlink" title="CSS解释"></a>CSS解释</h1><h2 id="html和css是如何建立联系的？"><a href="#html和css是如何建立联系的？" class="headerlink" title="html和css是如何建立联系的？"></a>html和css是如何建立联系的？</h2><blockquote>
-<p>这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。</p>
-</blockquote>
-<h3 id="css文件不是必须的。"><a href="#css文件不是必须的。" class="headerlink" title="css文件不是必须的。"></a>css文件不是必须的。</h3><p>我们完全可以把样式写到html里面，比如这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;width:100%;color:red&quot;&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>div的样式是可以完成通过style标签去定义的。那么，我们为什么要使用css文件来“画蛇添足”呢？初学者肯定觉得不可思议，写到一个html文件里面多好？省事，方便，也不会出现诸如文件未找到之类的错误。<br>其实，随着我们后续接触项目，慢慢就会发现这其中的奥妙了。</p>
-<h3 id="使用css文件的优点"><a href="#使用css文件的优点" class="headerlink" title="使用css文件的优点"></a>使用css文件的优点</h3><p>诸位可以设想一下这样的场景，我有100个html网页，其中顶部的样式完全一样，比如均使用类似百度的样式，右上角的按钮排列样式。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我有100个网页，每个网页里面我都需要去添加style吗？就算是复制粘贴也能把人累死。<br>更严重的是，假如后续我改了样式，那么我是不是需要改100遍html网页呢？想想都头大。为了解决这个问题，css文件就应运而生了。我只要这般写网页就可以了：<code>&lt;div class=&quot;test&quot;&gt;&lt;/div&gt;</code>，在css文件里面定义test样式就可以了：<code>.test{width:100%;}</code>。<br>如果有一天，客户彪了，提出了新的需求，要求width全部改成50%，我们只需要改一下css文件就好了：<code>.test{width:50%}</code><br>综上，css文件的好处显而易见：</p>
-<ol>
-<li>消灭重复代码</li>
-<li>修改需求方便<h3 id="html和css建立联系"><a href="#html和css建立联系" class="headerlink" title="html和css建立联系"></a>html和css建立联系</h3><blockquote>
-<p>废话落落了那么多，具体是如何建立联系的呢？</p>
-</blockquote>
-</li>
-<li>使用link标签将css文件引入进来</li>
-<li>css文件里面定义样式</li>
-<li>html里面使用样式<h2 id="css定义样式的方式"><a href="#css定义样式的方式" class="headerlink" title="css定义样式的方式"></a>css定义样式的方式</h2><h3 id="class定义"><a href="#class定义" class="headerlink" title="class定义"></a>class定义</h3>.定义法，在css文件使用<code>.样式名{}</code>的形式来定义样式，在html里面则使用<code>class=&#39;样式名&#39;</code>来引入样式<h3 id="id定义法"><a href="#id定义法" class="headerlink" title="id定义法"></a>id定义法</h3>‘#定义法’，在css文件里面使用<code>#样式名{}</code>的形式来定义样式，在html里面则使用<code>id=&#39;样式名&#39;</code>来引入样式<h3 id="标签定义法"><a href="#标签定义法" class="headerlink" title="标签定义法"></a>标签定义法</h3>标签名定义法，如<code>div{width:100%}</code>或者<code>input{width:100%}</code>，以html标签直接定义，之后只要通过link将文件成功引入，那么对应的所有的标签都会使用该样式。<h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><blockquote>
-<p>一定要记得在样式名中间加空格，非常重要。否则就引用不到。  </p>
-</blockquote>
-</li>
-</ol>
-<p>通过了解上文说的定义样式的方式，相信这里就非常好理解了，举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.a .b .c &#123;</span><br><span class="line">这里表示样式a之下样式b之下样式c的样式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>对应的html应该这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;a&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      其中的元素会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;aaaa&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      这里面的元素则不会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>假如，我的css文件这样写，就会全部生效了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.c&#123;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>同样，我可以混合样式的定义方式使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.a #abc&#123;&#125;</span><br><span class="line">.a div&#123;&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="chrome的使用"><a href="#chrome的使用" class="headerlink" title="chrome的使用"></a>chrome的使用</h1><blockquote>
-<p>chrome是html的神器了，可以即时的修改css，查看样式，同时还可以调试脚本，好用的一塌糊涂。</p>
-</blockquote>
-<h2 id="f12"><a href="#f12" class="headerlink" title="f12"></a>f12</h2><p>按一下f12键，一切网页无法遁形：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-64be5096ee89e03e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>介绍一个各个功能栏</p>
-<h3 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h3><p>这里可以查看到所有的元素：<br>鼠标滑到每一个标签，左侧的网页都会高亮显示：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f84b00a847393331.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>同时我们还可以看到css：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-e238d6aa021569ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>红框框起来的地方为css，当然，我们可以修改css，左侧实时就显示出效果了，比如，我们把float浮动效果去掉：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-5d64f6ffbe1f4c3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>是不是变得不一样了？</p>
-<h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><p>此为控制台，主要打印日志，js日志可以从这里打印出来。报错信息也可以打印出来：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-8f20fd5df3995c13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我修改一下css引用路径：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-ece82cc007deab4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>再打开网页，在控制台就报错了：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-70442524420519e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>报错信息为：无法加载文件，错误在第五行。</p>
-<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p>此为资源展示界面，可以在该界面进行js的调试。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-840d2a639ef6a4dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>比如，我在第七行加一个断点，f5刷新之后，程序会在第七行停止，然后等待我们去执行。<br>左下方的两个常用按钮为跳到下一个断点，和跳到下一行。假如我们定义了两个断点，第一个按钮点击之后就会到下一个断点。第二个按钮则会到下一行。</p>
-<p>简单说这些，希望对初学者有帮助。</p>
-
           
+简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。
+
+CSS解释html和css是如何建立联系的？
+这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。
+
+css文件不是必须的。我们完全可以把样式写到html里面，
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/24/css解释及chrome使用详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -605,12 +584,18 @@
       
         
           
-            <blockquote>
-<p>如果有人爱上了一朵花，天上的星星有亿万颗，而这朵花只长在其中一颗上，这足以让他在仰望星空时感到很快乐。他会告诉自己：在星空的某处有我的花。但如果绵羊把花吃掉了，对他来说就等于所有的星星突然熄灭了！</p>
-</blockquote>
-<p>我仿佛看到了一个孩子在低声的倾诉，没有咆哮，没有眼泪甚至没有大声呼喊，只是低声的诉说。却足以让任何听到他声音的人动容。我印象中的小王子，一定有一双清澈如水的眼睛，一定要有从容的气质。他说话的时候一脸的认真，并且肯定注视着对方的眼睛，一眨不眨。<br>忽然想到了前几天看的至爱梵高，很难想象，全世界都无法理解自己时候的孤苦无依。特别是，周围熙熙攘攘，全部都是人，但好像又全都不是人。全都是怪物，无法理解自己的怪物。全世界的星星全部熄灭了，恰好又让自己一个人看到了，大概就是这种心情吧。<br>2017年很快就要过去了，对我这种人而言需要刻骨铭心去记住的事情不多。无非是2016年傲寒的降生，2017年傲寒又长了一岁罢了。再让我感到心情好一点的就是2016年可以枕着《大鱼海棠》和《你的名字》安静的去怀念，2017年可以拥抱着《至爱梵高》和《烟花》努力的去感同身受，之后又努力的让全世界的星星再次点亮吧。<br>2018，抬头仰望星空的时候一定要很快乐，一定要记得微笑。  </p>
-
           
+如果有人爱上了一朵花，天上的星星有亿万颗，而这朵花只长在其中一颗上，这足以让他在仰望星空时感到很快乐。他会告诉自己：在星空的某处有我的花。但如果绵羊把花吃掉了，对他来说就等于所有的星星突然熄灭了！
+
+我仿佛看到了一个孩子在低声的倾诉，没有咆哮，没有眼泪甚至没有大声呼喊，只是低声的诉说。却足以让任何
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/24/小王子的眼泪/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -787,21 +772,19 @@
       
         
           
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用springboot+thymleaf开发了一个小网站，计划布到Ubuntu的系统下。如果采用java -jar的方式启动，关掉远程之后，网站随之关闭。需要采用服务的方式在后台启动。</p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><blockquote>
-<p>见<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html" target="_blank" rel="noopener">官网介绍</a></p>
-<h1 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h1><ol>
-<li>在pom文件中加入如下描述：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;configuration&gt;</span><br><span class="line">            &lt;executable&gt;true&lt;/executable&gt;</span><br><span class="line">        &lt;/configuration&gt;</span><br><span class="line">    &lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</blockquote>
-<ol>
-<li>打包为jar包并上传到远程服务器Ubuntu系统。</li>
-<li>创建连接，使用ln -s命令，具体如下：<br><code>sudo ln -s 【jar路径】 /etc/init.d/myapp</code></li>
-<li>启动程序即可<code>service myapp start</code><br>上述步骤即可完成服务的发布和启动，常用命令为start启动，stop终止，restart重启。<br>但是，遗憾的是，在Ubuntu的环境下，上述命令并没有正常执行。尝试直接启动jar，使用如下方式：<br><code>【jar包路径】start</code><br>提示，权限不足，给该jar包赋予权限，使用如下命令：<br><code>chmod 777 【jar包路径】</code><br>再次启动，可以正常启动。注意，这里启动的依旧非后台方式。使用如下命令完成服务的后台启动、终止和重启。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/myapp start</span><br><span class="line">sudo /etc/init.d/myapp stop</span><br><span class="line">sudo /etc/init.d/myapp restart</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-          
+          前言使用springboot+thymleaf开发了一个小网站，计划布到Ubuntu的系统下。如果采用java -jar的方式启动，关掉远程之后，网站随之关闭。需要采用服务的方式在后台启动。
+参考文档
+见官网介绍
+操作步骤
+在pom文件中加入如下描述：1234567&lt;plugin&gt;   
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/23/SpringBoot在Ubuntu下以服务方式启动/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -978,18 +961,18 @@
       
         
           
-            <h1 id="SpringBoot进行日志配置"><a href="#SpringBoot进行日志配置" class="headerlink" title="SpringBoot进行日志配置"></a>SpringBoot进行日志配置</h1><p>默认情况下，springBoot使用Logback作为日志框架。</p>
-<ol>
-<li>采用如下的方式进行日志级别的配置：<br><code>logging.level.org.springframework.web=DEBUG</code></li>
-<li>采用如下方式设置日志输出目录：<br><code>logging.file=d:/myfile/log.log</code><br>如下图所示：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-494792ead915ddd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><h1 id="mybatis进行日志配置"><a href="#mybatis进行日志配置" class="headerlink" title="mybatis进行日志配置"></a>mybatis进行日志配置</h1><blockquote>
-<p>同时，这里总结一下mybatis如何控制控制台打印SQL语句，这里以log4j为日志框架为例，并且这里说的是传统方式进行日志文件的配置，非springBoot方式。</p>
-</blockquote>
-</li>
-</ol>
-<h2 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">log4j.appender.Console=org.apache.log4j.ConsoleAppender    </span><br><span class="line">log4j.appender.Console.layout=org.apache.log4j.PatternLayout    </span><br><span class="line">log4j.appender.Console.layout.ConversionPattern=%d [%t] %-5p [%c] - %m%n      </span><br><span class="line">log4j.logger.java.sql.ResultSet=INFO    </span><br><span class="line">log4j.logger.org.apache=INFO    </span><br><span class="line">log4j.logger.java.sql.Connection=DEBUG    </span><br><span class="line">log4j.logger.java.sql.Statement=DEBUG    </span><br><span class="line">log4j.logger.java.sql.PreparedStatement=DEBUG</span><br></pre></td></tr></table></figure>
-<h2 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">log4j.rootLogger = $&#123;log.level&#125;,Console,default,allfile  </span><br><span class="line">log4j.logger.com.ibatis=debug  </span><br><span class="line">log4j.logger.java.sql=debug  </span><br><span class="line">log4j.logger.com.sf.egmas.dcn.web.mapper=debug</span><br></pre></td></tr></table></figure>
-<h2 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">log4j.rootLogger=info,debug,stdout,info,error  </span><br><span class="line">  </span><br><span class="line">#ibatis logger config  </span><br><span class="line">log4j.logger.com.ibatis=debug  </span><br><span class="line">log4j.logger.com.ibatis.common.jdbc.SimpleDataSource=debug  </span><br><span class="line">log4j.logger.com.ibatis.common.jdbc.ScriptRunner=debug  </span><br><span class="line">log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate=debug  </span><br><span class="line">log4j.logger.java.sql.Connection=debug  </span><br><span class="line">log4j.logger.java.sql.Statement=debug  </span><br><span class="line">log4j.logger.java.sql.PreparedStatement=debug</span><br></pre></td></tr></table></figure>
-          
+          SpringBoot进行日志配置默认情况下，springBoot使用Logback作为日志框架。
+
+采用如下的方式进行日志级别的配置：logging.level.org.springframework.web=DEBUG
+采用如下方式设置日志输出目录：logging.file=d:/myfile/l
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/23/SpringBoot进行日志配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1166,26 +1149,17 @@
       
         
           
-            <blockquote>
-<p>使用该标签完成list或map数据的遍历</p>
-<h1 id="后台传参"><a href="#后台传参" class="headerlink" title="后台传参"></a>后台传参</h1><p>标准的springmvc传参的方式，见如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &quot;/gwview.html&quot;,method = RequestMethod.GET )</span><br><span class="line">	public String gwview(ModelMap modelMap, HttpServletRequest request) &#123;</span><br><span class="line">      modelMap.put(&quot;gwlist&quot;, gwlist);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>使用modelmap，将数据put进去即可。</p>
-<h1 id="前台展示"><a href="#前台展示" class="headerlink" title="前台展示"></a>前台展示</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;weui-cell weui-media-box_appmsg&quot;  th:each=&quot;gw,gwstate:$&#123;gwlist&#125;&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;weui-media-box__bd&quot;&gt;</span><br><span class="line">         &lt;h4 class=&quot;weui-media-box__title&quot; th:text=&quot;$&#123;gw.name&#125;&quot;&gt;&lt;/h4&gt;</span><br><span class="line">              &lt;p class=&quot;weui-media-box__desc&quot;&gt;发布人：&lt;span&gt;name&lt;/span&gt;&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;search-status&quot;&gt;</span><br><span class="line">         &lt;h4 class=&quot;weui-media-box__title&quot; th:text=&quot;$&#123;#dates.format(gw.createTime,&apos;yyyy-MM-dd&apos;)&#125;&quot;&gt;2017-09-09&lt;/h4&gt;</span><br><span class="line">           &lt;p class=&quot;weui-media-box__desc green&quot; th:text=&quot;$&#123;gwstate.first&#125;&quot;&gt;&lt;/p&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h2><p>在需要重复的地方需要加入th:each标签，注意里面两个参数gw,gwstate，目前第一个gw是定义的list里面的每一个对象，gwstate则是对象参数，注意第二个参数是thymleaf定义的，规定了如下几个参数：</p>
-<ul>
-<li>index:当前迭代对象的index（从0开始计算）<ul>
-<li>count: 当前迭代对象的index(从1开始计算)</li>
-<li>size:被迭代对象的大小</li>
-<li>current:当前迭代变量</li>
-<li>even/odd:布尔值，当前循环是否是偶数/奇数（从0开始计算）</li>
-<li>first:布尔值，当前循环是否是第一个</li>
-<li>last:布尔值，当前循环是否是最后一个<br>当然，gw和gwstate可以自己定义名字，如果你喜欢，可以定义成fuck和fuckstate都是可以的。</li>
-</ul>
-</li>
-</ul>
-
           
+使用该标签完成list或map数据的遍历
+后台传参标准的springmvc传参的方式，见如下代码：1234@RequestMapping(value = &quot;/gwview.html&quot;,method = RequestMethod.GET )	public String gwvi
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/22/Thymleaf使用th-each遍历/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1362,26 +1336,20 @@
       
         
           
-            <blockquote>
-<p>目前分体式设备比较火爆，主要部件为底座和pad。</p>
-</blockquote>
-<h1 id="部件说明"><a href="#部件说明" class="headerlink" title="部件说明"></a>部件说明</h1><p>解释一下pad和底座</p>
-<h2 id="pad"><a href="#pad" class="headerlink" title="pad"></a>pad</h2><p>作为手持端，平常的时候需要插到底座上面，客户办理业务的时候则可以将pad拿下来，拿在手里办理，增强了用户的体验。</p>
-<h2 id="底座"><a href="#底座" class="headerlink" title="底座"></a>底座</h2><p>目前工行的方案是分层的原理，将SP的驱动做到了底座上面，驱动常用的硬件模块，包括凭条打印机、四合一读卡器、指纹仪、密码键盘、摄像头。其他模块，比如发卡机则是单独的模块没有做集成。</p>
-<h2 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h2><p>目前业界比较流行的方案，也就是工行方案。主要由pad发起交易，通过蓝牙和底座进行通讯，完成基本的二代证读取、卡片信息读取、指纹校验、人脸识别、凭条打印、输入密码等基本功能。底座和pad之间经由蓝牙通讯，之后，底座去调取相关设备。</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
-<li>首先蓝牙传输的速度太慢，经测试4.0的传输速度在150k左右。</li>
-<li>安全性的问题，采用安卓自带的4G模块，需要配置apn和vpn以接入银行内网，这样的话相关的配置信息就存在了android系统上面，存在安全隐患。另外，如果sp做在了底座上面，那么相关的用户敏感信息势必会经过安卓系统，导致敏感信息的泄露。</li>
-</ol>
-<h1 id="其他方案参考"><a href="#其他方案参考" class="headerlink" title="其他方案参考"></a>其他方案参考</h1><h2 id="HUB通讯"><a href="#HUB通讯" class="headerlink" title="HUB通讯"></a>HUB通讯</h2><blockquote>
-<p>pad直接去连接设备，底座不带系统，全部由pad进行硬件的调取。这样做的话，可以将网络和敏感信息类的安全问题规避掉。但是，这样做的话，会存在布线问题，pad没有那么多的U口，势必需要接HUB，然后将所有的硬件模块通过HUB和PAD串联起来。另外，如果这样去调取，实际上做成了一对一的模式，一个pad对应一套硬件设备。违背了我们设计的初衷。</p>
-</blockquote>
-<h2 id="4G模块"><a href="#4G模块" class="headerlink" title="4G模块"></a>4G模块</h2><blockquote>
-<p>增加一个4G模块，进行网络接入，和底座的安卓系统分开。相关网络信息配置在了4G模块上面，不再留存配置信息。其他模块依然是将SP装在底座上面，保证SP的分层。PAD则通过蓝牙通讯的方式通过底座调取硬件。这样做是将网络配置信息进行了隔离，与安卓系统做到了分开。但是其他模块的敏感信息依然会保存到底座上面，无法脱敏。这样做的好处就是实现了我们一开始的一对多的设计思路。</p>
-</blockquote>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>业务设计的时候，一定要做到随时调取随时断开，调取完设备之后，马上将蓝牙断开。这样，其他pad才可以调取到设备。真正的实现一对多的设计思想。</p>
-
           
+目前分体式设备比较火爆，主要部件为底座和pad。
+
+部件说明解释一下pad和底座
+pad作为手持端，平常的时候需要插到底座上面，客户办理业务的时候则可以将pad拿下来，拿在手里办理，增强了用户的体验。
+底座目前工行的方案是分层的原理，将SP的驱动做到了底座上面，驱动常用的硬件模块，包括凭条打印机、
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/22/分体式设备方案整理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1558,31 +1526,24 @@
       
         
           
-            <ol>
-<li>运行<code>-cmd</code>，进入夜神模拟器安装目录，进入目录下的bin</li>
-<li>执行<code>Nox_adb.exe connect 127.0.0.1:62001</code>命令，connect左右都有空格。</li>
-<li>执行命令后就可以连接到夜神模拟器。</li>
-</ol>
-<hr>
-<blockquote>
-<p>2017-12-23增加eclipse连接夜神模拟器相关信息</p>
-</blockquote>
-<h1 id="eclipse连接夜神模拟器注意事项"><a href="#eclipse连接夜神模拟器注意事项" class="headerlink" title="eclipse连接夜神模拟器注意事项"></a>eclipse连接夜神模拟器注意事项</h1><ul>
-<li>和androidstudio方法一样</li>
-<li>需要首先启动eclipse，然后再启动夜神模拟器</li>
-<li>注意，如果此时启动的时候没有正常连接，可以尝试如下的操作，我使用如下的操作方法，成功的连接上了模拟器。</li>
-</ul>
-<blockquote>
-<p>操作方法如下:</p>
-</blockquote>
-<ol>
-<li>进入DDMS模式，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-029ddadd3af82c7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DDMS模式.png"></li>
-<li>单击左侧的devices栏倒三角，上图标注的位置。</li>
-<li>选择reset adb</li>
-<li>重复连接模拟器的步骤，即：进cmd，进入模拟器bin目录，使用命令行进行模拟器的连接。</li>
-</ol>
-
           
+运行-cmd，进入夜神模拟器安装目录，进入目录下的bin
+执行Nox_adb.exe connect 127.0.0.1:62001命令，connect左右都有空格。
+执行命令后就可以连接到夜神模拟器。
+
+
+
+2017-12-23增加eclipse连接夜神模拟器相关信息
+
+eclipse连接夜神模
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/20/AndroidStudio连接夜神模拟器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1759,28 +1720,18 @@
       
         
           
-            <blockquote>
-<p>intellij idea真是让人又爱又恨，界面美观舒服，编码提示友好，开发效率高。但是最近发现一个很不爽的问题，使用springboot的时候无法实现热部署，于是乎，即使修改html一个标点符号，也得点击右上角启动。</p>
-<h1 id="妥协妥协"><a href="#妥协妥协" class="headerlink" title="妥协妥协"></a>妥协妥协</h1><p>先这么将就着用吧。<br>有时候人就这样，不到逼不得已就不会做出改变。</p>
-<h1 id="爆发吧"><a href="#爆发吧" class="headerlink" title="爆发吧"></a>爆发吧</h1><p>各种百度，找到如下解决方案，按照我说的步骤，必定实现热部署。</p>
-<ol>
-<li>确保setting compile下面的自动构建打钩，一般默认都会打钩，这里检查一遍，以防万一。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f3af5a709a8dcde5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="setting设置.png"></li>
-<li>ctrl+shift+a呼出搜索界面，一定要选择     第一个，然后回车：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-49c2e08d86b20b9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li>找到如下图所示的选项，勾选<br><img src="http://upload-images.jianshu.io/upload_images/9493059-d3d73b4b16fffe5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li>设置完成，重启intellij idea</li>
-</ol>
-</blockquote>
-<h1 id="重点来了"><a href="#重点来了" class="headerlink" title="重点来了"></a>重点来了</h1><ol>
-<li>修改pom配置文件，添加devtools，注意optional节点设置为true<br><img src="http://upload-images.jianshu.io/upload_images/9493059-440825eddc3dcf8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li>添加configuration节点<br><img src="http://upload-images.jianshu.io/upload_images/9493059-4e3b4e132669b2ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li>谷歌浏览器设置一下不带缓存<br><img src="http://upload-images.jianshu.io/upload_images/9493059-1d87264f911fd81c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li>设置Thymleaf不带缓存<br><img src="http://upload-images.jianshu.io/upload_images/9493059-0c3d16ea01ec05d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-</ol>
-<blockquote>
-<p>OK 我们不在妥协了，和黑暗恶势力理直气壮的说了一句NO，please遵守老子的规则。</p>
-</blockquote>
-
           
+intellij idea真是让人又爱又恨，界面美观舒服，编码提示友好，开发效率高。但是最近发现一个很不爽的问题，使用springboot的时候无法实现热部署，于是乎，即使修改html一个标点符号，也得点击右上角启动。
+妥协妥协先这么将就着用吧。有时候人就这样，不到逼不得已就不会做出改变。
+爆发吧
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/20/idea如何实现热部署/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1957,18 +1908,17 @@
       
         
           
-            <blockquote>
-<p>不得不说springboot+Thymleaf是一个超级开发神器。再加上mybatis自动生成，一般的小项目分分钟搞定的节奏。</p>
-<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>不过，最近遇到一个问题，问题如下：<br>在Thymleaf下面如何触发js的点击事件？一通百度之后，得到如下解决方案：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span th:text=&quot;$&#123;classType.classname&#125; th:onclick=&quot;&apos;javascript:test(\&apos;&apos;+$&#123;classType.id&#125;+&apos;\&apos;)&apos;&quot;&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>使用th:onclick标签，最终调取如下js函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function test(aaa) &#123;</span><br><span class="line">        window.location.href = &quot;alllist?classid=&quot;+aaa;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<p>以上js正常写即可。</p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ol>
-<li>th:onclick之后一定要记得加javascript:，否则不会生效</li>
-<li>javascript开头的要用’’包括起来。</li>
-</ol>
-
           
+不得不说springboot+Thymleaf是一个超级开发神器。再加上mybatis自动生成，一般的小项目分分钟搞定的节奏。
+问题描述不过，最近遇到一个问题，问题如下：在Thymleaf下面如何触发js的点击事件？一通百度之后，得到如下解决方案：1&lt;span th:text=&quot;$
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/20/Thymleaf里面如何使用onclick事件/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2145,24 +2095,19 @@
       
         
           
-            <blockquote>
-<p>更严格意义上来说应该叫做：androidstudio下面的gradle介绍  </p>
-<ul>
-<li>敲黑板：在androidstudio的terminal命令行里面运行gradle的命令为：gradlew，比如：<code>gradlew -v</code><br><img src="http://upload-images.jianshu.io/upload_images/9493059-fdce26aa645c714b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="terminal位置.png"><h1 id="gradle的概念"><a href="#gradle的概念" class="headerlink" title="gradle的概念"></a>gradle的概念</h1></li>
-<li>构建工具，使用java编程的各位应该对大名鼎鼎的maven比较熟悉，这俩干的活是一样的。</li>
-<li>面向java语言<h1 id="gradle的仓库"><a href="#gradle的仓库" class="headerlink" title="gradle的仓库"></a>gradle的仓库</h1><h2 id="仓库类型及配置"><a href="#仓库类型及配置" class="headerlink" title="仓库类型及配置"></a>仓库类型及配置</h2>盗用一张图，里面有各种仓库：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-0d4b719d3da5220a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="资源仓库.png"><br>具体的仓库位置配置如下（app下面的build构建文件）：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-2e0623f19fcbd6a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-</ul>
-</blockquote>
-<p>插一句，在各位使用maven的时候，将仓库地址替换成阿里云的镜像是不是快了很多？当然这里我们也可以采用和上图一样的配置使用阿里云镜像，构建过程瞬间提速有木有？</p>
-<h2 id="导入jar包"><a href="#导入jar包" class="headerlink" title="导入jar包"></a>导入jar包</h2><ol>
-<li>我们需要获取资源地址，推荐阿里云中央仓库，从此处可以搜到绝大多数的资源，<a href="http://mvnrepository.com/artifact/com.aliyun" target="_blank" rel="noopener">传送而去吧！</a></li>
-<li>搜索到jar包资源之后，查看gradle构建语句：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-516ffdd6f15edad6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查看构建语句.png"></li>
-<li>在app的build文件引入资源：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-ffc127db6237e479.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li>好了，可以查看到我们的资源并且使用我们的资源了。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-de9158e498a50358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>瞬间变得很简单了有木有？不用抓狂的搜索资源，下载资源，然后丢到libs里面了！感谢maven，感谢gradle。</li>
-</ol>
-<p>荆轲刺秦王，感谢扈三娘。</p>
-
           
+更严格意义上来说应该叫做：androidstudio下面的gradle介绍  
+
+敲黑板：在androidstudio的terminal命令行里面运行gradle的命令为：gradlew，比如：gradlew -vgradle的概念
+构建工具，使用java编程的各位应该对大名鼎鼎的maven比较熟
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/20/构建工具Gradle/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

@@ -393,37 +393,24 @@
       
         
           
-            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p> 银行网点的人流量越来越大，办理业务人员也越来越多，办理的业务也越来越繁琐和复杂。传统的排队机和传统的填单机各自为政，已经无法处理当前需要两者协同作业的业务，随着这些业务的日渐繁多，排队填单一体机的建设逐步的被提上日程。</p>
-<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><ul>
-<li>各大银行网点<h1 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h1></li>
-</ul>
-<ol>
-<li>排队</li>
-<li>预填单<h1 id="疑难杂症"><a href="#疑难杂症" class="headerlink" title="疑难杂症"></a>疑难杂症</h1></li>
-</ol>
-<ul>
-<li>首先是目前银行太多太杂，各自的信息化建设水平层次不同。有的银行信息化程度高，已经存在一个总行级别的管理后台，将信息做了整体汇总。代表行：工行。</li>
-<li>业务各不相同，各个行对应的业务无论是复杂度还是繁琐程度各不相同。<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><blockquote>
-<p>区分P、C、V端。</p>
-</blockquote>
-</li>
-<li>V端主要进行设备的管理，设备的监控和填单模板的配置。目前bcmv系统基本可以满足要求，但是欠缺的是填单模板部分。填单模板采用uedit扩展插件，拖拽的形式进行模板的配置。最终将模板以html的格式存入到数据库之中。</li>
-<li>P端主要进行报文的收发，接收C端报文，发往V端获取数据，之后将报文再反馈给C端。</li>
-<li>C端主要面向客户，提供取号业务和预填单业务。主要介绍一下预填单业务。客户选择预填单模板之后，显示对应的模板界面，操作完成之后，将模板填充并打印。<blockquote>
-<p>技术方案      </p>
-</blockquote>
-</li>
-</ul>
-<p>C端使用基于arm的软件架构，基于android进行软件开发。<br>需要调取如下硬件：</p>
-<ol>
-<li>读卡器（读取二代证和银行卡，多合一）</li>
-<li>凭条打印机</li>
-<li>激光打印机<br>调取驱动SP主要是基于JNI，调取C编程的底层驱动SP，达到调取硬件的目的。<h2 id="模块化开发"><a href="#模块化开发" class="headerlink" title="模块化开发"></a>模块化开发</h2><img src="http://upload-images.jianshu.io/upload_images/9493059-85550adfaba5611f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="区分开发模块.png"><h3 id="UI展示模块"><a href="#UI展示模块" class="headerlink" title="UI展示模块"></a>UI展示模块</h3>封装常用的UI控件<h3 id="报文交互模块"><a href="#报文交互模块" class="headerlink" title="报文交互模块"></a>报文交互模块</h3>进行与P端通讯，获取服务端数据<h3 id="调取硬件模块"><a href="#调取硬件模块" class="headerlink" title="调取硬件模块"></a>调取硬件模块</h3>JNI调用底层硬件库，完成硬件模块的调用<h2 id="技术学习"><a href="#技术学习" class="headerlink" title="技术学习"></a>技术学习</h2></li>
-<li>gradle构建（组件化开发）之前一直使用maven，gradle没有仔细研究过。</li>
-<li>ndk打包</li>
-</ol>
+          背景 银行网点的人流量越来越大，办理业务人员也越来越多，办理的业务也越来越繁琐和复杂。传统的排队机和传统的填单机各自为政，已经无法处理当前需要两者协同作业的业务，随着这些业务的日渐繁多，排队填单一体机的建设逐步的被提上日程。
+应用场景
+各大银行网点主要功能
 
-          
+
+排队
+预填单疑难杂症
+
+
+首先是目前银
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/20/排队填单一体机解决方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -600,21 +587,20 @@
       
         
           
-            <p>看了一些基于hexo的博客，瞬间觉得漂亮的不像话，主要是阅读文章的时候体验比较好，右边的导航栏好用的不要不要的。上一张读博客时候的图片看一下：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-5784bac83bd519bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo效果.png"><br>于是乎，决定折腾一下。  </p>
-<h1 id="Hexo的安装步骤"><a href="#Hexo的安装步骤" class="headerlink" title="Hexo的安装步骤"></a>Hexo的安装步骤</h1><ol>
-<li>安装nodeJS</li>
-<li>安装Hexo</li>
-<li>下载喜欢的Hexo模板</li>
-<li>如果是用github做服务器（或者支持markdown解析），可以直接上传md文件，如果放到自己的服务器上，就需要进行静态网页的发布，先将源代码发布为html文件，然后安装发布软件进行发布（我用的nginx，这是说明一下nginx的安装）<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2>主要介绍一下window和ubuntu的安装。<h3 id="window安装"><a href="#window安装" class="headerlink" title="window安装"></a>window安装</h3></li>
-<li>直接从官网下载安装文件即可，可以从该网站下载所需安装包<a href="http://nodejs.cn/download/" target="_blank" rel="noopener">node中文网下载</a>。傻瓜式安装，一路next直到安装成功。</li>
-<li>安装完成之后，会有一个nodejs的命令窗口，打开命令窗口，下载hexo。如下图所示：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-47706a8328560b28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="nodejs命令窗口.png"><br><img src="http://upload-images.jianshu.io/upload_images/9493059-fc6dd99b213f0128.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打开效果如下.png"></li>
-<li>下载hexo资源<br>输入<code>npm install -g hexo</code><br>此处搞清楚了依赖关系，hexo是依赖于node的，想要安装使用hexo，必须得先安装node，之后使用npm进行hexo的安装下载。</li>
-<li>初始化hexo<br>输入<code>hexo init</code><br>这样会在你当前目录下生成hexo的初始化资源，因此在执行该条语句之前，需要先cd到指定目录。</li>
-<li>现在安装的hexo都是3.0版本，<font color="red">3.0版本的hexo有一个明显的改变就是把server进行了分离，安装hexo之后，还需要安装server</font>，使用如下命令进行安装即可：<code>npm install hexo-server --save</code>   </li>
-<li>启动hexo<br>默认4000端口启动：<code>hexo s</code><br>指定端口启动：<code>hexo s -p 4001</code><br>不出意外，访问localhost:4000就可以看到美的冒泡的博客了吧。 <h3 id="Ubuntu安装"><a href="#Ubuntu安装" class="headerlink" title="Ubuntu安装"></a>Ubuntu安装</h3>安装顺序跟上面类似，依次获取资源命令如下：<br><code>apt-get install nodejs</code><br><code>npm install -g hexo</code><br><code>hexo init</code><br><code>npm install hexo-server --save</code><br>有可能出现apt-get失败的情况，这时候将资源包进行一下更新即可：<br><code>apt-get update</code><br><code>apt-get upgrade</code><br>好了，到此为止hexo就安装完成了。下面需要美化我们的个人博客。下一遍继续更新。</li>
-</ol>
-
-          
+          看了一些基于hexo的博客，瞬间觉得漂亮的不像话，主要是阅读文章的时候体验比较好，右边的导航栏好用的不要不要的。上一张读博客时候的图片看一下：于是乎，决定折腾一下。  
+Hexo的安装步骤
+安装nodeJS
+安装Hexo
+下载喜欢的Hexo模板
+如果是用github做服务器（或者支持markdown
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/13/Hexo搭建个人博客/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -769,8 +755,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/13/hexo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -925,17 +918,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/12/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
