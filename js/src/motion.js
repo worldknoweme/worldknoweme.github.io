@@ -202,15 +202,17 @@ $(document).ready(function () {
     }
   };
 
+
+
   NexT.motion.middleWares =  {
     logo: function (integrator) {
       var sequence = [];
       var $brand = $('.brand');
+
       var $title = $('.site-title');
       var $subtitle = $('.site-subtitle');
       var $logoLineTop = $('.logo-line-before i');
       var $logoLineBottom = $('.logo-line-after i');
-
       $brand.size() > 0 && sequence.push({
         e: $brand,
         p: {opacity: 1},

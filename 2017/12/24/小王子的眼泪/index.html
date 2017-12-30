@@ -12,7 +12,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
-
+<script>
+    (function(){
+        if('127721wm'){
+            if (prompt('请输入文章密码') !== '127721wm'){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
   
   
@@ -94,7 +103,7 @@
 <meta property="og:site_name" content="傲寒Ony Wang">
 <meta property="og:description" content="如果有人爱上了一朵花，天上的星星有亿万颗，而这朵花只长在其中一颗上，这足以让他在仰望星空时感到很快乐。他会告诉自己：在星空的某处有我的花。但如果绵羊把花吃掉了，对他来说就等于所有的星星突然熄灭了！  我仿佛看到了一个孩子在低声的倾诉，没有咆哮，没有眼泪甚至没有大声呼喊，只是低声的诉说。却足以让任何听到他声音的人动容。我印象中的小王子，一定有一双清澈如水的眼睛，一定要有从容的气质。他说话的时候一脸">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-24T14:35:06.285Z">
+<meta property="og:updated_time" content="2017-12-30T01:52:57.720Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小王子的眼泪">
 <meta name="twitter:description" content="如果有人爱上了一朵花，天上的星星有亿万颗，而这朵花只长在其中一颗上，这足以让他在仰望星空时感到很快乐。他会告诉自己：在星空的某处有我的花。但如果绵羊把花吃掉了，对他来说就等于所有的星星突然熄灭了！  我仿佛看到了一个孩子在低声的倾诉，没有咆哮，没有眼泪甚至没有大声呼喊，只是低声的诉说。却足以让任何听到他声音的人动容。我印象中的小王子，一定有一双清澈如水的眼睛，一定要有从容的气质。他说话的时候一脸">
@@ -156,7 +165,32 @@
     <div class="headband"></div>
 	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。W一两愿你江南多雨带油伞。二两愿你酷暑可以轻摇扇。三两愿你入冬莫忘添衣衫。四两愿你年年多聚无离散。五两愿你无病无忧心常宽。六两愿你无风无雨长相欢。六两三。余下三。我在西北，一关接一关。与你相隔，一山又一山。最后只愿我，知道你平安。W人生两苦，想要却不得，拥有却失去。W春有风筝，夏有鱼。秋有青鸟，冬有雁。书信一来一往间，日子就这样过去了。W不存在虚妄的希望,自然也就没有虚妄的失望,更没有什么绝望。人生如题各种痴,就是各种喜欢,喜欢什么那便做下去,这道题目总会有答案的。不管是小人物还是富贵子孙，要成功，都得眼睛看远一点，度量放大一点，脑子多想一点，然后怀六分恶毒，三分炎凉，还得给自己给子孙剩一分善心。W世界上一半人在嘲笑另一半,其实全世界都是傻瓜。W我告诉你什么事最可悲，你遇见一个人，犯了一个错，你想弥补想还清，到最后才发现你根本无力回天，犯下的罪过永远无法弥补。我们永远无法还清犯下的…W一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪。W不乱于心，不困于情。不畏将来，不念过往。如此，安好！";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -168,7 +202,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">请高效的活着</p>
+        <p class="site-subtitle" id="helloTitle"></p>
       
   </div>
 
@@ -422,7 +456,7 @@
   <p><span>本文标题:</span><a href="/2017/12/24/小王子的眼泪/">小王子的眼泪</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
   <p><span>发布时间:</span>2017年12月24日 - 21:12</p>
-  <p><span>最后更新:</span>2017年12月24日 - 22:12</p>
+  <p><span>最后更新:</span>2017年12月30日 - 09:12</p>
   <p><span>原始链接:</span><a href="/2017/12/24/小王子的眼泪/" title="小王子的眼泪">http://wangjianlin1989.top/2017/12/24/小王子的眼泪/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2017/12/24/小王子的眼泪/"  aria-label="复制成功！"></i></span>
   </p>
