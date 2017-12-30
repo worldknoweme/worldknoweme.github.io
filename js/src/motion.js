@@ -202,17 +202,25 @@ $(document).ready(function () {
     }
   };
 
-
-
   NexT.motion.middleWares =  {
     logo: function (integrator) {
       var sequence = [];
       var $brand = $('.brand');
-
       var $title = $('.site-title');
+
       var $subtitle = $('.site-subtitle');
+      //  var thisconfig = $subtitle[0].innerHTML;
+      //
+      //  var mytitle = thisconfig.split("W");
+      //  var max = mytitle.length-1;
+      //  var index = GetRandomNum(0,max);
+      //  var text = mytitle[index];
+      //
+      // $subtitle[0].innerHTML = text;
+      // $subtitle[0].innerText = text;
       var $logoLineTop = $('.logo-line-before i');
       var $logoLineBottom = $('.logo-line-after i');
+
       $brand.size() > 0 && sequence.push({
         e: $brand,
         p: {opacity: 1},

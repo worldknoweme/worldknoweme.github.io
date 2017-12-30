@@ -3,6 +3,49 @@
   
     
     <entry>
+      <title><![CDATA[hexo个性化（next主题动态显示subtitle）]]></title>
+      <url>/2017/12/30/hexo%E4%B8%AA%E6%80%A7%E5%8C%96%EF%BC%88next%E4%B8%BB%E9%A2%98%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BAsubtitle%EF%BC%89/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>个人比较喜欢精彩的句子，于是希望自己的next主题博客可以在每次刷新之后显示不一样的subtitle（subtitle我就当成一个分享好句子的地方了，尴尬）。</p>
+</blockquote>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><ul>
+<li>第一次进入博客的效果<br><img src="http://upload-images.jianshu.io/upload_images/9493059-ee1b87cce983a5fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>刷新之后的效果<br><img src="http://upload-images.jianshu.io/upload_images/9493059-e0825602f42c5581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>再次刷新<br><img src="http://upload-images.jianshu.io/upload_images/9493059-e90858ef79db47b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ul>
+<p>OK！事不过三，效果就展示到这里，下面说一下我是如何实现的。</p>
+<h1 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h1><blockquote>
+<p> 纯干货，因为在网络上现在还没有发现类似的效果。并且，关键问题是，我对swig不熟悉，从未接触过，我是一个后端开发人员。当然，JS还算熟悉。我实现的是后加载，可能熟悉swig的人能提供更好的方案，欢迎指正。</p>
+</blockquote>
+<ol>
+<li>修改hexo的配置文件，主要修改subtitle，如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subtitle: 我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>句子与句子之间以W分割，后续需要根据该标志位去拆分句子组。</p>
+<ol>
+<li>修改themes\next\layout_partials下面的header.swig文件。在最开头添加如下代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"> function GetRandomNum(Min,Max)</span><br><span class="line">  &#123;</span><br><span class="line">    var Range = Max - Min;</span><br><span class="line">    var Rand = Math.random();</span><br><span class="line">    return(Min + Math.round(Rand * Range));</span><br><span class="line">  &#125;</span><br><span class="line">function setSidebarMarginTop (headerOffset) &#123;</span><br><span class="line">    return $(&apos;#sidebar&apos;).css(&#123; &apos;margin-top&apos;: headerOffset &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"> function getHeaderOffset () &#123;</span><br><span class="line">    return $(&apos;.header-inner&apos;).height() + CONFIG.sidebar.offset;</span><br><span class="line">  &#125;</span><br><span class="line">  window.onload=function()&#123;</span><br><span class="line">    var subtitle = &quot;&#123;&#123;config.subtitle&#125;&#125;&quot;;</span><br><span class="line">     var mytitle = subtitle.split(&quot;W&quot;);</span><br><span class="line">     var max = mytitle.length-1;</span><br><span class="line">     var index = GetRandomNum(0,max);</span><br><span class="line">     var text = mytitle[index];</span><br><span class="line">     $(&quot;#helloTitle&quot;).html(text);</span><br><span class="line">     var headOffset = getHeaderOffset();</span><br><span class="line">     setSidebarMarginTop(headOffset);</span><br><span class="line">   // alert(getHeaderOffset());</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>启动一下，会发现我们的名言警句可以动态改变了。</p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h1><p>主要就是获取一下配置文件里面的subtitle，这里面我们配置的是根据我们定义的规则设置的句子组。然后再网页加载完成之后，获取句子组，然后对句子组split成一个数组对象。然后我们生成一个随机数，根据随机数去获取句子就可以了。<br>一定要注意：<font color="red">随机数是介于0到数组长度减一之间，否则会数组溢出。</font></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> -hexo个性化 -next主题 -名句 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[CSS选择器一（+号和checked）]]></title>
       <url>/2017/12/29/CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%80%EF%BC%88-%E5%8F%B7%E5%92%8Cchecked%EF%BC%89/</url>
       <content type="html"><![CDATA[<blockquote>

@@ -2000,7 +2000,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #7fd199;
+  background: #1bff91;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2094,7 +2094,6 @@ pre .javascript .function {
 .post-toc .nav-item {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
   line-height: 1.8;
 }
 .post-toc .nav .nav-child {
@@ -3304,4 +3303,7 @@ pre .javascript .function {
   border: 2px dashed #fff;
   animation: cycle 2s 0.5s forwards;
   transition: border-radius 2s;
+}
+.sidebar {
+  margin-top: 20px;
 }
