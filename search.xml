@@ -3,6 +3,47 @@
   
     
     <entry>
+      <title><![CDATA[IntelliJIdea如何进行项目发布（maven插件和tomcat）]]></title>
+      <url>/2018/01/01/IntelliJIdea%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83%EF%BC%88maven%E6%8F%92%E4%BB%B6%E5%92%8Ctomcat%EF%BC%89/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>主要介绍如何使用tomcat进行项目的发布，目前主要有两种，分别为（maven插件发布和tomcat发布）。</p>
+</blockquote>
+<h1 id="maven插件发布"><a href="#maven插件发布" class="headerlink" title="maven插件发布"></a>maven插件发布</h1><blockquote>
+<p>个人推荐此种发布方式</p>
+</blockquote>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>添加tomcat插件，需要在pom文件里面进行如下配置：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- tomcat plugin --&gt;</span><br><span class="line">     &lt;plugin&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;2.2&lt;/version&gt;</span><br><span class="line">       &lt;configuration&gt;</span><br><span class="line">         &lt;path&gt;/&lt;/path&gt;</span><br><span class="line">         &lt;port&gt;8088&lt;/port&gt;</span><br><span class="line">         &lt;uriEncoding&gt;UTF-8&lt;/uriEncoding&gt;</span><br><span class="line">         &lt;url&gt;http://127.0.0.1/manager&lt;/url&gt;</span><br><span class="line">         &lt;server&gt;tomcat7&lt;/server&gt;</span><br><span class="line">         &lt;contextReloadable&gt;true&lt;/contextReloadable&gt;</span><br><span class="line">         &lt;warSourceDirectory&gt;src/main/webapp&lt;/warSourceDirectory&gt;</span><br><span class="line">         &lt;contextReloadable&gt;false&lt;/contextReloadable&gt;</span><br><span class="line">       &lt;/configuration&gt;</span><br><span class="line">     &lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>由上图代码可以看到，在pom文件里面可以实现端口号等基础配置。</p>
+<ol>
+<li>新建运行配置项<br>选择配置编辑<br><img src="http://upload-images.jianshu.io/upload_images/9493059-2ca025406d7e3cc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>选择+按钮，之后选择maven，运行命令填入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tomcat7:run</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/9493059-8528e2bdf5d5d314.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>之后保存即可。<br>单击运行或者调试就可以进行相应的项目发布。</p>
+<h1 id="tomcat发布"><a href="#tomcat发布" class="headerlink" title="tomcat发布"></a>tomcat发布</h1><h2 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h2><p>与maven插件发布方法类似，但是普通tomcat发布的方式不需要引入tomcat插件，直接新建运行配置项即可。<br>新建运行配置项的过程和之前相同，不过选择的时候需要选择tomcatserver，之后选择local，如下图所示：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-20b352ca57c2e431.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>server配置不需要说明，选择好tomcat和jdk，配置一下端口号即可。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-d5741b18f1d19ff7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>deployment这里需要注意，单击后面的+按钮，添加发布项目。选择artifact，之后选择第二个exploded，将我们的项目导入进来。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-3b40a90e0b132625.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>之后，进行项目的启动。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> -java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> maven </tag>
+            
+            <tag> tomcat </tag>
+            
+            <tag> IntelliJIdea </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[hexo个性化（next主题动态显示subtitle）]]></title>
       <url>/2017/12/30/hexo%E4%B8%AA%E6%80%A7%E5%8C%96%EF%BC%88next%E4%B8%BB%E9%A2%98%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BAsubtitle%EF%BC%89/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -235,9 +276,9 @@
         
         <tags>
             
-            <tag> intellijidea </tag>
-            
             <tag> maven </tag>
+            
+            <tag> intellijidea </tag>
             
         </tags>
         

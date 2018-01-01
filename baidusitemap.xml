@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.wangjianlin1989.top/2018/01/01/IntelliJIdea%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83%EF%BC%88maven%E6%8F%92%E4%BB%B6%E5%92%8Ctomcat%EF%BC%89/</loc>
+    <lastmod>2018-01-01T14:03:48.226Z</lastmod>
+    <data>
+        <display>
+        <title>IntelliJIdea如何进行项目发布（maven插件和tomcat）</title>
+        <pubTime>2018-01-01T14:00:27.000Z</pubTime>
+        
+        <tag>maven</tag>
+         
+        <tag>tomcat</tag>
+         
+        <tag>IntelliJIdea</tag>
+         
+         
+           
+             
+              <breadCrumb title="-java" url="http://wangjianlin1989.top/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.wangjianlin1989.top/2017/12/30/hexo%E4%B8%AA%E6%80%A7%E5%8C%96%EF%BC%88next%E4%B8%BB%E9%A2%98%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BAsubtitle%EF%BC%89/</loc>
     <lastmod>2017-12-30T09:32:25.132Z</lastmod>
     <data>
@@ -139,9 +163,9 @@
         <title>intellijidea常用maven命令</title>
         <pubTime>2017-12-26T00:33:39.000Z</pubTime>
         
-        <tag>intellijidea</tag>
-         
         <tag>maven</tag>
+         
+        <tag>intellijidea</tag>
          
          
            
