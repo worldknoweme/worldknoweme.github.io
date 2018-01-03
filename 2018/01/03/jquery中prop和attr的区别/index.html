@@ -84,7 +84,7 @@
 
 
 
-  <meta name="keywords" content="maven,JNA," />
+  <meta name="keywords" content="jquery,prop,attr," />
 
 
 
@@ -95,18 +95,21 @@
 
 
 
-<meta name="description" content="使用JNI的各位可能受够了中间层的限制严格的JNI文件（就连方法名也要限制），当然，可以使用javac和javah进行自动生成，但是依然比较繁琐。JNA框架便是基于之上，可以让开发者直接去调用C接口方法的一个框架。  调用步骤添加jna支持 基于maven的项目，可以在pom文件里面将jar包直接引入。  12345&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;">
-<meta name="keywords" content="maven,JNA">
+<meta name="description" content="今天遇到一个奇怪的问题，使用attr给多选框添加checked属性，无效果。通过浏览器查看元素，发现该属性确实已经添加上了，查找原因半天，终于找出问题。  问题描述给多选按钮添加选中效果，css代码如下：1234.radio:checked + .radio-wrapper-cube .radio-label-cube &amp;#123;    background: url(&amp;apos;../img">
+<meta name="keywords" content="jquery,prop,attr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用JNA完成调取C接口">
-<meta property="og:url" content="http://wangjianlin1989.top/2017/12/28/使用JNA完成调取C接口/index.html">
+<meta property="og:title" content="jquery中prop和attr的区别">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/01/03/jquery中prop和attr的区别/index.html">
 <meta property="og:site_name" content="傲寒Ony Wang">
-<meta property="og:description" content="使用JNI的各位可能受够了中间层的限制严格的JNI文件（就连方法名也要限制），当然，可以使用javac和javah进行自动生成，但是依然比较繁琐。JNA框架便是基于之上，可以让开发者直接去调用C接口方法的一个框架。  调用步骤添加jna支持 基于maven的项目，可以在pom文件里面将jar包直接引入。  12345&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;">
+<meta property="og:description" content="今天遇到一个奇怪的问题，使用attr给多选框添加checked属性，无效果。通过浏览器查看元素，发现该属性确实已经添加上了，查找原因半天，终于找出问题。  问题描述给多选按钮添加选中效果，css代码如下：1234.radio:checked + .radio-wrapper-cube .radio-label-cube &amp;#123;    background: url(&amp;apos;../img">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-28T01:54:49.453Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-371aa1cf1c050d39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-c1cb6a69c7e105ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-03T14:46:35.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用JNA完成调取C接口">
-<meta name="twitter:description" content="使用JNI的各位可能受够了中间层的限制严格的JNI文件（就连方法名也要限制），当然，可以使用javac和javah进行自动生成，但是依然比较繁琐。JNA框架便是基于之上，可以让开发者直接去调用C接口方法的一个框架。  调用步骤添加jna支持 基于maven的项目，可以在pom文件里面将jar包直接引入。  12345&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;">
+<meta name="twitter:title" content="jquery中prop和attr的区别">
+<meta name="twitter:description" content="今天遇到一个奇怪的问题，使用attr给多选框添加checked属性，无效果。通过浏览器查看元素，发现该属性确实已经添加上了，查找原因半天，终于找出问题。  问题描述给多选按钮添加选中效果，css代码如下：1234.radio:checked + .radio-wrapper-cube .radio-label-cube &amp;#123;    background: url(&amp;apos;../img">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9493059-371aa1cf1c050d39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -136,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://wangjianlin1989.top/2017/12/28/使用JNA完成调取C接口/"/>
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/01/03/jquery中prop和attr的区别/"/>
 
 
 
 
 
-  <title>使用JNA完成调取C接口 | 傲寒Ony Wang</title>
+  <title>jquery中prop和attr的区别 | 傲寒Ony Wang</title>
   
 
 
@@ -304,7 +307,7 @@ function setSidebarMarginTop (headerOffset) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2017/12/28/使用JNA完成调取C接口/">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/01/03/jquery中prop和attr的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ony Wang">
@@ -321,7 +324,7 @@ function setSidebarMarginTop (headerOffset) {
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用JNA完成调取C接口</h1>
+          <h1 class="post-title" itemprop="name headline">jquery中prop和attr的区别</h1>
         
 
         <div class="post-meta">
@@ -333,8 +336,8 @@ function setSidebarMarginTop (headerOffset) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T09:52:41+08:00">
-                2017-12-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T22:44:14+08:00">
+                2018-01-03
               </time>
             
 
@@ -356,8 +359,8 @@ function setSidebarMarginTop (headerOffset) {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -387,7 +390,7 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  437
+                  620
                 </span>
               
 
@@ -403,7 +406,7 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -425,28 +428,25 @@ function setSidebarMarginTop (headerOffset) {
 
       
         <blockquote>
-<p>使用JNI的各位可能受够了中间层的限制严格的JNI文件（就连方法名也要限制），当然，可以使用javac和javah进行自动生成，但是依然比较繁琐。JNA框架便是基于之上，可以让开发者直接去调用C接口方法的一个框架。</p>
+<p>今天遇到一个奇怪的问题，使用attr给多选框添加checked属性，无效果。通过浏览器查看元素，发现该属性确实已经添加上了，查找原因半天，终于找出问题。</p>
 </blockquote>
-<h1 id="调用步骤"><a href="#调用步骤" class="headerlink" title="调用步骤"></a>调用步骤</h1><h2 id="添加jna支持"><a href="#添加jna支持" class="headerlink" title="添加jna支持"></a>添加jna支持</h2><blockquote>
-<p>基于maven的项目，可以在pom文件里面将jar包直接引入。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;net.java.dev.jna&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jna&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;4.5.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>非maven项目，则可以将jar包下载下来，添加到自己的项目里面。</p>
-</blockquote>
-<h2 id="声明方法"><a href="#声明方法" class="headerlink" title="声明方法"></a>声明方法</h2><ol>
-<li>将dll文件加载进JVM（使用Native属性加载）。加载方式如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CLibrary INSTANCE = (CLibrary) Native.loadLibrary(&quot;PR2&quot;, CLibrary.class);</span><br></pre></td></tr></table></figure>
-</li>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>给多选按钮添加选中效果，css代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.radio:checked + .radio-wrapper-cube .radio-label-cube &#123;</span><br><span class="line">    background: url(&apos;../img/loss_riskmind_checked.png&apos;);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里顺便介绍一下该css干了些什么事儿：</p>
+<ol>
+<li>首先是class为radio的元素，后面跟:checked表示选中的class为radio的元素。</li>
+<li>后面+上一遍博客也已经做了介绍，表示兄弟元素，这里是选择兄弟元素里面class为radio-wrapper-cube的元素。</li>
+<li>后面则表示子元素里面class为radio-label-cube的元素。</li>
 </ol>
-<p>2.方法声明，依照dll提供的接口，声明方法即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public boolean CITIC_PR2_CloseComPort();</span><br><span class="line">public boolean CITIC_PR2_OpenComPort(int port, long BaudRate, char Parity, char ByteSize, char StopBits);</span><br></pre></td></tr></table></figure></p>
-<p>注意：接口名和参数数量和类型一定要做到和接口文件一致，这样才可以做到正常调用。</p>
-<h2 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h2><p>使用CLibrary直接调取即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public boolean open()&#123;</span><br><span class="line">       boolean result = CLibrary.INSTANCE.CITIC_PR2_OpenComPort(3,9600,&apos;N&apos;,&apos;8&apos;,&apos;1&apos;);</span><br><span class="line">       return result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="关于dll加载"><a href="#关于dll加载" class="headerlink" title="关于dll加载"></a>关于dll加载</h2><blockquote>
-<p>比较头大的问题就是加载路径。在这之前，首先一定要搞清楚自己的dll是32位还是64位，非常关键，因为这涉及到我们采用什么样的jdk去调用的问题。实验之后，得到如下结果：32位的jdk调用32位的dll，64位jdk调用64位dll。否则会报dll无法找到的错误。</p>
-</blockquote>
-<h2 id="关于dll存放位置"><a href="#关于dll存放位置" class="headerlink" title="关于dll存放位置"></a>关于dll存放位置</h2><blockquote>
-<p>个人建议32位dll直接放到32位的jdk目录下面的bin文件夹。64位放到64位的jdk目录的bin文件夹。</p>
-</blockquote>
+<p>看一下html代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;td&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; style=&quot;width:10px;height:10px&quot; class=&quot;radio&quot; name=&quot;checbox&quot; id=&quot;111&quot; value=&quot;111&quot;&gt;</span><br><span class="line">&lt;div class=&quot;radio-wrapper-cube&quot;&gt;</span><br><span class="line"> &lt;label for=&quot;111&quot; class=&quot;radio-label-cube&quot; onclick=&quot;checkboxfun($(this))&quot;&gt;&lt;/label&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/td&gt;</span><br></pre></td></tr></table></figure></p>
+<p>重点关注圈出来的部分。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-371aa1cf1c050d39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>现在呢，我加一个按钮，实现点击一下，就出现checkbox的选中效果。实现js如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#checkbutton&quot;).click(function() &#123;</span><br><span class="line">		 var maxlength = $(&quot;[name=&apos;checbox&apos;]&quot;).length;</span><br><span class="line">		var selectindex = 0;</span><br><span class="line">		var selectall = true;</span><br><span class="line">		$(&quot;[name=&apos;checbox&apos;]:checked&quot;).each(function()&#123;</span><br><span class="line"></span><br><span class="line">			selectindex++;</span><br><span class="line">			if(maxlength==selectindex)&#123;</span><br><span class="line">				selectall = false;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		$(&quot;[name=&apos;checbox&apos;]&quot;).attr(&quot;checked&quot;,selectall);</span><br><span class="line">			if(selectall)&#123;</span><br><span class="line">				$(&quot;[name=&apos;checbox&apos;]&quot;).parent().parent().addClass(&quot;selected&quot;);</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				$(&quot;[name=&apos;checbox&apos;]&quot;).parent().parent().removeClass(&quot;selected&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这里实现的功能为，点击一下全选按钮，实现全部选中的功能，上图以明身份：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-c1cb6a69c7e105ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>出现问题：<br>点击第一次会选中，之后，一直无效。</p>
+<h1 id="分析原因"><a href="#分析原因" class="headerlink" title="分析原因"></a>分析原因</h1><p>原来问题出在这行代码上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;[name=&apos;checbox&apos;]&quot;).attr(&quot;checked&quot;,selectall);</span><br></pre></td></tr></table></figure></p>
+<p>查阅资料发现，jquery在1.6之后进行了一些改动，增加了prop属性。当然，对attr属性也做了相关改动，改动如下：</p>
+<ol>
+<li>jQuery 1.6之前 ，.attr()方法在取某些 attribute 的值时，会返回 property 的值，这就导致了结果的不一致。从 jQuery 1.6 开始， .prop()方法 方法返回 property 的值,而 .attr() 方法返回 attributes 的值。 </li>
+<li>例如, selectedIndex, tagName, nodeName, nodeType, ownerDocument, defaultChecked, 和 defaultSelected 应使用.prop()方法进行取值或赋值。 在jQuery1.6之前，这些属性使用.attr()方法取得，但是这并不是元素的attr属性。他们没有相应的属性（attributes），只有特性(property)。 </li>
+</ol>
+<p>相关资料见：<a href="&quot;https://m.baidu.com/from=1000953f/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%40320_1001%2Cta%40iphone_2_7.0_3_537/baiduid=05A2CB1D2D9B7B02C0F1F3CBBF89DC14/w=0_10_/t=iphone/l=3/tc?ref=www_iphone&amp;lid=11572966020577836600&amp;order=3&amp;fm=alop&amp;tj=www_normal_3_0_10_title&amp;vit=osres&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;asres=1&amp;title=.prop(">prop和attr区别API</a>%7CjQueryAPIDocumentation&amp;dict=30&amp;w_qd=IlPT2AEptyoA_yivDVKcCTpsvh0DQCVUugKDKj7&amp;tcplug=1&amp;sec=26627&amp;di=4987dc2a44416920&amp;bdenc=1&amp;tch=124.52.244.541.1.0&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IJwKM_yRJBzuglI39h47aUbBqUDzf2Sm5&amp;eqid=a09b6f478e35400&amp;qq-pf-to=pcqq.group”)</p>
 
       
     </div>
@@ -472,12 +472,12 @@ function setSidebarMarginTop (headerOffset) {
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2017/12/28/使用JNA完成调取C接口/">使用JNA完成调取C接口</a></p>
+  <p><span>本文标题:</span><a href="/2018/01/03/jquery中prop和attr的区别/">jquery中prop和attr的区别</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
-  <p><span>发布时间:</span>2017年12月28日 - 09:12</p>
-  <p><span>最后更新:</span>2017年12月28日 - 09:12</p>
-  <p><span>原始链接:</span><a href="/2017/12/28/使用JNA完成调取C接口/" title="使用JNA完成调取C接口">http://wangjianlin1989.top/2017/12/28/使用JNA完成调取C接口/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2017/12/28/使用JNA完成调取C接口/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年01月03日 - 22:01</p>
+  <p><span>最后更新:</span>2018年01月03日 - 22:01</p>
+  <p><span>原始链接:</span><a href="/2018/01/03/jquery中prop和attr的区别/" title="jquery中prop和attr的区别">http://wangjianlin1989.top/2018/01/03/jquery中prop和attr的区别/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/01/03/jquery中prop和attr的区别/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -536,9 +536,11 @@ function setSidebarMarginTop (headerOffset) {
       
         <div class="post-tags">
           
-            <a href="/tags/maven/" rel="tag"><i class="fa fa-tag"></i> maven</a>
+            <a href="/tags/jquery/" rel="tag"><i class="fa fa-tag"></i> jquery</a>
           
-            <a href="/tags/JNA/" rel="tag"><i class="fa fa-tag"></i> JNA</a>
+            <a href="/tags/prop/" rel="tag"><i class="fa fa-tag"></i> prop</a>
+          
+            <a href="/tags/attr/" rel="tag"><i class="fa fa-tag"></i> attr</a>
           
         </div>
       
@@ -551,8 +553,8 @@ function setSidebarMarginTop (headerOffset) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/28/使用IntelliJIDEA编写JAVASWING/" rel="next" title="使用IntelliJIDEA编写JAVASWING">
-                <i class="fa fa-chevron-left"></i> 使用IntelliJIDEA编写JAVASWING
+              <a href="/2018/01/01/IntelliJIdea如何进行项目发布（maven插件和tomcat）/" rel="next" title="IntelliJIdea如何进行项目发布（maven插件和tomcat）">
+                <i class="fa fa-chevron-left"></i> IntelliJIdea如何进行项目发布（maven插件和tomcat）
               </a>
             
           </div>
@@ -560,10 +562,6 @@ function setSidebarMarginTop (headerOffset) {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/29/CSS选择器一（-号和checked）/" rel="prev" title="CSS选择器一（+号和checked）">
-                CSS选择器一（+号和checked） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -726,7 +724,7 @@ function setSidebarMarginTop (headerOffset) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#调用步骤"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x8C03;&#x7528;&#x6B65;&#x9AA4;" class="headerlink" title="&#x8C03;&#x7528;&#x6B65;&#x9AA4;"></a>&#x8C03;&#x7528;&#x6B65;&#x9AA4;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加jna支持"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x6DFB;&#x52A0;jna&#x652F;&#x6301;" class="headerlink" title="&#x6DFB;&#x52A0;jna&#x652F;&#x6301;"></a>&#x6DFB;&#x52A0;jna&#x652F;&#x6301;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明方法"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x58F0;&#x660E;&#x65B9;&#x6CD5;" class="headerlink" title="&#x58F0;&#x660E;&#x65B9;&#x6CD5;"></a>&#x58F0;&#x660E;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用方法"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x8C03;&#x7528;&#x65B9;&#x6CD5;" class="headerlink" title="&#x8C03;&#x7528;&#x65B9;&#x6CD5;"></a>&#x8C03;&#x7528;&#x65B9;&#x6CD5;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6CE8;&#x610F;&#x4E8B;&#x9879;" class="headerlink" title="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"></a>&#x6CE8;&#x610F;&#x4E8B;&#x9879;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于dll加载"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x5173;&#x4E8E;dll&#x52A0;&#x8F7D;" class="headerlink" title="&#x5173;&#x4E8E;dll&#x52A0;&#x8F7D;"></a>&#x5173;&#x4E8E;dll&#x52A0;&#x8F7D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于dll存放位置"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x5173;&#x4E8E;dll&#x5B58;&#x653E;&#x4F4D;&#x7F6E;" class="headerlink" title="&#x5173;&#x4E8E;dll&#x5B58;&#x653E;&#x4F4D;&#x7F6E;"></a>&#x5173;&#x4E8E;dll&#x5B58;&#x653E;&#x4F4D;&#x7F6E;</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x95EE;&#x9898;&#x63CF;&#x8FF0;" class="headerlink" title="&#x95EE;&#x9898;&#x63CF;&#x8FF0;"></a>&#x95EE;&#x9898;&#x63CF;&#x8FF0;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析原因"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5206;&#x6790;&#x539F;&#x56E0;" class="headerlink" title="&#x5206;&#x6790;&#x539F;&#x56E0;"></a>&#x5206;&#x6790;&#x539F;&#x56E0;</span></a></li></ol></div>
             
 
           </div>

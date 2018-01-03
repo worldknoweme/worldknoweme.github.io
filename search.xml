@@ -3,6 +3,50 @@
   
     
     <entry>
+      <title><![CDATA[jquery中prop和attr的区别]]></title>
+      <url>/2018/01/03/jquery%E4%B8%ADprop%E5%92%8Cattr%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>今天遇到一个奇怪的问题，使用attr给多选框添加checked属性，无效果。通过浏览器查看元素，发现该属性确实已经添加上了，查找原因半天，终于找出问题。</p>
+</blockquote>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>给多选按钮添加选中效果，css代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.radio:checked + .radio-wrapper-cube .radio-label-cube &#123;</span><br><span class="line">    background: url(&apos;../img/loss_riskmind_checked.png&apos;);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里顺便介绍一下该css干了些什么事儿：</p>
+<ol>
+<li>首先是class为radio的元素，后面跟:checked表示选中的class为radio的元素。</li>
+<li>后面+上一遍博客也已经做了介绍，表示兄弟元素，这里是选择兄弟元素里面class为radio-wrapper-cube的元素。</li>
+<li>后面则表示子元素里面class为radio-label-cube的元素。</li>
+</ol>
+<p>看一下html代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;td&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; style=&quot;width:10px;height:10px&quot; class=&quot;radio&quot; name=&quot;checbox&quot; id=&quot;111&quot; value=&quot;111&quot;&gt;</span><br><span class="line">&lt;div class=&quot;radio-wrapper-cube&quot;&gt;</span><br><span class="line"> &lt;label for=&quot;111&quot; class=&quot;radio-label-cube&quot; onclick=&quot;checkboxfun($(this))&quot;&gt;&lt;/label&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/td&gt;</span><br></pre></td></tr></table></figure></p>
+<p>重点关注圈出来的部分。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-371aa1cf1c050d39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>现在呢，我加一个按钮，实现点击一下，就出现checkbox的选中效果。实现js如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#checkbutton&quot;).click(function() &#123;</span><br><span class="line">		 var maxlength = $(&quot;[name=&apos;checbox&apos;]&quot;).length;</span><br><span class="line">		var selectindex = 0;</span><br><span class="line">		var selectall = true;</span><br><span class="line">		$(&quot;[name=&apos;checbox&apos;]:checked&quot;).each(function()&#123;</span><br><span class="line"></span><br><span class="line">			selectindex++;</span><br><span class="line">			if(maxlength==selectindex)&#123;</span><br><span class="line">				selectall = false;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		$(&quot;[name=&apos;checbox&apos;]&quot;).attr(&quot;checked&quot;,selectall);</span><br><span class="line">			if(selectall)&#123;</span><br><span class="line">				$(&quot;[name=&apos;checbox&apos;]&quot;).parent().parent().addClass(&quot;selected&quot;);</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				$(&quot;[name=&apos;checbox&apos;]&quot;).parent().parent().removeClass(&quot;selected&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这里实现的功能为，点击一下全选按钮，实现全部选中的功能，上图以明身份：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-c1cb6a69c7e105ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>出现问题：<br>点击第一次会选中，之后，一直无效。</p>
+<h1 id="分析原因"><a href="#分析原因" class="headerlink" title="分析原因"></a>分析原因</h1><p>原来问题出在这行代码上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;[name=&apos;checbox&apos;]&quot;).attr(&quot;checked&quot;,selectall);</span><br></pre></td></tr></table></figure></p>
+<p>查阅资料发现，jquery在1.6之后进行了一些改动，增加了prop属性。当然，对attr属性也做了相关改动，改动如下：</p>
+<ol>
+<li>jQuery 1.6之前 ，.attr()方法在取某些 attribute 的值时，会返回 property 的值，这就导致了结果的不一致。从 jQuery 1.6 开始， .prop()方法 方法返回 property 的值,而 .attr() 方法返回 attributes 的值。 </li>
+<li>例如, selectedIndex, tagName, nodeName, nodeType, ownerDocument, defaultChecked, 和 defaultSelected 应使用.prop()方法进行取值或赋值。 在jQuery1.6之前，这些属性使用.attr()方法取得，但是这并不是元素的attr属性。他们没有相应的属性（attributes），只有特性(property)。 </li>
+</ol>
+<p>相关资料见：<a href="&quot;https://m.baidu.com/from=1000953f/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%40320_1001%2Cta%40iphone_2_7.0_3_537/baiduid=05A2CB1D2D9B7B02C0F1F3CBBF89DC14/w=0_10_/t=iphone/l=3/tc?ref=www_iphone&amp;lid=11572966020577836600&amp;order=3&amp;fm=alop&amp;tj=www_normal_3_0_10_title&amp;vit=osres&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;asres=1&amp;title=.prop(">prop和attr区别API</a>%7CjQueryAPIDocumentation&amp;dict=30&amp;w_qd=IlPT2AEptyoA_yivDVKcCTpsvh0DQCVUugKDKj7&amp;tcplug=1&amp;sec=26627&amp;di=4987dc2a44416920&amp;bdenc=1&amp;tch=124.52.244.541.1.0&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IJwKM_yRJBzuglI39h47aUbBqUDzf2Sm5&amp;eqid=a09b6f478e35400&amp;qq-pf-to=pcqq.group”)</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> jquery </tag>
+            
+            <tag> prop </tag>
+            
+            <tag> attr </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[IntelliJIdea如何进行项目发布（maven插件和tomcat）]]></title>
       <url>/2018/01/01/IntelliJIdea%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83%EF%BC%88maven%E6%8F%92%E4%BB%B6%E5%92%8Ctomcat%EF%BC%89/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -276,9 +320,9 @@
         
         <tags>
             
-            <tag> intellijidea </tag>
-            
             <tag> maven </tag>
+            
+            <tag> intellijidea </tag>
             
         </tags>
         
