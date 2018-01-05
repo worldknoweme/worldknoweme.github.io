@@ -3,6 +3,53 @@
   
     
     <entry>
+      <title><![CDATA[关于java环境变量]]></title>
+      <url>/2018/01/05/%E5%85%B3%E4%BA%8Ejava%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>目前在研究BS架构下面如何进行实现客户机的硬件调用问题。想到的方案为JNI、JNLP和JS调ocx。各种方案具体如何实现以及最终如何选择，后续进展又是如何暂不在本博文的讨论行列。本文仅仅是说一下java环境变量的问题。</p>
+</blockquote>
+<ul>
+<li>环境变量？大哥你确定你不是在逗我？随便一个java基础的人都会啊！万年的java_home（额！这里一定得大写）、classpath和path呗！</li>
+<li>确定不是逗你，如果你用的好死不死是jdk1.8的话，且听我慢慢道来。</li>
+</ul>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><blockquote>
+<p>是这样，博主在探索JNI实现BS架构下的硬件调取的时候，发现了一个神奇的框架，叫做JNA！使用该框架可以优雅快速的进行java调C的功能实现。没啥好说的，只要注意一个问题就行，关于dll的路径问题！千万注意，保证dll和jdk的版本一致性（即32位jdk调取32位dll，64位jdk调取64位dll），存放位置嘛？博主建议将dll放在jdk的bin目录下即可。</p>
+</blockquote>
+<p>言归正传，就是基于这个问题，出现了我对jdk环境变量的十分疑惑，起初让我懵逼的有点怀疑人生了！我拿到一个32位的dll，然而我的jdk是64位，好死不死的1.8。于是，我得换啊！</p>
+<ol>
+<li>下载32位jdk</li>
+<li>安装</li>
+<li>修改环境变量（额！当时用的java_home，这里只要改一下这一个变量路径就好了，classpath和path不用管了，引用的呗！不禁为自己的机智深深的鞠了一躬）</li>
+<li>我信息慢慢的输入java -version</li>
+</ol>
+<blockquote>
+<p>神奇的事情发生了！what？竟然还是64位！</p>
+</blockquote>
+<p>哥们起初还是相当淡定的。有啥大不了的事儿？资深码农哪有一帆风顺的代码？容哥慢慢检查一遍环境变量，将背后的黑手一把揪出来！（博主一直将注意了放在环境变量上面，于是乎，很悲剧！）</p>
+<p>郁闷了半小时，百度一下，看看有没有同病相怜的病友吧！果然，一大堆！按照一下操作步骤顺利解决，惊恐的喝了一口鸡汤。这个世界变化太快，不改变永远没有未来。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><blockquote>
+<p>进入该文件夹C:\ProgramData\Oracle\Java\javapath，会发现里面有三个exe文件，这三个exe文件引发的幺蛾子。把32位的jdk的bin目录对应的三个文件进行替换，之后java -verion就看到了久违的32位了。</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 环境变量 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[jquery中prop和attr的区别]]></title>
       <url>/2018/01/03/jquery%E4%B8%ADprop%E5%92%8Cattr%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -800,31 +847,6 @@
             <tag> Hexo </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[hexo]]></title>
-      <url>/2017/12/13/hexo/</url>
-      <content type="html"></content>
-      
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2017/12/12/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-      
         
     </entry>
     
