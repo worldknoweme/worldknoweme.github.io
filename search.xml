@@ -3,6 +3,141 @@
   
     
     <entry>
+      <title><![CDATA[spring中autowired和resource注解的区别]]></title>
+      <url>/2018/01/10/spring%E4%B8%ADautowired%E5%92%8Cresource%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      <content type="html"><![CDATA[<p>autowired和resource注解都可以将bean注入。<br>最大的不同之处在于：<br>autowired：</p>
+<ol>
+<li>该注解由spring提供。</li>
+<li>该注解通过类型来查找bean。<br>resource</li>
+<li>该注解由java提供。</li>
+<li>该注解通过name来查找bean。</li>
+</ol>
+<h1 id="resource注解举例："><a href="#resource注解举例：" class="headerlink" title="resource注解举例："></a>resource注解举例：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Resource</span><br><span class="line">Test t;</span><br></pre></td></tr></table></figure>
+<p>该bean注入过程如下：<br>先查找name为test的bean，如果查询不到，则会查询类型为Test的bean。<br>假如指定了name，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Resource(name=&quot;test123&quot;)</span><br><span class="line">Test t;</span><br></pre></td></tr></table></figure></p>
+<p>只要此处指定了name属性，那么只会查询name为test123的bean，查询不到即查询不到，报找不到bean的错误。</p>
+<h1 id="autowired注解举例"><a href="#autowired注解举例" class="headerlink" title="autowired注解举例"></a>autowired注解举例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">Test t;</span><br></pre></td></tr></table></figure>
+<p>查找类型为Test的bean，查询不到就会报错。<br>如果想要指定使用name查询，则需要配合Qualifier注解使用，配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Autowired @Qualifier(&quot;baseDao&quot;)</span><br><span class="line">Test t;</span><br></pre></td></tr></table></figure></p>
+<p>首先查询类型为Test的bean，如果查询不到则会查询name为baseDao的bean。还查询不到，就会报错了。<br>另外，Autowired注解可以指定是否为null，使用required=false属性来指定。此时，该bean即使为null也不会报错。配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Autowired(required=false) @Qualifier(&quot;baseDao&quot;)</span><br><span class="line">Test t;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> spring </tag>
+            
+            <tag> autowired </tag>
+            
+            <tag> resource </tag>
+            
+            <tag> 注解 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[spring和springmvc的区别]]></title>
+      <url>/2018/01/10/spring%E5%92%8Cspringmvc%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      <content type="html"><![CDATA[<ul>
+<li>spring是个容器，其主要特征是IOC和AOP。</li>
+<li>springmvc则是mvc架构的mvc框架，主要特征是modelandview传过来的数据和页面综合体，前台可以很舒服的将页面和数据组织并展示出来。目前，该mvc框架搭配自己公司出品的Thymleaf框架，更加锋利。</li>
+</ul>
+<blockquote>
+<p>两者同出于一个公司，不同团队。<br>随着spring的慢慢壮大，现在的spring指的是springcore包，springmvc则指的是web包。<br>spring是身体，springmvc则是身体的某个器官，springmvc是属于spring的一部分。</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> spring </tag>
+            
+            <tag> springmvc </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[知识焦虑的时代，我们该何去何从？]]></title>
+      <url>/2018/01/10/%E7%9F%A5%E8%AF%86%E7%84%A6%E8%99%91%E7%9A%84%E6%97%B6%E4%BB%A3%EF%BC%8C%E6%88%91%E4%BB%AC%E8%AF%A5%E4%BD%95%E5%8E%BB%E4%BD%95%E4%BB%8E%EF%BC%9F/</url>
+      <content type="html"><![CDATA[<h1 id="只有改变才能看见未来"><a href="#只有改变才能看见未来" class="headerlink" title="只有改变才能看见未来"></a>只有改变才能看见未来</h1><p>“王老师，我想改行！”<br>前段时间，一个干保险的朋友忽然联系我说道。<br>回想起该朋友至少8年的保险从业经验，我压抑住内心的震惊，问道：“你打算转行做什么？”<br>“互联网啊！”朋友的回复很快，不假思索。<br>我不知道说什么好了，短暂的失神，朋友的回复又接二连三的到来。<br>“现在是互联网时代了，我们这行业长不了！”<br>“领导们交代的任务动不动就是微信接单，互联网接单，近期还在筹划互联网系统！”<br>“王老师，王老师，在吗？我想学编程。”<br>字里行间，我感受到了朋友浓浓的焦虑。对于现在工作生活的倦怠和不满，对于未来的不安，对于不安的无所适从，没有方向。<br>“那就按照你的想法去做吧”、“你不再考虑考虑？”、“先考虑清楚了再说！”聊天界面上，我的措辞删了改，改了再删。<br>确实，我不知道如何去答复这个看起来没有方向处于知识焦虑期的朋友。<br>“先用工作闲暇时间去学习，改行的事儿先别着急下决定！”<br>思躇良久，我回答道。之后，整个人便陷入了深深的思索之中。<br>“只有改变才能看见未来！”老罗的一句话没来由的浮上心头。  </p>
+<h1 id="知识焦虑的三个阶段"><a href="#知识焦虑的三个阶段" class="headerlink" title="知识焦虑的三个阶段"></a>知识焦虑的三个阶段</h1><p>朋友的处境相信是部分内心怀揣着梦想与奋斗的有志青年已经面临或者是即将面临的。<br>如何去定义这种处境，暂且称之为知识焦虑吧。<br>作为奋斗在互联网行业的小小码农的我，也经常会面临这种焦虑。比如，朋友介绍了一个价格不菲的关于项目改造的外包，谈着谈着发现自己不会这种编程语言。<br>于是，焦虑感瞬间席卷全身。对于人民币从指间流失的失落感，对于机会从身边错失的无助感兼而有之。不过，更多的是对于知识的焦虑。<br>突然之间，觉得自己要学的东西多到无法想象。用了十几年构建起来的对于自己所处领域以及所在行业的自信遭遇了滑铁卢。<br>结合自身体会，我把知识焦虑归结了三个阶段。  </p>
+<ul>
+<li>无感期<br>这一阶段，压根就不知道焦虑是什么感觉。从来没想过明天怎么样？后天又如何！得过且过，及时行乐。<br>多见于刚刚大学毕业的学生，当然还有一些不肯长大的中年患者（无可救药）。  </li>
+<li>焦虑期<br>这一阶段，觉得自己欠缺的东西太多。需要学习的内容更多。<br>开始长大，开始想通过学习通过努力去改变去创造点什么。<br>但是，没有方向。眉毛胡子一把抓，往往什么也抓不住。<br>时间长了，觉得和无感期相比，付出了不少却什么也没得到。还不如无感期。<br>于是，又不争气的回炉了。<br>过一段时间，又开始焦虑。<br>周而复始，无限循环。  </li>
+<li>成熟期<br>首先，恭喜进入这一阶段的人。可以有方向的规划自己的知识体系，并且有效的学习知识了。<br>经历了，无限循环周而复始的知识焦虑期，你得到了应有的回报。<br>得到了一种我觉得世界上最美好最伟大的一种能力。  <blockquote>
+<p>自我提升，自我学习的能力。</p>
+</blockquote>
+</li>
+</ul>
+<p>三个阶段，循序渐进。区别在于第二个阶段，有些人在该阶段呆的时间长有些人呆的时间短。<br>但是，绝对会、一定会经历。如同人类的进化，没人可以避免，没人可以跨越。  </p>
+<h1 id="何去何从？"><a href="#何去何从？" class="headerlink" title="何去何从？"></a>何去何从？</h1><p>在知识焦虑期，我们该何去何从？怎样才能快速稳定的度过这一个时期呢？<br>我总结了如下几个方法，不一定对任何人都适用，但是只要有一个人从中受益，我就知足了。<br>说明我洋洋洒洒码的几千字创造并产生了价值。  </p>
+<blockquote>
+<p>无以言表，只能偷偷一乐。  </p>
+</blockquote>
+<ol>
+<li>自我暗示。  <blockquote>
+<p>焦虑期最大的病症就是否定自己的努力。</p>
+</blockquote>
+</li>
+</ol>
+<p>程序员觉得自己用到的技术太老，不够先进。google一番，忽然发现瞬间诞生了如此多的新技术，这名词那名词的自己压根以前就没听说过。（从我的角度，其他职业参考，病症类似。）<br>于是，负面情绪就来了，觉得自己之前都在浪费时间，自己的努力都是白费了。<br>这时候，深呼吸，默念。  </p>
+<blockquote>
+<p>上帝不会偏袒任何虚度光阴之人，上帝不会无视任何挥洒汗水之人。</p>
+</blockquote>
+<p>反复默念，直到自己的心静下来。  </p>
+<blockquote>
+<p>做任何事，下任何决定之前，都先要让自己的心静下来。这样，才不会给自己的后悔买单。</p>
+</blockquote>
+<ol>
+<li>写总结笔记。<blockquote>
+<p>焦虑期最大的问题就是没有方向。</p>
+</blockquote>
+</li>
+</ol>
+<p>如果不能坚持每天一总结，可以一周一总结，一月一总结。<br>根据个人情况安排总结的频率，总结过多容易更加焦虑，总结过少不容易摸清自己的方向。<br>按照自己的实际情况具体而定。  </p>
+<ol>
+<li>和志同道合的朋友聊天。<blockquote>
+<p>聊天可以舒缓自己的压力，也可以通过他人的角度找到自己的方向。</p>
+</blockquote>
+</li>
+</ol>
+<p>这里要注意，聊天对象一定要志！同！道！合！<br>还处在无感期的中年患者就不要拿出来交流了。<br>这个时候的对牛弹琴和牛给予的挖苦如同嚼砒霜，会无限延长你的知识焦虑期。<br>如果没有这种朋友，可以找我聊，我会是一个很好的倾听者。</p>
+<blockquote>
+<p>方法千万种，适合最重要。</p>
+</blockquote>
+<p>以上三种方法，是我尝试了无数种，发现对我而言最有效的方法。<br>说的再多，就不是我给大家建议，而是让大家做选择题了。<br>希望，给看过的各位起到哪怕一丁点的作用，我即心满意足。<br>预祝，尽快跨过知识焦虑期的大坑。后面即是阳关大道，有无数有趣可爱的知识，等着我们去发现去学习去掌握。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 随笔 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 知识焦虑 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[老生常谈（程序员如何赚外快）]]></title>
       <url>/2018/01/09/%E8%80%81%E7%94%9F%E5%B8%B8%E8%B0%88%EF%BC%88%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A6%82%E4%BD%95%E8%B5%9A%E5%A4%96%E5%BF%AB%EF%BC%89/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -76,11 +211,11 @@
         
         <tags>
             
+            <tag> 注解 </tag>
+            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         
