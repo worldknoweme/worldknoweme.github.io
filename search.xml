@@ -3,6 +3,88 @@
   
     
     <entry>
+      <title><![CDATA[java扫盲（二）说equals和双等]]></title>
+      <url>/2018/01/14/java%E6%89%AB%E7%9B%B2%EF%BC%88%E4%BA%8C%EF%BC%89%E8%AF%B4equals%E5%92%8C%E5%8F%8C%E7%AD%89/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>请说一下equals和==的区别  </p>
+</blockquote>
+<p>根据我几次换工作的经验，无数次面试的经验。假如，你去面java，该问题属于必问题。那么，他们之间到底有啥区别呢？<br>先上一段代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int a =1;</span><br><span class="line">int b=1;</span><br><span class="line">String c = &quot;aaa&quot;;</span><br><span class="line">String d = &quot;aaa&quot;;</span><br><span class="line">System.out.println(a==b);</span><br><span class="line">System.out.println(a.equals(b));</span><br><span class="line">System.out.println(c==d);</span><br><span class="line">System.out.println(c.equals(d));</span><br></pre></td></tr></table></figure></p>
+<p>输出结果如下： true/true/false/true</p>
+<p>跟你想象的结果是否一致呢？</p>
+<h1 id=""><a href="#" class="headerlink" title="=="></a>==</h1><p>其实，==作用于基础数据类型，比如int、long、float等。<br>这些数据类型的共同点即基础数据类型。而Strng、Integer为java提供给我们的一组对象。<br>说到对象，在进行比较的时候如果使用==运算符，那么比较的就不仅仅是对象的值了，还需要比较对象的内存地址。因为上述例子中的两个string均是new出来的一个对象，也就是说对于的内存地址是不一致的，因此得到的结果是false。</p>
+<h1 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h1><p>equals用于比较两个对象的值，上述例子中，使用equals去比较两个对象的值，均为aaa，因此返回值为false。</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>在java编码过程中，有时候需要用一个对象给另外一个对象赋值。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Student a  = new Student();</span><br><span class="line">Student b = a;</span><br></pre></td></tr></table></figure></p>
+<p>这时候，就把a整个赋值给了b，包括内存地址。<br>这样做的后果是，假如在其他地方对a对象进行了操作，b对象对应的也会发生改变。<br>正确做法应该是这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Student a  = new Student();</span><br><span class="line">Student b = new Studnet();</span><br><span class="line">b.setXXX(a.getXXX());</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> equals </tag>
+            
+            <tag> == </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[java基础扫盲（一）字节字符和位]]></title>
+      <url>/2018/01/12/java%E5%9F%BA%E7%A1%80%E6%89%AB%E7%9B%B2%EF%BC%88%E4%B8%80%EF%BC%89%E5%AD%97%E8%8A%82%E5%AD%97%E7%AC%A6%E5%92%8C%E4%BD%8D/</url>
+      <content type="html"><![CDATA[<h1 id="历史问题"><a href="#历史问题" class="headerlink" title="历史问题"></a>历史问题</h1><p>大家都知道计算机这东西是洋鬼子搞出来的，他的底层实现是二进制。也就是说，计算机里面，二进制，简简单单的0和1可以表示世间万物，可以创造世间万物。</p>
+<blockquote>
+<p>一生二，二生三，三生万物。</p>
+</blockquote>
+<p>不知道创造者是否参考过我大中华博大精深的文化。</p>
+<h2 id="位"><a href="#位" class="headerlink" title="位"></a>位</h2><p>这里说的位就是指的二进制位了，也就是说的0或者1。他们都可以表示一位。英文名就是bit了。</p>
+<h2 id="字节"><a href="#字节" class="headerlink" title="字节"></a>字节</h2><p>字节其实就是一个单位，我们通过单位知道文件的大小。这就好比你上菜市场卖肉的时候问店家猪肉多少钱一斤一样，在计算机的世界里面，我们经常会问猪肉多少钱一字节。如果你知道一斤猪肉大体上有多大，够炒几个菜。那么你就大概了解一字节的文件大体上有多大，能装的下几个字儿了！<br>其实，我们平时接触的比较多的是M，K还有G。是吧？<br>其实，他们都是计量单位。字节的英文表示为byte（为什么我输入byt的时候，搜狗给我提示的避孕套呢？）。他们之间的转化关系如下：</p>
+<ul>
+<li>1G=1024M</li>
+<li>1M=1024K</li>
+<li>1K=1024byte</li>
+</ul>
+<p>好了，大家清楚他们之间的关系了吧？我们平时的流量套餐呢？1G？大概就是1<em>1024</em>1024=1048576KB了。假如，我们平时浏览一篇文章用20k，看一张图片用40K，听一首歌用3M，看一部电影用100M。能用多少流量，大家自己算去吧！<br>那么，字节和位之间存在关系吗？<br>当然存在，只要在计算机的世界里面出现的任何东西，都和位存在关系！<br>一个字节等于8位。就是说8个0和1的组合表示一个字节。<br>00000000    11111111  都可以表示一个字节。</p>
+<h2 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h2><p>字符简单了！就是我们平时看到的一切字母、符号、中文、法文、日文等等。c是个字符、中也是个字符。<br>说到字符呢，就不得不说一下编码格式了。这里只说一下比较常用的编码格式，其他的编码格式，大家可以自行百度理解研究。</p>
+<ol>
+<li>ASCII<br>洋鬼子最早搞出来的编码格式。该编码下，一个字符需要一个字节表示，也就是说占8位。这样的话有256中0和1的组合方式，可以表示256个不同的字母。对于，英文而言就绰绰有余了。</li>
+<li>UNICODE<br>显然，洋鬼子在设计ASCII码的时候没有考虑到遥远的东方，存在博大精深的文化。新华字典里面的汉字有多少个？显然256是远远不够的！那平方呢？65535？够了吧？还不够？<br>这里就说到一个网络上经常出现的一个问题，UNICODE编码里面，一个汉字占几位的问题。很多老程序员会这么说：“一个汉字占两个字节！”<br>在GBK编码里面是2个字节，但是在unicode编码里面是不对的！其实，很多时候，汉字占几个自己完全取决于编码格式。编码格式也不难写，因此对于汉字的编码有多种说法：ubuntu12.04里面一个汉字是三个字节！  </li>
+</ol>
+<blockquote>
+<p>它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。  </p>
+</blockquote>
+<p>如上，unicode编码的描述。<br>就是说，在unicode编码下，一个汉字可能是2个字节，也可能是3个或者是4个字节。  </p>
+<ol>
+<li>utf8<br>该编码格式我们是不是经常用到呢？<br>该编码格式其实是基于unicode。确实，unicode被很多编码格式拿来做基础编码。<br>在utf8编码格式下，英文字母占一个字节，和ascii完全相同。<br>汉字或者是其他字符占1-4个字节。  </li>
+</ol>
+<h2 id="char"><a href="#char" class="headerlink" title="char"></a>char</h2><p>这里我们说一下java中的char类型。<br>在java中，char类型占2个字节，16位。<br>可以采取如下方式为char类型变量赋值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">char a=&apos;a&apos;;  //任意单个字符，加单引号。</span><br><span class="line"></span><br><span class="line">char a=&apos;中&apos;;//任意单个中文字，加单引号。</span><br><span class="line"></span><br><span class="line">char a=111;//整数。0~65535。十进制、八进制、十六进制均可。输出字符编码表中对应的字符。</span><br><span class="line"></span><br><span class="line">注：只能放单个字符。</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 字节 </tag>
+            
+            <tag> 字符 </tag>
+            
+            <tag> 位 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[spring中autowired和resource注解的区别]]></title>
       <url>/2018/01/10/spring%E4%B8%ADautowired%E5%92%8Cresource%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
       <content type="html"><![CDATA[<p>autowired和resource注解都可以将bean注入。<br>最大的不同之处在于：<br>autowired：</p>
@@ -29,13 +111,13 @@
         
         <tags>
             
+            <tag> 注解 </tag>
+            
             <tag> spring </tag>
             
             <tag> autowired </tag>
             
             <tag> resource </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         
@@ -62,9 +144,9 @@
         
         <tags>
             
-            <tag> spring </tag>
-            
             <tag> springmvc </tag>
+            
+            <tag> spring </tag>
             
         </tags>
         
@@ -211,11 +293,11 @@
         
         <tags>
             
-            <tag> 注解 </tag>
-            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         

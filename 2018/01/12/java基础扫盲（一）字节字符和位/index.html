@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="字节,字符,位," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="历史问题大家都知道计算机这东西是洋鬼子搞出来的，他的底层实现是二进制。也就是说，计算机里面，二进制，简简单单的0和1可以表示世间万物，可以创造世间万物。  一生二，二生三，三生万物。  不知道创造者是否参考过我大中华博大精深的文化。 位这里说的位就是指的二进制位了，也就是说的0或者1。他们都可以表示一位。英文名就是bit了。 字节字节其实就是一个单位，我们通过单位知道文件的大小。这就好比你上菜市场">
+<meta name="keywords" content="字节,字符,位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础扫盲（一）字节字符和位">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/01/12/java基础扫盲（一）字节字符和位/index.html">
+<meta property="og:site_name" content="傲寒Ony Wang">
+<meta property="og:description" content="历史问题大家都知道计算机这东西是洋鬼子搞出来的，他的底层实现是二进制。也就是说，计算机里面，二进制，简简单单的0和1可以表示世间万物，可以创造世间万物。  一生二，二生三，三生万物。  不知道创造者是否参考过我大中华博大精深的文化。 位这里说的位就是指的二进制位了，也就是说的0或者1。他们都可以表示一位。英文名就是bit了。 字节字节其实就是一个单位，我们通过单位知道文件的大小。这就好比你上菜市场">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-12T09:13:59.932Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java基础扫盲（一）字节字符和位">
+<meta name="twitter:description" content="历史问题大家都知道计算机这东西是洋鬼子搞出来的，他的底层实现是二进制。也就是说，计算机里面，二进制，简简单单的0和1可以表示世间万物，可以创造世间万物。  一生二，二生三，三生万物。  不知道创造者是否参考过我大中华博大精深的文化。 位这里说的位就是指的二进制位了，也就是说的0或者1。他们都可以表示一位。英文名就是bit了。 字节字节其实就是一个单位，我们通过单位知道文件的大小。这就好比你上菜市场">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/01/12/java基础扫盲（一）字节字符和位/"/>
+
+
+
+
+
+  <title>java基础扫盲（一）字节字符和位 | 傲寒Ony Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。W一两愿你江南多雨带油伞。二两愿你酷暑可以轻摇扇。三两愿你入冬莫忘添衣衫。四两愿你年年多聚无离散。五两愿你无病无忧心常宽。六两愿你无风无雨长相欢。六两三。余下三。我在西北，一关接一关。与你相隔，一山又一山。最后只愿我，知道你平安。W人生两苦，想要却不得，拥有却失去。W春有风筝，夏有鱼。秋有青鸟，冬有雁。书信一来一往间，日子就这样过去了。W不存在虚妄的希望,自然也就没有虚妄的失望,更没有什么绝望。人生如题各种痴,就是各种喜欢,喜欢什么那便做下去,这道题目总会有答案的。不管是小人物还是富贵子孙，要成功，都得眼睛看远一点，度量放大一点，脑子多想一点，然后怀六分恶毒，三分炎凉，还得给自己给子孙剩一分善心。W世界上一半人在嘲笑另一半,其实全世界都是傻瓜。W我告诉你什么事最可悲，你遇见一个人，犯了一个错，你想弥补想还清，到最后才发现你根本无力回天，犯下的罪过永远无法弥补。我们永远无法还清犯下的…W一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪。W不乱于心，不困于情。不畏将来，不念过往。如此，安好！";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">傲寒Ony Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle" id="helloTitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/01/12/java基础扫盲（一）字节字符和位/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="傲寒Ony Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java基础扫盲（一）字节字符和位</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T17:10:23+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,127
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="历史问题"><a href="#历史问题" class="headerlink" title="历史问题"></a>历史问题</h1><p>大家都知道计算机这东西是洋鬼子搞出来的，他的底层实现是二进制。也就是说，计算机里面，二进制，简简单单的0和1可以表示世间万物，可以创造世间万物。</p>
+<blockquote>
+<p>一生二，二生三，三生万物。</p>
+</blockquote>
+<p>不知道创造者是否参考过我大中华博大精深的文化。</p>
+<h2 id="位"><a href="#位" class="headerlink" title="位"></a>位</h2><p>这里说的位就是指的二进制位了，也就是说的0或者1。他们都可以表示一位。英文名就是bit了。</p>
+<h2 id="字节"><a href="#字节" class="headerlink" title="字节"></a>字节</h2><p>字节其实就是一个单位，我们通过单位知道文件的大小。这就好比你上菜市场卖肉的时候问店家猪肉多少钱一斤一样，在计算机的世界里面，我们经常会问猪肉多少钱一字节。如果你知道一斤猪肉大体上有多大，够炒几个菜。那么你就大概了解一字节的文件大体上有多大，能装的下几个字儿了！<br>其实，我们平时接触的比较多的是M，K还有G。是吧？<br>其实，他们都是计量单位。字节的英文表示为byte（为什么我输入byt的时候，搜狗给我提示的避孕套呢？）。他们之间的转化关系如下：</p>
+<ul>
+<li>1G=1024M</li>
+<li>1M=1024K</li>
+<li>1K=1024byte</li>
+</ul>
+<p>好了，大家清楚他们之间的关系了吧？我们平时的流量套餐呢？1G？大概就是1<em>1024</em>1024=1048576KB了。假如，我们平时浏览一篇文章用20k，看一张图片用40K，听一首歌用3M，看一部电影用100M。能用多少流量，大家自己算去吧！<br>那么，字节和位之间存在关系吗？<br>当然存在，只要在计算机的世界里面出现的任何东西，都和位存在关系！<br>一个字节等于8位。就是说8个0和1的组合表示一个字节。<br>00000000    11111111  都可以表示一个字节。</p>
+<h2 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h2><p>字符简单了！就是我们平时看到的一切字母、符号、中文、法文、日文等等。c是个字符、中也是个字符。<br>说到字符呢，就不得不说一下编码格式了。这里只说一下比较常用的编码格式，其他的编码格式，大家可以自行百度理解研究。</p>
+<ol>
+<li>ASCII<br>洋鬼子最早搞出来的编码格式。该编码下，一个字符需要一个字节表示，也就是说占8位。这样的话有256中0和1的组合方式，可以表示256个不同的字母。对于，英文而言就绰绰有余了。</li>
+<li>UNICODE<br>显然，洋鬼子在设计ASCII码的时候没有考虑到遥远的东方，存在博大精深的文化。新华字典里面的汉字有多少个？显然256是远远不够的！那平方呢？65535？够了吧？还不够？<br>这里就说到一个网络上经常出现的一个问题，UNICODE编码里面，一个汉字占几位的问题。很多老程序员会这么说：“一个汉字占两个字节！”<br>在GBK编码里面是2个字节，但是在unicode编码里面是不对的！其实，很多时候，汉字占几个自己完全取决于编码格式。编码格式也不难写，因此对于汉字的编码有多种说法：ubuntu12.04里面一个汉字是三个字节！  </li>
+</ol>
+<blockquote>
+<p>它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。  </p>
+</blockquote>
+<p>如上，unicode编码的描述。<br>就是说，在unicode编码下，一个汉字可能是2个字节，也可能是3个或者是4个字节。  </p>
+<ol>
+<li>utf8<br>该编码格式我们是不是经常用到呢？<br>该编码格式其实是基于unicode。确实，unicode被很多编码格式拿来做基础编码。<br>在utf8编码格式下，英文字母占一个字节，和ascii完全相同。<br>汉字或者是其他字符占1-4个字节。  </li>
+</ol>
+<h2 id="char"><a href="#char" class="headerlink" title="char"></a>char</h2><p>这里我们说一下java中的char类型。<br>在java中，char类型占2个字节，16位。<br>可以采取如下方式为char类型变量赋值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">char a=&apos;a&apos;;  //任意单个字符，加单引号。</span><br><span class="line"></span><br><span class="line">char a=&apos;中&apos;;//任意单个中文字，加单引号。</span><br><span class="line"></span><br><span class="line">char a=111;//整数。0~65535。十进制、八进制、十六进制均可。输出字符编码表中对应的字符。</span><br><span class="line"></span><br><span class="line">注：只能放单个字符。</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/01/12/java基础扫盲（一）字节字符和位/">java基础扫盲（一）字节字符和位</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
+  <p><span>发布时间:</span>2018年01月12日 - 17:01</p>
+  <p><span>最后更新:</span>2018年01月12日 - 17:01</p>
+  <p><span>原始链接:</span><a href="/2018/01/12/java基础扫盲（一）字节字符和位/" title="java基础扫盲（一）字节字符和位">http://wangjianlin1989.top/2018/01/12/java基础扫盲（一）字节字符和位/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/01/12/java基础扫盲（一）字节字符和位/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ony Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ony Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/字节/" rel="tag"><i class="fa fa-tag"></i> 字节</a>
+          
+            <a href="/tags/字符/" rel="tag"><i class="fa fa-tag"></i> 字符</a>
+          
+            <a href="/tags/位/" rel="tag"><i class="fa fa-tag"></i> 位</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/10/spring中autowired和resource注解的区别/" rel="next" title="spring中autowired和resource注解的区别">
+                <i class="fa fa-chevron-left"></i> spring中autowired和resource注解的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/14/java扫盲（二）说equals和双等/" rel="prev" title="java扫盲（二）说equals和双等">
+                java扫盲（二）说equals和双等 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjU2Mi85MTIz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ony Wang" />
+            
+              <p class="site-author-name" itemprop="name">Ony Wang</p>
+              <p class="site-description motion-element" itemprop="description">仙人抚我顶，结发授长生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/worldknoweme" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/wang-jian-lin-89-48" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/55861dcef833" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#历史问题"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5386;&#x53F2;&#x95EE;&#x9898;" class="headerlink" title="&#x5386;&#x53F2;&#x95EE;&#x9898;"></a>&#x5386;&#x53F2;&#x95EE;&#x9898;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#位"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x4F4D;" class="headerlink" title="&#x4F4D;"></a>&#x4F4D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字节"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x5B57;&#x8282;" class="headerlink" title="&#x5B57;&#x8282;"></a>&#x5B57;&#x8282;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;" class="headerlink" title="&#x5B57;&#x7B26;"></a>&#x5B57;&#x7B26;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#char"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#char" class="headerlink" title="char"></a>char</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; Tue Dec 12 2017 08:00:00 GMT+0800 (中国标准时间) &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ony Wang</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共14.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script type="text/javascript" src="/js/src/heheda.js"></script>
