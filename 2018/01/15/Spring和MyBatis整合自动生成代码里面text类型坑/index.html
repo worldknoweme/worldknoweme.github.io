@@ -84,7 +84,7 @@
 
 
 
-  <meta name="keywords" content="CSS,Chrome," />
+  <meta name="keywords" content="spring,mybatis,自动生成代码," />
 
 
 
@@ -95,28 +95,20 @@
 
 
 
-<meta name="description" content="简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。  CSS解释html和css是如何建立联系的？ 这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。  css文件不是必须的。我们完全可以把样式写到html里面，比如这样：12&amp;lt;div style=&amp;quot;width:100%;color:red&amp;qu">
-<meta name="keywords" content="CSS,Chrome">
+<meta name="description" content="Spring和MyBatis整合以后，使用自动生成代码工具生成dao和mapper配置文件，生成步骤如下（以Intelli idea为例）。  编写生成代码配置文件generatorConfig.xml。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&amp;lt;?xml versi">
+<meta name="keywords" content="spring,mybatis,自动生成代码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css解释及chrome使用详解">
-<meta property="og:url" content="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/index.html">
+<meta property="og:title" content="Spring和MyBatis整合自动生成代码里面text类型坑">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/01/15/Spring和MyBatis整合自动生成代码里面text类型坑/index.html">
 <meta property="og:site_name" content="傲寒Ony Wang">
-<meta property="og:description" content="简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。  CSS解释html和css是如何建立联系的？ 这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。  css文件不是必须的。我们完全可以把样式写到html里面，比如这样：12&amp;lt;div style=&amp;quot;width:100%;color:red&amp;qu">
+<meta property="og:description" content="Spring和MyBatis整合以后，使用自动生成代码工具生成dao和mapper配置文件，生成步骤如下（以Intelli idea为例）。  编写生成代码配置文件generatorConfig.xml。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&amp;lt;?xml versi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-64be5096ee89e03e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-f84b00a847393331.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-e238d6aa021569ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-5d64f6ffbe1f4c3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-8f20fd5df3995c13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-ece82cc007deab4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-70442524420519e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-840d2a639ef6a4dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-12-24T16:15:24.284Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9493059-beb480ae437a803a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-15T10:11:59.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css解释及chrome使用详解">
-<meta name="twitter:description" content="简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。  CSS解释html和css是如何建立联系的？ 这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。  css文件不是必须的。我们完全可以把样式写到html里面，比如这样：12&amp;lt;div style=&amp;quot;width:100%;color:red&amp;qu">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Spring和MyBatis整合自动生成代码里面text类型坑">
+<meta name="twitter:description" content="Spring和MyBatis整合以后，使用自动生成代码工具生成dao和mapper配置文件，生成步骤如下（以Intelli idea为例）。  编写生成代码配置文件generatorConfig.xml。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&amp;lt;?xml versi">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9493059-beb480ae437a803a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -146,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/"/>
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/01/15/Spring和MyBatis整合自动生成代码里面text类型坑/"/>
 
 
 
 
 
-  <title>css解释及chrome使用详解 | 傲寒Ony Wang</title>
+  <title>Spring和MyBatis整合自动生成代码里面text类型坑 | 傲寒Ony Wang</title>
   
 
 
@@ -314,7 +306,7 @@ function setSidebarMarginTop (headerOffset) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/01/15/Spring和MyBatis整合自动生成代码里面text类型坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ony Wang">
@@ -331,7 +323,7 @@ function setSidebarMarginTop (headerOffset) {
 
         
         
-          <h1 class="post-title" itemprop="name headline">css解释及chrome使用详解</h1>
+          <h1 class="post-title" itemprop="name headline">Spring和MyBatis整合自动生成代码里面text类型坑</h1>
         
 
         <div class="post-meta">
@@ -343,8 +335,8 @@ function setSidebarMarginTop (headerOffset) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T21:46:02+08:00">
-                2017-12-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T18:10:59+08:00">
+                2018-01-15
               </time>
             
 
@@ -366,8 +358,8 @@ function setSidebarMarginTop (headerOffset) {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -397,7 +389,7 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,241
+                  530
                 </span>
               
 
@@ -413,7 +405,7 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  3
                 </span>
               
             </div>
@@ -434,45 +426,18 @@ function setSidebarMarginTop (headerOffset) {
       
 
       
-        <blockquote>
-<p>简单的说一下CSS，这对入门者而言会有用，CSS大拿们见笑。</p>
-</blockquote>
-<h1 id="CSS解释"><a href="#CSS解释" class="headerlink" title="CSS解释"></a>CSS解释</h1><h2 id="html和css是如何建立联系的？"><a href="#html和css是如何建立联系的？" class="headerlink" title="html和css是如何建立联系的？"></a>html和css是如何建立联系的？</h2><blockquote>
-<p>这一点很重要，做任何事情之前都要明确问题的关键点。做开发更是如此，不去思考，对事情的来龙去脉不去深入理解，写再多代码也是枉然。</p>
-</blockquote>
-<h3 id="css文件不是必须的。"><a href="#css文件不是必须的。" class="headerlink" title="css文件不是必须的。"></a>css文件不是必须的。</h3><p>我们完全可以把样式写到html里面，比如这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;width:100%;color:red&quot;&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>div的样式是可以完成通过style标签去定义的。那么，我们为什么要使用css文件来“画蛇添足”呢？初学者肯定觉得不可思议，写到一个html文件里面多好？省事，方便，也不会出现诸如文件未找到之类的错误。<br>其实，随着我们后续接触项目，慢慢就会发现这其中的奥妙了。</p>
-<h3 id="使用css文件的优点"><a href="#使用css文件的优点" class="headerlink" title="使用css文件的优点"></a>使用css文件的优点</h3><p>诸位可以设想一下这样的场景，我有100个html网页，其中顶部的样式完全一样，比如均使用类似百度的样式，右上角的按钮排列样式。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f5d2da8bfcc3b5c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我有100个网页，每个网页里面我都需要去添加style吗？就算是复制粘贴也能把人累死。<br>更严重的是，假如后续我改了样式，那么我是不是需要改100遍html网页呢？想想都头大。为了解决这个问题，css文件就应运而生了。我只要这般写网页就可以了：<code>&lt;div class=&quot;test&quot;&gt;&lt;/div&gt;</code>，在css文件里面定义test样式就可以了：<code>.test{width:100%;}</code>。<br>如果有一天，客户彪了，提出了新的需求，要求width全部改成50%，我们只需要改一下css文件就好了：<code>.test{width:50%}</code><br>综上，css文件的好处显而易见：</p>
+        <p>Spring和MyBatis整合以后，使用自动生成代码工具生成dao和mapper配置文件，生成步骤如下（以Intelli idea为例）。</p>
 <ol>
-<li>消灭重复代码</li>
-<li>修改需求方便</li>
+<li><p>编写生成代码配置文件generatorConfig.xml。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE generatorConfiguration</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line">    &lt;classPathEntry location=&quot;D:\dev\maven\repository\mysql\mysql-connector-java\5.1.39\mysql-connector-java-5.1.39.jar&quot;/&gt;</span><br><span class="line">    &lt;context id=&quot;DB2Tables&quot; defaultModelType=&quot;flat&quot; targetRuntime=&quot;MyBatis3&quot;&gt;</span><br><span class="line">        &lt;commentGenerator&gt;</span><br><span class="line">            &lt;property name=&quot;suppressDate&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;!-- 是否去除自动生成的注释 true：是 ： false:否 --&gt;</span><br><span class="line">            &lt;property name=&quot;suppressAllComments&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;/commentGenerator&gt;</span><br><span class="line">        &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot;</span><br><span class="line">                        connectionURL=&quot;jdbc:mysql://localhost:3306/mycollege?characterEncoding=utf-8&quot;</span><br><span class="line">                        userId=&quot;root&quot;</span><br><span class="line">                        password=&quot;root&quot;&gt;</span><br><span class="line">        &lt;/jdbcConnection&gt;</span><br><span class="line"></span><br><span class="line">        &lt;javaTypeResolver&gt;</span><br><span class="line">            &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;/javaTypeResolver&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;!-- 生成模型的包名和位置  --&gt;</span><br><span class="line">        &lt;javaModelGenerator targetPackage=&quot;com.cx.elearnning.model&quot;</span><br><span class="line">                            targetProject=&quot;src/main/java&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;property name=&quot;trimStrings&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/javaModelGenerator&gt;</span><br><span class="line">        &lt;!-- generate xml --&gt;</span><br><span class="line">        &lt;sqlMapGenerator targetPackage=&quot;/&quot;</span><br><span class="line">                         targetProject=&quot;src/main/resources/mapper&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/sqlMapGenerator&gt;</span><br><span class="line">        &lt;!-- generate Mapper --&gt;</span><br><span class="line">        &lt;javaClientGenerator type=&quot;XMLMAPPER&quot; targetPackage=&quot;com.cx.elearnning.dao&quot;</span><br><span class="line">                             targetProject=&quot;src/main/java&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/javaClientGenerator&gt;</span><br><span class="line">      &lt;!--需要自动生成的表名和对应的model名--&gt;</span><br><span class="line">        &lt;table tableName=&quot;sys_user&quot; domainObjectName=&quot;SysUser&quot;&gt;&lt;/table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;/context&gt;</span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置如下maven运行命令。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-beb480ae437a803a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="maven运行命令.png"></p>
+</li>
+<li>运行generatorcode即可。<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1>假如数据库表里面存在text或者blob字段。自动生成的数据库配置文件如下，会多出几个以withBlobs结尾的方法和resultMap：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--仅仅贴上不一样的部分--&gt;</span><br><span class="line">&lt;resultMap extends=&quot;BaseResultMap&quot; id=&quot;ResultMapWithBLOBs&quot; type=&quot;com.cx.elearnning.model.EduWebsiteProfile&quot;&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">      WARNING - @mbggenerated</span><br><span class="line">      This element is automatically generated by MyBatis Generator, do not modify.</span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;result column=&quot;DESCIPTION&quot; jdbcType=&quot;LONGVARCHAR&quot; property=&quot;desciption&quot; /&gt;</span><br><span class="line">  &lt;/resultMap&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;select id=&quot;selectByExampleWithBLOBs&quot; parameterType=&quot;com.cx.elearnning.model.EduWebsiteProfileExample&quot; resultMap=&quot;ResultMapWithBLOBs&quot;&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">      WARNING - @mbggenerated</span><br><span class="line">      This element is automatically generated by MyBatis Generator, do not modify.</span><br><span class="line">    --&gt;</span><br><span class="line">    select</span><br><span class="line">    &lt;if test=&quot;distinct&quot;&gt;</span><br><span class="line">      distinct</span><br><span class="line">    &lt;/if&gt;</span><br><span class="line">    &lt;include refid=&quot;Base_Column_List&quot; /&gt;</span><br><span class="line">    ,</span><br><span class="line">    &lt;include refid=&quot;Blob_Column_List&quot; /&gt;</span><br><span class="line">    from edu_website_profile</span><br><span class="line">    &lt;if test=&quot;_parameter != null&quot;&gt;</span><br><span class="line">      &lt;include refid=&quot;Example_Where_Clause&quot; /&gt;</span><br><span class="line">    &lt;/if&gt;</span><br><span class="line">    &lt;if test=&quot;orderByClause != null&quot;&gt;</span><br><span class="line">      order by $&#123;orderByClause&#125;</span><br><span class="line">    &lt;/if&gt;</span><br><span class="line">  &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h3 id="html和css建立联系"><a href="#html和css建立联系" class="headerlink" title="html和css建立联系"></a>html和css建立联系</h3><blockquote>
-<p>废话落落了那么多，具体是如何建立联系的呢？</p>
-</blockquote>
-<ol>
-<li>使用link标签将css文件引入进来</li>
-<li>css文件里面定义样式</li>
-<li>html里面使用样式</li>
-</ol>
-<h2 id="css定义样式的方式"><a href="#css定义样式的方式" class="headerlink" title="css定义样式的方式"></a>css定义样式的方式</h2><h3 id="class定义"><a href="#class定义" class="headerlink" title="class定义"></a>class定义</h3><p>.定义法，在css文件使用<code>.样式名{}</code>的形式来定义样式，在html里面则使用<code>class=&#39;样式名&#39;</code>来引入样式</p>
-<h3 id="id定义法"><a href="#id定义法" class="headerlink" title="id定义法"></a>id定义法</h3><p>‘#定义法’，在css文件里面使用<code>#样式名{}</code>的形式来定义样式，在html里面则使用<code>id=&#39;样式名&#39;</code>来引入样式</p>
-<h3 id="标签定义法"><a href="#标签定义法" class="headerlink" title="标签定义法"></a>标签定义法</h3><p>标签名定义法，如<code>div{width:100%}</code>或者<code>input{width:100%}</code>，以html标签直接定义，之后只要通过link将文件成功引入，那么对应的所有的标签都会使用该样式。</p>
-<h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><blockquote>
-<p>一定要记得在样式名中间加空格，非常重要。否则就引用不到。</p>
-</blockquote>
-<p>通过了解上文说的定义样式的方式，相信这里就非常好理解了，举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.a .b .c &#123;</span><br><span class="line">这里表示样式a之下样式b之下样式c的样式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>对应的html应该这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;a&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      其中的元素会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;aaaa&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;b&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">      这里面的元素则不会使用css里面的样式</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>假如，我的css文件这样写，就会全部生效了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.c&#123;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>同样，我可以混合样式的定义方式使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.a #abc&#123;&#125;</span><br><span class="line">.a div&#123;&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="chrome的使用"><a href="#chrome的使用" class="headerlink" title="chrome的使用"></a>chrome的使用</h1><blockquote>
-<p>chrome是html的神器了，可以即时的修改css，查看样式，同时还可以调试脚本，好用的一塌糊涂。</p>
-</blockquote>
-<h2 id="f12"><a href="#f12" class="headerlink" title="f12"></a>f12</h2><p>按一下f12键，一切网页无法遁形：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-64be5096ee89e03e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>介绍一个各个功能栏</p>
-<h3 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h3><p>这里可以查看到所有的元素：<br>鼠标滑到每一个标签，左侧的网页都会高亮显示：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-f84b00a847393331.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>同时我们还可以看到css：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-e238d6aa021569ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>红框框起来的地方为css，当然，我们可以修改css，左侧实时就显示出效果了，比如，我们把float浮动效果去掉：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-5d64f6ffbe1f4c3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>是不是变得不一样了？</p>
-<h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><p>此为控制台，主要打印日志，js日志可以从这里打印出来。报错信息也可以打印出来：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-8f20fd5df3995c13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我修改一下css引用路径：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-ece82cc007deab4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>再打开网页，在控制台就报错了：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-70442524420519e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>报错信息为：无法加载文件，错误在第五行。</p>
-<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p>此为资源展示界面，可以在该界面进行js的调试。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-840d2a639ef6a4dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>比如，我在第七行加一个断点，f5刷新之后，程序会在第七行停止，然后等待我们去执行。<br>左下方的两个常用按钮为跳到下一个断点，和跳到下一行。假如我们定义了两个断点，第一个按钮点击之后就会到下一个断点。第二个按钮则会到下一行。</p>
-<p>简单说这些，希望对初学者有帮助。</p>
+<p>假如此时查询数据或者更新数据的使用仍然使用selectByExample或者updateByExample，得到的text或者blob数据是null。  </p>
+<h1 id="正确做法"><a href="#正确做法" class="headerlink" title="正确做法"></a>正确做法</h1><p>应该使用selectByExampleWithBLOBs或者updateByExampleWithBLOBs这两个方法。</p>
 
       
     </div>
@@ -498,12 +463,12 @@ function setSidebarMarginTop (headerOffset) {
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2017/12/24/css解释及chrome使用详解/">css解释及chrome使用详解</a></p>
+  <p><span>本文标题:</span><a href="/2018/01/15/Spring和MyBatis整合自动生成代码里面text类型坑/">Spring和MyBatis整合自动生成代码里面text类型坑</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
-  <p><span>发布时间:</span>2017年12月24日 - 21:12</p>
-  <p><span>最后更新:</span>2017年12月25日 - 00:12</p>
-  <p><span>原始链接:</span><a href="/2017/12/24/css解释及chrome使用详解/" title="css解释及chrome使用详解">http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2017/12/24/css解释及chrome使用详解/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年01月15日 - 18:01</p>
+  <p><span>最后更新:</span>2018年01月15日 - 18:01</p>
+  <p><span>原始链接:</span><a href="/2018/01/15/Spring和MyBatis整合自动生成代码里面text类型坑/" title="Spring和MyBatis整合自动生成代码里面text类型坑">http://wangjianlin1989.top/2018/01/15/Spring和MyBatis整合自动生成代码里面text类型坑/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/01/15/Spring和MyBatis整合自动生成代码里面text类型坑/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -562,9 +527,11 @@ function setSidebarMarginTop (headerOffset) {
       
         <div class="post-tags">
           
-            <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+            <a href="/tags/spring/" rel="tag"><i class="fa fa-tag"></i> spring</a>
           
-            <a href="/tags/Chrome/" rel="tag"><i class="fa fa-tag"></i> Chrome</a>
+            <a href="/tags/mybatis/" rel="tag"><i class="fa fa-tag"></i> mybatis</a>
+          
+            <a href="/tags/自动生成代码/" rel="tag"><i class="fa fa-tag"></i> 自动生成代码</a>
           
         </div>
       
@@ -577,8 +544,8 @@ function setSidebarMarginTop (headerOffset) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/24/小王子的眼泪/" rel="next" title="小王子的眼泪">
-                <i class="fa fa-chevron-left"></i> 小王子的眼泪
+              <a href="/2018/01/14/java扫盲（二）说equals和双等/" rel="next" title="java扫盲（二）说equals和双等">
+                <i class="fa fa-chevron-left"></i> java扫盲（二）说equals和双等
               </a>
             
           </div>
@@ -586,10 +553,6 @@ function setSidebarMarginTop (headerOffset) {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/26/intellijidea常用maven命令/" rel="prev" title="intellijidea常用maven命令">
-                intellijidea常用maven命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -752,7 +715,7 @@ function setSidebarMarginTop (headerOffset) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS解释"><span class="nav-number">1.</span> <span class="nav-text"><a href="#CSS&#x89E3;&#x91CA;" class="headerlink" title="CSS&#x89E3;&#x91CA;"></a>CSS&#x89E3;&#x91CA;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#html和css是如何建立联系的？"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#html&#x548C;css&#x662F;&#x5982;&#x4F55;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x7684;&#xFF1F;" class="headerlink" title="html&#x548C;css&#x662F;&#x5982;&#x4F55;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x7684;&#xFF1F;"></a>html&#x548C;css&#x662F;&#x5982;&#x4F55;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x7684;&#xFF1F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#css文件不是必须的。"><span class="nav-number">1.1.1.</span> <span class="nav-text"><a href="#css&#x6587;&#x4EF6;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;" class="headerlink" title="css&#x6587;&#x4EF6;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;"></a>css&#x6587;&#x4EF6;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用css文件的优点"><span class="nav-number">1.1.2.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;css&#x6587;&#x4EF6;&#x7684;&#x4F18;&#x70B9;" class="headerlink" title="&#x4F7F;&#x7528;css&#x6587;&#x4EF6;&#x7684;&#x4F18;&#x70B9;"></a>&#x4F7F;&#x7528;css&#x6587;&#x4EF6;&#x7684;&#x4F18;&#x70B9;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html和css建立联系"><span class="nav-number">1.1.3.</span> <span class="nav-text"><a href="#html&#x548C;css&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;" class="headerlink" title="html&#x548C;css&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;"></a>html&#x548C;css&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css定义样式的方式"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#css&#x5B9A;&#x4E49;&#x6837;&#x5F0F;&#x7684;&#x65B9;&#x5F0F;" class="headerlink" title="css&#x5B9A;&#x4E49;&#x6837;&#x5F0F;&#x7684;&#x65B9;&#x5F0F;"></a>css&#x5B9A;&#x4E49;&#x6837;&#x5F0F;&#x7684;&#x65B9;&#x5F0F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#class定义"><span class="nav-number">1.2.1.</span> <span class="nav-text"><a href="#class&#x5B9A;&#x4E49;" class="headerlink" title="class&#x5B9A;&#x4E49;"></a>class&#x5B9A;&#x4E49;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id定义法"><span class="nav-number">1.2.2.</span> <span class="nav-text"><a href="#id&#x5B9A;&#x4E49;&#x6CD5;" class="headerlink" title="id&#x5B9A;&#x4E49;&#x6CD5;"></a>id&#x5B9A;&#x4E49;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签定义法"><span class="nav-number">1.2.3.</span> <span class="nav-text"><a href="#&#x6807;&#x7B7E;&#x5B9A;&#x4E49;&#x6CD5;" class="headerlink" title="&#x6807;&#x7B7E;&#x5B9A;&#x4E49;&#x6CD5;"></a>&#x6807;&#x7B7E;&#x5B9A;&#x4E49;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签选择器"><span class="nav-number">1.2.4.</span> <span class="nav-text"><a href="#&#x6807;&#x7B7E;&#x9009;&#x62E9;&#x5668;" class="headerlink" title="&#x6807;&#x7B7E;&#x9009;&#x62E9;&#x5668;"></a>&#x6807;&#x7B7E;&#x9009;&#x62E9;&#x5668;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chrome的使用"><span class="nav-number">2.</span> <span class="nav-text"><a href="#chrome&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="chrome&#x7684;&#x4F7F;&#x7528;"></a>chrome&#x7684;&#x4F7F;&#x7528;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#f12"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#f12" class="headerlink" title="f12"></a>f12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Elements"><span class="nav-number">2.1.1.</span> <span class="nav-text"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Console"><span class="nav-number">2.1.2.</span> <span class="nav-text"><a href="#Console" class="headerlink" title="Console"></a>Console</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source"><span class="nav-number">2.1.3.</span> <span class="nav-text"><a href="#Source" class="headerlink" title="Source"></a>Source</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x95EE;&#x9898;&#x63CF;&#x8FF0;" class="headerlink" title="&#x95EE;&#x9898;&#x63CF;&#x8FF0;"></a>&#x95EE;&#x9898;&#x63CF;&#x8FF0;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正确做法"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6B63;&#x786E;&#x505A;&#x6CD5;" class="headerlink" title="&#x6B63;&#x786E;&#x505A;&#x6CD5;"></a>&#x6B63;&#x786E;&#x505A;&#x6CD5;</span></a></li></ol></div>
             
 
           </div>

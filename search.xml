@@ -3,6 +3,42 @@
   
     
     <entry>
+      <title><![CDATA[Spring和MyBatis整合自动生成代码里面text类型坑]]></title>
+      <url>/2018/01/15/Spring%E5%92%8CMyBatis%E6%95%B4%E5%90%88%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E9%87%8C%E9%9D%A2text%E7%B1%BB%E5%9E%8B%E5%9D%91/</url>
+      <content type="html"><![CDATA[<p>Spring和MyBatis整合以后，使用自动生成代码工具生成dao和mapper配置文件，生成步骤如下（以Intelli idea为例）。</p>
+<ol>
+<li><p>编写生成代码配置文件generatorConfig.xml。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE generatorConfiguration</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line">    &lt;classPathEntry location=&quot;D:\dev\maven\repository\mysql\mysql-connector-java\5.1.39\mysql-connector-java-5.1.39.jar&quot;/&gt;</span><br><span class="line">    &lt;context id=&quot;DB2Tables&quot; defaultModelType=&quot;flat&quot; targetRuntime=&quot;MyBatis3&quot;&gt;</span><br><span class="line">        &lt;commentGenerator&gt;</span><br><span class="line">            &lt;property name=&quot;suppressDate&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;!-- 是否去除自动生成的注释 true：是 ： false:否 --&gt;</span><br><span class="line">            &lt;property name=&quot;suppressAllComments&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;/commentGenerator&gt;</span><br><span class="line">        &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot;</span><br><span class="line">                        connectionURL=&quot;jdbc:mysql://localhost:3306/mycollege?characterEncoding=utf-8&quot;</span><br><span class="line">                        userId=&quot;root&quot;</span><br><span class="line">                        password=&quot;root&quot;&gt;</span><br><span class="line">        &lt;/jdbcConnection&gt;</span><br><span class="line"></span><br><span class="line">        &lt;javaTypeResolver&gt;</span><br><span class="line">            &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;/javaTypeResolver&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;!-- 生成模型的包名和位置  --&gt;</span><br><span class="line">        &lt;javaModelGenerator targetPackage=&quot;com.cx.elearnning.model&quot;</span><br><span class="line">                            targetProject=&quot;src/main/java&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;property name=&quot;trimStrings&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/javaModelGenerator&gt;</span><br><span class="line">        &lt;!-- generate xml --&gt;</span><br><span class="line">        &lt;sqlMapGenerator targetPackage=&quot;/&quot;</span><br><span class="line">                         targetProject=&quot;src/main/resources/mapper&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/sqlMapGenerator&gt;</span><br><span class="line">        &lt;!-- generate Mapper --&gt;</span><br><span class="line">        &lt;javaClientGenerator type=&quot;XMLMAPPER&quot; targetPackage=&quot;com.cx.elearnning.dao&quot;</span><br><span class="line">                             targetProject=&quot;src/main/java&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/javaClientGenerator&gt;</span><br><span class="line">      &lt;!--需要自动生成的表名和对应的model名--&gt;</span><br><span class="line">        &lt;table tableName=&quot;sys_user&quot; domainObjectName=&quot;SysUser&quot;&gt;&lt;/table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;/context&gt;</span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置如下maven运行命令。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-beb480ae437a803a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="maven运行命令.png"></p>
+</li>
+<li>运行generatorcode即可。<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1>假如数据库表里面存在text或者blob字段。自动生成的数据库配置文件如下，会多出几个以withBlobs结尾的方法和resultMap：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--仅仅贴上不一样的部分--&gt;</span><br><span class="line">&lt;resultMap extends=&quot;BaseResultMap&quot; id=&quot;ResultMapWithBLOBs&quot; type=&quot;com.cx.elearnning.model.EduWebsiteProfile&quot;&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">      WARNING - @mbggenerated</span><br><span class="line">      This element is automatically generated by MyBatis Generator, do not modify.</span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;result column=&quot;DESCIPTION&quot; jdbcType=&quot;LONGVARCHAR&quot; property=&quot;desciption&quot; /&gt;</span><br><span class="line">  &lt;/resultMap&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;select id=&quot;selectByExampleWithBLOBs&quot; parameterType=&quot;com.cx.elearnning.model.EduWebsiteProfileExample&quot; resultMap=&quot;ResultMapWithBLOBs&quot;&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">      WARNING - @mbggenerated</span><br><span class="line">      This element is automatically generated by MyBatis Generator, do not modify.</span><br><span class="line">    --&gt;</span><br><span class="line">    select</span><br><span class="line">    &lt;if test=&quot;distinct&quot;&gt;</span><br><span class="line">      distinct</span><br><span class="line">    &lt;/if&gt;</span><br><span class="line">    &lt;include refid=&quot;Base_Column_List&quot; /&gt;</span><br><span class="line">    ,</span><br><span class="line">    &lt;include refid=&quot;Blob_Column_List&quot; /&gt;</span><br><span class="line">    from edu_website_profile</span><br><span class="line">    &lt;if test=&quot;_parameter != null&quot;&gt;</span><br><span class="line">      &lt;include refid=&quot;Example_Where_Clause&quot; /&gt;</span><br><span class="line">    &lt;/if&gt;</span><br><span class="line">    &lt;if test=&quot;orderByClause != null&quot;&gt;</span><br><span class="line">      order by $&#123;orderByClause&#125;</span><br><span class="line">    &lt;/if&gt;</span><br><span class="line">  &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>假如此时查询数据或者更新数据的使用仍然使用selectByExample或者updateByExample，得到的text或者blob数据是null。  </p>
+<h1 id="正确做法"><a href="#正确做法" class="headerlink" title="正确做法"></a>正确做法</h1><p>应该使用selectByExampleWithBLOBs或者updateByExampleWithBLOBs这两个方法。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> spring </tag>
+            
+            <tag> mybatis </tag>
+            
+            <tag> 自动生成代码 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[java扫盲（二）说equals和双等]]></title>
       <url>/2018/01/14/java%E6%89%AB%E7%9B%B2%EF%BC%88%E4%BA%8C%EF%BC%89%E8%AF%B4equals%E5%92%8C%E5%8F%8C%E7%AD%89/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -111,13 +147,13 @@
         
         <tags>
             
-            <tag> 注解 </tag>
-            
             <tag> spring </tag>
             
             <tag> autowired </tag>
             
             <tag> resource </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
@@ -144,9 +180,9 @@
         
         <tags>
             
-            <tag> springmvc </tag>
-            
             <tag> spring </tag>
+            
+            <tag> springmvc </tag>
             
         </tags>
         
@@ -293,11 +329,11 @@
         
         <tags>
             
+            <tag> 注解 </tag>
+            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         

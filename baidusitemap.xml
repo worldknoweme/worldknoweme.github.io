@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.wangjianlin1989.top/2018/01/15/Spring%E5%92%8CMyBatis%E6%95%B4%E5%90%88%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E9%87%8C%E9%9D%A2text%E7%B1%BB%E5%9E%8B%E5%9D%91/</loc>
+    <lastmod>2018-01-15T10:11:59.676Z</lastmod>
+    <data>
+        <display>
+        <title>Spring和MyBatis整合自动生成代码里面text类型坑</title>
+        <pubTime>2018-01-15T10:10:59.000Z</pubTime>
+        
+        <tag>spring</tag>
+         
+        <tag>mybatis</tag>
+         
+        <tag>自动生成代码</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://wangjianlin1989.top/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.wangjianlin1989.top/2018/01/14/java%E6%89%AB%E7%9B%B2%EF%BC%88%E4%BA%8C%EF%BC%89%E8%AF%B4equals%E5%92%8C%E5%8F%8C%E7%AD%89/</loc>
     <lastmod>2018-01-14T05:56:36.990Z</lastmod>
     <data>
@@ -57,13 +81,13 @@
         <title>spring中autowired和resource注解的区别</title>
         <pubTime>2018-01-10T08:34:10.000Z</pubTime>
         
-        <tag>注解</tag>
-         
         <tag>spring</tag>
          
         <tag>autowired</tag>
          
         <tag>resource</tag>
+         
+        <tag>注解</tag>
          
          
            
@@ -83,9 +107,9 @@
         <title>spring和springmvc的区别</title>
         <pubTime>2018-01-10T08:14:33.000Z</pubTime>
         
-        <tag>springmvc</tag>
-         
         <tag>spring</tag>
+         
+        <tag>springmvc</tag>
          
          
            
@@ -195,11 +219,11 @@
         <title>springmvc完全注解+sitemesh拦截</title>
         <pubTime>2018-01-08T10:21:41.000Z</pubTime>
         
+        <tag>注解</tag>
+         
         <tag>springmvc</tag>
          
         <tag>sitemesh</tag>
-         
-        <tag>注解</tag>
          
          
            
