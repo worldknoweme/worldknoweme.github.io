@@ -3,6 +3,56 @@
   
     
     <entry>
+      <title><![CDATA[Thymeleaf中js调取变量、模板化及静态资源拦截]]></title>
+      <url>/2018/01/16/Thymeleaf%E4%B8%ADjs%E8%B0%83%E5%8F%96%E5%8F%98%E9%87%8F%E3%80%81%E6%A8%A1%E6%9D%BF%E5%8C%96%E5%8F%8A%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%8B%A6%E6%88%AA/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>公司项目，使用springboot开发，今天在后台与前台通讯过程中，发现几个问题，做简单整理，加深一下印象。</p>
+</blockquote>
+<h1 id="js调取变量"><a href="#js调取变量" class="headerlink" title="js调取变量"></a>js调取变量</h1><p>后台返回变量之后，在前端进行接收，之后需要在js里面对该变量继续处理，如何在js里面进行变量的接收呢？</p>
+<ul>
+<li>使用th:inline属性进行javascript的标记。</li>
+<li>使用如下方式进行变量数据接收：[[${example}]]</li>
+</ul>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &lt;script th:inline=&quot;javascript&quot;&gt;</span><br><span class="line">        var message=[[$&#123;error&#125;]];</span><br><span class="line">        var code=[[$&#123;code&#125;]];</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：<br>在使用script的标签的时候，一定要使用th:inline属性进行标记，否则不会引用到。</p>
+<h1 id="静态资源路径"><a href="#静态资源路径" class="headerlink" title="静态资源路径"></a>静态资源路径</h1><blockquote>
+<p>由于默认springmvc对所有的请求都做了拦截。因此，当我们访问一个本地静态资源的话，springmvc拦截器依旧会将请求拦截到。从而造成数据的访问失败。很显然，这不是我们希望的结果。  </p>
+</blockquote>
+<p>万幸的是，早在springmvc的时候就spring团队就已经给我们提供了方案。即—在配置的时候将静态资源的请求进行重新定位。两步走：  </p>
+<ol>
+<li>继承WebMvcConfigurerAdapter类。</li>
+<li>重写addResourceHandlers方法。  </li>
+</ol>
+<p>在springboot里面怎么去设置呢？其实是一样的，不过，由于springboot完全基于注解，无法从web.xml里面进行配置，只能新建配置类。如下为我的配置类，仅供参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class WebConfiguration extends WebMvcConfigurerAdapter&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void addResourceHandlers(ResourceHandlerRegistry registry) &#123;</span><br><span class="line">        registry.addResourceHandler(&quot;/admin/static/**&quot;).addResourceLocations(&quot;classpath:/static/&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>注意，需要加入Configuration注解，告诉spring框架这是一个配置类。<br>如上代码表示，假如收到以admin/static开头的url请求，会将该请求定位到classess/static文件夹。</p>
+<h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><p>我们在使用jsp编写前端页面的时候，会采用分模块的形式，将一个页面里面重复的头和尾部代码提取出来。使用include标签将该页面进行引入，这样做是整个页面的后期修改和完善更加的灵活。那么，对于Thymeleaf而言，存在这种神器吗？  </p>
+<p>答案当然是肯定的。  </p>
+<ol>
+<li>使用th:fragment标签进行模板的定义</li>
+<li>使用th:include标签进行模板的引入。</li>
+</ol>
+<p>示例代码如下：<br>mainfragment.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div th:fragment=&quot;top&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;chl-poster simple&quot; id=&quot;header&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>下面进行该模板的引入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div th:include=&quot;mainfragment ::nav&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中，mainfragment 为引入文件名，nav为模板名。<br>需要注意：文件名需要带路径，假如mainfragment 存在上级文件夹，将文件夹路径全部写入才行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div th:include=&quot;base/mainfragment ::nav&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Thymeleaf </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Spring和MyBatis整合自动生成代码里面text类型坑]]></title>
       <url>/2018/01/15/Spring%E5%92%8CMyBatis%E6%95%B4%E5%90%88%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E9%87%8C%E9%9D%A2text%E7%B1%BB%E5%9E%8B%E5%9D%91/</url>
       <content type="html"><![CDATA[<p>Spring和MyBatis整合以后，使用自动生成代码工具生成dao和mapper配置文件，生成步骤如下（以Intelli idea为例）。</p>
@@ -149,11 +199,11 @@
             
             <tag> spring </tag>
             
+            <tag> 注解 </tag>
+            
             <tag> autowired </tag>
             
             <tag> resource </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         
@@ -329,11 +379,11 @@
         
         <tags>
             
-            <tag> 注解 </tag>
-            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
