@@ -4,6 +4,51 @@
 
     
   <url>
+    <loc>http://www.wangjianlin1989.top/2018/01/17/bootstrap%E7%9A%84toggles%E5%BC%80%E5%85%B3%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2018-01-17T08:56:08.996Z</lastmod>
+    <data>
+        <display>
+        <title>bootstrap的toggles开关的使用</title>
+        <pubTime>2018-01-17T08:52:59.000Z</pubTime>
+        
+        <tag>bootstrap</tag>
+         
+        <tag>toggles</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://wangjianlin1989.top/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.wangjianlin1989.top/2018/01/17/springboot%E6%95%B4%E5%90%88EHCache/</loc>
+    <lastmod>2018-01-17T08:55:22.511Z</lastmod>
+    <data>
+        <display>
+        <title>springboot整合EHCache</title>
+        <pubTime>2018-01-17T08:52:52.000Z</pubTime>
+        
+        <tag>springboot</tag>
+         
+        <tag>EHCache</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://wangjianlin1989.top/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://www.wangjianlin1989.top/2018/01/17/%E6%B5%85%E8%B0%88bootstrapvalidator-%E5%9F%BA%E4%BA%8EThymeleaf/</loc>
     <lastmod>2018-01-17T01:06:47.002Z</lastmod>
     <data>
@@ -125,11 +170,11 @@
         
         <tag>spring</tag>
          
-        <tag>注解</tag>
-         
         <tag>autowired</tag>
          
         <tag>resource</tag>
+         
+        <tag>注解</tag>
          
          
            
@@ -261,11 +306,11 @@
         <title>springmvc完全注解+sitemesh拦截</title>
         <pubTime>2018-01-08T10:21:41.000Z</pubTime>
         
+        <tag>注解</tag>
+         
         <tag>springmvc</tag>
          
         <tag>sitemesh</tag>
-         
-        <tag>注解</tag>
          
          
            
@@ -694,7 +739,6 @@
     </data>
     </url>
 
-    
     
     
 </urlset>
