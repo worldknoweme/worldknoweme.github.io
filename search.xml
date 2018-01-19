@@ -3,6 +3,65 @@
   
     
     <entry>
+      <title><![CDATA[jquery+ajaxform+springboot控件实现数据更新操作]]></title>
+      <url>/2018/01/19/jquery-ajaxform-springboot%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C/</url>
+      <content type="html"><![CDATA[<h1 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h1><p>使用springboot架构在如下图所示的界面布局中，实现数据的保存或者更新，务必需要提交到后台，如何进行成功或失败的提示呢？如果使用传统的springmvc的模式，势必要传一个页面给前端，这个页面仅仅是提示操作是否成功了！提示之后还得更新一下数据，就好比我们浏览某些网站的时候给出的一些提示<strong>操作成功，5秒后返回</strong>。<br>比较傻，客户体验也比较差劲。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-3ed542e6bb3886fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="改造历程"><a href="#改造历程" class="headerlink" title="改造历程"></a>改造历程</h1><p>使用ajax能否解决上述的问题呢？<br>答案是肯定的，点击保存之后，一个ajax请求到后台，使用ResponseBody标签，限制返回的仅仅是数据。然后根据返回的数据给出相应的提示信息就可以了。<br>传统的ajax请求数据，需要将form里面的数据重组，全部放到我们的请求体里面。如下代码所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  type: &apos;POST&apos;,</span><br><span class="line">  url: url,</span><br><span class="line">  data: data,</span><br><span class="line">  success: success,</span><br><span class="line">  dataType: dataType</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>如果，我提交的form数据比较多的话，那么data就相对比较庞大了。代码比较臃肿。同时，form表单也丧失了其存在的意义了。<br>有没有一种比较优雅的方式实现form表单的ajax提交呢？当然。<br>jquery的ajaxform插件是一个比较不错的选择。  </p>
+<h1 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h1><ul>
+<li>第一步。当然是引入我们强大的插件了。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;static/assets/js/jquery.form.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>该js下载，我提供一下github的地址吧：<a href="https://github.com/jquery-form/form。" target="_blank" rel="noopener">https://github.com/jquery-form/form。</a></p>
+<ul>
+<li>第二步。在我们想要发送请求的地方进行ajax+form请求的发送。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function insert() &#123;</span><br><span class="line">               var options = &#123;</span><br><span class="line">                   // target:        &apos;#output1&apos;,   // 用服务器返回的数据 更新 id为output1的内容.</span><br><span class="line">                   // beforeSubmit:  showRequest,  // 提交前</span><br><span class="line">                   success:       showResponse,  // 提交后</span><br><span class="line">                   //另外的一些属性:</span><br><span class="line">                   //url:       url         // 默认是form的action，如果写的话，会覆盖from的action.</span><br><span class="line">                   //type:      type        // 默认是form的method，如果写的话，会覆盖from的method.(&apos;get&apos; or &apos;post&apos;).</span><br><span class="line">                   //dataType:  null        // &apos;xml&apos;, &apos;script&apos;, or &apos;json&apos; (接受服务端返回的类型.)</span><br><span class="line">                   //clearForm: true        // 成功提交后，清除所有的表单元素的值.</span><br><span class="line">                   resetForm: false        // 成功提交后，重置所有的表单元素的值.</span><br><span class="line">                   //由于某种原因,提交陷入无限等待之中,timeout参数就是用来限制请求的时间,</span><br><span class="line">                   //当请求大于3秒后，跳出请求.</span><br><span class="line">                   //timeout:   3000</span><br><span class="line">               &#125;;</span><br><span class="line"></span><br><span class="line">               //&apos;ajaxForm&apos; 方式的表单 .</span><br><span class="line">               $(&apos;#baseForm&apos;).ajaxSubmit(options);</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>处理一下提交后返回的方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//  提交后</span><br><span class="line">          function showResponse(responseText, statusText)  &#123;</span><br><span class="line">              alert(&apos;状态: &apos; + statusText + &apos;\n 返回的内容是: \n&apos; + responseText);</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>后台实现代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/basicSave&quot;)</span><br><span class="line">   @ResponseBody</span><br><span class="line">   public String BasicSave(PointInfo pi)&#123;</span><br><span class="line">       if(!pi.getSaddress().equals(&quot;&quot;))&#123;</span><br><span class="line">           pi.setType(&quot;1&quot;);</span><br><span class="line">       &#125;else&#123;</span><br><span class="line">           pi.setType(&quot;0&quot;);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       int newId = pointInfoService.saveorupdate(pi);</span><br><span class="line">       return newId+&quot;&quot;;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>逻辑自行定义</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>提交的时候一定要使用ajaxSubmit方法</li>
+<li>提交的action，请求方式（post还是get）、dataType（json、xml）等默认都采用的form里面的数据，如果在参数里面进行了修改，那么就会覆盖掉。</li>
+</ul>
+<h1 id="后续研究"><a href="#后续研究" class="headerlink" title="后续研究"></a>后续研究</h1><h2 id="关于提示框"><a href="#关于提示框" class="headerlink" title="关于提示框"></a>关于提示框</h2><p>使用alert？我费尽心思用上了bootstrap，你这里搞一个alert出来，简直就是往一盘美味里面吐唾沫。有没有美观一点的提示框？当然，答案是肯定的！<br><strong>使用notifications插件来完成提示框的美化</strong><br>先上个效果图：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-c272e6161508a982.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ul>
+<li>导入notifications所需js和css</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &lt;script src=&quot;static/assets/plugins/notifyjs/dist/notify.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;static/assets/plugins/notifications/notify-metro.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;static/assets/plugins/notifications/notifications.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;link href=&quot;static/assets/plugins/notifications/notification.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>调用接口即可</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.Notification.notify(&apos;success&apos;,&apos;top center&apos;, &apos;温馨提示&apos;, &apos;保存成功！&apos;);</span><br></pre></td></tr></table></figure>
+<p>完毕！实现了jquery+ajaxform的表单提交过程。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> jquery </tag>
+            
+            <tag> ajaxform </tag>
+            
+            <tag> springboot </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[bootstrap的toggles开关的使用]]></title>
       <url>/2018/01/17/bootstrap%E7%9A%84toggles%E5%BC%80%E5%85%B3%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<blockquote>
