@@ -3,6 +3,60 @@
   
     
     <entry>
+      <title><![CDATA[Springboot里面如何定义拦截器]]></title>
+      <url>/2018/01/25/Springboot%E9%87%8C%E9%9D%A2%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E6%8B%A6%E6%88%AA%E5%99%A8/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>一下子转入springboot的怀抱之后，对于之前通过xml进行的一些配置。转成完全基于注解式，可能都有些不习惯吧。此次面对一个这样的需求，计划将公用的基础信息进行查询，可以直接给页面使用。</p>
+</blockquote>
+<h1 id="需求介绍"><a href="#需求介绍" class="headerlink" title="需求介绍"></a>需求介绍</h1><p>页面使用的Thymeleaf框架，使用框架的模板，将整体页面布局进行拆分。其中，页面头作为公用的模板引入到了每一个页面。页面里面使用Thymeleaf标签进行后台动态数据的取值。这样做就会产生一个问题：即动态数据变量如何每次都获取到值？</p>
+<p>总结到如下两种解决方案：</p>
+<ol>
+<li>使用缓存技术。之前写过一篇springboot和Ehcache集成的文章。<a href="https://www.jianshu.com/p/05f3ede0b389" target="_blank" rel="noopener">springboot整合EHCache</a>，可以参考该文章。但是，这样的话需要每一次都进行缓存的取值，比较繁琐。上次说过，使用springboot的缓存技术去查询，定义拦截器，然后每次都去查询数据库（会自动识别，第一次才会查询数据库，之后不再查询数据库）。但是，无论这种方式如何去优化，总之都要进行缓存的取值。</li>
+<li>使用拦截器拦截，之后存入servlet的attribute。这样的话，公用的Thymeleaf模板直接去servlet下面取值就好了。</li>
+</ol>
+<blockquote>
+<p>相对于第一种方案，第二种比较简洁，不必每次都去查询。可以说是，一次拦截，终身受益。针对于第二种方案，下面重点介绍一下，说一下整体的实现过程。</p>
+</blockquote>
+<h1 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h1><h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>实现思路很简单，定义拦截器，拦截我们制定的请求。之后将数据存入request。页面直接从request里面取值。</p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ul>
+<li>定义拦截器</li>
+</ul>
+<p>这个不必多说，继承HandlerInterceptorAdapter，之后重写preHandle即可。代码如下以供参考：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 网站信息拦截器，将网站的基础信息进行拦截</span><br><span class="line"> */</span><br><span class="line">@Component</span><br><span class="line">public class LimitIntercepterForWebsite extends HandlerInterceptorAdapter&#123;</span><br><span class="line">    Logger logger = LoggerFactory.getLogger(LimitIntercepterForWebsite.class);</span><br><span class="line">    @Autowired</span><br><span class="line">    private EduWebsiteProfileService eduWebsiteProfileService;</span><br><span class="line">    @Autowired</span><br><span class="line">    private EduWebsiteNavigateService eduWebsiteNavigateService;</span><br><span class="line">    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception &#123;</span><br><span class="line">        super.afterCompletion(request, response, handler, ex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception &#123;</span><br><span class="line">        super.postHandle(request, response, handler, modelAndView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception &#123;</span><br><span class="line">        //获取配置信息</span><br><span class="line">        Map&lt;String,Object&gt; websitemap = eduWebsiteProfileService.getWebsiteProfileByType(&quot;web&quot;);</span><br><span class="line">        request.setAttribute(&quot;websitemap&quot;,websitemap);</span><br><span class="line">        Map&lt;String,Object&gt; logomap = eduWebsiteProfileService.getWebsiteProfileByType(&quot;logo&quot;);</span><br><span class="line">        request.setAttribute(&quot;logomap&quot;,logomap);</span><br><span class="line">        Map&lt;String, Object&gt; navigateMap =  eduWebsiteNavigateService.getWebNavigate();</span><br><span class="line">        request.setAttribute(&quot;navigateList&quot;,navigateMap.get(&quot;INDEX&quot;));</span><br><span class="line">        return super.preHandle(request, response, handler);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意：上面定义的拦截器，需要注解为component组件</strong></p>
+<ul>
+<li>注解配置该拦截器</li>
+</ul>
+<p>这里，需要在配置类里面进行拦截器的配置，配置类定义为Configuration，同时继承WebMvcConfigurerAdapter类。重写addInterceptors方法，在该方法里面实现对指定请求的拦截。代码如下以供参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> //添加拦截器</span><br><span class="line">    @Override</span><br><span class="line">    public void addInterceptors(InterceptorRegistry registry) &#123;</span><br><span class="line">        //多个拦截器组成一个拦截器链</span><br><span class="line">        // addPathPatterns用于添加拦截规则</span><br><span class="line">        // excludePathPatterns用户排除拦截</span><br><span class="line">//        super.addInterceptors(registry);</span><br><span class="line">        registry.addInterceptor(limitIntercepterForWebsite()).addPathPatterns(&quot;/**&quot;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>这里对所有的请求实现了拦截</strong></p>
+<ul>
+<li>在Thmeleaf框架对于的html页面，进行request变量的取值。</li>
+</ul>
+<p>使用内置变量httpServletRequest进行取值即可。代码如下以供参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;li th:each=&quot;nav:$&#123;#httpServletRequest.getAttribute(&apos;navigateList&apos;)&#125;&quot;&gt;</span><br><span class="line">                        &lt;a th:href=&quot;$&#123;nav.url&#125;&quot; th:title=&quot;$&#123;nav.name&#125;&quot;&gt;</span><br><span class="line">                            &lt;span th:text=&quot;$&#123;nav.name&#125;&quot;&gt;&lt;/span&gt;</span><br><span class="line">                        &lt;/a&gt;</span><br><span class="line">                    &lt;/li&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>综上，完成了一个在springboot下面拦截器的实现。</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 拦截器 </tag>
+            
+            <tag> springboot </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[jquery+ajaxform+springboot控件实现数据更新操作]]></title>
       <url>/2018/01/19/jquery-ajaxform-springboot%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C/</url>
       <content type="html"><![CDATA[<h1 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h1><p>使用springboot架构在如下图所示的界面布局中，实现数据的保存或者更新，务必需要提交到后台，如何进行成功或失败的提示呢？如果使用传统的springmvc的模式，势必要传一个页面给前端，这个页面仅仅是提示操作是否成功了！提示之后还得更新一下数据，就好比我们浏览某些网站的时候给出的一些提示<strong>操作成功，5秒后返回</strong>。<br>比较傻，客户体验也比较差劲。<br><img src="http://upload-images.jianshu.io/upload_images/9493059-3ed542e6bb3886fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
@@ -51,11 +105,11 @@
         
         <tags>
             
+            <tag> springboot </tag>
+            
             <tag> jquery </tag>
             
             <tag> ajaxform </tag>
-            
-            <tag> springboot </tag>
             
         </tags>
         
