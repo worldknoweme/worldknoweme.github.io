@@ -3,6 +3,63 @@
   
     
     <entry>
+      <title><![CDATA[学会jquery插件开发]]></title>
+      <url>/2018/01/29/%E5%AD%A6%E4%BC%9Ajquery%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>JQUERY插件是很多jquery开发者耳熟能详的字眼。太熟悉了！原因无他，百度的次数太多了。他解决了我们日常开发中的很多痛点。写不出漂亮的date控件怎么办？jquery插件！写不出好用的分页组件怎么办？jquery插件！图片放大器？视频播放器？统统可以jquery插件！</p>
+</blockquote>
+<h1 id="何为JQUERY插件？"><a href="#何为JQUERY插件？" class="headerlink" title="何为JQUERY插件？"></a>何为JQUERY插件？</h1><p>本着前人种树后人乘凉的原则，本着linux创造轮子的核心思想。jquery插件的思想应用而生。简单点说，就是代码重复利用。</p>
+<h1 id="何为优秀的JQUERY插件？"><a href="#何为优秀的JQUERY插件？" class="headerlink" title="何为优秀的JQUERY插件？"></a>何为优秀的JQUERY插件？</h1><ul>
+<li>低耦合<br>即尽可能的对项目代码不产生影响，可以独立运行。</li>
+<li>多场景<br>可以适用于不同的场景，高效使用。</li>
+</ul>
+<h1 id="如何写一个JQUERY插件？"><a href="#如何写一个JQUERY插件？" class="headerlink" title="如何写一个JQUERY插件？"></a>如何写一个JQUERY插件？</h1><blockquote>
+<p>我们在享受着使用轮子的便利的权利时，也要尽可能的发挥自己的光和热，创造出轮子。或者去优化一些轮子，让这些轮子质量更好跑的更快。这就要求我们对jquery插件的原理有一定的理解。</p>
+</blockquote>
+<p><strong>本文仅对插件做一些基础的解释，后续如何写一个优秀的插件，还需要各位在实际项目中实际联系，尽可能多的考虑实际情况，创造出优秀的轮子</strong></p>
+<h2 id="简单入门"><a href="#简单入门" class="headerlink" title="简单入门"></a>简单入门</h2><p>编写一个插件非常简单，和我们平时新建一个js方法类似。即：新建js文件，编写js方法，导入js文件，调用js方法。参考如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.fn.changeStyle = function (style) &#123;</span><br><span class="line">    this.css(&quot;color&quot;,style);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上，完成了一个简单js插件的编写。在我们需要使用的地方，直接调取方法即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;.testPlugin&apos;).changeStyle(&apos;red&apos;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>和我们平时所见JS方法有何不同呢？</strong><br>主要的不同在于fn参数。该参数其实是指明我们定义的方法作用于所有jquery对象。所有的jqery对象可以直接使用该方法。为了更好的说明情况，我们来看一下实现上面的功能，普通的JS方法是如何实现的。<br>同样，首先定义一个js方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function (obj,style) &#123;</span><br><span class="line">    obj.css(&quot;color&quot;,style);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后，需要在html页面里面去调取该方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">changeStyle($(&quot;.testPlugin&quot;),&apos;red&apos;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>SO，大家发现不同了吗？</strong></p>
+<p>对，普通的JS方法需要传入操作的jquery对象。而采用fn定义的方法不需要传入操作的jquery对象，因为他定义在了所有的jquery对象上，任何jquery对象都可以使用！</p>
+<h2 id="加入JQUERY特色（链式调用）"><a href="#加入JQUERY特色（链式调用）" class="headerlink" title="加入JQUERY特色（链式调用）"></a>加入JQUERY特色（链式调用）</h2><blockquote>
+<p>jquery之所以效率高，原因之一就是链式调用。何为链式调用？比如：<code>$(&#39;.testPlugin&#39;).addClass(&#39;XX&#39;).val(&#39;XX&#39;).removeClass(&#39;XX&#39;)</code>，感觉是不是很爽？</p>
+</blockquote>
+<p><strong>加入链式调用的方法很简单，直接将对象返回即可</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$.fn.changeStyle = function (style) &#123;</span><br><span class="line">    this.css(&quot;color&quot;,style);</span><br><span class="line">    return this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样，在调用的时候，我们就可以肆意妄为随心所欲了！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;.testPlugin&apos;).changeStyle(&apos;red&apos;).html(&apos;很爽&apos;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="对于-符号的规避"><a href="#对于-符号的规避" class="headerlink" title="对于$符号的规避"></a>对于$符号的规避</h2><p>上述JS，我用肆意妄为来概括。为何呢？因为使用了$来操作属性和变量。大家知道，在jquery里面。$符号是很吊的，几乎可以做任何事情，作用范围也是无限大。<br><strong>那么，问题来了！</strong><br>假如大家都使用$符号来定义插件，会不会引起代码内部的社会恐慌呢？答案是肯定的！假如大家定义的内部属性或者方法都叫做’iamniubi’，作用在了全局$下面，那么不得了了！你去调用该方法的时候，即便你很牛逼，jquery也蒙圈了，因为牛逼的人太多了，不知道去找哪一个好了！如何解决该问题呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(function ($) &#123;</span><br><span class="line">   $.fn.changeStyle = function (style) &#123;</span><br><span class="line">        this.css(&quot;color&quot;,style);</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(jQuery));</span><br></pre></td></tr></table></figure></p>
+<p>OK，使用(function ($) {}(jQuery));将插件代码包裹起来，表示，你定义于$内的属性和方法仅仅作用于该作用域，出了该作用域即无效。<br>你走你的阳关道，我过我的独门。大家同名不同主，互不影响。</p>
+<h2 id="对象传参"><a href="#对象传参" class="headerlink" title="对象传参"></a>对象传参</h2><blockquote>
+<p>上面的插件方法，我们已经传入了一个参数。仅仅是一个参数，假如有无数个参数呢？我可如何是好？在方法里面定义无数个参数吗？当然可以，但是不够聪明！</p>
+</blockquote>
+<p>聪明的做法是怎样的呢？看以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(function ($) &#123;</span><br><span class="line">    $.fn.changeStyle = function (option) &#123;</span><br><span class="line">        this.css(&quot;color&quot;,option.colorStr).css(&quot;fontSize&quot;,option.fontSize+&quot;px&quot;);</span><br><span class="line">        //添加链式调用</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(jQuery));</span><br></pre></td></tr></table></figure></p>
+<p>使用如下方式调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;p&apos;).changeStyle(&#123;colorStr:&quot;red&quot;,fontSize:54&#125;).html(&quot;很好&quot;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>怎么样，是不是聪明了很多？</strong><br>另外，jquery提供了一个很好用的方法：$.extend。怎样？继承！也就是说，我们可以提供默认值啊！可以让使用者不传入任何参数，就可以表现出很漂亮的效果！比如Date插件。我们不需要传入任何样式，即可出现很漂亮的插件效果了！对不对？  </p>
+<p><strong>好的，在上述插件基础上，我再尝试一下升级！</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(function ($) &#123;</span><br><span class="line">    $.fn.changeStyle = function (option) &#123;</span><br><span class="line">        var defaultSetting = &#123; colorStr:&quot;green&quot;,fontSize:182&#125;;</span><br><span class="line">        var setting = $.extend(defaultSetting,option);</span><br><span class="line">        this.css(&quot;color&quot;,setting.colorStr).css(&quot;fontSize&quot;,setting.fontSize+&quot;px&quot;);</span><br><span class="line">        //添加链式调用</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(jQuery));</span><br></pre></td></tr></table></figure></p>
+<p>默认值为绿色，182px字体！然后我使用了$.extend方法，增加了默认属性的赋值！<br><strong>这里有个问题：</strong><br>$.extend(defaultSetting,option)是将option赋值给defaultSetting，最后是<strong>option覆盖defaultSetting</strong>。<br>如此以后，我调用插件的方式如下，可以做到不传参即可实现基本功能：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;p&apos;).changeStyle().html(&quot;这才是最好的效果嘛！&quot;);</span><br></pre></td></tr></table></figure></p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>$.extend方法和$.fn.extend方法都可以用来扩展jQuery功能，通过阅读jQuery源码我们可以发现这两个方法的本质区别，那就是$.extend方法是在jQuery全局对象上扩展方法，$.fn.extend方法是在$选择符选择的jQuery对象上扩展方法。所以扩展jQuery的公共方法一般用$.extend方法，定义插件一般用$.fn.extend方法。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> jquery </tag>
+            
+            <tag> 插件 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Springboot里面如何定义拦截器]]></title>
       <url>/2018/01/25/Springboot%E9%87%8C%E9%9D%A2%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E6%8B%A6%E6%88%AA%E5%99%A8/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -445,11 +502,11 @@
             
             <tag> spring </tag>
             
-            <tag> 注解 </tag>
-            
             <tag> autowired </tag>
             
             <tag> resource </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
@@ -625,11 +682,11 @@
         
         <tags>
             
+            <tag> 注解 </tag>
+            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         
