@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://www.wangjianlin1989.top/2018/01/31/Thymeleaf%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%A1%A8%E6%A0%BC%E5%AF%B9%E4%BA%8ETR%E6%A0%B7%E5%BC%8F/</loc>
+    <lastmod>2018-01-31T08:50:40.828Z</lastmod>
+    <data>
+        <display>
+        <title>Thymeleaf如何控制表格对于TR样式</title>
+        <pubTime>2018-01-31T08:47:48.000Z</pubTime>
+        
+        <tag>Thymeleaf</tag>
+         
+        <tag>表格</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://wangjianlin1989.top/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.wangjianlin1989.top/2018/01/31/MyBatis%E6%8F%92%E5%85%A5%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%EF%BC%88insert%E3%80%81InsertSelective%EF%BC%89/</loc>
+    <lastmod>2018-01-31T08:49:30.970Z</lastmod>
+    <data>
+        <display>
+        <title>MyBatis插入相关问题（insert、InsertSelective）</title>
+        <pubTime>2018-01-31T08:47:34.000Z</pubTime>
+        
+        <tag>insert</tag>
+         
+        <tag>insertSelective</tag>
+         
+        <tag>mybatis插入</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://wangjianlin1989.top/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.wangjianlin1989.top/2018/01/29/%E5%AD%A6%E4%BC%9Ajquery%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2018-01-29T02:52:15.337Z</lastmod>
     <data>
@@ -238,11 +284,11 @@
         
         <tag>spring</tag>
          
+        <tag>注解</tag>
+         
         <tag>autowired</tag>
          
         <tag>resource</tag>
-         
-        <tag>注解</tag>
          
          
            
@@ -374,11 +420,11 @@
         <title>springmvc完全注解+sitemesh拦截</title>
         <pubTime>2018-01-08T10:21:41.000Z</pubTime>
         
-        <tag>注解</tag>
-         
         <tag>springmvc</tag>
          
         <tag>sitemesh</tag>
+         
+        <tag>注解</tag>
          
          
            

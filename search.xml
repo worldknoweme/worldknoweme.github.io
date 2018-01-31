@@ -3,6 +3,72 @@
   
     
     <entry>
+      <title><![CDATA[Thymeleaf如何控制表格对于TR样式]]></title>
+      <url>/2018/01/31/Thymeleaf%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%A1%A8%E6%A0%BC%E5%AF%B9%E4%BA%8ETR%E6%A0%B7%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>首先，吐槽一下。这个问题搞得我很无语。最后有种撞了南墙的感觉。</p>
+</blockquote>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>众所周知，Thymeleaf框架的th:each标签很好用，相较于freemaker而言，更加简练。但是如果遇到，表格对应tr隔行变色的问题，就显得有些力不从心了。<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div th:if=&quot;$&#123;typeList!=null &amp;&amp; typeList.size()&gt;0&#125;&quot;&gt;</span><br><span class="line">  &lt;div th:each=&quot;type,index:$&#123;typeList&#125;&quot; &gt;</span><br><span class="line">  &lt;tr th:if=&quot;$&#123;index.odd&#125;&quot; class=&quot;odd&quot;&gt;</span><br><span class="line">                           &lt;td align=&quot;center&quot; th:text=&quot;$&#123;type.typeId&#125;&quot;&gt;&lt;/td&gt;</span><br><span class="line">                           &lt;td align=&quot;center&quot; th:text=&quot;$&#123;type.typeName&#125;&quot;&gt;&lt;/td&gt;</span><br><span class="line">                           &lt;td align=&quot;center&quot;&gt;</span><br><span class="line">                               &lt;button th:onclick=&quot;&apos;javascript:window.location.href=\&apos;/admin/website/imagesPage?websiteImages.typeId=&apos;+$&#123;type.typeId&#125;+&apos;\&apos;&apos;&quot; class=&quot;ui-state-default ui-corner-all&quot; type=&quot;button&quot;&gt;查看广告图&lt;/button&gt;</span><br><span class="line">                               &lt;button th:onclick=&quot;&apos;javascript:updateType(&apos;+$&#123;type.typeId&#125;+&apos;,this)&apos;&quot; class=&quot;ui-state-default ui-corner-all&quot; type=&quot;button&quot;&gt;修改名称&lt;/button&gt;</span><br><span class="line">                               &lt;button th:onclick=&quot;&apos;javascript:deleteType(&apos;+$&#123;type.typeId&#125;+&apos;)&apos;&quot; class=&quot;ui-state-default ui-corner-all&quot; type=&quot;button&quot;&gt;删除&lt;/button&gt;</span><br><span class="line">                           &lt;/td&gt;</span><br><span class="line">                       &lt;/tr&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> &lt;tr th:unless=&quot;$&#123;index.odd&#125;&quot; class=&quot;odd&quot;&gt;</span><br><span class="line">                           &lt;td align=&quot;center&quot; th:text=&quot;$&#123;type.typeId&#125;&quot;&gt;&lt;/td&gt;</span><br><span class="line">                           &lt;td align=&quot;center&quot; th:text=&quot;$&#123;type.typeName&#125;&quot;&gt;&lt;/td&gt;</span><br><span class="line">                           &lt;td align=&quot;center&quot;&gt;</span><br><span class="line">                               &lt;button th:onclick=&quot;&apos;javascript:window.location.href=\&apos;/admin/website/imagesPage?websiteImages.typeId=&apos;+$&#123;type.typeId&#125;+&apos;\&apos;&apos;&quot; class=&quot;ui-state-default ui-corner-all&quot; type=&quot;button&quot;&gt;查看广告图&lt;/button&gt;</span><br><span class="line">                               &lt;button th:onclick=&quot;&apos;javascript:updateType(&apos;+$&#123;type.typeId&#125;+&apos;,this)&apos;&quot; class=&quot;ui-state-default ui-corner-all&quot; type=&quot;button&quot;&gt;修改名称&lt;/button&gt;</span><br><span class="line">                               &lt;button th:onclick=&quot;&apos;javascript:deleteType(&apos;+$&#123;type.typeId&#125;+&apos;)&apos;&quot; class=&quot;ui-state-default ui-corner-all&quot; type=&quot;button&quot;&gt;删除&lt;/button&gt;</span><br><span class="line">                           &lt;/td&gt;</span><br><span class="line">                       &lt;/tr&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如上代码可以实现隔行变色吗？<br>答案好像不是很乐观。报错了。提示index为null。  </p>
+<h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>分析代码，感觉没有问题。<br>可是，经过尝试，发现：<strong>如果th:each标签搭配tr和td出现的话，必须作用在tr之前，不可加在div上。</strong></p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>将th:each标签加在tr上之后，可以直接取值index，即行状态。然后搭配th:class标签即可实现上述功能。<br>该问题折腾了整整一晚上，完全没想到会有这种操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div th:if=&quot;$&#123;typeList!=null &amp;&amp; typeList.size()&gt;0&#125;&quot;&gt;</span><br><span class="line">                     &lt;tr th:class=&quot;$&#123;index.odd&#125;?&apos;odd&apos;&quot; th:each=&quot;type,index:$&#123;typeList&#125;&quot;&gt;</span><br><span class="line">                         &lt;td align=&quot;center&quot; th:text=&quot;$&#123;type.typeId&#125;&quot;&gt;&lt;/td&gt;</span><br><span class="line">                         &lt;td align=&quot;center&quot; th:text=&quot;$&#123;type.typeName&#125;&quot;&gt;&lt;/td&gt;</span><br><span class="line">                         &lt;td align=&quot;center&quot;&gt;</span><br><span class="line">                             &lt;button th:onclick=&quot;&apos;javascript:window.location.href=\&apos;/admin/website/imagesPage?websiteImages.typeId=&apos;+$&#123;type.typeId&#125;+&apos;\&apos;&apos;&quot; class=&quot;ui-state-default ui-corner-all&quot; type=&quot;button&quot;&gt;查看广告图&lt;/button&gt;</span><br><span class="line">                             &lt;button th:onclick=&quot;&apos;javascript:updateType(&apos;+$&#123;type.typeId&#125;+&apos;,this)&apos;&quot; class=&quot;ui-state-default ui-corner-all&quot; type=&quot;button&quot;&gt;修改名称&lt;/button&gt;</span><br><span class="line">                             &lt;button th:onclick=&quot;&apos;javascript:deleteType(&apos;+$&#123;type.typeId&#125;+&apos;)&apos;&quot; class=&quot;ui-state-default ui-corner-all&quot; type=&quot;button&quot;&gt;删除&lt;/button&gt;</span><br><span class="line">                         &lt;/td&gt;</span><br><span class="line">                     &lt;/tr&gt;</span><br><span class="line">      &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Thymeleaf </tag>
+            
+            <tag> 表格 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[MyBatis插入相关问题（insert、InsertSelective）]]></title>
+      <url>/2018/01/31/MyBatis%E6%8F%92%E5%85%A5%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%EF%BC%88insert%E3%80%81InsertSelective%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="自动生成代码insert和insertSelective的区别"><a href="#自动生成代码insert和insertSelective的区别" class="headerlink" title="自动生成代码insert和insertSelective的区别"></a>自动生成代码insert和insertSelective的区别</h1><p>自动生成的mybatis对应配置文件里面，有两个方法，分别为insert和insertSelective。这两个方法均是插入对象的方法。这里说一下两者的区别。<br>首先看一下两者代码：</p>
+<ul>
+<li><p>insert</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=&quot;insert&quot; parameterType=&quot;com.cx.elearnning.model.SysSubject&quot; &gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">      WARNING - @mbggenerated</span><br><span class="line">      This element is automatically generated by MyBatis Generator, do not modify.</span><br><span class="line">    --&gt;</span><br><span class="line">    insert into sys_subject (SUBJECT_ID, SUBJECT_NAME, STATUS, </span><br><span class="line">      CREATE_TIME, PARENT_ID, sort</span><br><span class="line">      )</span><br><span class="line">    values (#&#123;subjectId,jdbcType=INTEGER&#125;, #&#123;subjectName,jdbcType=VARCHAR&#125;, #&#123;status,jdbcType=BIT&#125;, </span><br><span class="line">      #&#123;createTime,jdbcType=TIMESTAMP&#125;, #&#123;parentId,jdbcType=INTEGER&#125;, #&#123;sort,jdbcType=INTEGER&#125;</span><br><span class="line">      )</span><br><span class="line">  &lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>insertSelective</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=&quot;insertSelective&quot; parameterType=&quot;com.cx.elearnning.model.SysSubject&quot; &gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">      WARNING - @mbggenerated</span><br><span class="line">      This element is automatically generated by MyBatis Generator, do not modify.</span><br><span class="line">    --&gt;</span><br><span class="line">    insert into sys_subject</span><br><span class="line">    &lt;trim prefix=&quot;(&quot; suffix=&quot;)&quot; suffixOverrides=&quot;,&quot; &gt;</span><br><span class="line">      &lt;if test=&quot;subjectId != null&quot; &gt;</span><br><span class="line">        SUBJECT_ID,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;subjectName != null&quot; &gt;</span><br><span class="line">        SUBJECT_NAME,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;status != null&quot; &gt;</span><br><span class="line">        STATUS,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;createTime != null&quot; &gt;</span><br><span class="line">        CREATE_TIME,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;parentId != null&quot; &gt;</span><br><span class="line">        PARENT_ID,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;sort != null&quot; &gt;</span><br><span class="line">        sort,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">    &lt;/trim&gt;</span><br><span class="line">    &lt;trim prefix=&quot;values (&quot; suffix=&quot;)&quot; suffixOverrides=&quot;,&quot; &gt;</span><br><span class="line">      &lt;if test=&quot;subjectId != null&quot; &gt;</span><br><span class="line">        #&#123;subjectId,jdbcType=INTEGER&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;subjectName != null&quot; &gt;</span><br><span class="line">        #&#123;subjectName,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;status != null&quot; &gt;</span><br><span class="line">        #&#123;status,jdbcType=BIT&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;createTime != null&quot; &gt;</span><br><span class="line">        #&#123;createTime,jdbcType=TIMESTAMP&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;parentId != null&quot; &gt;</span><br><span class="line">        #&#123;parentId,jdbcType=INTEGER&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;if test=&quot;sort != null&quot; &gt;</span><br><span class="line">        #&#123;sort,jdbcType=INTEGER&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">    &lt;/trim&gt;</span><br><span class="line">  &lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>分析</strong><br>看完代码大体上就能区分两者的区别了吧？<br>insertSelective对应的sql语句加入了NULL校验，即只会插入数据不为null的字段值。<br>insert则会插入所有字段，会插入null。</p>
+<h1 id="如何在执行插入数据之后返回新增数据的ID（自增）"><a href="#如何在执行插入数据之后返回新增数据的ID（自增）" class="headerlink" title="如何在执行插入数据之后返回新增数据的ID（自增）"></a>如何在执行插入数据之后返回新增数据的ID（自增）</h1><p>这里我们需要使用几个属性，分别为：useGeneratedKeys、keyColumn、keyProperty。<br>上面所说的两个插入方法，均不会返回新增数据的ID。原因就是没有配置这三个属性。  </p>
+<h2 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h2><p>首先，需要配置useGeneratedKeys属性，设置为true。说明将自动生成的主键值进行了获取。<br>之后，设置keyColumn（对应数据表字段）、keyProperty（对应对象属性）。即将自动生成的主键值赋值给那个属性！<br>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=&quot;createSubject&quot; parameterType=&quot;com.cx.elearnning.model.SysSubject&quot; useGeneratedKeys=&quot;true&quot; keyColumn=&quot;SUBJECT_ID&quot; keyProperty=&quot;subjectId&quot;&gt;</span><br><span class="line">        INSERT INTO SYS_SUBJECT (</span><br><span class="line">        &lt;include refid=&quot;sys_subject_columns&quot; /&gt;</span><br><span class="line">        )</span><br><span class="line">        VALUES (</span><br><span class="line">        &lt;include refid=&quot;sys_subject_properties&quot; /&gt;</span><br><span class="line">        )</span><br><span class="line">    &lt;/insert&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>表示将自增值赋值给了sunjectId属性</strong></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> insert </tag>
+            
+            <tag> insertSelective </tag>
+            
+            <tag> mybatis插入 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[学会jquery插件开发]]></title>
       <url>/2018/01/29/%E5%AD%A6%E4%BC%9Ajquery%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -502,11 +568,11 @@
             
             <tag> spring </tag>
             
+            <tag> 注解 </tag>
+            
             <tag> autowired </tag>
             
             <tag> resource </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         
@@ -682,11 +748,11 @@
         
         <tags>
             
-            <tag> 注解 </tag>
-            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
