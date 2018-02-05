@@ -3,6 +3,57 @@
   
     
     <entry>
+      <title><![CDATA[SpringBoot整合UEditor]]></title>
+      <url>/2018/02/05/SpringBoot%E6%95%B4%E5%90%88UEditor/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>当前开发项目涉及到富文本框，了解了不少富文本编辑器之后，最终决定使用度娘的UEditor。原因：功能强大，并且自带适配java后端的图片和视频上传。</p>
+</blockquote>
+<h1 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h1><p>不多说，上一下该项目的地址：<a href="http://ueditor.baidu.com/website/" target="_blank" rel="noopener">http://ueditor.baidu.com/website/</a><br><strong>简书不支持markdown其他站点的外链很遗憾</strong></p>
+<h1 id="整合过程"><a href="#整合过程" class="headerlink" title="整合过程"></a>整合过程</h1><h2 id="后端改造"><a href="#后端改造" class="headerlink" title="后端改造"></a>后端改造</h2><p>因为项目使用的springboot框架，而UEditor对于java后端的支持仅仅是给了一个jsp文件。因此，需要对该文件进行一下处理，修改为面向springboot的统一controller。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@Transactional</span><br><span class="line">@RequestMapping(&quot;/static/common/ueditor/jsp&quot;)</span><br><span class="line">public class JSPController &#123;</span><br><span class="line">    @RequestMapping(&quot;/controller&quot;)</span><br><span class="line">    @ResponseBody</span><br><span class="line">    public void getConfigInfo(HttpServletRequest request,HttpServletResponse response)&#123;</span><br><span class="line">        response.setContentType(&quot;application/json&quot;);</span><br><span class="line">        String rootPath = request.getSession().getServletContext()</span><br><span class="line">                .getRealPath(&quot;/&quot;);</span><br><span class="line">        try &#123;</span><br><span class="line">            String exec = new ActionEnter(request, rootPath).exec();</span><br><span class="line">            PrintWriter writer = response.getWriter();</span><br><span class="line">            writer.write(exec);</span><br><span class="line">            writer.flush();</span><br><span class="line">            writer.close();</span><br><span class="line">        &#125; catch (IOException | JSONException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>如上所述，该项目即支持来自/static/common/ueditor/jsp/controller的上传请求了。</p>
+<h2 id="前端请求"><a href="#前端请求" class="headerlink" title="前端请求"></a>前端请求</h2><p>在前端添加UEditor支持。即：将整个uediotr包进行项目引入，并且在使用该控件的地方进行js的导入。</p>
+<ul>
+<li>项目引入，我的对应代码结构如下：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-7d00396fb8eee3f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码结构.png"></li>
+<li><p>页面引入，引入对应代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; th:src=&quot;@&#123;/static/common/ueditor/ueditor.config.js&#125;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; th:src=&quot;@&#123;/static/common/ueditor/ueditor.all.js&#125;&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实例化UEditor编辑器即可，下面是我的初始化参数，仅做参考。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">//实例化编辑器</span><br><span class="line">	var ue = UE.getEditor(&apos;&apos;+id,&#123;</span><br><span class="line">		toolbars: [</span><br><span class="line">			[</span><br><span class="line">				&apos;fontfamily&apos;, //字体</span><br><span class="line">				&apos;fontsize&apos;, //字号</span><br><span class="line">				&apos;undo&apos;, //撤销</span><br><span class="line">				&apos;redo&apos;, //重做</span><br><span class="line">				&apos;|&apos;,</span><br><span class="line">				&apos;emotion&apos;, //表情</span><br><span class="line">				&apos;forecolor&apos;, //字体颜色</span><br><span class="line">				&apos;backcolor&apos;, //背景色</span><br><span class="line">				&apos;bold&apos;, //加粗</span><br><span class="line">				&apos;underline&apos;, //下划线</span><br><span class="line">				&apos;strikethrough&apos;, //删除线</span><br><span class="line">				&apos;|&apos;,</span><br><span class="line">				&apos;justifyleft&apos;, //居左对齐</span><br><span class="line">				&apos;justifyright&apos;, //居右对齐</span><br><span class="line">				&apos;justifycenter&apos;, //居中对齐</span><br><span class="line">				&apos;|&apos;,</span><br><span class="line">				&apos;link&apos;, //超链接</span><br><span class="line">				&apos;unlink&apos;, //取消链接</span><br><span class="line">				&apos;simpleupload&apos;, //单图上传</span><br><span class="line">				&apos;insertimage&apos;, //多图上传</span><br><span class="line">				//&apos;music&apos;, //音乐</span><br><span class="line">				//&apos;insertvideo&apos;, //视频</span><br><span class="line">				&apos;removeformat&apos;, //清除格式</span><br><span class="line">				&apos;formatmatch&apos;, //格式刷</span><br><span class="line">				&apos;source&apos;, //源代码</span><br><span class="line">			]</span><br><span class="line">		],</span><br><span class="line">		enableAutoSave:false,</span><br><span class="line">		autoHeightEnabled: true,</span><br><span class="line">		autoFloatEnabled: true,</span><br><span class="line">		initialFrameWidth:width,</span><br><span class="line">		initialFrameHeight:height,</span><br><span class="line">		scaleEnabled:true//滚动条</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>此时，访问我们的页面就会看到富文本框了。<br><strong>不过，此时会提示我们后台配置文件出错，无法实现上传功能</strong></p>
+<h2 id="实现上传功能"><a href="#实现上传功能" class="headerlink" title="实现上传功能"></a>实现上传功能</h2><ul>
+<li>修改config.js文件，对应的全局请求路径。该请求是为了获取config.json对应的配置数据。可以在Controller里面直接返回配置信息或者在controller里面进行json文件的读取。我这里使用的是读取配置文件的方式，使用UEditor自带的方法，文章开头已经实现，这里贴一下需要修改的请求：<br><img src="http://upload-images.jianshu.io/upload_images/9493059-00778fe0078d9b6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ul>
+<p>完成以上配置之后，再次加载UEditor的页面，其中上传图片的按钮即可完成图片的上传了。<br><strong>注意：如果开始调试模式，加入断点，测试加载json串的时候。会出现超时错误。暂时没从配置文件里面找到配置字段。所有，这里需要注意，假如一切配置均无问题，但是依然返回后台配置错误的话，可以把断点全部取消掉试一试。</strong></p>
+<p><strong>注意：上传需要加入上传组件，此处使用fileuoload</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;1.3&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用servlet实现上传"><a href="#使用servlet实现上传" class="headerlink" title="使用servlet实现上传"></a>使用servlet实现上传</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 尝试使用servlet来实现UEditor</span><br><span class="line"> *</span><br><span class="line"> * @author OnyWang</span><br><span class="line"> * @create 2018-02-05 2:40</span><br><span class="line"> **/</span><br><span class="line">@WebServlet(name = &quot;UEditorServlet&quot;, urlPatterns = &quot;/static/common/ueditor/UEditor&quot;)</span><br><span class="line">public class UEditorControllerServlet extends HttpServlet &#123;</span><br><span class="line">    @Override</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        request.setCharacterEncoding( &quot;utf-8&quot; );</span><br><span class="line">        response.setHeader(&quot;Content-Type&quot; , &quot;text/html&quot;);</span><br><span class="line">        PrintWriter out = response.getWriter();</span><br><span class="line">        ServletContext application=this.getServletContext();</span><br><span class="line">        String rootPath = application.getRealPath( &quot;/&quot; );</span><br><span class="line"></span><br><span class="line">        String action = request.getParameter(&quot;action&quot;);</span><br><span class="line">        String result = new ActionEnter( request, rootPath+&quot;WEB-INF/classes&quot; ).exec();</span><br><span class="line">        if( action!=null &amp;&amp;</span><br><span class="line">                (action.equals(&quot;listfile&quot;) || action.equals(&quot;listimage&quot;) ) )&#123;</span><br><span class="line">            rootPath = rootPath.replace(&quot;\\&quot;, &quot;/&quot;);</span><br><span class="line">            result = result.replaceAll(rootPath, &quot;/&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        out.write( result );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">        doPost(req, resp);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>采用servlet的方式，新建一个注解式的servlet即可。</li>
+<li>需要在main方法里面加入@ServletComponentScan注解。</li>
+<li>修改ueditor默认访问路径。</li>
+</ul>
+<p><strong>注意：springboot下面，所有的资源文件都是放在classes下面的，所有，对于路径的处理一定要加倍小心。放在增加路径web-inf/classes</strong></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> springboot </tag>
+            
+            <tag> ueditor </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Thymeleaf如何控制表格对于TR样式]]></title>
       <url>/2018/01/31/Thymeleaf%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%A1%A8%E6%A0%BC%E5%AF%B9%E4%BA%8ETR%E6%A0%B7%E5%BC%8F/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -171,9 +222,9 @@
         
         <tags>
             
-            <tag> 拦截器 </tag>
-            
             <tag> springboot </tag>
+            
+            <tag> 拦截器 </tag>
             
         </tags>
         
