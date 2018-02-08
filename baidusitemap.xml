@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.wangjianlin1989.top/2018/02/08/java%E5%AE%9E%E7%8E%B0%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81/</loc>
+    <lastmod>2018-02-08T10:17:35.582Z</lastmod>
+    <data>
+        <display>
+        <title>java实现图形验证码</title>
+        <pubTime>2018-02-08T10:13:10.000Z</pubTime>
+        
+        <tag>图形验证码</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://wangjianlin1989.top/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.wangjianlin1989.top/2018/02/05/SpringBoot%E6%95%B4%E5%90%88UEditor/</loc>
     <lastmod>2018-02-05T09:39:14.384Z</lastmod>
     <data>
@@ -818,9 +838,9 @@
         <title>idea如何实现热部署</title>
         <pubTime>2017-12-20T01:49:08.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>intellijidea</tag>
+         
+        <tag>java</tag>
          
          
            

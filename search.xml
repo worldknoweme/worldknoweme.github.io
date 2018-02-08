@@ -3,6 +3,44 @@
   
     
     <entry>
+      <title><![CDATA[java实现图形验证码]]></title>
+      <url>/2018/02/08/java%E5%AE%9E%E7%8E%B0%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>首先img的src可以使用远程图片，也就是说他同样是可以请求后端的，这也就是实现图形验证码随机显示的原理。</p>
+</blockquote>
+<h1 id="配置html页面"><a href="#配置html页面" class="headerlink" title="配置html页面"></a>配置html页面</h1><ul>
+<li>使用img组件，src请求一个后台地址。</li>
+<li>点击图片，传递随机数，获取随机验证码。</li>
+<li>下面代码基于Thymeleaf，因此使用了th:src属性。普通的页面的话，可以直接使用src属性。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;span class=&quot;yzm-pic&quot;&gt;</span><br><span class="line">&lt;img th:src=&quot;@&#123;/ran/random&#125;&quot; th-alt=&quot;验证码，点击图片更换&quot; onclick=&quot;this.src=&apos;/ran/random?random=&apos;+Math.random();&quot; /&gt;</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>注意：</strong><br><strong>其实，onclick是一个难点，点击之后传递一个随机数。使用this.src重新给该图片赋值。</strong></p>
+<h1 id="实现后台控制方法"><a href="#实现后台控制方法" class="headerlink" title="实现后台控制方法"></a>实现后台控制方法</h1><blockquote>
+<p>最终是使用ImageIO方法进行验证码的绘制。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&#123;&quot;/ran/random&quot;&#125;)</span><br><span class="line">    public void genericRandomCode(HttpServletRequest request, HttpServletResponse response) throws IOException &#123;</span><br><span class="line">        response.setHeader(&quot;Cache-Control&quot;, &quot;private,no-cache,no-store&quot;);</span><br><span class="line">        response.setContentType(&quot;image/png&quot;);</span><br><span class="line">        byte width = 85;</span><br><span class="line">        byte height = 28;</span><br><span class="line">        BufferedImage image = new BufferedImage(width, height, 2);</span><br><span class="line">        Graphics2D g = image.createGraphics();</span><br><span class="line">        g.setComposite(AlphaComposite.getInstance(3, 1.0F));</span><br><span class="line">        Random random = new Random();</span><br><span class="line">        g.setColor(new Color(231, 231, 231));</span><br><span class="line">        g.fillRect(0, 0, width, height);</span><br><span class="line">        g.setFont(new Font(&quot;Microsoft YaHei&quot;, 2, 24));</span><br><span class="line">        String sRand = &quot;&quot;;</span><br><span class="line">        for(int responseOutputStream = 0; responseOutputStream &lt; 4; ++responseOutputStream) &#123;</span><br><span class="line">            String rand = String.valueOf(random.nextInt(10));</span><br><span class="line">            sRand = sRand + rand;</span><br><span class="line">            g.setColor(new Color(121, 143, 96));</span><br><span class="line">            g.drawString(rand, 13 * responseOutputStream + 16, 23);</span><br><span class="line">        &#125;</span><br><span class="line">        g.dispose();</span><br><span class="line">        ServletOutputStream var12 = response.getOutputStream();</span><br><span class="line">        ImageIO.write(image, &quot;png&quot;, var12);</span><br><span class="line">        var12.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>for循环里面控制了一下随机数的位数，这里为4位。</li>
+</ul>
+<p>通过以上方法，实现了随机校验码。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 图形验证码 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SpringBoot整合UEditor]]></title>
       <url>/2018/02/05/SpringBoot%E6%95%B4%E5%90%88UEditor/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -1496,9 +1534,9 @@
         
         <tags>
             
-            <tag> java </tag>
-            
             <tag> intellijidea </tag>
+            
+            <tag> java </tag>
             
         </tags>
         
