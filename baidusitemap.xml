@@ -348,11 +348,11 @@
         
         <tag>spring</tag>
          
+        <tag>注解</tag>
+         
         <tag>autowired</tag>
          
         <tag>resource</tag>
-         
-        <tag>注解</tag>
          
          
            
@@ -484,11 +484,11 @@
         <title>springmvc完全注解+sitemesh拦截</title>
         <pubTime>2018-01-08T10:21:41.000Z</pubTime>
         
-        <tag>注解</tag>
-         
         <tag>springmvc</tag>
          
         <tag>sitemesh</tag>
+         
+        <tag>注解</tag>
          
          
            

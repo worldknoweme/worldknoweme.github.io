@@ -696,11 +696,11 @@
             
             <tag> spring </tag>
             
+            <tag> 注解 </tag>
+            
             <tag> autowired </tag>
             
             <tag> resource </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         
@@ -876,11 +876,11 @@
         
         <tags>
             
-            <tag> 注解 </tag>
-            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
