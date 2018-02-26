@@ -3,6 +3,39 @@
   
     
     <entry>
+      <title><![CDATA[hexo-d提交报错问题解决]]></title>
+      <url>/2018/02/26/hexo-d%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>写完一遍博客以后，照例hexo -g hexo -d生成和提交。但是在成功生成之后，进行提交的时候报错了！</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">nothing to commit, working directory clean</span><br><span class="line">bash: /dev/tty: No such device or address</span><br><span class="line">error: failed to execute prompt script (exit code 1)</span><br><span class="line">fatal: could not read Username for &apos;[GitHub · Where software is built](https://link.zhihu.com/?target=https%3A//github.com)&apos;: No error</span><br><span class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: [Troubleshooting](https://link.zhihu.com/?target=http%3A//hexo.io/docs/troubleshooting.html)</span><br><span class="line">Error: bash: /dev/tty: No such device or address</span><br><span class="line">error: failed to execute prompt script (exit code 1)</span><br><span class="line">fatal: could not read Username for &apos;[GitHub · Where software is built](https://link.zhihu.com/?target=https%3A//github.com)&apos;: No error</span><br><span class="line"></span><br><span class="line">at ChildProcess.&lt;anonymous&gt; (E:\SwuComputer\HTML5\hexo\node_modules\hexo-deployer-git\node_modules\hexo-util\lib\spawn.js:42:17)</span><br><span class="line">at emitTwo (events.js:87:13)</span><br><span class="line">at ChildProcess.emit (events.js:172:7)</span><br><span class="line">at maybeClose (internal/child_process.js:818:16)</span><br><span class="line">at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)</span><br></pre></td></tr></table></figure>
+<p>关注主要的报错信息：<br><strong>fatal: could not read Username for ‘[GitHub · Where</strong></p>
+<p>按照以下步骤进行操作，解决了以上问题：</p>
+<blockquote>
+<p>修改配置文件：根目录下的_config.yml，修改deploy节点。<br>原来的配置为：<br>deploy:<br>type: git<br>repo: <a href="https://github.com/{yourname}/{yourname}.github.io.git" target="_blank" rel="noopener">https://github.com/{yourname}/{yourname}.github.io.git</a><br>branch: master<br>修改为如下：<br>deploy:<br>type: git<br>repo: <a href="https://{yourname}:{yourpassword}@github.com/{yourname}/{yourname}.github.io.git" target="_blank" rel="noopener">https://{yourname}:{yourpassword}@github.com/{yourname}/{yourname}.github.io.git</a><br>branch: master</p>
+</blockquote>
+<p>亲测可行。</p>
+<p><strong>原因分析：</strong><br>如果在使用hexo d命令的前提下，直接修改.git下面的config文件是无法成功的。原因是：使用该命令之后，会根据_config.yml下面的deploy节点进行cofig文件的覆盖。也就是说，_config.yml如果不做修改，无论如何修改.git下面的配置文件都是无效的，都会被覆盖。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> 提交报错 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SpringBoot进行文件上传（一）]]></title>
       <url>/2018/02/26/SpringBoot%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
       <content type="html"><![CDATA[<h1 id="扫盲"><a href="#扫盲" class="headerlink" title="扫盲"></a>扫盲</h1><p>首先，必须明确几个问题：</p>
