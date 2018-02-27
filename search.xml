@@ -3,6 +3,50 @@
   
     
     <entry>
+      <title><![CDATA[phpstudy安装后将原有的mysql服务卸载]]></title>
+      <url>/2018/02/27/phpstudy%E5%AE%89%E8%A3%85%E5%90%8E%E5%B0%86%E5%8E%9F%E6%9C%89%E7%9A%84mysql%E6%9C%8D%E5%8A%A1%E5%8D%B8%E8%BD%BD/</url>
+      <content type="html"><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>安装phpstudy之后，原有的mysql服务无法找到。无法进入原有的数据库。</p>
+<ul>
+<li>phpstudy的安装很傻瓜，我下载的非lite版本，也是解压版本，解压之后，直接将服务启动。</li>
+<li>此时，我用navicat连接数据库看到的是一个全新的数据库。</li>
+<li>出了一身冷汗，我曹，原来我的数据库哪去了？里面有很多数据啊！涉及到很多项目！不过，此时还不慌。发现端口是3306，肯定是原来的服务被停掉了，重启一遍不就行了！</li>
+<li>于是，我将phpstudy自带的mysql关掉。然后打开windows服务，然后没有然后了！！原来的mysql竟然消失了！慌了！</li>
+</ul>
+<p>#解决过程</p>
+<ol>
+<li>首先我先去mysql安装目录下看了一下，万幸，还在！</li>
+<li>然后我进入mysql的bin目录，此处使用控制台进入。</li>
+<li>命令mysql一下，报错了！进入不了，那就是服务没启动？</li>
+<li>使用命令： mysqld –install安装一下试试。报错了：Install/Remove of the Service Denied!看来是权限不够。</li>
+<li>使用管理员身份登录一下，然后重新进行一下安装。服务安装成功！一切问题也就解决了。</li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/9493059-7e5b072f6ac1dd3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="解决过程.png"></p>
+<p>#后续</p>
+<blockquote>
+<p>修改了一下phpstudy自带的mysql端口号，将原来的3306修改为3309。然后，用navicat再连接一下3309。这样，内置数据库和原始数据库均可以正常连接了。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/9493059-9187ebb8c08dc881.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="修改端口号.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/9493059-7034a30cf78661b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据库连接图.png"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> phpstudy </tag>
+            
+            <tag> mysql服务 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[hexo-d提交报错问题解决]]></title>
       <url>/2018/02/26/hexo-d%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -729,11 +773,11 @@
             
             <tag> spring </tag>
             
-            <tag> 注解 </tag>
-            
             <tag> autowired </tag>
             
             <tag> resource </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
@@ -909,11 +953,11 @@
         
         <tags>
             
+            <tag> 注解 </tag>
+            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         
@@ -1606,9 +1650,9 @@
         
         <tags>
             
-            <tag> java </tag>
-            
             <tag> intellijidea </tag>
+            
+            <tag> java </tag>
             
         </tags>
         

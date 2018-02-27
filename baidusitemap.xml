@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://www.wangjianlin1989.top/2018/02/27/phpstudy%E5%AE%89%E8%A3%85%E5%90%8E%E5%B0%86%E5%8E%9F%E6%9C%89%E7%9A%84mysql%E6%9C%8D%E5%8A%A1%E5%8D%B8%E8%BD%BD/</loc>
+    <lastmod>2018-02-27T01:37:15.253Z</lastmod>
+    <data>
+        <display>
+        <title>phpstudy安装后将原有的mysql服务卸载</title>
+        <pubTime>2018-02-27T01:33:08.000Z</pubTime>
+        
+        <tag>phpstudy</tag>
+         
+        <tag>mysql服务</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wangjianlin1989.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.wangjianlin1989.top/2018/02/26/hexo-d%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</loc>
     <lastmod>2018-02-26T09:23:23.723Z</lastmod>
     <data>
@@ -370,11 +392,11 @@
         
         <tag>spring</tag>
          
-        <tag>注解</tag>
-         
         <tag>autowired</tag>
          
         <tag>resource</tag>
+         
+        <tag>注解</tag>
          
          
            
@@ -506,11 +528,11 @@
         <title>springmvc完全注解+sitemesh拦截</title>
         <pubTime>2018-01-08T10:21:41.000Z</pubTime>
         
+        <tag>注解</tag>
+         
         <tag>springmvc</tag>
          
         <tag>sitemesh</tag>
-         
-        <tag>注解</tag>
          
          
            
@@ -882,9 +904,9 @@
         <title>idea如何实现热部署</title>
         <pubTime>2017-12-20T01:49:08.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>intellijidea</tag>
+         
+        <tag>java</tag>
          
          
            
