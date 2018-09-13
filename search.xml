@@ -3,14 +3,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[第一节java简介及开发环境搭建]]></title>
       <url>/2018/09/13/%E7%AC%AC%E4%B8%80%E8%8A%82java%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: 第一节java简介及开发环境搭建<br>copyright: true<br>date: 2018-09-13 13:15:20<br>tags:</p>
-<pre><code>- 字节
-- 字符
-- 位
-</code></pre><h2 id="categories-java基础"><a href="#categories-java基础" class="headerlink" title="categories: java基础"></a>categories: java基础</h2><h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><ol>
+      <content type="html"><![CDATA[<h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><ol>
 <li>计算机科学ＣＳ体系结构简介<br><img src="https://images.gitee.com/uploads/images/2018/0719/225221_7451d054_87680.jpeg" alt="CS体系结构" title="v2-5647f22580533d9ceec34e0c2fa30aff_r.jpg"></li>
 <li>软件行业　　<br>目前软件行业主要区分为产品化和项目化软件，比如支付宝，微信等均为产品化的软件．而项目化的软件目前比较集中于外包项目．相对于传统行业，软件行业是一个颠覆性的行业．他的存在就是为了干掉其他的传统行业．所以，未来不懂软件即失业并不是危言耸听．　　</li>
 <li>java简介　　<br>面向对象的高级语言．  </li>
@@ -35,6 +30,12 @@
 </ol>
 ]]></content>
       
+        <categories>
+            
+            <category> java基础 </category>
+            
+        </categories>
+        
         
     </entry>
     
@@ -103,9 +104,9 @@
         
         <tags>
             
-            <tag> phpstorm </tag>
-            
             <tag> phpstudy </tag>
+            
+            <tag> phpstorm </tag>
             
         </tags>
         
