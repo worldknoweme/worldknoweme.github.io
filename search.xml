@@ -3,6 +3,39 @@
   
     
     <entry>
+      <title></title>
+      <url>/2018/09/13/java%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+      <content type="html"><![CDATA[<hr>
+<p>layout: 第一节<br>title: java简介及开发环境搭建<br>date: 2018-09-13 12:57:27</p>
+<h2 id="tags-java基础"><a href="#tags-java基础" class="headerlink" title="tags: java基础"></a>tags: java基础</h2><h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><ol>
+<li>计算机科学ＣＳ体系结构简介<br><img src="https://images.gitee.com/uploads/images/2018/0719/225221_7451d054_87680.jpeg" alt="CS体系结构" title="v2-5647f22580533d9ceec34e0c2fa30aff_r.jpg"></li>
+<li>软件行业　　<br>目前软件行业主要区分为产品化和项目化软件，比如支付宝，微信等均为产品化的软件．而项目化的软件目前比较集中于外包项目．相对于传统行业，软件行业是一个颠覆性的行业．他的存在就是为了干掉其他的传统行业．所以，未来不懂软件即失业并不是危言耸听．　　</li>
+<li>java简介　　<br>面向对象的高级语言．  </li>
+<li>经典实例  </li>
+<li>基本环境搭建<br>其中环境变量相关配置如下:<br>JAVA_HOME    jdk安装路径<br>path         %JAVA_HOME%\bin<br>classpath    %JAVA_HOME%\lib\tools.jar<br>安装配置完成之后，cmd里面分别输入javac和java命令进行校验.  </li>
+<li>java学习路线　　<br><img src="https://images.gitee.com/uploads/images/2018/0719/232002_554762ae_87680.jpeg" alt="学习路线" title="v2-684b3ec73ee0046c72e03283dea9b750_r.jpg">　　</li>
+</ol>
+<h3 id="主要任务"><a href="#主要任务" class="headerlink" title="主要任务"></a>主要任务</h3><ol>
+<li>理解并掌握java运行机制  java编译器和jvm虚拟机　　</li>
+<li>jdk jre和jvm的含义及区别 　</li>
+<li>常用ide了解　　</li>
+<li>配置java开发环境</li>
+<li>使用编辑器配合java javac 运行HelloWorld程序　　</li>
+<li>idea工具的安装以及简单配置  </li>
+<li>git的简介以及使用</li>
+</ol>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><ol>
+<li>安装并配置jdk，可以口述安装过程，下节课会让每个人口述．  </li>
+<li>编辑器编写hello world程序，配合javac和java命令运行程序．  </li>
+<li>下载并安装idea开发工具，使用该开发工具编写helloworld程序.  </li>
+<li>下载git，根据使用说明配置idea的git环境，并且在我们的项目中新建com．姓名的包，并编写程序，将程序进行上传．</li>
+</ol>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[phpstorm+phpstudy+xdbug断点调试]]></title>
       <url>/2018/02/28/phpstorm-phpstudy-xdbug%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -67,9 +100,9 @@
         
         <tags>
             
-            <tag> phpstorm </tag>
-            
             <tag> phpstudy </tag>
+            
+            <tag> phpstorm </tag>
             
         </tags>
         
@@ -846,11 +879,11 @@
             
             <tag> spring </tag>
             
-            <tag> 注解 </tag>
-            
             <tag> autowired </tag>
             
             <tag> resource </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
@@ -1026,11 +1059,11 @@
         
         <tags>
             
+            <tag> 注解 </tag>
+            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         
