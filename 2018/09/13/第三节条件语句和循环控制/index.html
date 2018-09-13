@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringBoot, Java, Android, Html5" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="java的常用语法 读代码 功能实现需要哪些常用逻辑？ 做某件事   重复做某件事   在指定条件下做某件事举个例子：吃饭-&amp;gt;饿了么吃饭感觉鸡翅好吃，重复点鸡翅，重复吃鸡翅早上喝稀饭，中午吃鸡腿，晚上吃酸菜鱼上图中，重复做某件事和在指定条件下做某件事就是说的循环控制和条件语句．重复做某件事-&amp;gt;循环控制在指定条件下做某件事-&amp;gt;条件语句简单的循环控制实例:上面两个图可以看出，无论是循">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三节条件语句和循环控制">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/09/13/第三节条件语句和循环控制/index.html">
+<meta property="og:site_name" content="为七七写本书">
+<meta property="og:description" content="java的常用语法 读代码 功能实现需要哪些常用逻辑？ 做某件事   重复做某件事   在指定条件下做某件事举个例子：吃饭-&amp;gt;饿了么吃饭感觉鸡翅好吃，重复点鸡翅，重复吃鸡翅早上喝稀饭，中午吃鸡腿，晚上吃酸菜鱼上图中，重复做某件事和在指定条件下做某件事就是说的循环控制和条件语句．重复做某件事-&amp;gt;循环控制在指定条件下做某件事-&amp;gt;条件语句简单的循环控制实例:上面两个图可以看出，无论是循">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/060158_cae17dd1_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/061837_75c773da_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/060128_64f9203f_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/063403_91edc193_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/063456_745bbee2_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/210759_803f48c2_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/211607_e6be5cb4_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/211858_ab3d107c_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/212236_6f79290c_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/212605_3cacb2e1_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/212729_af698201_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0721/212829_af55ce11_87680.png">
+<meta property="og:updated_time" content="2018-09-13T05:40:16.634Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第三节条件语句和循环控制">
+<meta name="twitter:description" content="java的常用语法 读代码 功能实现需要哪些常用逻辑？ 做某件事   重复做某件事   在指定条件下做某件事举个例子：吃饭-&amp;gt;饿了么吃饭感觉鸡翅好吃，重复点鸡翅，重复吃鸡翅早上喝稀饭，中午吃鸡腿，晚上吃酸菜鱼上图中，重复做某件事和在指定条件下做某件事就是说的循环控制和条件语句．重复做某件事-&amp;gt;循环控制在指定条件下做某件事-&amp;gt;条件语句简单的循环控制实例:上面两个图可以看出，无论是循">
+<meta name="twitter:image" content="https://images.gitee.com/uploads/images/2018/0721/060158_cae17dd1_87680.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/09/13/第三节条件语句和循环控制/"/>
+
+
+
+
+
+  <title>第三节条件语句和循环控制 | 为七七写本书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。W一两愿你江南多雨带油伞。二两愿你酷暑可以轻摇扇。三两愿你入冬莫忘添衣衫。四两愿你年年多聚无离散。五两愿你无病无忧心常宽。六两愿你无风无雨长相欢。六两三。余下三。我在西北，一关接一关。与你相隔，一山又一山。最后只愿我，知道你平安。W人生两苦，想要却不得，拥有却失去。W春有风筝，夏有鱼。秋有青鸟，冬有雁。书信一来一往间，日子就这样过去了。W不存在虚妄的希望,自然也就没有虚妄的失望,更没有什么绝望。人生如题各种痴,就是各种喜欢,喜欢什么那便做下去,这道题目总会有答案的。不管是小人物还是富贵子孙，要成功，都得眼睛看远一点，度量放大一点，脑子多想一点，然后怀六分恶毒，三分炎凉，还得给自己给子孙剩一分善心。W世界上一半人在嘲笑另一半,其实全世界都是傻瓜。W我告诉你什么事最可悲，你遇见一个人，犯了一个错，你想弥补想还清，到最后才发现你根本无力回天，犯下的罪过永远无法弥补。我们永远无法还清犯下的…W一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪。W不乱于心，不困于情。不畏将来，不念过往。如此，安好！";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">为七七写本书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle" id="helloTitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/09/13/第三节条件语句和循环控制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="为七七写本书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第三节条件语句和循环控制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T13:39:55+08:00">
+                2018-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  817
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="java的常用语法"><a href="#java的常用语法" class="headerlink" title="java的常用语法"></a>java的常用语法</h3><p><img src="https://images.gitee.com/uploads/images/2018/0721/060158_cae17dd1_87680.png" alt="java语法" title="2018-07-21 06-01-02屏幕截图.png"><br> <strong>读代码</strong><br><img src="https://images.gitee.com/uploads/images/2018/0721/061837_75c773da_87680.png" alt="读代码" title="2018-07-21 06-18-20屏幕截图.png"></p>
+<h3 id="功能实现需要哪些常用逻辑？"><a href="#功能实现需要哪些常用逻辑？" class="headerlink" title="功能实现需要哪些常用逻辑？"></a>功能实现需要哪些常用逻辑？</h3><ol>
+<li>做某件事  </li>
+<li>重复做某件事  </li>
+<li>在指定条件下做某件事<br>举个例子：<br>吃饭-&gt;饿了么<br>吃饭<br>感觉鸡翅好吃，重复点鸡翅，重复吃鸡翅<br>早上喝稀饭，中午吃鸡腿，晚上吃酸菜鱼<br><img src="https://images.gitee.com/uploads/images/2018/0721/060128_64f9203f_87680.png" alt="语言逻辑" title="2018-07-21 06-00-24屏幕截图.png"><br>上图中，重复做某件事和在指定条件下做某件事就是说的循环控制和条件语句．<br>重复做某件事-&gt;循环控制<br>在指定条件下做某件事-&gt;条件语句<br>简单的循环控制实例:<br><img src="https://images.gitee.com/uploads/images/2018/0721/063403_91edc193_87680.png" alt="循环控制" title="2018-07-21 06-33-53屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0721/063456_745bbee2_87680.png" alt="条件语句" title="2018-07-21 06-34-48屏幕截图.png"><br>上面两个图可以看出，无论是循环控制还是条件语句，重点在条件部分，这个条件值也就是我们说的临界值是非常重要的．<br>条件也就是我们说的条件测试，条件测试最终的结果都是boolean类型的，通常通过比较运算符来获取最终的波尔值，常用比较运算符有：&gt; &lt; ==．<br>其中，=和==是存在区别的．  </li>
+</ol>
+<ul>
+<li>=:</li>
+<li>==:<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><strong>条件语句格式</strong>  <ol>
+<li>if<br><img src="https://images.gitee.com/uploads/images/2018/0721/210759_803f48c2_87680.png" alt="输入图片说明" title="2018-07-21 21-07-46屏幕截图.png"><br>尝试写一个功能：<br>高总父亲在考试之前告诉他，考试成绩高于90分奖励一部粪叉．考试结束了，高总考了92分.其父奖励一部爱粪叉（打印出即可）．  </li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>if …else..<br><img src="https://images.gitee.com/uploads/images/2018/0721/211607_e6be5cb4_87680.png" alt="输入图片说明" title="2018-07-21 21-15-58屏幕截图.png"><br>尝试写一个功能：<br>书接上文，高总其父告诉高总，如果考不上90分，下学期的学费不给交了．高总考了89分….  </li>
+<li>多重if<br><img src="https://images.gitee.com/uploads/images/2018/0721/211858_ab3d107c_87680.png" alt="输入图片说明" title="2018-07-21 21-18-40屏幕截图.png"><br>尝试写一个功能：<br>继续接上文，高总其父觉得之前的规矩有点严格，重新定了规矩．考不上90，但是80分以上还是会奖励，奖励一部小米略屌手机.否则，不仅下学期学费不交了，还得做500俯卧撑．高总考了79分．  </li>
+<li>嵌套if<br><img src="https://images.gitee.com/uploads/images/2018/0721/212236_6f79290c_87680.png" alt="输入图片说明" title="2018-07-21 21-22-29屏幕截图.png"><br>尝试写一个功能：<br>接上文，番外篇．高总其父不舍得惩罚他，心里默念，如果高总认错态度好的话，那就既往不咎，否则，需要加100杀威棒．结果，高总认错态度非常差．  <h3 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h3></li>
+<li>while循环<br><img src="https://images.gitee.com/uploads/images/2018/0721/212605_3cacb2e1_87680.png" alt="输入图片说明" title="2018-07-21 21-25-58屏幕截图.png"><br>尝试写一个功能：<br>计算1-100的和  </li>
+<li>do..while循环<br><img src="https://images.gitee.com/uploads/images/2018/0721/212729_af698201_87680.png" alt="输入图片说明" title="2018-07-21 21-27-21屏幕截图.png"><br>尝试写一个功能：<br>计算1-100的和  </li>
+<li>for循环<br><img src="https://images.gitee.com/uploads/images/2018/0721/212829_af55ce11_87680.png" alt="输入图片说明" title="2018-07-21 21-28-22屏幕截图.png"><br>尝试写一个功能：<br>计算1-100的和  </li>
+</ol>
+<h3 id="一个故意遗漏的知识点"><a href="#一个故意遗漏的知识点" class="headerlink" title="一个故意遗漏的知识点"></a>一个故意遗漏的知识点</h3><p>java方法</p>
+<h3 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h3><p>到目前位置发现，无客户交互，只能写死一些数据．<br>我们提前学习一个彩蛋功能，获取用户的输入信息．<br>java内置api，内置类scanner类来获取键盘输入信息．<br>用法如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Scanner scanner = new Scanner(System.in);</span><br><span class="line">       System.out.println(&quot;请输入您的姓名：&quot;);</span><br><span class="line">       String name = scanner.nextLine();</span><br><span class="line">       System.out.println(&quot;您的名字：&quot;+name);</span><br><span class="line">       System.out.println(&quot;请输入您的年龄：&quot;);</span><br><span class="line">       int age = scanner.nextInt();</span><br><span class="line">       System.out.println(&quot;您的年龄：&quot;+age);</span><br><span class="line">       System.out.println(&quot;请输入您的工资：&quot;);</span><br><span class="line">       float salary = scanner.nextFloat();</span><br><span class="line">       System.out.println(&quot;您的工资：&quot;+salary);</span><br></pre></td></tr></table></figure>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><ol>
+<li>输出九九乘法表．</li>
+<li>用星号画图形，菱形和三角形．根据用户的选择画出对应的图形，假如用户输入的非这两个图形则提示用户，暂不支持图形的绘制．</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/09/13/第三节条件语句和循环控制/">第三节条件语句和循环控制</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
+  <p><span>发布时间:</span>2018年09月13日 - 13:09</p>
+  <p><span>最后更新:</span>2018年09月13日 - 13:09</p>
+  <p><span>原始链接:</span><a href="/2018/09/13/第三节条件语句和循环控制/" title="第三节条件语句和循环控制">http://wangjianlin1989.top/2018/09/13/第三节条件语句和循环控制/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/09/13/第三节条件语句和循环控制/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ony Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ony Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/13/第二节java的基本数据类型/" rel="next" title="第二节java的基本数据类型">
+                <i class="fa fa-chevron-left"></i> 第二节java的基本数据类型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/13/第四节对象详解（一）/" rel="prev" title="第四节对象详解（一）">
+                第四节对象详解（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjU2Mi85MTIz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ony Wang" />
+            
+              <p class="site-author-name" itemprop="name">Ony Wang</p>
+              <p class="site-description motion-element" itemprop="description">仙人抚我顶，结发授长生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/worldknoweme" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/wang-jian-lin-89-48" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/55861dcef833" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java的常用语法"><span class="nav-number">1.</span> <span class="nav-text"><a href="#java&#x7684;&#x5E38;&#x7528;&#x8BED;&#x6CD5;" class="headerlink" title="java&#x7684;&#x5E38;&#x7528;&#x8BED;&#x6CD5;"></a>java&#x7684;&#x5E38;&#x7528;&#x8BED;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能实现需要哪些常用逻辑？"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x529F;&#x80FD;&#x5B9E;&#x73B0;&#x9700;&#x8981;&#x54EA;&#x4E9B;&#x5E38;&#x7528;&#x903B;&#x8F91;&#xFF1F;" class="headerlink" title="&#x529F;&#x80FD;&#x5B9E;&#x73B0;&#x9700;&#x8981;&#x54EA;&#x4E9B;&#x5E38;&#x7528;&#x903B;&#x8F91;&#xFF1F;"></a>&#x529F;&#x80FD;&#x5B9E;&#x73B0;&#x9700;&#x8981;&#x54EA;&#x4E9B;&#x5E38;&#x7528;&#x903B;&#x8F91;&#xFF1F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件语句"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x6761;&#x4EF6;&#x8BED;&#x53E5;" class="headerlink" title="&#x6761;&#x4EF6;&#x8BED;&#x53E5;"></a>&#x6761;&#x4EF6;&#x8BED;&#x53E5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环控制"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x5FAA;&#x73AF;&#x63A7;&#x5236;" class="headerlink" title="&#x5FAA;&#x73AF;&#x63A7;&#x5236;"></a>&#x5FAA;&#x73AF;&#x63A7;&#x5236;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个故意遗漏的知识点"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x4E00;&#x4E2A;&#x6545;&#x610F;&#x9057;&#x6F0F;&#x7684;&#x77E5;&#x8BC6;&#x70B9;" class="headerlink" title="&#x4E00;&#x4E2A;&#x6545;&#x610F;&#x9057;&#x6F0F;&#x7684;&#x77E5;&#x8BC6;&#x70B9;"></a>&#x4E00;&#x4E2A;&#x6545;&#x610F;&#x9057;&#x6F0F;&#x7684;&#x77E5;&#x8BC6;&#x70B9;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#彩蛋"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x5F69;&#x86CB;" class="headerlink" title="&#x5F69;&#x86CB;"></a>&#x5F69;&#x86CB;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#课下作业"><span class="nav-number">7.</span> <span class="nav-text"><a href="#&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;" class="headerlink" title="&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;"></a>&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; Tue Dec 12 2017 08:00:00 GMT+0800 (CST) &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ony Wang</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共37.3k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script type="text/javascript" src="/js/src/heheda.js"></script>
