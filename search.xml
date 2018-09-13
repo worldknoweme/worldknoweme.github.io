@@ -6,19 +6,8 @@
       <title><![CDATA[第四节css基础（一）]]></title>
       <url>/2018/09/13/%E7%AC%AC%E5%9B%9B%E8%8A%82css%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/</url>
       <content type="html"><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>css是一种html样式标记语言,使用css可以对html的样式进行快速精准的修改和实现.<br>举例说明使用css和不使用css的区别.<br>需求:我们有一个表格,要求给所以表格添加背景色.</p>
-<p>##不使用css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">  &lt;tr &gt;</span><br><span class="line">      &lt;td bgcolor=&quot;gray&quot; &gt;1&lt;/td&gt;</span><br><span class="line">      &lt;td bgcolor=&quot;gray&quot;&gt;2&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;3&lt;/td&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;4&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;a&lt;/td&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;b&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/table&gt;</span><br><span class="line">```  </span><br><span class="line">使用css:</span><br></pre></td></tr></table></figure></p>
-<style>
-td{
-  background-color:gray;
-}
-</style>
-
-<p><table border="1"><br>  <tr><br>      <td>1</td><br>      <td>2</td><br>  </tr></table></p>
-  <tr><br>      <td>3</td><br>      <td>4</td><br>  </tr>
-
-  <tr><br>      <td>a</td><br>      <td>b</td><br>  </tr>
-
-<p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">可以看出css带来的作用和优势了吗?  </span><br><span class="line">### css语法  </span><br><span class="line">使用style标签进行包围,之后在style标签内便可以进行样式的定义了.  </span><br><span class="line">样式的语法如下:  </span><br><span class="line">selector &#123;property: value&#125;  </span><br><span class="line">即 选择器&#123;属性:属性值&#125;  </span><br><span class="line">举例:  </span><br><span class="line">将输入的所有元素字体颜色改为红色.</span><br></pre></td></tr></table></figure></p>
+<h2 id="不使用css"><a href="#不使用css" class="headerlink" title="不使用css"></a>不使用css</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">  &lt;tr &gt;</span><br><span class="line">      &lt;td bgcolor=&quot;gray&quot; &gt;1&lt;/td&gt;</span><br><span class="line">      &lt;td bgcolor=&quot;gray&quot;&gt;2&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;3&lt;/td&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;4&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;a&lt;/td&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;b&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="使用css"><a href="#使用css" class="headerlink" title="使用css"></a>使用css</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">td&#123;</span><br><span class="line">  background-color:gray;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"> </span><br><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">  &lt;tr &gt;</span><br><span class="line">      &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;2&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;4&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td&gt;a&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;b&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/table&gt;</span><br><span class="line">```  </span><br><span class="line">可以看出css带来的作用和优势了吗?  </span><br><span class="line">### css语法  </span><br><span class="line">使用style标签进行包围,之后在style标签内便可以进行样式的定义了.  </span><br><span class="line">样式的语法如下:  </span><br><span class="line">selector &#123;property: value&#125;  </span><br><span class="line">即 选择器&#123;属性:属性值&#125;  </span><br><span class="line">举例:  </span><br><span class="line">将输入的所有元素字体颜色改为红色.</span><br></pre></td></tr></table></figure>
 <style>
 p{
    color:red;
@@ -3077,9 +3066,9 @@ public static void main(String[] args) {
         
         <tags>
             
-            <tag> phpstorm </tag>
-            
             <tag> phpstudy </tag>
+            
+            <tag> phpstorm </tag>
             
         </tags>
         
@@ -3856,11 +3845,11 @@ public static void main(String[] args) {
             
             <tag> spring </tag>
             
-            <tag> 注解 </tag>
-            
             <tag> autowired </tag>
             
             <tag> resource </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
@@ -4036,11 +4025,11 @@ public static void main(String[] args) {
         
         <tags>
             
+            <tag> 注解 </tag>
+            
             <tag> springmvc </tag>
             
             <tag> sitemesh </tag>
-            
-            <tag> 注解 </tag>
             
         </tags>
         
