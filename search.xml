@@ -50,16 +50,23 @@
     <entry>
       <title><![CDATA[第二节html基础（一）]]></title>
       <url>/2018/09/13/%E7%AC%AC%E4%BA%8C%E8%8A%82html%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-      <content type="html"><![CDATA[<h3 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h3><p> 打印一个helloworl的网页.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">```  </span><br><span class="line">### 开发工具  </span><br><span class="line">我们使用idea进行html网页的开发.  </span><br><span class="line">使用chrome进行网页的最终调试.  </span><br><span class="line">### 中文编码  </span><br><span class="line">我们在html网页最顶端进行了编码格式的声明,具体内容如下:</span><br></pre></td></tr></table></figure>
-<p><meta charset="UTF-8"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">这里指定我们网页使用utf8编码格式  </span><br><span class="line">### html标签</span><br><span class="line">标签由开始标签和结束标签组成   </span><br><span class="line">其中上文提到的p标签就是html给定的一个标准标签.  </span><br><span class="line">我们对html的学习,主要就是学习标准标签的一些常见用法.  </span><br><span class="line">### html元素  </span><br><span class="line">html元素指的是从开始标签到结束标签以及其中所以的内容.  </span><br><span class="line">上文写的html中p标签以及其中包裹的信息统称为一个p元素  </span><br><span class="line"> **完整html**  </span><br><span class="line">应该至少包含html元素，body元素，以及里面的内容  </span><br><span class="line"> **不完整的元素**</span><br><span class="line">比如:  </span><br><span class="line">`&lt;h1&gt;aaaaa`  </span><br><span class="line">上述代码也是可以正常显示的.当然,这里能正常显示并不是因为你写的代码多么牛逼,主要是因为如今的浏览器都非常强大.  </span><br><span class="line">强大到什么程度呢?可以允许适度的代码错误,即便是非标准的,不完整的元素也可以保证其正常显示.  </span><br><span class="line">  </span><br><span class="line"> **特殊元素**  </span><br><span class="line">`&lt;br/&gt;表示换行`  </span><br><span class="line">`&lt;hr&gt;表示间隔线.`  </span><br><span class="line">### 属性  </span><br><span class="line">修饰标签的特定字符即属性.  </span><br><span class="line">比如:  </span><br><span class="line">`&lt;h1 align=&quot;center&quot;&gt;居中标题&lt;/h1&gt;`  </span><br><span class="line">其中h1标签里面align表示属性,代码其中的元素居中的意思.  </span><br><span class="line">### 注释  </span><br><span class="line">使用`&lt;!----&gt;`进行注释  </span><br><span class="line">### 基本元素  </span><br><span class="line">基本元素一,我们计划实现一下的效果:  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0910/095035_de454082_87680.png &quot;2018-09-10 09-50-25屏幕截图.png&quot;)   </span><br><span class="line">百度百科搜索java.  </span><br><span class="line">为了实现以上效果,我们需要了解html如下的基本元素:  </span><br><span class="line">标题/段落/粗体/斜体/预格式/删除效果/下划线,分别对应的标签为:  </span><br><span class="line">&lt;h1&gt;-&lt;h5&gt;  </span><br><span class="line">&lt;p&gt;  </span><br><span class="line">&lt;b&gt;&lt;strong&gt;  </span><br><span class="line">&lt;i&gt;&lt;em&gt;  </span><br><span class="line">&lt;pre&gt;  即一些特定的格式,代码格式</span><br></pre></td></tr></table></figure></p>
-<p><pre><br>public class HelloWorld {</pre></p>
-<pre><code>public static void main(String[] args) {
-    System.out.println(&quot;Hello World&quot;);
-}
-</code></pre><p>}</p>
-<p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">del    </span><br><span class="line">ins    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">### 阶段练习二  </span><br><span class="line"></span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0910/100407_1c573031_87680.png &quot;2018-09-10 10-03-45屏幕截图.png&quot;)   </span><br><span class="line"> </span><br><span class="line">实现上述效果,需要用到如下元素.  </span><br><span class="line">图像/超链接/表格/列表/块div span/字体/内联框架  </span><br><span class="line">分别对应的标签为:  </span><br><span class="line">img src   </span><br><span class="line">a href  </span><br><span class="line">table tr td  </span><br><span class="line">ul li 无序   </span><br><span class="line">ol li 有序    </span><br><span class="line">div span  </span><br><span class="line">font color size  关于颜色,可以使用取色器,推荐好色鬼  </span><br><span class="line">iframe</span><br></pre></td></tr></table></figure></p>
-<p><iframe src="http://www.baidu.com/" width="600px" height="400px"><br></iframe><br>```  </p>
+      <content type="html"><![CDATA[<h1 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h1><p> 打印一个helloworl的网页.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><p>我们使用idea进行html网页的开发.<br>使用chrome进行网页的最终调试.</p>
+<h1 id="中文编码"><a href="#中文编码" class="headerlink" title="中文编码"></a>中文编码</h1><p>我们在html网页最顶端进行了编码格式的声明,具体内容如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>这里指定我们网页使用utf8编码格式</p>
+<h1 id="html标签"><a href="#html标签" class="headerlink" title="html标签"></a>html标签</h1><p>标签由开始标签和结束标签组成<br>其中上文提到的p标签就是html给定的一个标准标签<br>我们对html的学习,主要就是学习标准标签的一些常见用法</p>
+<h1 id="html元素"><a href="#html元素" class="headerlink" title="html元素"></a>html元素</h1><p>html元素指的是从开始标签到结束标签以及其中所以的内容.<br>上文写的html中p标签以及其中包裹的信息统称为一个p元素</p>
+<h2 id="完整html"><a href="#完整html" class="headerlink" title="完整html"></a>完整html</h2><p>应该至少包含html元素，body元素，以及里面的内容</p>
+<h2 id="不完整的元素"><a href="#不完整的元素" class="headerlink" title="不完整的元素"></a>不完整的元素</h2><p>比如:<br><code>&lt;h1&gt;aaaaa</code><br>上述代码也是可以正常显示的.当然,这里能正常显示并不是因为你写的代码多么牛逼,主要是因为如今的浏览器都非常强大.<br>强大到什么程度呢?可以允许适度的代码错误,即便是非标准的,不完整的元素也可以保证其正常显示.</p>
+<h2 id="特殊元素"><a href="#特殊元素" class="headerlink" title="特殊元素"></a>特殊元素</h2><p>br表示换行<br>hr表示间隔线.</p>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><p>修饰标签的特定字符即属性.<br>比如:<br><code>&lt;h1 align=&quot;center&quot;&gt;居中标题&lt;/h1&gt;</code><br>其中h1标签里面align表示属性,代码其中的元素居中的意思.</p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>使用<code>&lt;!----&gt;</code>进行注释</p>
+<h1 id="基本元素"><a href="#基本元素" class="headerlink" title="基本元素"></a>基本元素</h1><p>基本元素一,我们计划实现一下的效果:<br><img src="https://images.gitee.com/uploads/images/2018/0910/095035_de454082_87680.png" alt="输入图片说明" title="2018-09-10 09-50-25屏幕截图.png"><br>百度百科搜索java<br>为了实现以上效果,我们需要了解html如下的基本元素:<br>标题/段落/粗体/斜体/预格式/删除效果/下划线,分别对应的标签为:<br>h1-h5<br>p<br>b strong<br>i em<br>pre 即一些特定的格式,代码格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre&gt;</span><br><span class="line">public class HelloWorld &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello World&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+<p>del<br>ins</p>
+<h1 id="阶段练习二"><a href="#阶段练习二" class="headerlink" title="阶段练习二"></a>阶段练习二</h1><p><img src="https://images.gitee.com/uploads/images/2018/0910/100407_1c573031_87680.png" alt="输入图片说明" title="2018-09-10 10-03-45屏幕截图.png"><br>实现上述效果,需要用到如下元素.<br>图像/超链接/表格/列表/块div span/字体/内联框架<br>分别对应的标签为:<br>img src<br>a href<br>table tr td<br>ul li 无序<br>ol li 有序<br>div span<br>font color size  关于颜色,可以使用取色器,推荐好色鬼<br>iframe<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;http://www.baidu.com/&quot; width=&quot;600px&quot; height=&quot;400px&quot;&gt;</span><br><span class="line">&lt;/iframe&gt;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -3051,9 +3058,9 @@ public static void main(String[] args) {
         
         <tags>
             
-            <tag> phpstudy </tag>
-            
             <tag> phpstorm </tag>
+            
+            <tag> phpstudy </tag>
             
         </tags>
         
@@ -3830,11 +3837,11 @@ public static void main(String[] args) {
             
             <tag> spring </tag>
             
-            <tag> 注解 </tag>
-            
             <tag> autowired </tag>
             
             <tag> resource </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
@@ -4012,9 +4019,9 @@ public static void main(String[] args) {
             
             <tag> springmvc </tag>
             
-            <tag> sitemesh </tag>
-            
             <tag> 注解 </tag>
+            
+            <tag> sitemesh </tag>
             
         </tags>
         
