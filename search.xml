@@ -3,6 +3,2386 @@
   
     
     <entry>
+      <title><![CDATA[第四节css基础（一）]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%9B%9B%E8%8A%82css%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>css是一种html样式标记语言,使用css可以对html的样式进行快速精准的修改和实现.<br>举例说明使用css和不使用css的区别.<br>需求:我们有一个表格,要求给所以表格添加背景色.<br>不使用css:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">  &lt;tr &gt;</span><br><span class="line">      &lt;td bgcolor=&quot;gray&quot; &gt;1&lt;/td&gt;</span><br><span class="line">      &lt;td bgcolor=&quot;gray&quot;&gt;2&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;3&lt;/td&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;4&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;a&lt;/td&gt;</span><br><span class="line">      &lt;td  bgcolor=&quot;gray&quot;&gt;b&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/table&gt;</span><br><span class="line">```  </span><br><span class="line">使用css:</span><br></pre></td></tr></table></figure>
+<style>
+td{
+  background-color:gray;
+}
+</style>
+
+<p><table border="1"><br>  <tr><br>      <td>1</td><br>      <td>2</td><br>  </tr></table></p>
+  <tr><br>      <td>3</td><br>      <td>4</td><br>  </tr>
+
+  <tr><br>      <td>a</td><br>      <td>b</td><br>  </tr>
+
+<p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">可以看出css带来的作用和优势了吗?  </span><br><span class="line">### css语法  </span><br><span class="line">使用style标签进行包围,之后在style标签内便可以进行样式的定义了.  </span><br><span class="line">样式的语法如下:  </span><br><span class="line">selector &#123;property: value&#125;  </span><br><span class="line">即 选择器&#123;属性:属性值&#125;  </span><br><span class="line">举例:  </span><br><span class="line">将输入的所有元素字体颜色改为红色.</span><br></pre></td></tr></table></figure></p>
+<style>
+p{
+   color:red;
+}
+</style>
+<p>这是一个P</p>
+<p>这是一个P</p>
+<p>这是一个P</p>
+<p>这是一个P</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当然,我们也可以通过标签的style属性,进行css样式的定义,目前几乎所有的标签都支持style属性.</span><br></pre></td></tr></table></figure>
+
+<p style="color:red">这是style为红色的</p>
+<p>这是一个没有style的p</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">### 选择器  </span><br><span class="line"> **元素选择器**  </span><br><span class="line">以标签名进行对应标签的选择,比如:</span><br></pre></td></tr></table></figure>
+
+<style>
+p{
+  color:red;
+}
+</style>
+
+<p>p元素</p><br><p>p元素</p><br><p>p元素</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">所有p元素的字体颜色都变为了红色.  </span><br><span class="line"> **id选择器**  </span><br><span class="line">使用#id&#123;&#125;的格式进行指定id元素的样式修改</span><br></pre></td></tr></table></figure><br><br><style><br>p{<br>  color:red;<br>}<br>#p1{<br>  color:blue;<br>}<br>#p2{<br>  color:green;<br>}<br></style><br><br><p>没有id的p</p><br><p id="p1">id=p1的p</p><br><p id="p2">id=p2的p</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> **类选择器**   </span><br><span class="line">这是css最常用的写法.  </span><br><span class="line">.类名&#123;&#125;</span><br></pre></td></tr></table></figure><br><br><style><br>.pre{<br>  color:blue;<br>}<br>.after{<br>  color:green;<br>}<br></style><br><br><p class="pre">前3个</p><br><p class="pre">前3个</p><br><p class="pre">前3个</p>
+
+<p class="after">后3个</p><br><p class="after">后3个</p><br><p class="after">后3个</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> **深入选择器**  </span><br><span class="line">当然还可以进行任意组合选择,使选择结果更加精确,比如使用元素+class来选择.</span><br></pre></td></tr></table></figure><br><br><style><br><br>p.blue{<br>  color:blue;<br>}<br><br></style><br><br><p class="blue">class=blue的p</p>
+
+<p><span class="blue">class=blue的span</span><br>```  </p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>/**/格式来进行注释  </p>
+]]></content>
+      
+        <categories>
+            
+            <category> web基础 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第三节html基础（二）]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E4%B8%89%E8%8A%82html%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h3 id="表单元素"><a href="#表单元素" class="headerlink" title="表单元素"></a>表单元素</h3><p>阶段性效果<br><img src="https://images.gitee.com/uploads/images/2018/0910/102342_b2fed50f_87680.png" alt="输入图片说明" title="2018-09-10 10-23-35屏幕截图.png"><br>想要实现以上的效果,需要如下元素:<br>文本框input type=text<br>密码框-&gt;password<br>表单 form 提交元素到后台<br>单选框-&gt;radio<br>复选框-&gt;checkbox<br>下拉列表 select option  默认选中selected 可多选 multiple 设置高度size<br>文本域 textarea cols rows<br>普通按钮 button<br>提交按钮 submit<br>重置按钮 reset<br>图像提交 type=image<br>按钮 button 比input更加丰富,在标签内定义图片  </p>
+<pre><code>&lt;button&gt;&lt;img src=&quot;http://how2j.cn/example.gif&quot;/&gt;&lt;/button&gt;
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> web基础 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第二节html基础（一）]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E4%BA%8C%E8%8A%82html%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h3 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h3><p> 打印一个helloworl的网页.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">```  </span><br><span class="line">### 开发工具  </span><br><span class="line">我们使用idea进行html网页的开发.  </span><br><span class="line">使用chrome进行网页的最终调试.  </span><br><span class="line">### 中文编码  </span><br><span class="line">我们在html网页最顶端进行了编码格式的声明,具体内容如下:</span><br></pre></td></tr></table></figure>
+<p><meta charset="UTF-8"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">这里指定我们网页使用utf8编码格式  </span><br><span class="line">### html标签</span><br><span class="line">标签由开始标签和结束标签组成   </span><br><span class="line">其中上文提到的p标签就是html给定的一个标准标签.  </span><br><span class="line">我们对html的学习,主要就是学习标准标签的一些常见用法.  </span><br><span class="line">### html元素  </span><br><span class="line">html元素指的是从开始标签到结束标签以及其中所以的内容.  </span><br><span class="line">上文写的html中p标签以及其中包裹的信息统称为一个p元素  </span><br><span class="line"> **完整html**  </span><br><span class="line">应该至少包含html元素，body元素，以及里面的内容  </span><br><span class="line"> **不完整的元素**</span><br><span class="line">比如:  </span><br><span class="line">`&lt;h1&gt;aaaaa`  </span><br><span class="line">上述代码也是可以正常显示的.当然,这里能正常显示并不是因为你写的代码多么牛逼,主要是因为如今的浏览器都非常强大.  </span><br><span class="line">强大到什么程度呢?可以允许适度的代码错误,即便是非标准的,不完整的元素也可以保证其正常显示.  </span><br><span class="line">  </span><br><span class="line"> **特殊元素**  </span><br><span class="line">`&lt;br/&gt;表示换行`  </span><br><span class="line">`&lt;hr&gt;表示间隔线.`  </span><br><span class="line">### 属性  </span><br><span class="line">修饰标签的特定字符即属性.  </span><br><span class="line">比如:  </span><br><span class="line">`&lt;h1 align=&quot;center&quot;&gt;居中标题&lt;/h1&gt;`  </span><br><span class="line">其中h1标签里面align表示属性,代码其中的元素居中的意思.  </span><br><span class="line">### 注释  </span><br><span class="line">使用`&lt;!----&gt;`进行注释  </span><br><span class="line">### 基本元素  </span><br><span class="line">基本元素一,我们计划实现一下的效果:  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0910/095035_de454082_87680.png &quot;2018-09-10 09-50-25屏幕截图.png&quot;)   </span><br><span class="line">百度百科搜索java.  </span><br><span class="line">为了实现以上效果,我们需要了解html如下的基本元素:  </span><br><span class="line">标题/段落/粗体/斜体/预格式/删除效果/下划线,分别对应的标签为:  </span><br><span class="line">&lt;h1&gt;-&lt;h5&gt;  </span><br><span class="line">&lt;p&gt;  </span><br><span class="line">&lt;b&gt;&lt;strong&gt;  </span><br><span class="line">&lt;i&gt;&lt;em&gt;  </span><br><span class="line">&lt;pre&gt;  即一些特定的格式,代码格式</span><br></pre></td></tr></table></figure></p>
+<p><pre><br>public class HelloWorld {</pre></p>
+<pre><code>public static void main(String[] args) {
+    System.out.println(&quot;Hello World&quot;);
+}
+</code></pre><p>}</p>
+<p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">del    </span><br><span class="line">ins    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">### 阶段练习二  </span><br><span class="line"></span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0910/100407_1c573031_87680.png &quot;2018-09-10 10-03-45屏幕截图.png&quot;)   </span><br><span class="line"> </span><br><span class="line">实现上述效果,需要用到如下元素.  </span><br><span class="line">图像/超链接/表格/列表/块div span/字体/内联框架  </span><br><span class="line">分别对应的标签为:  </span><br><span class="line">img src   </span><br><span class="line">a href  </span><br><span class="line">table tr td  </span><br><span class="line">ul li 无序   </span><br><span class="line">ol li 有序    </span><br><span class="line">div span  </span><br><span class="line">font color size  关于颜色,可以使用取色器,推荐好色鬼  </span><br><span class="line">iframe</span><br></pre></td></tr></table></figure></p>
+<p><iframe src="http://www.baidu.com/" width="600px" height="400px"><br></iframe><br>```  </p>
+]]></content>
+      
+        <categories>
+            
+            <category> web基础 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第一节web基础]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E4%B8%80%E8%8A%82web%E5%9F%BA%E7%A1%80/</url>
+      <content type="html"><![CDATA[<h3 id="基础问答"><a href="#基础问答" class="headerlink" title="基础问答"></a>基础问答</h3><p>javaee是什么?<br>web是什么?<br>java和web存在什么关系?  </p>
+]]></content>
+      
+        <categories>
+            
+            <category> web基础 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第十七节java的部署与打包]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%8D%81%E4%B8%83%E8%8A%82java%E7%9A%84%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%89%93%E5%8C%85/</url>
+      <content type="html"><![CDATA[<h3 id="java文件的打包"><a href="#java文件的打包" class="headerlink" title="java文件的打包"></a>java文件的打包</h3><p>将项目打包成为jar文件.<br>步骤如下:  </p>
+<ol>
+<li>所在项目上面右键,选择Open Module Settings  </li>
+<li>选择Artifactes<br><img src="https://images.gitee.com/uploads/images/2018/0908/102848_30fdaf4f_87680.png" alt="输入图片说明" title="2018-09-08 10-28-11屏幕截图.png">  </li>
+<li>选择增加一个打包功能,左上方的加号按钮,之后选择jar-&gt;from modules with depen..<br><img src="https://images.gitee.com/uploads/images/2018/0908/102954_0fb7e32c_87680.png" alt="输入图片说明" title="2018-09-08 10-29-46屏幕截图.png"><br>mainclass位置输入对于的主函数,点击保存即可.  </li>
+<li>选择build -&gt; Build Artifacts即可.  </li>
+</ol>
+<h3 id="jar文件的执行"><a href="#jar文件的执行" class="headerlink" title="jar文件的执行"></a>jar文件的执行</h3><p>使用java命令执行jar包即可.<br>执行方法为:java -jar 指定jar包  </p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第十六节java的集合]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%8D%81%E5%85%AD%E8%8A%82java%E7%9A%84%E9%9B%86%E5%90%88/</url>
+      <content type="html"><![CDATA[<h3 id="常用集合"><a href="#常用集合" class="headerlink" title="常用集合"></a>常用集合</h3><p> <strong>ArrayList</strong><br>回忆问题:  </p>
+<ol>
+<li>数据和list的区别是什么?  </li>
+<li>arraylist是如何存放对象的,又是如何遍历对象的?<br>arraylist的常用方法:<br><img src="https://images.gitee.com/uploads/images/2018/0907/192006_4d4af984_87680.png" alt="输入图片说明" title="2018-09-07 19-19-55屏幕截图.png"><br>尝试练习常用方法.<br><strong>问题:arraylist和list的区别?</strong><br><em>遍历list对象的话,其实还有另外一种遍历的方式,叫做迭代器遍历</em><br>迭代器,即Iterator.<br><img src="https://images.gitee.com/uploads/images/2018/0907/192225_a4028e0c_87680.png" alt="输入图片说明" title="2018-09-07 19-22-18屏幕截图.png"><br>迭代器进行遍历的示例代码:  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package collection;</span><br><span class="line"> </span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line">import java.util.List;</span><br><span class="line"> </span><br><span class="line">import charactor.Hero;</span><br><span class="line">  </span><br><span class="line">public class TestCollection &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        List&lt;Hero&gt; heros = new ArrayList&lt;Hero&gt;();</span><br><span class="line">         </span><br><span class="line">        //放5个Hero进入容器</span><br><span class="line">        for (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">            heros.add(new Hero(&quot;hero name &quot; +i));</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        //第二种遍历，使用迭代器</span><br><span class="line">        System.out.println(&quot;--------使用while的iterator-------&quot;);</span><br><span class="line">        Iterator&lt;Hero&gt; it= heros.iterator();</span><br><span class="line">        //从最开始的位置判断&quot;下一个&quot;位置是否有数据</span><br><span class="line">        //如果有就通过next取出来，并且把指针向下移动</span><br><span class="line">        //直到&quot;下一个&quot;位置没有数据</span><br><span class="line">        while(it.hasNext())&#123;</span><br><span class="line">            Hero h = it.next();</span><br><span class="line">            System.out.println(h);</span><br><span class="line">        &#125;</span><br><span class="line">        //迭代器的for写法</span><br><span class="line">        System.out.println(&quot;--------使用for的iterator-------&quot;);</span><br><span class="line">        for (Iterator&lt;Hero&gt; iterator = heros.iterator(); iterator.hasNext();) &#123;</span><br><span class="line">            Hero hero = (Hero) iterator.next();</span><br><span class="line">            System.out.println(hero);</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"> _常见问题:假如我现在有这样一个需求,我现在有一个string类型的arraylist,里面存放的是学生姓名.如何将该arraylist指定的学生姓名删除掉呢?_  </span><br><span class="line"> **LinkedList**  </span><br><span class="line">可以将LinkedList当做Arraylist的一个扩展,他除了用于ArrayList的常用功能外,还具有其特殊的高效方法.  </span><br><span class="line">其主要的高效方法如下:  </span><br><span class="line">1. 作为一个双向的链表,可以在其头部和尾部方便的插入和删除元素,该类存在其特殊方法.  </span><br><span class="line">2. 可以作为队列,使用其提供的三个特殊方法offer在最后添加元素/poll取出第一个元素/peek查看第一个元素</span><br><span class="line"></span><br><span class="line">实例代码如下:  </span><br><span class="line">作为双向链表:</span><br></pre></td></tr></table></figure>
+<p>package collection;</p>
+<p>import java.util.LinkedList;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestCollection {</p>
+<pre><code>public static void main(String[] args) {
+
+    //LinkedList是一个双向链表结构的list
+    LinkedList&lt;Hero&gt; ll =new LinkedList&lt;Hero&gt;();
+
+    //所以可以很方便的在头部和尾部插入数据
+    //在最后插入新的英雄
+    ll.addLast(new Hero(&quot;hero1&quot;));
+    ll.addLast(new Hero(&quot;hero2&quot;));
+    ll.addLast(new Hero(&quot;hero3&quot;));
+    System.out.println(ll);
+
+    //在最前面插入新的英雄
+    ll.addFirst(new Hero(&quot;heroX&quot;));
+    System.out.println(ll);
+
+    //查看最前面的英雄
+    System.out.println(ll.getFirst());
+    //查看最后面的英雄
+    System.out.println(ll.getLast());
+
+    //查看不会导致英雄被删除
+    System.out.println(ll);
+    //取出最前面的英雄
+    System.out.println(ll.removeFirst());
+
+    //取出最后面的英雄
+    System.out.println(ll.removeLast());
+
+    //取出会导致英雄被删除
+    System.out.println(ll);
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">实例代码:</span><br><span class="line">作为队列:</span><br></pre></td></tr></table></figure></p>
+<p>package collection;</p>
+<p>import java.util.LinkedList;<br>import java.util.List;<br>import java.util.Queue;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestCollection {</p>
+<pre><code>public static void main(String[] args) {
+    //和ArrayList一样，LinkedList也实现了List接口
+    List ll =new LinkedList&lt;Hero&gt;();
+
+    //所不同的是LinkedList还实现了Deque，进而又实现了Queue这个接口
+    //Queue代表FIFO 先进先出的队列
+    Queue&lt;Hero&gt; q= new LinkedList&lt;Hero&gt;();
+
+    //加在队列的最后面
+    System.out.print(&quot;初始化队列：\t&quot;);
+    q.offer(new Hero(&quot;Hero1&quot;));
+    q.offer(new Hero(&quot;Hero2&quot;));
+    q.offer(new Hero(&quot;Hero3&quot;));
+    q.offer(new Hero(&quot;Hero4&quot;));
+
+    System.out.println(q);
+    System.out.print(&quot;把第一个元素取poll()出来:\t&quot;);
+    //取出第一个Hero，FIFO 先进先出
+    Hero h = q.poll();
+    System.out.println(h);
+    System.out.print(&quot;取出第一个元素之后的队列:\t&quot;);
+    System.out.println(q);
+
+    //把第一个拿出来看一看，但是不取出来
+    h=q.peek();
+    System.out.print(&quot;查看peek()第一个元素:\t&quot;);
+    System.out.println(h);
+    System.out.print(&quot;查看并不会导致第一个元素被取出来:\t&quot;);
+    System.out.println(q);
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">### HashMap  </span><br><span class="line">之前学过hashmap进行键值对的存放.  </span><br><span class="line">现在拓展一下,便利一下map,将其键值对,键和值全部都输出出来.</span><br></pre></td></tr></table></figure></p>
+<p>Map<integer, integer=""> map = new HashMap<integer, integer="">();<br>Iterator<map.entry<integer, integer="">&gt; entries = map.entrySet().iterator();<br>while (entries.hasNext()) {<br>  Map.Entry<integer, integer=""> entry = entries.next();<br>  System.out.println(“Key = “ + entry.getKey() + “, Value = “ + entry.getValue());<br>}<br>```</integer,></map.entry<integer,></integer,></integer,></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第十五节多线程简介]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%8D%81%E4%BA%94%E8%8A%82%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AE%80%E4%BB%8B/</url>
+      <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>所谓多线程就是在同一时间,可以做多件事情.<br>创建多线程主要有三种方式,分别为:  </p>
+<ol>
+<li>继承线程类  </li>
+<li>实现runnable接口  </li>
+<li>匿名类<br>首先,明确线程概念.了解线程概念之前需要搞清楚进程的概念.<br><strong>进程：</strong>启动一个LOL.exe就叫一个进程。 接着又启动一个DOTA.exe，这叫两个进程。<br><strong>线程：</strong>线程是在进程内部同时做的事情，比如在LOL里，有很多事情要同时做，比如”盖伦” 击杀“提莫”，同时“赏金猎人”又在击杀“盲僧”，这就是由多线程来实现的。<br>一个非多线程的例子:  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package charactor;</span><br><span class="line"> </span><br><span class="line">import java.io.Serializable;</span><br><span class="line">  </span><br><span class="line">public class Hero&#123;</span><br><span class="line">    public String name;</span><br><span class="line">    public float hp;</span><br><span class="line">     </span><br><span class="line">    public int damage;</span><br><span class="line">     </span><br><span class="line">    public void attackHero(Hero h) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //为了表示攻击需要时间，每次攻击暂停1000毫秒</span><br><span class="line">            Thread.sleep(1000);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            // TODO Auto-generated catch block</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        h.hp-=damage;</span><br><span class="line">        System.out.format(&quot;%s 正在攻击 %s, %s的血变成了 %.0f%n&quot;,name,h.name,h.name,h.hp);</span><br><span class="line">         </span><br><span class="line">        if(h.isDead())</span><br><span class="line">            System.out.println(h.name +&quot;死了！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public boolean isDead() &#123;</span><br><span class="line">        return 0&gt;=hp?true:false;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">模拟测试类:</span><br></pre></td></tr></table></figure>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    //盖伦攻击提莫
+    while(!teemo.isDead()){
+        gareen.attackHero(teemo);
+    }
+
+    //赏金猎人攻击盲僧
+    while(!leesin.isDead()){
+        bh.attackHero(leesin);
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上述代码,我们会发现,盖伦在攻击完提莫之后,赏金猎人才会攻击盲僧.  </span><br><span class="line"> **多线程的形式进行攻击**</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class KillThread extends Thread{</p>
+<pre><code>private Hero h1;
+private Hero h2;
+
+public KillThread(Hero h1, Hero h2){
+    this.h1 = h1;
+    this.h2 = h2;
+}
+
+public void run(){
+    while(!h2.isDead()){
+        h1.attackHero(h2);
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">主线程进行代码测试</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    KillThread killThread1 = new KillThread(gareen,teemo);
+    killThread1.start();
+    KillThread killThread2 = new KillThread(bh,leesin);
+    killThread2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">以上为继承thread的方式进行的多线程的代码实现.  </span><br><span class="line"></span><br><span class="line"> **使用实现runnable接口的形式进行多线程的实现**</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class Battle implements Runnable{</p>
+<pre><code>private Hero h1;
+private Hero h2;
+
+public Battle(Hero h1, Hero h2){
+    this.h1 = h1;
+    this.h2 = h2;
+}
+
+public void run(){
+    while(!h2.isDead()){
+        h1.attackHero(h2);
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">主线程测试类:</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    Battle battle1 = new Battle(gareen,teemo);
+
+    new Thread(battle1).start();
+
+    Battle battle2 = new Battle(bh,leesin);
+    new Thread(battle2).start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**匿名类**</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    //匿名类
+    Thread t1= new Thread(){
+        public void run(){
+            //匿名类中用到外部的局部变量teemo，必须把teemo声明为final
+            //但是在JDK7以后，就不是必须加final的了
+            while(!teemo.isDead()){
+                gareen.attackHero(teemo);
+            }              
+        }
+    };
+
+    t1.start();
+
+    Thread t2= new Thread(){
+        public void run(){
+            while(!leesin.isDead()){
+                bh.attackHero(leesin);
+            }              
+        }
+    };
+    t2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> _start方法和run方法的区别?_  </span><br><span class="line">### 常见线程操作方法  </span><br><span class="line"> **线程暂停**  </span><br><span class="line">Thread.sleep(1000); 表示当前线程暂停1000毫秒 ，其他线程不受影响   </span><br><span class="line">Thread.sleep(1000); 会抛出InterruptedException 中断异常，因为当前线程sleep的时候，有可能被停止，这时就会抛出 InterruptedException</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Thread t1= new Thread(){
+        public void run(){
+            int seconds =0;
+            while(true){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.printf(&quot;已经玩了LOL %d 秒%n&quot;, seconds++);
+            }              
+        }
+    };
+    t1.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> **加入到当前线程**  </span><br><span class="line">首先解释一下主线程的概念  </span><br><span class="line">所有进程，至少会有一个线程即主线程，即main方法开始执行，就会有一个看不见的主线程存在。  </span><br><span class="line">在42行执行t.join，即表明在主线程中加入该线程。  </span><br><span class="line">主线程会等待该线程结束完毕， 才会往下运行。</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    final Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    final Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    final Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    final Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    Thread t1= new Thread(){
+        public void run(){
+            while(!teemo.isDead()){
+                gareen.attackHero(teemo);
+            }              
+        }
+    };
+
+    t1.start();
+
+    //代码执行到这里，一直是main线程在运行
+    try {
+        //t1线程加入到main线程中来，只有t1线程运行结束，才会继续往下走
+        t1.join();
+    } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+    Thread t2= new Thread(){
+        public void run(){
+            while(!leesin.isDead()){
+                bh.attackHero(leesin);
+            }              
+        }
+    };
+    //会观察到盖伦把提莫杀掉后，才运行t2线程
+    t2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> **线程优先级**   </span><br><span class="line">当线程处于竞争关系的时候，优先级高的线程会有更大的几率获得CPU资源 </span><br><span class="line">为了演示该效果，要把暂停时间去掉，多条线程各自会尽力去占有CPU资源 </span><br><span class="line">同时把英雄的血量增加100倍，攻击减低到1，才有足够的时间观察到优先级的演示 </span><br><span class="line">如图可见，线程1的优先级是MAX_PRIORITY，所以它争取到了更多的CPU资源执行代码</span><br></pre></td></tr></table></figure></p>
+<p>package charactor;</p>
+<p>import java.io.Serializable;</p>
+<p>public class Hero{<br>    public String name;<br>    public float hp;</p>
+<pre><code>public int damage;
+
+public void attackHero(Hero h) {
+    //把暂停时间去掉，多条线程各自会尽力去占有CPU资源
+    //线程的优先级效果才可以看得出来
+</code></pre><p>//        try {<br>//<br>//            Thread.sleep(0);<br>//        } catch (InterruptedException e) {<br>//            // TODO Auto-generated catch block<br>//            e.printStackTrace();<br>//        }<br>        h.hp-=damage;<br>        System.out.format(“%s 正在攻击 %s, %s的血变成了 %.0f%n”,name,h.name,h.name,h.hp);</p>
+<pre><code>    if(h.isDead())
+        System.out.println(h.name +&quot;死了！&quot;);
+}
+
+public boolean isDead() {
+    return 0&gt;=hp?true:false;
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    final Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 6160;
+    gareen.damage = 1;
+
+    final Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 3000;
+    teemo.damage = 1;
+
+    final Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 5000;
+    bh.damage = 1;
+
+    final Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 4505;
+    leesin.damage = 1;
+
+    Thread t1= new Thread(){
+        public void run(){
+
+            while(!teemo.isDead()){
+                gareen.attackHero(teemo);
+            }              
+        }
+    };
+
+    Thread t2= new Thread(){
+        public void run(){
+            while(!leesin.isDead()){
+                bh.attackHero(leesin);
+            }              
+        }
+    };
+
+    t1.setPriority(Thread.MAX_PRIORITY);
+    t2.setPriority(Thread.MIN_PRIORITY);
+    t1.start();
+    t2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> **临时暂停**   </span><br><span class="line">当前线程，临时暂停，使得其他线程可以有更多的机会占用CPU资源</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    final Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 61600;
+    gareen.damage = 1;
+
+    final Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 30000;
+    teemo.damage = 1;
+
+    final Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 50000;
+    bh.damage = 1;
+
+    final Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 45050;
+    leesin.damage = 1;
+
+    Thread t1= new Thread(){
+        public void run(){
+
+            while(!teemo.isDead()){
+                gareen.attackHero(teemo);
+            }              
+        }
+    };
+
+    Thread t2= new Thread(){
+        public void run(){
+            while(!leesin.isDead()){
+                //临时暂停，使得t1可以占用CPU资源
+                Thread.yield();
+
+                bh.attackHero(leesin);
+            }              
+        }
+    };
+
+    t1.setPriority(5);
+    t2.setPriority(5);
+    t1.start();
+    t2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> **守护线程**  </span><br><span class="line">守护线程的概念是： 当一个进程里，所有的线程都是守护线程的时候，结束当前进程。</span><br><span class="line"></span><br><span class="line">就好像一个公司有销售部，生产部这些和业务挂钩的部门。</span><br><span class="line">除此之外，还有后勤，行政等这些支持部门。</span><br><span class="line"></span><br><span class="line">如果一家公司销售部，生产部都解散了，那么只剩下后勤和行政，那么这家公司也可以解散了。</span><br><span class="line"></span><br><span class="line">守护线程就相当于那些支持部门，如果一个进程只剩下守护线程，那么进程就会自动结束。</span><br><span class="line"></span><br><span class="line">守护线程通常会被用来做日志，性能统计等工作。</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Thread t1= new Thread(){
+        public void run(){
+            int seconds =0;
+
+            while(true){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.printf(&quot;已经玩了LOL %d 秒%n&quot;, seconds++);
+
+            }              
+        }
+    };
+    t1.setDaemon(true);
+    t1.start();
+
+}
+</code></pre><p>}<br>```  </p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第十四节网络编程]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%8D%81%E5%9B%9B%E8%8A%82%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<h3 id="IP地址和端口"><a href="#IP地址和端口" class="headerlink" title="IP地址和端口"></a>IP地址和端口</h3><p><strong>IP地址</strong><br>在计算机网络里面,每一台计算机都存在一个IP地址,并且这个地址是唯一的,是全世界唯一的.<br>前提:全世界的计算机都在一个网段内.<br>32位,四个字节.<br>192.168.1.103  </p>
+<p>其中xxx代表0~255之间十进制数值。<br>常识：计算机中的数据信息都是用二进制来标示。<br>0~255 中最大数值为255，转换为二进制就是11111111，共计8位二进制数值。至于0，转换后为00000000，中间的数值则也在8位二进制的范围内。  </p>
+<p>127.0.0.1指的是当前的计算机,也就是我们对象里面说的this.<br><img src="https://images.gitee.com/uploads/images/2018/0906/153248_b59e072c_87680.png" alt="输入图片说明" title="2018-09-06 15-32-41屏幕截图.png"><br> <strong>端口</strong><br>两台计算机之间如果进行通讯,必须得有一台是服务器,另外一台作为客户端.<br>其中,服务器和客户端之间需要使用端口进行数据通讯.<br>图示如下:<br><img src="https://images.gitee.com/uploads/images/2018/0906/154018_985909f7_87680.png" alt="输入图片说明" title="2018-09-06 15-39-44屏幕截图.png"><br> <strong>实例:获取本机IP</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package socket;</span><br><span class="line"> </span><br><span class="line">import java.net.InetAddress;</span><br><span class="line">import java.net.UnknownHostException;</span><br><span class="line"> </span><br><span class="line">public class TestSocket &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) throws UnknownHostException &#123;</span><br><span class="line">        InetAddress host = InetAddress.getLocalHost();</span><br><span class="line">        String ip =host.getHostAddress();</span><br><span class="line">        System.out.println(&quot;本机ip地址：&quot; + ip);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"> **ping命令**  </span><br><span class="line">确定某一个ip和自己是否在一个网段,是否能够跟指定ip设备进行通讯.  </span><br><span class="line">ping ip地址  </span><br><span class="line">实例: ping 192.168.1.101</span><br><span class="line"> **telnet命令**  </span><br><span class="line">确定指定ip地址设备的某一端口是否能通.  </span><br><span class="line">telnet ip 端口  </span><br><span class="line">实例: telnet 192.168.1.123 8080  </span><br><span class="line"> **使用java执行ping命令**</span><br></pre></td></tr></table></figure>
+<p>package socket;</p>
+<p>import java.io.BufferedReader;<br>import java.io.IOException;<br>import java.io.InputStreamReader;</p>
+<p>public class TestSocket {</p>
+<pre><code>public static void main(String[] args) throws IOException {
+
+    Process p = Runtime.getRuntime().exec(&quot;ping &quot; + &quot;192.168.2.106&quot;);
+    BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+    String line = null;
+    StringBuilder sb = new StringBuilder();
+    while ((line = br.readLine()) != null) {
+        if (line.length() != 0)
+            sb.append(line + &quot;\r\n&quot;);
+    }
+    System.out.println(&quot;本次指令返回的消息是：&quot;);
+    System.out.println(sb.toString());
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> **尝试练习:**  </span><br><span class="line">确定当前网段可以的所有ip.  </span><br><span class="line">思路:遍历当前网段的所以ip地址,每一个ip地址进行ping操作.  </span><br><span class="line">只要可以ping通,则可以将数据进行打印,或者将ip地址存储到一个集合里面.之后便利整个集合即可.  </span><br><span class="line"> </span><br><span class="line">### socket  </span><br><span class="line">使用socket进行不同程序之间的通讯.  </span><br><span class="line">我们可能使用的语言不同,使用的框架不同,但是可以使用通用的网络协议进行通讯,只要网络协议相同,即可进行通讯.  </span><br><span class="line">socket又叫做套接字,可以进行不同程序之间的通讯.  </span><br><span class="line">使用socket的步骤:  </span><br><span class="line">1. 建立连接  </span><br><span class="line">2. 收发数据  </span><br><span class="line"></span><br><span class="line"> **建立连接实例**  </span><br><span class="line">1. 服务端开启8888端口，并监听着，时刻等待着客户端的连接请求 </span><br><span class="line">2. 客户端知道服务端的ip地址和监听端口号，发出请求到服务端 </span><br><span class="line">客户端的端口地址是系统分配的，通常都会大于1024 </span><br><span class="line">一旦建立了连接，服务端会得到一个新的Socket对象，该对象负责与客户端进行通信。 </span><br><span class="line">注意： 在开发调试的过程中，如果修改过了服务器Server代码，要关闭启动的Server,否则新的Server不能启动，因为8888端口被占用了  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0906/162154_a50ecf4b_87680.png &quot;2018-09-06 16-11-43屏幕截图.png&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>package socket;</p>
+<p>import java.io.IOException;<br>import java.net.ServerSocket;<br>import java.net.Socket;</p>
+<p>public class Server {</p>
+<pre><code>public static void main(String[] args)  {
+    try {
+        //服务端打开端口8888
+        ServerSocket ss = new ServerSocket(8888);
+
+        //在8888端口上监听，看是否有连接请求过来
+        System.out.println(&quot;监听在端口号:8888&quot;);
+        Socket s =  ss.accept();
+
+        System.out.println(&quot;有连接过来&quot; + s);
+
+        s.close();
+        ss.close();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端测试:</span><br></pre></td></tr></table></figure></p>
+<p>package socket;</p>
+<p>import java.io.IOException;<br>import java.net.Socket;<br>import java.net.UnknownHostException;</p>
+<p>public class Client {</p>
+<pre><code>public static void main(String[] args)  {
+
+    try {
+        //连接到本机的8888端口
+        Socket s = new Socket(&quot;127.0.0.1&quot;,8888);
+        System.out.println(s);
+        s.close();
+    } catch (UnknownHostException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> **数字收发**  </span><br><span class="line">服务端代码:</span><br></pre></td></tr></table></figure></p>
+<p>package socket;</p>
+<p>import java.io.IOException;<br>import java.io.InputStream;<br>import java.net.ServerSocket;<br>import java.net.Socket;</p>
+<p>public class Server {</p>
+<pre><code>public static void main(String[] args) {
+    try {
+
+        ServerSocket ss = new ServerSocket(8888);
+
+        System.out.println(&quot;监听在端口号:8888&quot;);
+        Socket s = ss.accept();
+
+        //打开输入流
+        InputStream is = s.getInputStream();
+
+        //读取客户端发送的数据
+        int msg = is.read();
+        //打印出来
+        System.out.println(msg);
+        is.close();
+
+        s.close();
+        ss.close();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端代码:</span><br></pre></td></tr></table></figure></p>
+<p>package socket;</p>
+<p>import java.io.IOException;<br>import java.io.OutputStream;<br>import java.net.Socket;<br>import java.net.UnknownHostException;</p>
+<p>public class Client {</p>
+<pre><code>public static void main(String[] args) {
+
+    try {
+        Socket s = new Socket(&quot;127.0.0.1&quot;, 8888);
+
+        // 打开输出流
+        OutputStream os = s.getOutputStream();
+
+        // 发送数字110到服务端
+        os.write(110);
+        os.close();
+
+        s.close();
+    } catch (UnknownHostException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> **收发字符串**  </span><br><span class="line">直接使用字节流收发字符串比较麻烦，使用数据流对字节流进行封装，这样收发字符串就容易了 </span><br><span class="line">1. 把输出流封装在DataOutputStream中 </span><br><span class="line">使用writeUTF发送字符串 &quot;Legendary!&quot; </span><br><span class="line">2. 把输入流封装在DataInputStream </span><br><span class="line">使用readUTF读取字符串,并打印</span><br><span class="line">实例代码:  </span><br><span class="line">服务端:</span><br></pre></td></tr></table></figure></p>
+<p>package socket;</p>
+<p>import java.io.DataInputStream;<br>import java.io.IOException;<br>import java.io.InputStream;<br>import java.net.ServerSocket;<br>import java.net.Socket;</p>
+<p>public class Server {</p>
+<pre><code>public static void main(String[] args) {
+    try {
+
+        ServerSocket ss = new ServerSocket(8888);
+
+        System.out.println(&quot;监听在端口号:8888&quot;);
+        Socket s = ss.accept();
+
+        InputStream is = s.getInputStream();
+
+        //把输入流封装在DataInputStream
+        DataInputStream dis = new DataInputStream(is);
+        //使用readUTF读取字符串
+        String msg = dis.readUTF();
+        System.out.println(msg);
+        dis.close();
+        s.close();
+        ss.close();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端:</span><br></pre></td></tr></table></figure></p>
+<p>package socket;</p>
+<p>import java.io.DataOutputStream;<br>import java.io.IOException;<br>import java.io.OutputStream;<br>import java.net.Socket;<br>import java.net.UnknownHostException;<br>import java.util.Scanner;</p>
+<p>public class Client {</p>
+<pre><code>public static void main(String[] args) {
+
+    try {
+        Socket s = new Socket(&quot;127.0.0.1&quot;, 8888);
+
+        OutputStream os = s.getOutputStream();
+
+        //把输出流封装在DataOutputStream中
+        DataOutputStream dos = new DataOutputStream(os);
+        //使用writeUTF发送字符串
+        dos.writeUTF(&quot;Legendary!&quot;);
+        dos.close();
+        s.close();
+    } catch (UnknownHostException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> **使用scanner进行数据的接收**  </span><br><span class="line">服务端代码:</span><br></pre></td></tr></table></figure></p>
+<p>package socket;</p>
+<p>import java.io.DataOutputStream;<br>import java.io.IOException;<br>import java.io.OutputStream;<br>import java.net.Socket;<br>import java.net.UnknownHostException;<br>import java.util.Scanner;</p>
+<p>public class Client {</p>
+<pre><code>public static void main(String[] args) {
+
+    try {
+        Socket s = new Socket(&quot;127.0.0.1&quot;, 8888);
+
+        OutputStream os = s.getOutputStream();
+        DataOutputStream dos = new DataOutputStream(os);
+
+        //使用Scanner读取控制台的输入，并发送到服务端
+        Scanner sc = new Scanner(System.in);
+
+        String str = sc.next();
+        dos.writeUTF(str);
+
+        dos.close();
+        s.close();
+    } catch (UnknownHostException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+</code></pre><p>}<br>```  </p>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><p>实现一个网络聊天室的功能</p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第十三节Java的IO流]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%8D%81%E4%B8%89%E8%8A%82Java%E7%9A%84IO%E6%B5%81/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>IO操作大部分是对文件的操作  </p>
+</blockquote>
+<h3 id="文件对象"><a href="#文件对象" class="headerlink" title="文件对象"></a>文件对象</h3><p>文件对象主要分为文件和文件夹<br>java对应文件对象的操作，其常用方法可以通过如下的练习进行简单的记忆和了解。<br>不需要记住，使用的时候可以及时的查出来就行。<br> <strong>文件对象操作api1</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class TestFile &#123;</span><br><span class="line">  </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">         //创建一个文件对象</span><br><span class="line">        File f = new File(&quot;d:/LOLFolder/LOL.exe&quot;);</span><br><span class="line">        System.out.println(&quot;当前文件是：&quot; +f);</span><br><span class="line">        //文件是否存在</span><br><span class="line">        System.out.println(&quot;判断是否存在：&quot;+f.exists());</span><br><span class="line">         </span><br><span class="line">        //是否是文件夹</span><br><span class="line">        System.out.println(&quot;判断是否是文件夹：&quot;+f.isDirectory());</span><br><span class="line">          </span><br><span class="line">        //是否是文件（非文件夹）</span><br><span class="line">        System.out.println(&quot;判断是否是文件：&quot;+f.isFile());</span><br><span class="line">          </span><br><span class="line">        //文件长度</span><br><span class="line">        System.out.println(&quot;获取文件的长度：&quot;+f.length());</span><br><span class="line">          </span><br><span class="line">        //文件最后修改时间</span><br><span class="line">        long time = f.lastModified();</span><br><span class="line">        Date d = new Date(time);</span><br><span class="line">        System.out.println(&quot;获取文件的最后修改时间：&quot;+d);</span><br><span class="line">        //设置文件修改时间为1970.1.1 08:00:00</span><br><span class="line">        f.setLastModified(0);</span><br><span class="line">          </span><br><span class="line">        //文件重命名</span><br><span class="line">        File f2 =new File(&quot;d:/LOLFolder/DOTA.exe&quot;);</span><br><span class="line">        f.renameTo(f2);</span><br><span class="line">        System.out.println(&quot;把LOL.exe改名成了DOTA.exe&quot;);</span><br><span class="line">         </span><br><span class="line">        System.out.println(&quot;注意： 需要在D:\\LOLFolder确实存在一个LOL.exe,\r\n才可以看到对应的文件长度、修改时间等信息&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">```  </span><br><span class="line"> **文件对象操作2**</span><br></pre></td></tr></table></figure>
+<p> public static void main(String[] args) throws IOException {</p>
+<pre><code>    File f = new File(&quot;d:/LOLFolder/skin/garen.ski&quot;);
+
+    // 以字符串数组的形式，返回当前文件夹下的所有文件（不包含子文件及子文件夹）
+    f.list();
+
+    // 以文件数组的形式，返回当前文件夹下的所有文件（不包含子文件及子文件夹）
+    File[]fs= f.listFiles();
+
+    // 以字符串形式返回获取所在文件夹
+    f.getParent();
+
+    // 以文件形式返回获取所在文件夹
+    f.getParentFile();
+    // 创建文件夹，如果父文件夹skin不存在，创建就无效
+    f.mkdir();
+
+    // 创建文件夹，如果父文件夹skin不存在，就会创建父文件夹
+    f.mkdirs();
+
+    // 创建一个空文件,如果父文件夹skin不存在，就会抛出异常
+    f.createNewFile();
+    // 所以创建一个空文件之前，通常都会创建父目录
+    f.getParentFile().mkdirs();
+
+    // 列出所有的盘符c: d: e: 等等
+    f.listRoots();
+
+    // 刪除文件
+    f.delete();
+
+    // JVM结束的时候，刪除文件，常用于临时文件的删除
+    f.deleteOnExit();
+
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> **尝试练习：遍历c盘windows文件夹**   </span><br><span class="line"></span><br><span class="line">### 流</span><br><span class="line">什么流呢？ 通俗来说，就是一系列的数据。  </span><br><span class="line">当不同的介质之间有数据交互的时候，JAVA就使用流来实现。</span><br><span class="line">数据源可以是文件，还可以是数据库，网络甚至是其他的程序</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">比如读取文件的数据到程序中，站在程序的角度来看，就叫做输入流</span><br><span class="line">输入流： InputStream</span><br><span class="line">输出流：OutputStream  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0831/135036_2e39e1a0_87680.png &quot;屏幕截图.png&quot;)  </span><br><span class="line"> _下面我们简单介绍几种流:_   </span><br><span class="line"> **文件输入流**  </span><br><span class="line">将文件数据进行输入，输入到程序里面，使用流  </span><br><span class="line">实例</span><br></pre></td></tr></table></figure>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    try {
+        File f = new File(&quot;d:/lol.txt&quot;);
+        // 创建基于文件的输入流
+        FileInputStream fis = new FileInputStream(f);
+        // 通过这个输入流，就可以把数据从硬盘，读取到Java的虚拟机中来，也就是读取到内存中
+
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">此时代码只是建立了流,还没有对文件进行操作.  </span><br><span class="line"> **字节流**  </span><br><span class="line"> 使用字节流主要进行如下操作:  </span><br><span class="line">1. 文件的读取  </span><br><span class="line">2. 文件的写入  </span><br><span class="line">在计算机的认知中,一切均为字节.因此,使用字节可以进行任何数据的读取和写入.  </span><br><span class="line"> **使用字节流进行数据的读取**</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileInputStream;<br>import java.io.IOException;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    try {
+        //准备文件lol.txt其中的内容是AB，对应的ASCII分别是65 66
+        File f =new File(&quot;d:/lol.txt&quot;);
+        //创建基于文件的输入流
+        FileInputStream fis =new FileInputStream(f);
+        //创建字节数组，其长度就是文件的长度
+        byte[] all =new byte[(int) f.length()];
+        //以字节流的形式读取文件所有内容
+        fis.read(all);
+        for (byte b : all) {
+            //打印出来是65 66
+            System.out.println(b);
+        }
+
+        //每次使用完流，都应该进行关闭
+        fis.close();
+
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**使用字节流进行文件的写入**</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileOutputStream;<br>import java.io.IOException;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    try {
+        // 准备文件lol2.txt其中的内容是空的
+        File f = new File(&quot;d:/lol2.txt&quot;);
+        // 准备长度是2的字节数组，用88,89初始化，其对应的字符分别是X,Y
+        byte data[] = { 88, 89 };
+
+        // 创建基于文件的输出流
+        FileOutputStream fos = new FileOutputStream(f);
+        // 把数据写入到输出流
+        fos.write(data);
+        // 关闭输出流
+        fos.close();
+
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"></span><br><span class="line">### 关闭流  </span><br><span class="line">目前存在三种方式,可以关闭java的io流.  </span><br><span class="line">1. 在try中进行流的关闭  </span><br><span class="line">try&#123;关闭流&#125;catch()&#123;&#125;  </span><br><span class="line">这样存在一个很大的问题,假如出现问题,那么代码会直接进入catch语句.这样就会导致流不能正常关闭,会产生对资源的浪费.  </span><br><span class="line">即-流一直开着,没人使用.这将会是计算机资源的一种浪费.  </span><br><span class="line">2.  在finally里面进行流的关闭  </span><br><span class="line">try&#123;&#125;catch()&#123;&#125;finally&#123;&#125;  </span><br><span class="line">finally无论如何都会进入,这样会关闭的非常准确.绝不会造成资源的浪费.  </span><br><span class="line">但是,这种做法会使得代码变得非常繁琐.  </span><br><span class="line">3. try()关闭  </span><br><span class="line">这种做法还有一种说法叫做try-with-resources  </span><br><span class="line">之前,我们使用过这种方法.现在我们一起回顾一下:</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileInputStream;<br>import java.io.IOException;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    File f = new File(&quot;d:/lol.txt&quot;);
+
+    //把流定义在try()里,try,catch或者finally结束的时候，会自动关闭
+    try (FileInputStream fis = new FileInputStream(f)) {
+        byte[] all = new byte[(int) f.length()];
+        fis.read(all);
+        for (byte b : all) {
+            System.out.println(b);
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### 字符流读取写入  </span><br><span class="line">专门进行字符的读取和写入.  </span><br><span class="line">读取使用reader  </span><br><span class="line">写入使用writer  </span><br><span class="line">字符读取文件,实例如下:</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileReader;<br>import java.io.IOException;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    // 准备文件lol.txt其中的内容是AB
+    File f = new File(&quot;d:/lol.txt&quot;);
+    // 创建基于文件的Reader
+    try (FileReader fr = new FileReader(f)) {
+        // 创建字符数组，其长度就是文件的长度
+        char[] all = new char[(int) f.length()];
+        // 以字符流的形式读取文件所有内容
+        fr.read(all);
+        for (char b : all) {
+            // 打印出来是A B
+            System.out.println(b);
+        }
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符写入文件,代码如下:</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileWriter;<br>import java.io.IOException;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    // 准备文件lol2.txt
+    File f = new File(&quot;d:/lol2.txt&quot;);
+    // 创建基于文件的Writer
+    try (FileWriter fr = new FileWriter(f)) {
+        // 以字符流的形式把数据写入到文件中
+        String data=&quot;abcdefg1234567890&quot;;
+        char[] cs = data.toCharArray();
+        fr.write(cs);
+
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">### 尝试练习  </span><br><span class="line">我们可以采用给字符加减数的形式进行字符的加密操作.  </span><br><span class="line">各位可以尝试一下该代码的实现.  </span><br><span class="line">我们一起定义一个加密算法,加密算法如下:  </span><br><span class="line">加密算法： </span><br><span class="line">数字： </span><br><span class="line">如果不是9的数字，在原来的基础上加1，比如5变成6, 3变成4  </span><br><span class="line">如果是9的数字，变成0  </span><br><span class="line">字母字符：  </span><br><span class="line">如果是非z字符，向右移动一个，比如d变成e, G变成H  </span><br><span class="line">如果是z，z-&gt;a, Z-A。  </span><br><span class="line">字符需要保留大小写  </span><br><span class="line">非字母字符  </span><br><span class="line">比如&apos;,&amp;^ 保留不变，中文也保留不变     </span><br><span class="line"></span><br><span class="line">### 中文问题  </span><br><span class="line"> **编码概念**  </span><br><span class="line">计算机存放的数据只能存放数字,也就是我们所说的0和1.  </span><br><span class="line">假如我们现在有一个棋盘,在不同的位置放入不同的数字,表示不同的值.  </span><br><span class="line">最小的棋盘就是我们所说的标准棋盘,只能存放英文和数字.  </span><br><span class="line">再大一点的棋盘则可以存放下中文.  </span><br><span class="line">再大的话就可以存放下所以的数据了.  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0906/125309_3c8a67cb_87680.png &quot;2018-09-06 12-52-53屏幕截图.png&quot;)   </span><br><span class="line"> **用FileInputStream 字节流正确读取中文**</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileInputStream;<br>import java.io.IOException;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    File f = new File(&quot;E:\\project\\j2se\\src\\test.txt&quot;);
+    try (FileInputStream fis = new FileInputStream(f);) {
+        byte[] all = new byte[(int) f.length()];
+        fis.read(all);
+
+        //文件中读出来的数据是
+        System.out.println(&quot;文件中读出来的数据是：&quot;);
+
+        System.out.println(&quot;把这个数字，放在GBK的棋盘上去：&quot;);
+        String str = new String(all,&quot;GBK&quot;);
+        System.out.println(str);
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**用FileReader 字符流正确读取中文**</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileInputStream;<br>import java.io.FileNotFoundException;<br>import java.io.FileReader;<br>import java.io.IOException;<br>import java.io.InputStreamReader;<br>import java.io.UnsupportedEncodingException;<br>import java.nio.charset.Charset;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) throws UnsupportedEncodingException, FileNotFoundException {
+    File f = new File(&quot;E:\\project\\j2se\\src\\test.txt&quot;);
+    System.out.println(&quot;默认编码方式:&quot;+Charset.defaultCharset());
+    //FileReader得到的是字符，所以一定是已经把字节根据某种编码识别成了字符了
+    //而FileReader使用的编码方式是Charset.defaultCharset()的返回值，如果是中文的操作系统，就是GBK
+    try (FileReader fr = new FileReader(f)) {
+        char[] cs = new char[(int) f.length()];
+        fr.read(cs);
+        System.out.printf(&quot;FileReader会使用默认的编码方式%s,识别出来的字符是：%n&quot;,Charset.defaultCharset());
+        System.out.println(new String(cs));
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+    //FileReader是不能手动设置编码方式的，为了使用其他的编码方式，只能使用InputStreamReader来代替
+    //并且使用new InputStreamReader(new FileInputStream(f),Charset.forName(&quot;UTF-8&quot;)); 这样的形式
+    try (InputStreamReader isr = new InputStreamReader(new FileInputStream(f),Charset.forName(&quot;UTF-8&quot;))) {
+        char[] cs = new char[(int) f.length()];
+        isr.read(cs);
+        System.out.printf(&quot;InputStreamReader 指定编码方式UTF-8,识别出来的字符是：%n&quot;);
+        System.out.println(new String(cs));
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">### 缓存流  </span><br><span class="line">以介质是硬盘为例，字节流和字符流的弊端:  </span><br><span class="line">在每一次读写的时候，都会访问硬盘。 如果读写的频率比较高的时候，其性能表现不佳。  </span><br><span class="line"></span><br><span class="line">为了解决以上弊端，采用缓存流。   </span><br><span class="line">缓存流在读取的时候，会一次性读较多的数据到缓存中，以后每一次的读取，都是在缓存中访问，直到缓存中的数据读取完毕，再到硬盘中读取。   </span><br><span class="line"></span><br><span class="line">就好比吃饭，不用缓存就是每吃一口都到锅里去铲。用缓存就是先把饭盛到碗里，碗里的吃完了，再到锅里去铲   </span><br><span class="line"></span><br><span class="line">缓存流在写入数据的时候，会先把数据写入到缓存区，直到缓存区达到一定的量，才把这些数据，一起写入到硬盘中去。按照这种操作模式，就不会像字节流，字符流那样每写一个字节都访问硬盘，从而减少了IO操作  </span><br><span class="line"></span><br><span class="line">** 使用缓存流进行数据的读取. **  </span><br><span class="line">第一个缓存流BufferReader</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.BufferedReader;<br>import java.io.File;<br>import java.io.FileReader;<br>import java.io.IOException;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    // 准备文件lol.txt其中的内容是
+    // garen kill teemo
+    // teemo revive after 1 minutes
+    // teemo try to garen, but killed again
+    File f = new File(&quot;d:/lol.txt&quot;);
+    // 创建文件字符流
+    // 缓存流必须建立在一个存在的流的基础上
+    try (
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+        )
+    {
+        while (true) {
+            // 一次读一行
+            String line = br.readLine();
+            if (null == line)
+                break;
+            System.out.println(line);
+        }
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**使用缓存流进行数据的写入,BufferWriter**</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileWriter;<br>import java.io.IOException;<br>import java.io.PrintWriter;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    // 向文件lol2.txt中写入三行语句
+    File f = new File(&quot;d:/lol2.txt&quot;);
+
+    try (
+            // 创建文件字符流
+            FileWriter fw = new FileWriter(f);
+            // 缓存流必须建立在一个存在的流的基础上              
+            PrintWriter pw = new PrintWriter(fw);              
+    ) {
+        pw.println(&quot;garen kill teemo&quot;);
+        pw.println(&quot;teemo revive after 1 minutes&quot;);
+        pw.println(&quot;teemo try to garen, but killed again&quot;);
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> **flush**</span><br><span class="line"></span><br><span class="line">此函数可以将数据瞬时写入进去.使得我们的流操作立即生效.  </span><br><span class="line">否则:需要等到流的内存用尽之后才会生效.  </span><br><span class="line">实例:</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileWriter;<br>import java.io.IOException;<br>import java.io.PrintWriter;<br>public class TestStream {<br>    public static void main(String[] args) {<br>        //向文件lol2.txt中写入三行语句<br>        File f =new File(“d:/lol2.txt”);<br>        //创建文件字符流<br>        //缓存流必须建立在一个存在的流的基础上<br>        try(FileWriter fr = new FileWriter(f);PrintWriter pw = new PrintWriter(fr);) {<br>            pw.println(“garen kill teemo”);<br>            //强制把缓存中的数据写入硬盘，无论缓存是否已满<br>                pw.flush();<br>            pw.println(“teemo revive after 1 minutes”);<br>                pw.flush();<br>            pw.println(“teemo try to garen, but killed again”);<br>                pw.flush();<br>        } catch (IOException e) {<br>            // TODO Auto-generated catch block<br>            e.printStackTrace();<br>        }<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> **数据流**  </span><br><span class="line">DataInputStream 数据输入流   </span><br><span class="line">DataOutputStream 数据输出流   </span><br><span class="line">可以直接进行字符串的读写:</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.DataInputStream;<br>import java.io.DataOutputStream;<br>import java.io.File;<br>import java.io.FileInputStream;<br>import java.io.FileOutputStream;<br>import java.io.IOException;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    write();
+    read();
+}
+
+private static void read() {
+    File f =new File(&quot;d:/lol.txt&quot;);
+    try (
+            FileInputStream fis  = new FileInputStream(f);
+            DataInputStream dis =new DataInputStream(fis);
+    ){
+        boolean b= dis.readBoolean();
+        int i = dis.readInt();
+        String str = dis.readUTF();
+
+        System.out.println(&quot;读取到布尔值:&quot;+b);
+        System.out.println(&quot;读取到整数:&quot;+i);
+        System.out.println(&quot;读取到字符串:&quot;+str);
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+}
+
+private static void write() {
+    File f =new File(&quot;d:/lol.txt&quot;);
+    try (
+            FileOutputStream fos  = new FileOutputStream(f);
+            DataOutputStream dos =new DataOutputStream(fos);
+    ){
+        dos.writeBoolean(true);
+        dos.writeInt(300);
+        dos.writeUTF(&quot;123 this is gareen&quot;);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### 对象流  </span><br><span class="line">即直接将java的一个对象以流的形式传输给其他介质,比如硬盘.  </span><br><span class="line">一个对象以流的形式进行传输，叫做序列化。 该对象所对应的类，必须是实现Serializable接口  </span><br><span class="line">比如,我们有一个英雄对象,其代码如下:</span><br></pre></td></tr></table></figure></p>
+<p>package charactor;</p>
+<p>import java.io.Serializable;</p>
+<p>public class Hero implements Serializable {<br>    //表示这个类当前的版本，如果有了变化，比如新设计了属性，就应该修改这个版本号<br>    private static final long serialVersionUID = 1L;<br>    public String name;<br>    public float hp;</p>
+<p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">测试代码如下:</span><br></pre></td></tr></table></figure></p>
+<p>package stream;</p>
+<p>import java.io.File;<br>import java.io.FileInputStream;<br>import java.io.FileOutputStream;<br>import java.io.IOException;<br>import java.io.ObjectInputStream;<br>import java.io.ObjectOutputStream;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestStream {</p>
+<pre><code>public static void main(String[] args) {
+    //创建一个Hero garen
+    //要把Hero对象直接保存在文件上，务必让Hero类实现Serializable接口
+    Hero h = new Hero();
+    h.name = &quot;garen&quot;;
+    h.hp = 616;
+
+    //准备一个文件用于保存该对象
+    File f =new File(&quot;d:/garen.lol&quot;);
+
+    try(
+        //创建对象输出流
+        FileOutputStream fos = new FileOutputStream(f);
+        ObjectOutputStream oos =new ObjectOutputStream(fos);
+        //创建对象输入流              
+        FileInputStream fis = new FileInputStream(f);
+        ObjectInputStream ois =new ObjectInputStream(fis);
+    ) {
+        oos.writeObject(h);
+        Hero h2 = (Hero) ois.readObject();
+        System.out.println(h2.name);
+        System.out.println(h2.hp);
+
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br>```  </p>
+<h3 id="复习知识点scanner"><a href="#复习知识点scanner" class="headerlink" title="复习知识点scanner"></a>复习知识点scanner</h3><p>我们最早曾经学过一个知识点,叫做获取用户输入的数据.<br>获取用户输入的数据,我们当时就使用的流的形式.<br>使用system.in进行流的输入.用户输入的数据,输入到了我们计算机流里面.<br>之后,我们使用jdk提供的读取类scanner直接进行数据的读取即可.  </p>
+<p>关于io流的一个总体概览:<br><img src="https://images.gitee.com/uploads/images/2018/0906/152522_f4a45888_87680.png" alt="输入图片说明" title="2018-09-06 15-25-03屏幕截图.png"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第十二节异常处理]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%8A%82%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
+      <content type="html"><![CDATA[<h3 id="一张图概括java异常"><a href="#一张图概括java异常" class="headerlink" title="一张图概括java异常"></a>一张图概括java异常</h3><p><img src="https://images.gitee.com/uploads/images/2018/0831/121557_2edaf1ba_87680.png" alt="输入图片说明" title="屏幕截图.png"><br> <strong>定义</strong><br>导致程序的正常流程被中断的事件，叫做异常.<br>告诉编译器，自己的代码是可能存在问题的。不过，在可能出现问题的地方及时进行反馈，同时来一个急刹车。保证不会对整个系统造成根本上的影响。  </p>
+<p>以前的一个实例：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package exception;</span><br><span class="line">  </span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">  </span><br><span class="line">public class TestException &#123;</span><br><span class="line">  </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">          </span><br><span class="line">        File f= new File(&quot;d:/LOL.exe&quot;);</span><br><span class="line">          </span><br><span class="line">        //试图打开文件LOL.exe，会抛出FileNotFoundException，如果不处理该异常，就会有编译错误</span><br><span class="line">        new FileInputStream(f);</span><br><span class="line">          </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"> **处理办法**  </span><br><span class="line"> _try catch_  </span><br><span class="line"> _语法结构：_  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0831/131805_7ce6f23b_87680.png &quot;屏幕截图.png&quot;)</span><br></pre></td></tr></table></figure>
+<p>package exception;</p>
+<p>import java.io.File;<br>import java.io.FileInputStream;<br>import java.io.FileNotFoundException;</p>
+<p>public class TestException {</p>
+<pre><code>public static void main(String[] args) {
+
+    File f= new File(&quot;d:/LOL.exe&quot;);
+
+    try{
+        System.out.println(&quot;试图打开 d:/LOL.exe&quot;);
+        new FileInputStream(f);
+        System.out.println(&quot;成功打开&quot;);
+    }
+    catch(FileNotFoundException e){
+        System.out.println(&quot;d:/LOL.exe不存在&quot;);
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用FileNotFoundException 的父类也可以将异常进行补获取</span><br></pre></td></tr></table></figure></p>
+<p>package exception;</p>
+<p>import java.io.File;<br>import java.io.FileInputStream;<br>import java.io.FileNotFoundException;</p>
+<p>public class TestException {</p>
+<pre><code>public static void main(String[] args) {
+
+    File f= new File(&quot;d:/LOL.exe&quot;);
+
+    try{
+        System.out.println(&quot;试图打开 d:/LOL.exe&quot;);
+        new FileInputStream(f);
+        System.out.println(&quot;成功打开&quot;);
+    }
+
+    catch(Exception e){
+        System.out.println(&quot;d:/LOL.exe不存在&quot;);
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同时，我们还可以使用一个try配合多个catch完成多个异常的补获取。</span><br></pre></td></tr></table></figure></p>
+<p>public class TestException {</p>
+<pre><code>public static void main(String[] args) {
+
+    File f = new File(&quot;d:/LOL.exe&quot;);
+
+    try {
+        System.out.println(&quot;试图打开 d:/LOL.exe&quot;);
+        new FileInputStream(f);
+        System.out.println(&quot;成功打开&quot;);
+        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+        Date d = sdf.parse(&quot;2016-06-03&quot;);
+    } catch (FileNotFoundException e) {
+        System.out.println(&quot;d:/LOL.exe不存在&quot;);
+        e.printStackTrace();
+    } catch (ParseException e) {
+        System.out.println(&quot;日期格式解析错误&quot;);
+        e.printStackTrace();
+    }
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">### final关键字  </span><br><span class="line">解释：无论是否出现异常，finally中的代码都会被执行  </span><br><span class="line">使用实例：</span><br></pre></td></tr></table></figure>
+<p>public class TestException {</p>
+<pre><code>public static void main(String[] args) {
+
+    File f= new File(&quot;d:/LOL.exe&quot;);
+
+    try{
+        System.out.println(&quot;试图打开 d:/LOL.exe&quot;);
+        new FileInputStream(f);
+        System.out.println(&quot;成功打开&quot;);
+    }
+    catch(FileNotFoundException e){
+        System.out.println(&quot;d:/LOL.exe不存在&quot;);
+        e.printStackTrace();
+    }
+    finally{
+        System.out.println(&quot;无论文件是否存在， 都会执行的代码&quot;);
+    }
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### throw抛出而非截获异常</span><br></pre></td></tr></table></figure>
+<p>public class TestException {</p>
+<pre><code>public static void main(String[] args) {
+    method1();
+
+}
+
+private static void method1() {
+    try {
+        method2();
+    } catch (FileNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+
+private static void method2() throws FileNotFoundException {
+
+    File f = new File(&quot;d:/LOL.exe&quot;);
+
+    System.out.println(&quot;试图打开 d:/LOL.exe&quot;);
+    new FileInputStream(f);
+    System.out.println(&quot;成功打开&quot;);
+
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">不去截获处理异常，异常就可以通过throw不断的被抛出。  </span><br><span class="line">但是，异常终究需要处理的。就看推给谁去处理了。  </span><br><span class="line">做一个有高尚操守的程序员，主动处理异常，将得到所有人的尊重。  </span><br><span class="line">尽量去trycatch不要去throw。  </span><br><span class="line">### throw和throws的区别</span><br><span class="line">很简单：  </span><br><span class="line">1. throws 出现在方法声明上，而throw通常都出现在方法体内。  </span><br><span class="line">2. throws 表示出现异常的一种可能性，并不一定会发生这些异常；throw则是抛出了异常，执行throw则一定抛出了某个异常对象。  </span><br><span class="line">### 异常的分类  </span><br><span class="line">可查异常和非可查异常。  </span><br><span class="line">同时，非可查异常又分为运行时异常和错误。  </span><br><span class="line"> **可查异常就是必须处理的异常**  </span><br><span class="line">如何处理呢？  trycatch或者throw  </span><br><span class="line"> **运行时异常不必进行trycatch，主要分为以下几种： **  </span><br><span class="line">1. 除数不能为0异常:ArithmeticException </span><br><span class="line">2. 下标越界异常:ArrayIndexOutOfBoundsException  </span><br><span class="line">3. 空指针异常:NullPointerException    </span><br><span class="line"></span><br><span class="line"> **错误指的是系统级别的异常，一般而言表示内存耗光了**  </span><br><span class="line">尝试一下以下代码：</span><br></pre></td></tr></table></figure>
+<p>package exception;</p>
+<p>public class TestException {</p>
+<pre><code>public static void main(String[] args) {
+
+    StringBuffer sb =new StringBuffer();
+
+    for (int i = 0; i &lt; Integer.MAX_VALUE; i++) {
+        sb.append(&apos;a&apos;);
+    }
+
+}
+</code></pre><p>```<br>异常分类总结图：<br><img src="https://images.gitee.com/uploads/images/2018/0831/133248_a509e457_87680.png" alt="输入图片说明" title="屏幕截图.png">  </p>
+<h3 id="Throwable"><a href="#Throwable" class="headerlink" title="Throwable"></a>Throwable</h3><p>Throwable是类，Exception和Error都继承了该类<br><img src="https://images.gitee.com/uploads/images/2018/0831/133352_954a8806_87680.png" alt="输入图片说明" title="屏幕截图.png"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第十一节静态类和方法]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%8D%81%E4%B8%80%E8%8A%82%E9%9D%99%E6%80%81%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h3 id="静态方法和非静态方法的区别"><a href="#静态方法和非静态方法的区别" class="headerlink" title="静态方法和非静态方法的区别"></a>静态方法和非静态方法的区别</h3><p>我们之前说过类方法和对象方法，通过这两个概念的字面意思就可以很好的理解静态和非静态。<br>对象方法依赖于对象，也就是说必须有对象的实例，才可以使用对象方法。<br>类方法依赖于类，只要类存在，便可以使用类方法。<br>非静态方法的使用需要new对象，静态则不需要。<br><img src="https://images.gitee.com/uploads/images/2018/0816/162948_7b0e0e20_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0816/163015_14f970d6_87680.png" alt="输入图片说明" title="屏幕截图.png">  </p>
+<h3 id="静态方法的限制"><a href="#静态方法的限制" class="headerlink" title="静态方法的限制"></a>静态方法的限制</h3><ol>
+<li>不可以调用非静态的变量  </li>
+<li>不可以调用非静态的方法  <h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3>他的值对所有的对象而言都是相同的。<br>例子：<br>假如你想知道类在实例化的过程中究竟被实例化或者说被new了多少次，那么，需要如何实现呢？<br><img src="https://images.gitee.com/uploads/images/2018/0816/163440_f894550e_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>上述例子明显是不可以实现的。<br>因为，方法是一个非静态方法，变量是一个非静态的变量。<br>于是，他们的使用就必须依赖于对象。对象每一次进行new或者实例化都会新建新的变量。<br>因此，对上述例子而言，被new的次数永远是0<br>解决方案很简单：即使用静态变量进行实例化次数的存储。<br><img src="https://images.gitee.com/uploads/images/2018/0816/163714_20f3b41a_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><strong>静态变量：被同类的所有实例变量所共享</strong><br><img src="https://images.gitee.com/uploads/images/2018/0816/163805_539a4d32_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><strong>静态变量的初始化</strong>  </li>
+<li>静态变量会在该类任何对象初始化之前就被实例化。  </li>
+<li>静态变量会在该类任何静态方法执行之前初始化。<br><strong>final</strong><br>final修饰的变量表示其初始化之后就不会再被修改。<br>如果该变量又恰好是一个静态变量，就表示该变量在类加载完成后就一直存在，且一直不能被修改。<br>因此，被final修饰的静态变量是一个常量。<br><img src="https://images.gitee.com/uploads/images/2018/0816/164311_92d9b433_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0816/164556_4743dfdc_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><strong>当然final不只作用在变量上面</strong><br>之前有个知识点，可以一起回忆一下：<br>final可以作用在变量上面，可以作用在方法上面，甚至可以作用在类上面。<br>final变量代表你不能改变他的值<br>final方法表示你不可以重写覆盖他<br>final类表示你不可以继承他<br><strong>Math的静态方法</strong><br>Math.random()<br>Math.abs()<br>获取传入数据的绝对值<br>Math.round()<br>返回四舍五入的值<br>Math.min()<br>比较大小，获取两个数里面最小值<br>Math.max()<br>比较大小，获取两个数里面的最大值 <h3 id="primitive基础数据类型的对象封装"><a href="#primitive基础数据类型的对象封装" class="headerlink" title="primitive基础数据类型的对象封装"></a>primitive基础数据类型的对象封装</h3>每一个主数据类型都对应一个对象。<br>int Interger<br>float Float<br>double Double<br>boolean Boolean…等<br>主数据类型对象对应常用方法如下：  </li>
+<li>primitive数据类型转对象-&gt;new对象  </li>
+<li>对象转primitive-&gt;parse  </li>
+</ol>
+<p><strong>假如，将主数据类型放入集合list会有什么反应呢？</strong>   </p>
+<h3 id="知识点插入-操作日期"><a href="#知识点插入-操作日期" class="headerlink" title="知识点插入  操作日期"></a>知识点插入  操作日期</h3><p>取得当前日期使用new Date(),其他使用Calendar，因为Date的方法和构造函数基本上都已经弃用了。<br>当然，Calendar是无法new的，只能使用静态方法去构造，静态方法为getInstance().<br><img src="https://images.gitee.com/uploads/images/2018/0831/113729_b7b72933_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>我们一起来看一个范例：<br><img src="https://images.gitee.com/uploads/images/2018/0831/113754_160a4581_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>常用方法，API:<br><img src="https://images.gitee.com/uploads/images/2018/0831/113918_2b342424_87680.png" alt="输入图片说明" title="屏幕截图.png"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第十节图书管理系统答疑与讨论]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%8D%81%E8%8A%82%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%AD%94%E7%96%91%E4%B8%8E%E8%AE%A8%E8%AE%BA/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第九节构造器和垃圾回收机制]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E4%B9%9D%E8%8A%82%E6%9E%84%E9%80%A0%E5%99%A8%E5%92%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</url>
+      <content type="html"><![CDATA[<h3 id="对象有生有死"><a href="#对象有生有死" class="headerlink" title="对象有生有死"></a>对象有生有死</h3><p>如果对于对象的创建毫无章法，那就代表着对象有被对象回收机制回收的可能．<br> <strong>堆与栈是我们编写程序的过程中需要关心的两大生存空间</strong><br> <img src="https://images.gitee.com/uploads/images/2018/0811/195116_abd272f4_87680.png" alt="输入图片说明" title="2018-08-11 19-50-47屏幕截图.png"><br>之前说的关于对象堆的概念说的比较多，关于栈的概念没有接触，那么什么栈呢？<br>数据结构学过，栈呢就是一个有顺序的，单口出的一个容器，数据容器，另外一个容器叫做队列．<br>先入先出，先入后出．<br><img src="https://images.gitee.com/uploads/images/2018/0811/195358_3410516a_87680.png" alt="输入图片说明" title="2018-08-11 19-51-05屏幕截图.png"><br> <strong>关于栈的一个使用场景</strong><br> <img src="https://images.gitee.com/uploads/images/2018/0811/195829_2e350d7f_87680.png" alt="输入图片说明" title="2018-08-11 19-56-56屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0811/195842_e570bbb6_87680.png" alt="输入图片说明" title="2018-08-11 19-57-13屏幕截图.png"><br>对于非基础数据类型的对象的引用都是引用的堆里面的内容，而对于栈内存放的数据仅仅只是一个变量的引用而已．<br><img src="https://images.gitee.com/uploads/images/2018/0811/201718_989f81ba_87680.png" alt="输入图片说明" title="2018-08-11 20-17-07屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0811/201838_4fd7f713_87680.png" alt="输入图片说明" title="2018-08-11 20-18-16屏幕截图.png"><br>局部变量是生存在栈上的，那么实例变量呢？实例变量即类的属性．<br>实例变量是生存在堆上的，也就是说，在堆上新建一个对象的时候，同时将类的属性进行了创建和使用．<br><img src="https://images.gitee.com/uploads/images/2018/0811/210511_e635fb29_87680.png" alt="输入图片说明" title="2018-08-11 20-21-16屏幕截图.png"><img src="https://images.gitee.com/uploads/images/2018/0811/210532_9eec56b9_87680.png" alt="输入图片说明" title="2018-08-11 21-04-57屏幕截图.png"></p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>我们在使用new 对象的时候，比如new Hero(),看起来是在调用该类的构造函数。  </p>
+<ol>
+<li>构造函数与普通方法有哪些不同？  </li>
+<li>构造函数有哪些注意事项？<br><strong>提供了一种途径，让你可以介入到整个对象new的过程中</strong><br>构造函数分为两种：<br>有参构造<br>无参构造<br>需要注意，在无参构造函数里面也可以进行一些业务逻辑的处理。<br><img src="https://images.gitee.com/uploads/images/2018/0813/114911_0fcb830a_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><em>还有一个注意的地方</em><br>编译器默认会构造一个无参数的构造函数。<br>当然，这一切发生于一个前提之下，即我们没有进行任何有参数的构造函数的创建。主要我们创建了任何一个有参数的构造函数，那么编译器便不会自动帮助我们去构建无参数的构造函数。我们必须去手动构造。  </li>
+</ol>
+<h3 id="继承与构造函数的关系"><a href="#继承与构造函数的关系" class="headerlink" title="继承与构造函数的关系"></a>继承与构造函数的关系</h3><p><img src="https://images.gitee.com/uploads/images/2018/0813/120148_081e896c_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>在创建对象的时候，所有继承下来的构造函数均会被执行。<br><img src="https://images.gitee.com/uploads/images/2018/0813/120358_a9498f2d_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>对象在执行构造函数的时候，第一件事情就是去执行其父类的构造函数。<br>执行对象new的时候，会发生一系列的连锁反应，从父类的构造函数开始逐步进行构造函数的构造，直到object为止。<br> <strong>典型实例（继承类之间的构造函数构造顺序）</strong><br><img src="https://images.gitee.com/uploads/images/2018/0813/144915_9c717115_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>通过堆和栈来看的话，对应的构造图如下：<br><img src="https://images.gitee.com/uploads/images/2018/0813/145017_6117ec89_87680.png" alt="输入图片说明" title="屏幕截图.png"><br> <strong>如何调用父类的构造函数？</strong><br>使用super关键字。<br> 关于继承父子之间的构造函数执行顺序的问题，可以通俗一点去考虑。<br>没有父母的情况下可能产生孩子吗？<br><img src="https://images.gitee.com/uploads/images/2018/0813/145641_6b3d6a58_87680.png" alt="输入图片说明" title="屏幕截图.png"><br> <strong>思考一个问题：假如父类的构造方法存在参数，如何进行构造函数的传参呢？</strong><br> <img src="https://images.gitee.com/uploads/images/2018/0813/150432_404c1e18_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>this关键字也可以调用构造函数，this可以调用当前类的任何属性、方法还有构造函数。<br><img src="https://images.gitee.com/uploads/images/2018/0813/165828_83c128e0_87680.png" alt="输入图片说明" title="屏幕截图.png">  </p>
+<h3 id="对象的生命周期"><a href="#对象的生命周期" class="headerlink" title="对象的生命周期"></a>对象的生命周期</h3><p>对象的生命周期主要看他的引用的生命周期，如果引用还活着，那么对象也会继续在这个世界上，否则对象会随着引用的消失而死亡。<br>对象能活多久取决于其引用能活多久。<br>如果该对象的引用类型为局部变量，那么该变量的作用范围仅仅是其作用方法内。当然，其对象也就仅仅生存或死亡在该作用方法内。<br><img src="https://images.gitee.com/uploads/images/2018/0815/140327_28ece998_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>如果对象的引用类型为成员变量，那么该变量的寿命和对象相同，对象活着，其实例变量也还活着。<br><img src="https://images.gitee.com/uploads/images/2018/0815/140440_c4612d55_87680.png" alt="输入图片说明" title="屏幕截图.png"><img src="https://images.gitee.com/uploads/images/2018/0815/140451_e032fd7d_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>典型实例：  </p>
+<ol>
+<li>引用死去，对象也会死去<br><img src="https://images.gitee.com/uploads/images/2018/0815/140711_2070aca6_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0815/140726_2a24d390_87680.png" alt="输入图片说明" title="屏幕截图.png">  </li>
+<li>引用被赋值到其他对象上面<br><img src="https://images.gitee.com/uploads/images/2018/0815/140848_799b8ce2_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0815/140918_363a6ee0_87680.png" alt="输入图片说明" title="屏幕截图.png"><img src="https://images.gitee.com/uploads/images/2018/0815/140926_0a6d90ea_87680.png" alt="输入图片说明" title="屏幕截图.png">  </li>
+<li>直接将引用设为null<br><img src="https://images.gitee.com/uploads/images/2018/0815/140955_dcec01d5_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0815/141003_c0fa14e7_87680.png" alt="输入图片说明" title="屏幕截图.png"><img src="https://images.gitee.com/uploads/images/2018/0815/141012_a49c5735_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><strong>思考：实例变量和局部变量的区别和联系</strong>  </li>
+</ol>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><p>完成图书管理系统。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第八节项目实战图书管理系统]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%85%AB%E8%8A%82%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
+      <content type="html"><![CDATA[<h3 id="功能确定"><a href="#功能确定" class="headerlink" title="功能确定"></a>功能确定</h3><p>确定有哪些功能，明确最终的需求。<br>角色区分：管理员角色和普通用户角色  </p>
+<h3 id="管理员功能列表"><a href="#管理员功能列表" class="headerlink" title="管理员功能列表"></a>管理员功能列表</h3><ol>
+<li>登录登出  注册  修改密码  密码找回 身份证号   </li>
+<li>电子借书卡办理  新建学生用户有初始密码  用户名用身份证号  </li>
+<li>书籍维护（书籍增加、书籍信息修改，书籍删除、书籍查询）  分类维护  </li>
+<li>借书功能（可以帮助普通用户完成借书流程，需要输入用户的身份证号、查询出书籍信息，最终完成书籍的借阅）  </li>
+<li>还书功能（查询出指定书籍、输入普通借书用户的身份证号，完成书籍的入库）<br>－－－－－－－－－－－－－－－－－－－－陈航－－－－－－－－－－－－－－－－－－－－</li>
+<li>报表（报表展示目前的图书藏书状况，根据分类展示一个各分类图书所占比例的饼状图、折线图展示每月图书借阅和归还曲线，按照月份以柱状图形式展示开通电子借书卡的学生数量）  </li>
+<li>设置功能（最大借书量、借书期限） </li>
+<li>破损书管理  </li>
+<li>黑名单<br>－－－－－－－－－－－－－－－－－－－－杨明宇－－－－－－－－－－－－－－－－－－－－</li>
+</ol>
+<h3 id="普通用户（教师和学生）功能"><a href="#普通用户（教师和学生）功能" class="headerlink" title="普通用户（教师和学生）功能"></a>普通用户（教师和学生）功能</h3><ol>
+<li>登录登出  注册  修改密码　密码找回<br>－－－－－－－－－－－－－－－－－－－－杨明宇－－－－－－－－－－－－－－－－－－－－</li>
+<li>书籍查询  </li>
+<li>书籍借阅  预约  </li>
+<li>书籍归还  </li>
+<li>借阅历史查询<br>－－－－－－－－－－－－－－－－－－－－高鸿宇－－－－－－－－－－－－－－－－－－－－<h3 id="表结构设计"><a href="#表结构设计" class="headerlink" title="表结构设计"></a>表结构设计</h3><h3 id="原型设计（界面设计）"><a href="#原型设计（界面设计）" class="headerlink" title="原型设计（界面设计）"></a>原型设计（界面设计）</h3><h3 id="实体类与DAO类设计"><a href="#实体类与DAO类设计" class="headerlink" title="实体类与DAO类设计"></a>实体类与DAO类设计</h3><h3 id="功能开发"><a href="#功能开发" class="headerlink" title="功能开发"></a>功能开发</h3></li>
+</ol>
+<h3 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h3><p>需要用到图标资源，图标资源的下载地址，提供两个网址：  </p>
+<ol>
+<li><a href="https://fontawesome.com/icons" target="_blank" rel="noopener">https://fontawesome.com/icons</a>  </li>
+<li><a href="http://iconfont.cn/" target="_blank" rel="noopener">http://iconfont.cn/</a>  </li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第七节　JDBC简介（二）]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E4%B8%83%E8%8A%82-JDBC%E7%AE%80%E4%BB%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>事务指的是一系列的sql操作，比如增加之后，再次操作数据库完成删除一条数据的操作。<br>那么，这里说的增加数据、删除数据两个sql语句结合在一起就可以称为一个事务.<br> <strong>不使用事务的情况</strong><br>假如我们的英雄表里面的一个英雄，加血之后马上又被队友补了一刀，那么两次操作之后，该英雄血量不变。<br>但是，如果我们在实际编码过程中，update第一次加血之后。第二次update的时候sql语句写错了。<br>这就会造成减血失败。<br>从而，使得我们的英雄血量比实际情况增加了。<br>显然，这和我们的业务需求是严重不符合的。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//没有事务的前提下</span><br><span class="line">            //假设业务操作时，加血，减血各做一次</span><br><span class="line">            //结束后，英雄的血量不变</span><br><span class="line">              </span><br><span class="line">            //加血的SQL</span><br><span class="line">            String sql1 = &quot;update hero set hp = hp +1 where id = 22&quot;;</span><br><span class="line">            s.execute(sql1);</span><br><span class="line">              </span><br><span class="line">            //减血的SQL</span><br><span class="line">            //不小心写错写成了 updata(而非update)</span><br><span class="line">              </span><br><span class="line">            String sql2 = &quot;updata hero set hp = hp -1 where id = 22&quot;;</span><br><span class="line">            s.execute(sql2);</span><br></pre></td></tr></table></figure>
+<p> <strong>使用事务</strong><br>对该事务中的多次sql操作保持一致性。<br>即-全部执行成功或者全部执行失败，假如其中一条sql执行失败，那么事务会进行回滚，即之前的加血操作也会自动回到原来的状态（不加血的状态）。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> // 有事务的前提下</span><br><span class="line">            // 在事务中的多个操作，要么都成功，要么都失败</span><br><span class="line">  </span><br><span class="line">            c.setAutoCommit(false);</span><br><span class="line">  </span><br><span class="line">            // 加血的SQL</span><br><span class="line">            String sql1 = &quot;update hero set hp = hp +1 where id = 22&quot;;</span><br><span class="line">            s.execute(sql1);</span><br><span class="line">  </span><br><span class="line">            // 减血的SQL</span><br><span class="line">            // 不小心写错写成了 updata(而非update)</span><br><span class="line">  </span><br><span class="line">            String sql2 = &quot;updata hero set hp = hp -1 where id = 22&quot;;</span><br><span class="line">            s.execute(sql2);</span><br><span class="line">  </span><br><span class="line">            // 手动提交</span><br><span class="line">            c.commit();</span><br><span class="line">```  </span><br><span class="line"> _使用事务需要一个前提条件，即开启INNODB引擎支持_  </span><br><span class="line"> **尝试练习：模拟借书，目前有两个表即图书表和用户表，借书的时候，需要修改图书的状态，同时借书人借书的数量也需要加一。如果实际的操作过程中，修改借书人借书的数量失败，则需要将图书的状态回滚至未出借的状态**  </span><br><span class="line">  </span><br><span class="line">### ORM  </span><br><span class="line">ORM=Object Relationship Database Mapping  </span><br><span class="line"></span><br><span class="line">对象和关系数据库的映射   </span><br><span class="line"></span><br><span class="line">简单说，一个对象，对应数据库里的一条记录  </span><br><span class="line">这是一种设计模式，相当于把数据对象化了，使得数据库的操作变得面向对象起来。  </span><br><span class="line">首先，把表变得面向对象，即一个表对应一个class类。</span><br></pre></td></tr></table></figure>
+<p>package charactor;</p>
+<p>public class Hero {<br>    //增加id属性<br>    public int id;<br>    public String name;<br>    public float hp;<br>    public int damage;</p>
+<p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后，在获取到数据库数据之后，将数据进行类对应属性的赋值。</span><br></pre></td></tr></table></figure></p>
+<p>// 因为id是唯一的，ResultSet最多只能有一条记录<br>            // 所以使用if代替while<br>            if (rs.next()) {<br>                hero = new Hero();<br>                String name = rs.getString(2);<br>                float hp = rs.getFloat(“hp”);<br>                int damage = rs.getInt(4);<br>                hero.name = name;<br>                hero.hp = hp;<br>                hero.damage = damage;<br>                hero.id = id;<br>            }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">综上，我们完成了orm的面向对象操作数据库的操作。  </span><br><span class="line"> **尝试一下ORM来实现lol英雄的增删改查操作**  </span><br><span class="line">### DAO</span><br><span class="line">DAO=DataAccess Object   </span><br><span class="line">数据库访问对象   </span><br><span class="line"> **设计模式的再一次升华，通过dao将对数据库的操作再一次封装起来，放到一个特定的类里面，使得代码更容易理解，更容易扩展**  </span><br><span class="line">首先，提供一个DAO的接口，该接口封装数据库的所有操作接口。</span><br></pre></td></tr></table></figure></p>
+<p>public interface DAO{<br>    //增加<br>    public void add(Hero hero);<br>    //修改<br>    public void update(Hero hero);<br>    //删除<br>    public void delete(int id);<br>    //获取<br>    public Hero get(int id);<br>    //查询<br>    public List<hero> list();<br>    //分页查询<br>    public List<hero> list(int start, int count);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第二，添加实现类，可以有多个实现类，lol里面我们暂时实现HeroDAO类，图书管理系统呢？则需要添加BookDAO和AdminDAO。  </span><br><span class="line">也就是说，存在几个表就需要添加几个对象，当然也需要添加几个DAO的实现类。</span><br></pre></td></tr></table></figure></hero></hero></p>
+<p> public HeroDAO() {<br>        try {<br>            Class.forName(“com.mysql.jdbc.Driver”);<br>        } catch (ClassNotFoundException e) {<br>            e.printStackTrace();<br>        }<br>    }</p>
+<pre><code>public Connection getConnection() throws SQLException {
+    return DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;, &quot;root&quot;,
+            &quot;admin&quot;);
+}
+
+public int getTotal() {
+    int total = 0;
+    try (Connection c = getConnection(); Statement s = c.createStatement();) {
+
+        String sql = &quot;select count(*) from hero&quot;;
+
+        ResultSet rs = s.executeQuery(sql);
+        while (rs.next()) {
+            total = rs.getInt(1);
+        }
+
+        System.out.println(&quot;total:&quot; + total);
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+    return total;
+}
+
+public void add(Hero hero) {
+
+    String sql = &quot;insert into hero values(null,?,?,?)&quot;;
+    try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+        ps.setString(1, hero.name);
+        ps.setFloat(2, hero.hp);
+        ps.setInt(3, hero.damage);
+
+        ps.execute();
+
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            int id = rs.getInt(1);
+            hero.id = id;
+        }
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+}
+
+public void update(Hero hero) {
+
+    String sql = &quot;update hero set name= ?, hp = ? , damage = ? where id = ?&quot;;
+    try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+        ps.setString(1, hero.name);
+        ps.setFloat(2, hero.hp);
+        ps.setInt(3, hero.damage);
+        ps.setInt(4, hero.id);
+
+        ps.execute();
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+
+}
+
+public void delete(int id) {
+
+    try (Connection c = getConnection(); Statement s = c.createStatement();) {
+
+        String sql = &quot;delete from hero where id = &quot; + id;
+
+        s.execute(sql);
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+}
+
+public Hero get(int id) {
+    Hero hero = null;
+
+    try (Connection c = getConnection(); Statement s = c.createStatement();) {
+
+        String sql = &quot;select * from hero where id = &quot; + id;
+
+        ResultSet rs = s.executeQuery(sql);
+
+        if (rs.next()) {
+            hero = new Hero();
+            String name = rs.getString(2);
+            float hp = rs.getFloat(&quot;hp&quot;);
+            int damage = rs.getInt(4);
+            hero.name = name;
+            hero.hp = hp;
+            hero.damage = damage;
+            hero.id = id;
+        }
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+    return hero;
+}
+
+public List&lt;Hero&gt; list() {
+    return list(0, Short.MAX_VALUE);
+}
+
+public List&lt;Hero&gt; list(int start, int count) {
+    List&lt;Hero&gt; heros = new ArrayList&lt;Hero&gt;();
+
+    String sql = &quot;select * from hero order by id desc limit ?,? &quot;;
+
+    try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+        ps.setInt(1, start);
+        ps.setInt(2, count);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Hero hero = new Hero();
+            int id = rs.getInt(1);
+            String name = rs.getString(2);
+            float hp = rs.getFloat(&quot;hp&quot;);
+            int damage = rs.getInt(4);
+            hero.id = id;
+            hero.name = name;
+            hero.hp = hp;
+            hero.damage = damage;
+            heros.add(hero);
+        }
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+    return heros;
+}
+</code></pre><p>```  </p>
+<p> <strong>尝试添加物品表item，添加其对应的类，添加其实现类</strong> </p>
+<h3 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h3><p>简单了解，数据库连接池的概念的前提是多线程。<br>对多线程的理解，现在大家暂时可以理解成同一时间多个工作同时进行。<br>假如，目前有一个多线程的连接连接我们的数据库，可能有100个连接或者更多同时跟我的数据库进行了连接。<br>这样的话，我们需要打开数据库100次，之后再进行数据库的相关操作。<br>打开关闭数据库本身就十分耗费资源，会造成cpu和内存的负载，造成整体的卡顿。<br>并且，目前多线程的连接的意思是说同一时间这100个连接跟我的数据库建立关系，肯定会卡顿上天了。<br>关键的问题是，数据库的连接是有数量限制的，超过限制就连接失败了，也就是说100个连接里面可能会有50或者90个连接连接失败，丢了。  </p>
+<p>以上说的问题，我们是决不允许发生的，于是伴随着线程池的概念，数据库连接池也出现了。<br> <strong>数据库连接池原理</strong><br>与传统方式不同，连接池在使用之前，就会创建好一定数量的连接。<br>如果有任何线程需要使用连接，那么就从连接池里面借用，而不是自己重新创建.<br>使用完毕后，又把这个连接归还给连接池供下一次或者其他线程使用。<br>倘若发生多线程并发情况，连接池里的连接被借用光了，那么其他线程就会临时等待，直到有连接被归还回来，再继续使用。<br>整个过程，这些连接都不会被关闭，而是不断的被循环使用，从而节约了启动和关闭连接的时间。<br><img src="https://images.gitee.com/uploads/images/2018/0815/131936_5977fe97_87680.png" alt="输入图片说明" title="屏幕截图.png"></p>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><ol>
+<li>通过orm来实现图书管理系统图书的增加修改删除和查询功能。 </li>
+<li>针对图书管理系统，进行DAO设计的实现，增加对应的DAO实现类。</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第六节JDBC简介（一）]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%85%AD%E8%8A%82JDBC%E7%AE%80%E4%BB%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h3 id="JDBC简介"><a href="#JDBC简介" class="headerlink" title="JDBC简介"></a>JDBC简介</h3><p>JDBC (Java DataBase Connection) 是通过JAVA访问数据库  </p>
+<h3 id="JDBC如何连接数据库？"><a href="#JDBC如何连接数据库？" class="headerlink" title="JDBC如何连接数据库？"></a>JDBC如何连接数据库？</h3><p> <strong>借助java提供的mysql操作的jar包进行jdbc的操作，该jar包属于第三方jar包，需要将该jar包引入项目之后才可以进行jar包的使用。也就是说可以使用该jar内对应类的方法和接口。</strong><br>分享一个下载jdk的网页，此网页为阿里的maven对外仓库。<br><a href="http://mvnrepository.com/artifact/com.aliyun" target="_blank" rel="noopener">http://mvnrepository.com/artifact/com.aliyun</a><br> <strong>导入mysql连接jar包的意义</strong><br>我们不必自己去考虑实际的连接，已有先人为我们写好，我们需要学习的是jar包对应的方法和接口，说白了就是调用方法以及如何传入实际的参数。<br> <strong>使用步骤</strong>  </p>
+<ol>
+<li>导入jar包<br>如下图所示，在project structure里面进行相关设置导入即可。<br><img src="https://images.gitee.com/uploads/images/2018/0814/140729_3b6798ef_87680.png" alt="输入图片说明" title="屏幕截图.png"></li>
+<li>驱动初始化<br>使用反射原理，获取操作类即可，Class.forName()方法。<br>对应的类名为： com.mysql.jdbc.Driver<br>代码参考：  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package jdbc;</span><br><span class="line">   </span><br><span class="line">public class TestJDBC &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">           </span><br><span class="line">        //初始化驱动</span><br><span class="line">        try &#123;</span><br><span class="line">            //驱动类com.mysql.jdbc.Driver</span><br><span class="line">            //就在 mysql-connector-java-5.0.8-bin.jar中</span><br><span class="line">            //如果忘记了第一个步骤的导包，就会抛出ClassNotFoundException</span><br><span class="line">            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">              </span><br><span class="line">            System.out.println(&quot;数据库驱动加载成功 ！&quot;);</span><br><span class="line">   </span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            // TODO Auto-generated catch block</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">           </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">3. 建立数据库连接  </span><br><span class="line">建立与数据库的Connection连接  </span><br><span class="line">这里需要提供：  </span><br><span class="line">数据库所处于的ip:127.0.0.1 (本机)  </span><br><span class="line">数据库的端口号： 3306 （mysql专用端口号）  </span><br><span class="line">数据库名称 lol  </span><br><span class="line">编码方式 UTF-8  </span><br><span class="line">账号 root  </span><br><span class="line">密码 root  </span><br><span class="line">参考代码：</span><br></pre></td></tr></table></figure>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+
+        // 建立与数据库的Connection连接
+        // 这里需要提供：
+        // 数据库所处于的ip:127.0.0.1 (本机)
+        // 数据库的端口号： 3306 （mysql专用端口号）
+        // 数据库名称 how2java
+        // 编码方式 UTF-8
+        // 账号 root
+        // 密码 admin
+
+        Connection c = DriverManager
+                .getConnection(
+                        &quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,
+                        &quot;root&quot;, &quot;admin&quot;);
+
+        System.out.println(&quot;连接成功，获取连接对象： &quot; + c);
+
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4. 创建Statement  </span><br><span class="line">Statement是用于执行SQL语句的，比如增加，删除  </span><br><span class="line">参考代码：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+
+        Connection c = DriverManager
+                .getConnection(
+                        &quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,
+                        &quot;root&quot;, &quot;admin&quot;);
+
+        // 注意：使用的是 java.sql.Statement
+        // 不要不小心使用到： com.mysql.jdbc.Statement;
+        Statement s = c.createStatement();
+
+        System.out.println(&quot;获取 Statement对象： &quot; + s);
+
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">5. 执行SQL语句  </span><br><span class="line">s.execute执行sql语句  </span><br><span class="line">参考代码：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+
+        Connection c = DriverManager
+                .getConnection(
+                        &quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,
+                        &quot;root&quot;, &quot;admin&quot;);
+
+        Statement s = c.createStatement();
+
+        // 准备sql语句
+        // 注意： 字符串要用单引号&apos;
+        String sql = &quot;insert into hero values(null,&quot;+&quot;&apos;提莫&apos;&quot;+&quot;,&quot;+313.0f+&quot;,&quot;+50+&quot;)&quot;;
+        s.execute(sql);
+
+        System.out.println(&quot;执行插入语句成功&quot;);
+
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">6. 关闭连接  </span><br><span class="line">数据库的连接是有限资源，相关操作结束后，养成关闭数据库的好习惯  </span><br><span class="line">先关闭Statement  </span><br><span class="line">后关闭Connection  </span><br><span class="line">参考代码：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    Connection c = null;
+    Statement s = null;
+    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+
+        c = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;, &quot;root&quot;,
+                &quot;admin&quot;);
+
+        s = c.createStatement();
+
+        String sql = &quot;insert into hero values(null,&quot; + &quot;&apos;提莫&apos;&quot; + &quot;,&quot; + 313.0f + &quot;,&quot; + 50 + &quot;)&quot;;
+
+        s.execute(sql);
+
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } finally {
+        // 数据库的连接时有限资源，相关操作结束后，养成关闭数据库的好习惯
+        // 先关闭Statement
+        if (s != null)
+            try {
+                s.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        // 后关闭Connection
+        if (c != null)
+            try {
+                c.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">7. 使用try-with-resource的方式自动关闭连接  </span><br><span class="line">自jdk7开始，可以将需要关闭的连接放到try的括号内，这样可以不用再进行手动关闭。  </span><br><span class="line">语法结构：  </span><br><span class="line">try()&#123;&#125;catch(Exception e)&#123;&#125;  </span><br><span class="line">例子：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    try (
+        Connection c = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,
+            &quot;root&quot;, &quot;admin&quot;);
+        Statement s = c.createStatement();             
+    )
+    {
+        String sql = &quot;insert into hero values(null,&quot; + &quot;&apos;提莫&apos;&quot; + &quot;,&quot; + 313.0f + &quot;,&quot; + 50 + &quot;)&quot;;
+        s.execute(sql);
+
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> **尝试练习：**  </span><br><span class="line">数据库内插入10条英雄数据。  </span><br><span class="line">### 增删改  </span><br><span class="line"> **增加**  </span><br><span class="line">往数据库表内插入一条数据  </span><br><span class="line">使用statement指向execute()即可．  </span><br><span class="line"> **修改**  </span><br><span class="line">和增加类似，需要自己构造一个修改的sql语句.  </span><br><span class="line">String sql = &quot;update hero set name = &apos;name 5&apos; where id = 3&quot;;  </span><br><span class="line"> **删除**  </span><br><span class="line">和增加类似，构建sql语句  </span><br><span class="line">String sql = &quot;delete from hero where id = 5&quot;;  </span><br><span class="line">### 查询  </span><br><span class="line">之所以将查询单独拿出来，和增删改区分开，是因为查询相对比较复杂，情况也比较多．  </span><br><span class="line">后期查询我们还会学习多表查询或者join连表查询,当然还有按组查询．  </span><br><span class="line">查询需要使用statement执行executeQuery方法，返回的数据放在了ResultSet里面．  </span><br><span class="line">之后，我们需要遍历ResultSet将数据全部打印或者去指向其他操作．</span><br></pre></td></tr></table></figure></p>
+<p>while (rs.next()) {<br>                int id = rs.getInt(“id”);// 可以使用字段名<br>                String name = rs.getString(2);// 也可以使用字段的顺序<br>                float hp = rs.getFloat(“hp”);<br>                int damage = rs.getInt(4);<br>                System.out.printf(“%d\t%s\t%f\t%d%n”, id, name, hp, damage);<br>            }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ResultSet也需要去关闭，但是一般来说，关闭statement的时候，他也会随着自动关闭了．  </span><br><span class="line"> **尝试：使用查询语句完成一个登录页面的编写**  </span><br><span class="line"> **获取查询列表的总数**  </span><br><span class="line">1. 遍历以后自己计算  </span><br><span class="line">2. 直接使用sql语句查询  </span><br><span class="line">使用select count(*)  </span><br><span class="line"> **尝试进行分页查询，查询第一页，也就是前五条数据**  </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">### 使用使用PreparedStatement进行数据查询  </span><br><span class="line">同样是查询语句，但是他相对于statement来说，需要使用方法进行参数的传入．  </span><br><span class="line">示例代码：</span><br></pre></td></tr></table></figure></p>
+<p>String sql = “insert into hero values(null,?,?,?)”;<br>        try (Connection c = DriverManager.getConnection(“jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8”,”root”, “admin”);<br>            // 根据sql语句创建PreparedStatement<br>            PreparedStatement ps = c.prepareStatement(sql);<br>       　 ) {</p>
+<pre><code>// 设置参数
+ps.setString(1, &quot;提莫&quot;);
+ps.setFloat(2, 313.0f);
+ps.setInt(3, 50);
+// 执行
+ps.execute();
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">优势：  </span><br><span class="line">1. 可读性比较好  </span><br><span class="line">2. 性能相对比较好查询速度比较快  </span><br><span class="line">3. 防止sql注入式攻击  </span><br><span class="line">第三点的话，注入式的攻击是由于整个sql语句都是传入式的，这就导致黑客或者别用用心的攻击者，对我们的程序传入一个恒成立的值，比如：  </span><br><span class="line">select * from hero where name = &apos;盖伦&apos; OR 1=1  </span><br><span class="line">这条语句就会把所以的数据查询出来  </span><br><span class="line">假如我们的数据是百万级别的,进行持续的查询，就会损耗内存和cpu，导致程序变得卡顿.  </span><br><span class="line">假如我们的参数式传入的,sql仅仅是传入一个骨架，就会将这种攻击避免掉.  </span><br><span class="line"> **尝试使用PreparedStatement进行英雄的查询** </span><br><span class="line"></span><br><span class="line">### execute与executeUpdate  </span><br><span class="line">这两个执行方法都可以进行sql语句的增加、修改和删除。  </span><br><span class="line">我们将之前例子中的execute方法修改为executeUpdate也是可以执行，并且正确运行出最终的执行结果的。  </span><br><span class="line">那么他们有什么区别呢？  </span><br><span class="line">区别1：  </span><br><span class="line">execute可以运行查询语句，并且最终将结果通过statement.getResultSet获取到，最终的结果放到了ResultSet结果集里面.  </span><br><span class="line">但是executeUpdate则不能执行查询语句。  </span><br><span class="line">区别2：  </span><br><span class="line">execute执行增删改之后，返回值为boolean类型，表示sql语句是否执行成功。  </span><br><span class="line">executeUpdate则返回int类型，表示受影响的数据有多少条。  </span><br><span class="line">例子：</span><br></pre></td></tr></table></figure>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.ResultSet;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    try (Connection c = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,&quot;root&quot;, &quot;admin&quot;);
+        Statement s = c.createStatement();) {
+
+        // 不同1：execute可以执行查询语句
+        // 然后通过getResultSet，把结果集取出来
+        String sqlSelect = &quot;select * from hero&quot;;
+
+        s.execute(sqlSelect);
+        ResultSet rs = s.getResultSet();
+        while (rs.next()) {
+            System.out.println(rs.getInt(&quot;id&quot;));
+        }
+
+        // executeUpdate不能执行查询语句
+        // s.executeUpdate(sqlSelect);
+
+        // 不同2:
+        // execute返回boolean类型，true表示执行的是查询语句，false表示执行的是insert,delete,update等等
+        boolean isSelect = s.execute(sqlSelect);
+        System.out.println(isSelect);
+
+        // executeUpdate返回的是int，表示有多少条数据受到了影响
+        String sqlUpdate = &quot;update Hero set hp = 300 where id &lt; 100&quot;;
+        int number = s.executeUpdate(sqlUpdate);
+        System.out.println(number);
+
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> **尝试练习：分页查询，使用executeUpdate方法执行，而非execute方法**  </span><br><span class="line"> </span><br><span class="line">### 特殊操作  </span><br><span class="line"> **获取自增id**  </span><br><span class="line">在执行插入语句之后，可以获取到自增id的值，不过前提是该id是自动增长的字段。  </span><br><span class="line">获取方法：  </span><br><span class="line">使用statement的getGeneratedKeys()即可。  </span><br><span class="line">该方法获取到的数据会放入一个resultset集合。  </span><br><span class="line">使用next()方法便可依次去除该id值（当然，这个地方的值仅有一个）   </span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>// 在执行完插入语句后，MySQL会为新插入的数据分配一个自增长id<br>            // JDBC通过getGeneratedKeys获取该id<br>            ResultSet rs = ps.getGeneratedKeys();<br>            if (rs.next()) {<br>                int id = rs.getInt(1);<br>                System.out.println(id);<br>            }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### 获取表的元数据  </span><br><span class="line">所谓的元数据就是跟数据库有关的相关配置数据。  </span><br><span class="line">获取方法是使用connect的getMetaData()获取到DatabaseMetaData元数据库的数据模型。  </span><br><span class="line">之后，获取元数据对应的成员变量（类属性）  </span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DatabaseMetaData;<br>import java.sql.DriverManager;<br>import java.sql.ResultSet;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {</p>
+<pre><code>public static void main(String[] args) throws Exception {
+    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    try (Connection c = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,&quot;root&quot;, &quot;admin&quot;);) {
+
+        // 查看数据库层面的元数据
+        // 即数据库服务器版本，驱动版本，都有哪些数据库等等
+
+        DatabaseMetaData dbmd = c.getMetaData();
+
+        // 获取数据库服务器产品名称
+        System.out.println(&quot;数据库产品名称:\t&quot;+dbmd.getDatabaseProductName());
+        // 获取数据库服务器产品版本号
+        System.out.println(&quot;数据库产品版本:\t&quot;+dbmd.getDatabaseProductVersion());
+        // 获取数据库服务器用作类别和表名之间的分隔符 如test.user
+        System.out.println(&quot;数据库和表分隔符:\t&quot;+dbmd.getCatalogSeparator());
+        // 获取驱动版本
+        System.out.println(&quot;驱动版本:\t&quot;+dbmd.getDriverVersion());
+
+        System.out.println(&quot;可用的数据库列表：&quot;);
+        // 获取数据库名称
+        ResultSet rs = dbmd.getCatalogs();
+
+        while (rs.next()) {
+            System.out.println(&quot;数据库名称:\t&quot;+rs.getString(1));
+        }
+
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br>```<br> <strong>尝试练习：当插入一条数据之后，通过获取自增长id，得到这条数据的id，比如说是55，删除这条数据的前一条，54.如果54不存在，则删除53，以此类推直到删除上一条数据。</strong>  </p>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><p>图书管理系统，在可视化界面里面，完成图书的增加、修改、删除和查询操作。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第五节mysql基础]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E4%BA%94%E8%8A%82mysql%E5%9F%BA%E7%A1%80/</url>
+      <content type="html"><![CDATA[<h3 id="关于数据库"><a href="#关于数据库" class="headerlink" title="关于数据库"></a>关于数据库</h3><p>数据库是存储数据的仓库，通过数据库，可以将我们的数据持久化的存储起来。<br>到目前为止，我们接触的数据都是非持久化的数据，均是和我们的程序同生共死的，一个死了，另一个就得去殉情的那种。<br>这样做，会带来什么问题呢？<br>数据无法持久，随着软件的关闭，用户所有的操作数据一并消失。  </p>
+<h3 id="关于MYSql"><a href="#关于MYSql" class="headerlink" title="关于MYSql"></a>关于MYSql</h3><p>My不是我的意思，是创始人女儿名字的缩写。   </p>
+<h3 id="安装mysql服务"><a href="#安装mysql服务" class="headerlink" title="安装mysql服务"></a>安装mysql服务</h3><p> <strong>需注意几点：</strong><br><img src="https://images.gitee.com/uploads/images/2018/0814/092227_9555c481_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>这个位置需要选择complete安装。<br><img src="https://images.gitee.com/uploads/images/2018/0814/092331_99aa0bc0_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>密码设置，一定要设置一个密码，并且需要勾选下面部分，表示允许其他用户访问数据库。<br>如果不勾选，就只能本机访问了，其他网络范围内的客户端无法进行本数据库的访问。  </p>
+<h3 id="安装navicat"><a href="#安装navicat" class="headerlink" title="安装navicat"></a>安装navicat</h3><p>无需多说，全部默认安装即可。<br> <strong>连接本地mysql服务步骤如下：</strong><br>第一步：<br><img src="https://images.gitee.com/uploads/images/2018/0814/092845_6eabcfb6_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>第二步：<br><img src="https://images.gitee.com/uploads/images/2018/0814/092919_74485b83_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>此处的连接名随意起名，主机和ip输入本机ip，本机的话可以输入localhost或者127.0.0.1<br>端口号默认为3306，密码输入自己的密码即可。  </p>
+<h3 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h3><p>语法结构：<br>create database 数据库名<br>例子：<br><img src="https://images.gitee.com/uploads/images/2018/0814/093442_501d8423_87680.png" alt="输入图片说明" title="屏幕截图.png">  </p>
+<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><p>语法结构：<br>create table 表名 (字段名 字段类型)<br>例子：<br><img src="https://images.gitee.com/uploads/images/2018/0814/104349_f36ccc24_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0814/105524_70a0ef64_87680.png" alt="输入图片说明" title="屏幕截图.png">  </p>
+<h3 id="插入一条数据"><a href="#插入一条数据" class="headerlink" title="插入一条数据"></a>插入一条数据</h3><p>语法结构：<br>insert into 表名 values(数据1，数据2，…..);<br>例子：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into hero values (null, &apos;盖伦&apos;, 616, 100)</span><br></pre></td></tr></table></figure>
+<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p>语法结构：<br>select 字段名或者* from 表名</p>
+<ol>
+<li>查询所有数据<br>例子：<br>select * from hero </li>
+<li>统计表中有多少数据<br>例子：<br>select count(*) from hero  </li>
+<li>分页查询，查询前多少条数据<br>例子：<br>select * from hero limit 0,5  <h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3>语法结构：<br>update 表名 set 字段名=字段值<br>例子：<br>update hero set hp = 818 where id = 1<br><img src="https://images.gitee.com/uploads/images/2018/0814/111852_3a4c6776_87680.png" alt="输入图片说明" title="屏幕截图.png">  <h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3>语法结构：<br>delete from 表名 where 条件<br>例子：<br>delete from hero where id = 1<br><img src="https://images.gitee.com/uploads/images/2018/0814/112045_e72f50f3_87680.png" alt="输入图片说明" title="屏幕截图.png">  <h3 id="备份和还原"><a href="#备份和还原" class="headerlink" title="备份和还原"></a>备份和还原</h3>使用navicat备份还原即可  <h3 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h3>表示mysql的一个数据库引擎  </li>
+</ol>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><ol>
+<li>构建自己的数据库  library  </li>
+<li>新建数据库表，字段和字段类型自己去设计，主要需要几个表？  </li>
+<li>练习数据库操作的主要语句，即增删改查。</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第四节java的接口和抽象类]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E5%9B%9B%E8%8A%82java%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/</url>
+      <content type="html"><![CDATA[<h3 id="温习一个接口的例子"><a href="#温习一个接口的例子" class="headerlink" title="温习一个接口的例子"></a>温习一个接口的例子</h3><ol>
+<li>设计一个英雄类  </li>
+<li>设计一个物理攻击的接口。  </li>
+<li>设计一类英雄，能够使用物理攻击  </li>
+<li>设计一个魔法攻击的接口  </li>
+<li>设计一类英雄，能够使用魔法攻击  </li>
+<li>设计一类应用，既能使用物理攻击，又可以使用魔法攻击  </li>
+<li><p>思考一个问题，什么情况下使用接口呢？  </p>
+<p><strong>对于第七个问题，我们暂时只有一个初步的感官，对接口仅仅理解其使用场景，真正意义上为什么使用接口现在还是一知半解</strong><br><strong>结合我们之前学习的多态的知识点，我们可以更加深入的认识接口</strong><br><em>尝试编写程序</em><br>新建一个英雄，盖伦。<br>新建三个英雄，分别为物理攻击英雄、魔法攻击英雄和物理魔法攻击英雄。<br>盖伦干掉三个英雄。  </p>
+</li>
+</ol>
+<p>使用接口去实现：  </p>
+<ol>
+<li>设计一个接口<br>接口叫做Mortal,其中有一个方法叫做die  </li>
+<li>实现接口<br>分别让ADHero,APHero,ADAPHero这三个类，实现Mortal接口，不同的类实现die方法的时候，都打印出不一样的字符串  </li>
+<li>为Hero类，添加一个方法,在这个方法中调用 m的die方法。 </li>
+<li>在主方法中测试  </li>
+</ol>
+<h3 id="接口的由来"><a href="#接口的由来" class="headerlink" title="接口的由来"></a>接口的由来</h3><p><img src="https://images.gitee.com/uploads/images/2018/0810/100957_103e8f8c_87680.png" alt="输入图片说明" title="屏幕截图.png"><img src="https://images.gitee.com/uploads/images/2018/0810/101012_22b07da3_87680.png" alt="输入图片说明" title="屏幕截图.png"><img src="https://images.gitee.com/uploads/images/2018/0810/101035_7fa6a33a_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>如何解决上述问题呢？  </p>
+<p>限制只有他的子类才可以被初始化．通过这种限制来解决上述问题．<br>让类不可以被new出来，就实现了我们所说的需求．<br>使用abstract关键字进行抽象类的声明，语法结构如下：<br><img src="https://images.gitee.com/uploads/images/2018/0810/132126_12cc903e_87680.png" alt="输入图片说明" title="2018-08-10 13-21-16屏幕截图.png"><br> <strong>尝试练习，新建animal的抽象类，测试一下该抽象类是否可以被new</strong><br> <strong>尝试练习，新建animal的子类，观察其子类的特点，能否可以new一个子类之后，将new出来的地址指向父类的引用类型呢？</strong>  </p>
+<blockquote>
+<p>抽象类除了被继承过之外，是没有用途，没有值，没有目的的．  </p>
+</blockquote>
+<p> <img src="https://images.gitee.com/uploads/images/2018/0810/134327_5425df03_87680.png" alt="输入图片说明" title="2018-08-10 13-43-16屏幕截图.png">  </p>
+<p> <strong>除此之外，方法也有抽象方法．抽象方法必须存在与抽象类里面，不可以出现在普通里面．</strong>  </p>
+<p>抽象方法的语法结构：<br><img src="https://images.gitee.com/uploads/images/2018/0810/141934_f1faf645_87680.png" alt="输入图片说明" title="2018-08-10 14-19-23屏幕截图.png"><br> <em>继承了抽象类的子类，必须实现抽象类所有的抽象方法</em>  </p>
+<h3 id="我们学习了抽象类，继承和接口，那么到底这么做有哪些好处呢？"><a href="#我们学习了抽象类，继承和接口，那么到底这么做有哪些好处呢？" class="headerlink" title="我们学习了抽象类，继承和接口，那么到底这么做有哪些好处呢？"></a>我们学习了抽象类，继承和接口，那么到底这么做有哪些好处呢？</h3><p> <strong>就是为了使用多态</strong><br>典型实例：<br>我们考虑一下arrayList这个类，他可以放置任何类型的对象或者任何类型的基础数据类型．<br>假如，我们从功能的角度触发，去开发一个arraylist类，那么需要怎么去做呢？  </p>
+<ol>
+<li>创建一个Dog专用的list<br>数据用来保存数据，nextIndex作为下标，只要下标小于数组长度便可以进行数据的存入<br><img src="https://images.gitee.com/uploads/images/2018/0810/145710_1259b59f_87680.png" alt="输入图片说明" title="2018-08-10 14-56-59屏幕截图.png"><br><strong>尝试根据上述类图进行代码的实现</strong>  </li>
+</ol>
+<p><img src="https://images.gitee.com/uploads/images/2018/0810/152955_4b4a41d8_87680.png" alt="输入图片说明" title="2018-08-10 15-29-44屏幕截图.png">  </p>
+<ol>
+<li>如果要求我们的list支持cat对象的存入呢？<br>有如下几种方案：<br>创建一个单独的MyCatList专门用来存放cat类<br>创建一个单独的MyCatAndDogList类，分别有两个方法，用来存放dog和cat<br>编写一个AnimalList类，可以处理当前animal对应的所以子类  </li>
+</ol>
+<p>选择第几种方案呢？第三种方案基于继承的原理，如何去实现呢？  </p>
+<p> <img src="https://images.gitee.com/uploads/images/2018/0810/153318_c16bbcbb_87680.png" alt="输入图片说明" title="2018-08-10 15-33-09屏幕截图.png">  </p>
+<p> <strong>思考一下，假如在整个动物的设计类里面，引入一个宠物类，我们需要如何进行相关设计呢？</strong><br>方法一：<br><img src="https://images.gitee.com/uploads/images/2018/0810/165748_e05f332b_87680.png" alt="输入图片说明" title="2018-08-10 16-57-20屏幕截图.png"><br>方法二：<br><img src="https://images.gitee.com/uploads/images/2018/0810/165947_0e4852d4_87680.png" alt="输入图片说明" title="2018-08-10 16-59-28屏幕截图.png"><br>方法三：<br><img src="https://images.gitee.com/uploads/images/2018/0810/170058_5b3ba05a_87680.png" alt="输入图片说明" title="2018-08-10 17-00-38屏幕截图.png"><br>我们是不是需要继承两个类呢？  </p>
+<blockquote>
+<p>显然，java没有这种设计，他有更好的设计，那就是接口.  </p>
+</blockquote>
+<p>接口是百分之百的抽象类，在其中没有任何的实现方法．  </p>
+<p>接口的定义：<br><img src="https://images.gitee.com/uploads/images/2018/0810/171035_251c5333_87680.png" alt="输入图片说明" title="2018-08-10 17-07-48屏幕截图.png"><br>接口的实现：<br><img src="https://images.gitee.com/uploads/images/2018/0811/063147_5ba91b37_87680.png" alt="输入图片说明" title="2018-08-11 06-31-37屏幕截图.png"><br>设计和实现宠物接口：<br><img src="https://images.gitee.com/uploads/images/2018/0811/063309_940b52c6_87680.png" alt="输入图片说明" title="2018-08-11 06-32-37屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0811/063441_d279a3cc_87680.png" alt="输入图片说明" title="2018-08-11 06-34-33屏幕截图.png">  </p>
+<p>总结：  </p>
+<blockquote>
+<p>extends只能有一个,implement可以有多个．类来自单亲家庭（supperclass），单可以扮演多种角色（implement）  </p>
+</blockquote>
+<h3 id="概念延伸"><a href="#概念延伸" class="headerlink" title="概念延伸"></a>概念延伸</h3><ol>
+<li>隐藏<br>重写是子类覆盖父类的对象方法，隐藏则是子类覆盖父类的类方法．  </li>
+<li>super<br>该关键字在子类中使用，表示子类去调用父类的属性或者方法．  </li>
+<li>Object<br>该类是所有对象的父类<br>默认新建的所以子类均继承该类，该类提供一个默认的toString()方法．<br>finalize也是其默认提供的方法之一，实现类的回收，这个方法是jvm自动触发的．<br>equals(),==(非object的方法，进行两个对象引用的判断)  </li>
+<li>final<br>为修饰符，当类为final的时候，该类不可以被继承<br>修饰方法的时候，表示该方法不可以被重写<br>修饰基本数据类型，该变量值可以被赋值一次．<br>修饰引用，则只可以被指向实际对象一次<br>可以设计一个常量，表示不会改变，始终确定的一个值  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static final int itemTotalNumber = 6;//物品栏的数量</span><br></pre></td></tr></table></figure>
+<ol>
+<li>内部类<br>非静态内部类<br>语法: new 外部类().new 内部类()  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">package charactor;</span><br><span class="line"> </span><br><span class="line">public class Hero &#123;</span><br><span class="line">    private String name; // 姓名</span><br><span class="line"> </span><br><span class="line">    float hp; // 血量</span><br><span class="line"> </span><br><span class="line">    float armor; // 护甲</span><br><span class="line"> </span><br><span class="line">    int moveSpeed; // 移动速度</span><br><span class="line"> </span><br><span class="line">    // 非静态内部类，只有一个外部类对象存在的时候，才有意义</span><br><span class="line">    // 战斗成绩只有在一个英雄对象存在的时候才有意义</span><br><span class="line">    class BattleScore &#123;</span><br><span class="line">        int kill;</span><br><span class="line">        int die;</span><br><span class="line">        int assit;</span><br><span class="line"> </span><br><span class="line">        public void legendary() &#123;</span><br><span class="line">            if (kill &gt;= 8)</span><br><span class="line">                System.out.println(name + &quot;超神！&quot;);</span><br><span class="line">            else</span><br><span class="line">                System.out.println(name + &quot;尚未超神！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Hero garen = new Hero();</span><br><span class="line">        garen.name = &quot;盖伦&quot;;</span><br><span class="line">        // 实例化内部类</span><br><span class="line">        // BattleScore对象只有在一个英雄对象存在的时候才有意义</span><br><span class="line">        // 所以其实例化必须建立在一个外部类对象的基础之上</span><br><span class="line">        BattleScore score = garen.new BattleScore();</span><br><span class="line">        score.kill = 9;</span><br><span class="line">        score.legendary();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">静态内部类  </span><br><span class="line">与非静态内部类不同，静态内部类水晶类的实例化 不需要一个外部类的实例为基础，可以直接实例化  </span><br><span class="line">语法：  </span><br><span class="line">new 外部类.静态内部类();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>package charactor;</p>
+<p>public class Hero {<br>    public String name;<br>    protected float hp;</p>
+<pre><code>private static void battleWin(){
+    System.out.println(&quot;battle win&quot;);
+}
+
+//敌方的水晶
+static class EnemyCrystal{
+    int hp=5000;
+
+    //如果水晶的血量为0，则宣布胜利
+    public void checkIfVictory(){
+        if(hp==0){
+            Hero.battleWin();
+
+            //静态内部类不能直接访问外部类的对象属性
+            System.out.println(name + &quot; win this game&quot;);
+        }
+    }
+}
+
+public static void main(String[] args) {
+    //实例化静态内部类
+    Hero.EnemyCrystal crystal = new Hero.EnemyCrystal();
+    crystal.checkIfVictory();
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6. 默认方法  </span><br><span class="line">jdk8新增特性</span><br></pre></td></tr></table></figure></p>
+<p>package charactor;</p>
+<p>public interface Mortal {<br>    public void die();</p>
+<pre><code>default public void revive() {
+    System.out.println(&quot;本英雄复活了&quot;);
+}
+</code></pre><p>}<br>```<br>假设没有默认方法这种机制，那么如果要为Mortal增加一个新的方法revive,那么所有实现了Mortal接口的类，都需要做改动.  </p>
+<p>但是引入了默认方法后，原来的类，不需要做任何改动，并且还能得到这个默认方法  </p>
+<p>通过这种手段，就能够很好的扩展新的类，并且做到不影响原来的类  </p>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><p><img src="https://images.gitee.com/uploads/images/2018/0811/072732_ef09e45a_87680.png" alt="输入图片说明" title="2018-08-11 07-27-07屏幕截图.png"><br> <strong>作业１</strong>  </p>
+<ol>
+<li>创建Animal类，它是所有动物的抽象父类。  </li>
+<li>声明一个受保护的整数类型属性legs，它记录动物的腿的数目。  </li>
+<li>定义一个受保护的构造器，用来初始化legs属性。  </li>
+<li>声明抽象方法eat。  </li>
+<li>声明具体方法walk来打印动物是如何行走的（包括腿的数目）。<br><strong>作业２</strong>  </li>
+<li>Spider继承Animal类。  </li>
+<li>定义默认构造器，它调用父类构造器来指明所有蜘蛛都是8条腿。  </li>
+<li>实现eat方法<br><strong>作业３</strong><br>根据UML类创建pet（宠物）接口  </li>
+<li>提供getName() 返回该宠物的名字  </li>
+<li>提供setName(String name) 为该宠物命名  </li>
+<li>提供 play()方法<br><strong>作业４</strong><br>Cat类  </li>
+<li>该类必须包含String属性来存宠物的名字。  </li>
+<li>定义一个构造器，它使用String参数指定猫的名字；该构造器必须调用超类构造器来指明所有的猫都是四条腿。  </li>
+<li>另定义一个无参的构造器。该构造器调用前一个构造器（用this关键字）并传递一个空字符串作为参数  </li>
+<li>实现Pet接口方法。  </li>
+<li>实现eat方法。<br><strong>作业５</strong>  </li>
+<li>创建Fish类，它继承Animal类  </li>
+<li>重写Animal的walk方法以表明鱼不能走且没有腿。   </li>
+<li>实现Pet接口  </li>
+<li>无参构造方法  </li>
+<li>提供一个private 的name属性  </li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第三节java多态]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E4%B8%89%E8%8A%82java%E5%A4%9A%E6%80%81/</url>
+      <content type="html"><![CDATA[<h3 id="上节课的遗留问题"><a href="#上节课的遗留问题" class="headerlink" title="上节课的遗留问题"></a>上节课的遗留问题</h3><p>父类的private方法无法继承，那么private的属性是如何实现继承的呢？  </p>
+<h3 id="知识点插入"><a href="#知识点插入" class="headerlink" title="知识点插入"></a>知识点插入</h3><p> <strong>类型转换</strong><br> <em>不同类型之间的数据可以互相转换，但是要满足一定的规则</em><br> <strong>转换规则:</strong>   </p>
+<ol>
+<li>精度高的数据类型就像容量大的杯子，可以放更大的数据 </li>
+<li>精度低的数据类型就像容量小的杯子，只能放更小的数据 </li>
+<li>小杯子往大杯子里倒东西，大杯子怎么都放得下 </li>
+<li>大杯子往小杯子里倒东西，有的时候放的下，有的时候就会有溢出 </li>
+<li>需要注意的一点是 </li>
+<li>虽然short和char都是16位的，长度是一样的,但是彼此之间，依然需要进行强制转换<br><img src="https://images.gitee.com/uploads/images/2018/0807/171858_5242d1d9_87680.png" alt="输入图片说明" title="2018-08-07 17-18-49屏幕截图.png"><br><strong>低精度向高精度转换</strong>  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">long l = 50;</span><br><span class="line">int i = 50;</span><br><span class="line">```  </span><br><span class="line">l 是long类型的，其类型长度是64位  </span><br><span class="line">i 是int类型的，其类型长度是32位  </span><br><span class="line">所以l的精度，比i的精度要高  </span><br><span class="line">l = i;  </span><br><span class="line">把i的值赋给l， 首先l和i彼此的类型是不一样的，那么能否转换就取决于彼此的精度  </span><br><span class="line">这个例子，是低精度向高精度转换 是可以正常转换的  </span><br><span class="line">换句话说，int比较小，要放进比较大的long,随便怎么样，都放的进去  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0807/173748_183b6ba4_87680.png &quot;2018-08-07 17-37-41屏幕截图.png&quot;)  </span><br><span class="line"> **高精度向低精度转换**</span><br></pre></td></tr></table></figure>
+<p>byte b = 5;<br>int i1 = 10;<br>int i2 = 300;<br>b = i1;<br>b=i2;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">b的类型是byte,其长度是8，最大只能放127  </span><br><span class="line">i1 的类型是int, 其长度是32,最大，反正就是很大了，超过127  </span><br><span class="line">所以， 把int类型的数据转成为byte类型的数据，是有风险的  </span><br><span class="line">有的时候是可以转换的，比如 b = i1 (i1=10);  </span><br><span class="line">有的时候不可以转换 比如 b= i2 (i2=300) 因为放不下了  </span><br><span class="line">编译器就会提示错误  </span><br><span class="line">这个时候就只能采用强制转换，强制转换的意思就是，转是可以转的，但是不对转换之后的值负责。 风险自担，后果自负  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0807/174003_b93f2b6e_87680.png &quot;2018-08-07 17-39-56屏幕截图.png&quot;)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 对象转型  </span><br><span class="line"> **明确引用类型与对象类型的概念**  </span><br><span class="line">首先，明确引用类型与对象类型的概念  </span><br><span class="line">在这个例子里，有一个对象 new ADHero(), 同时也有一个引用ad  </span><br><span class="line">对象是有类型的， 是ADHero  </span><br><span class="line">引用也是有类型的，是ADHero  </span><br><span class="line">通常情况下，引用类型和对象类型是一样的  </span><br><span class="line">接下来要讨论的类型转换的问题，指的是引用类型和对象类型不一致的情况下的转换问题  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0807/170015_d6c21b42_87680.png &quot;2018-08-07 17-00-09屏幕截图.png&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>package charactor;</p>
+<p>public class Hero {<br>    public String name;<br>    protected float hp;</p>
+<pre><code>public static void main(String[] args) {
+
+    ADHero ad = new ADHero();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> **子类转父类(向上转型)**   </span><br><span class="line">&gt; 所谓的转型，是指当引用类型和对象类型不一致的时候，才需要进行类型转换</span><br><span class="line">类型转换有时候会成功，有时候会失败</span><br></pre></td></tr></table></figure></p>
+<p>Hero h = new Hero();<br>ADHero ad = new ADHero();<br>h = ad;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">所有的子类转换为父类，都是说得通的  </span><br><span class="line">苹果手机 继承了 手机，把苹果手机当做普通手机使用  </span><br><span class="line">怡宝纯净水 继承了 饮品， 把怡宝纯净水 当做饮品来使用  </span><br><span class="line">苍老师 继承了动物， 把苍老师 。。。  </span><br><span class="line"> **父类转子类(向下转型)**   </span><br><span class="line">父类转子类，有的时候行，有的时候不行，所以必须进行强制转换。  </span><br><span class="line">强制转换的意思就是 转换有风险，风险自担。  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0807/180052_96921437_87680.png &quot;2018-08-07 18-00-38屏幕截图.png&quot;)![输入图片说明](https://images.gitee.com/uploads/images/2018/0807/180113_03e85de9_87680.png &quot;2018-08-07 18-01-05屏幕截图.png&quot;)</span><br><span class="line"></span><br><span class="line"> **没有继承关系的两个类，互相转换**   </span><br><span class="line"> _没有继承关系的两个类，互相转换，一定会失败_  </span><br><span class="line">### 多态是如何运行的？  </span><br><span class="line"> **一般的声明引用和创建对象的方法**  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0809/083728_354ad95c_87680.png &quot;屏幕截图.png&quot;) ![输入图片说明](https://images.gitee.com/uploads/images/2018/0809/083739_38c49d51_87680.png &quot;屏幕截图.png&quot;)![输入图片说明](https://images.gitee.com/uploads/images/2018/0809/083750_cb56f085_87680.png &quot;屏幕截图.png&quot;)  </span><br><span class="line"> _重点是什么呢？_  </span><br><span class="line">引用类型和对象的类型必须相符，否则会编译错误！  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0809/083857_f264fe80_87680.png &quot;屏幕截图.png&quot;)  </span><br><span class="line"> **多态下，引用类型和对象类型则可以不相符**  </span><br><span class="line"> ![输入图片说明](https://images.gitee.com/uploads/images/2018/0809/132402_9e5b732e_87680.png &quot;屏幕截图.png&quot;)  </span><br><span class="line"> 不过，满足以上多态下的引用类型和对象类型可以不相符的前提是引用类型是实际对象类型的父类。  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0809/132609_052738d5_87680.png &quot;屏幕截图.png&quot;)  </span><br><span class="line"> **不仅类可以多态，参数和返回类型也可以多态**  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0809/133232_64d0b3b6_87680.png &quot;屏幕截图.png&quot;)  </span><br><span class="line">![输入图片说明](https://images.gitee.com/uploads/images/2018/0809/133244_164aed57_87680.png &quot;屏幕截图.png&quot;)  </span><br><span class="line">&gt; 通过多态，我们可以设计出引进新型子类时不必修改代码的程序。  </span><br><span class="line"></span><br><span class="line">### 深入理解多态  </span><br><span class="line"> **操作符的多态**  </span><br><span class="line"> _同一个操作符在不同情境下，具备不同的作用.如果+号两侧都是整型，那么+代表 数字相加.如果+号两侧，任意一个是字符串，那么+代表字符串连接_</span><br></pre></td></tr></table></figure></p>
+<p>package charactor;</p>
+<p>public class Hero {<br>    public String name;<br>    protected float hp;</p>
+<pre><code>public static void main(String[] args) {
+
+    int i = 5;
+    int j = 6;
+    int k = i+j; //如果+号两侧都是整型，那么+代表 数字相加
+
+    System.out.println(k);
+
+    int a = 5;
+    String b = &quot;5&quot;;
+
+    String c = a+b; //如果+号两侧，任意一个是字符串，那么+代表字符串连接
+    System.out.println(c);
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**类的多态**  </span><br><span class="line">_都是同一个类型，调用同一个方法，却能呈现不同的状态_</span><br></pre></td></tr></table></figure></p>
+<p>package property;</p>
+<p>public class LifePotion extends Item {<br>    public void effect(){<br>        System.out.println(“血瓶使用后，可以回血”);<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>package property;</p>
+<p>public class MagicPotion extends Item{</p>
+<pre><code>public void effect(){
+    System.out.println(&quot;蓝瓶使用后，可以回魔法&quot;);
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>package property;</p>
+<p>public class Item {<br>    String name;<br>    int price;</p>
+<pre><code>public void buy(){
+    System.out.println(&quot;购买&quot;);
+}
+public void effect() {
+    System.out.println(&quot;物品使用后，可以有效果 &quot;);
+}
+
+public static void main(String[] args) {
+    Item i1= new LifePotion();
+    Item i2 = new MagicPotion();
+    System.out.print(&quot;i1  是Item类型，执行effect打印:&quot;);
+    i1.effect();
+    System.out.print(&quot;i2也是Item类型，执行effect打印:&quot;);
+    i2.effect();
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**使用多态和不使用多态的区别**  </span><br><span class="line">_不使用多态_</span><br></pre></td></tr></table></figure></p>
+<p>package charactor;</p>
+<p>import property.LifePotion;<br>import property.MagicPotion;</p>
+<p>public class Hero {<br>    public String name;<br>    protected float hp;</p>
+<pre><code>public void useLifePotion(LifePotion lp){
+    lp.effect();
+}
+public void useMagicPotion(MagicPotion mp){
+    mp.effect();
+}
+
+public static void main(String[] args) {
+
+    Hero garen =  new Hero();
+    garen.name = &quot;盖伦&quot;;
+
+    LifePotion lp =new LifePotion();
+    MagicPotion mp =new MagicPotion();
+
+    garen.useLifePotion(lp);
+    garen.useMagicPotion(mp);
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对应非常多的方法的实现，逻辑比较混乱  </span><br><span class="line"></span><br><span class="line"> **使用多态的情况**</span><br></pre></td></tr></table></figure></p>
+<p>package charactor;</p>
+<p>import property.Item;<br>import property.LifePotion;<br>import property.MagicPotion;</p>
+<p>public class Hero {<br>    public String name;<br>    protected float hp;</p>
+<pre><code>public void useItem(Item i){
+    i.effect();
+}
+
+public static void main(String[] args) {
+
+    Hero garen =  new Hero();
+    garen.name = &quot;盖伦&quot;;
+
+    LifePotion lp =new LifePotion();
+    MagicPotion mp =new MagicPotion();
+
+    garen.useItem(lp);
+    garen.useItem(mp);     
+
+}
+</code></pre><p>}<br>```<br>只使用一个方法即可。</p>
+<p> <strong>类的多态实现条件</strong>  </p>
+<ol>
+<li>父类（接口）引用指向子类对象</li>
+<li>调用的方法有重写  </li>
+</ol>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><p>植物大战僵尸，模拟垃圾桶僵尸、防护网僵尸、飞天僵尸和棒球僵尸的攻击方法，分别使用多态（编写一个参数为父类的多态方法）和非多态模拟。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第二节java的继承]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E4%BA%8C%E8%8A%82java%E7%9A%84%E7%BB%A7%E6%89%BF/</url>
+      <content type="html"><![CDATA[<h3 id="前情回顾"><a href="#前情回顾" class="headerlink" title="前情回顾"></a>前情回顾</h3><p><img src="https://images.gitee.com/uploads/images/2018/0806/112511_36a485f1_87680.png" alt="![输入图片说明](https://images.gitee.com/uploads/images/2018/0806/112512_52c82d3f_87680.png &quot;屏幕截图.png&quot;)" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/112656_4730b441_87680.png" alt="输入图片说明" title="屏幕截图.png">  </p>
+<h3 id="问题思考"><a href="#问题思考" class="headerlink" title="问题思考"></a>问题思考</h3><p><img src="https://images.gitee.com/uploads/images/2018/0806/112821_8e7f59c3_87680.png" alt="输入图片说明" title="屏幕截图.png">  </p>
+<h3 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h3><p><img src="https://images.gitee.com/uploads/images/2018/0806/112937_33aa6f30_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/113001_28aa1d74_87680.png" alt="输入图片说明" title="屏幕截图.png"><br> <strong>典型实例</strong><br> <em>医生、外科医生和家庭医生</em><br>这两类医生都属于医生的类型。<br>医生具有一个实例变量，一个方法<br>外科医生可以进行手术，但是和传统的医生对应的手术方法有所不同，另外他还可以进行截肢操作。<br>家庭医生可以给出建议，并且可以联系医院进行对应的咨询。<br><img src="https://images.gitee.com/uploads/images/2018/0806/120558_9ba30ac0_87680.png" alt="输入图片说明" title="屏幕截图.png"><br> <strong>思考</strong><br><img src="https://images.gitee.com/uploads/images/2018/0806/121113_80684ebb_87680.png" alt="输入图片说明" title="屏幕截图.png">   </p>
+<h3 id="设计动物仿真程序的继承树"><a href="#设计动物仿真程序的继承树" class="headerlink" title="设计动物仿真程序的继承树"></a>设计动物仿真程序的继承树</h3><p><img src="https://images.gitee.com/uploads/images/2018/0806/121223_176518f9_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/121256_b9c97174_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/121336_31def53b_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/121420_86d16712_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/132323_1e8097dc_87680.png" alt="输入图片说明" title="屏幕截图.png"><img src="https://images.gitee.com/uploads/images/2018/0806/132338_5dbf11b5_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/132417_1eb828ab_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/132446_23459acf_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/132625_3596fb5d_87680.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0806/132748_2ba01a8b_87680.png" alt="输入图片说明" title="屏幕截图.png">  </p>
+<h3 id="继承的意义"><a href="#继承的意义" class="headerlink" title="继承的意义"></a>继承的意义</h3><ol>
+<li>避免了重复代码  </li>
+<li>定义出了共同的协议  <h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3></li>
+<li>设计植物大战僵尸里面的植物类，使用继承关系来进行父类和子类的模拟。  </li>
+<li>设计植物大战僵尸里面的僵尸类，使用继承关系来进行父类和子类的模拟。</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[第一节深入探索javaOOP]]></title>
+      <url>/2018/09/13/%E7%AC%AC%E4%B8%80%E8%8A%82%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2javaOOP/</url>
+      <content type="html"><![CDATA[<h3 id="面向对象的类"><a href="#面向对象的类" class="headerlink" title="面向对象的类"></a>面向对象的类</h3><ol>
+<li>属性<br>属性就是类的状态。（比如图书的定价、出版社、出版时间等）</li>
+<li>方法<br>能做什么，就是类的方法。（比如…）<br>图书是一个无方法的类，其实，正常项目中，我们的建议是把属性全部设置成private的，然后使用set和get方法来获取和存放属性。<br><em>使用set和get方法有什么意义呢？</em>  <ol>
+<li>灵活性<br>比如，我们在学生类里面，每次获取学生姓名的时候，都希望前面加上一段文字：我的名字是：。  </li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line"> </span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return &quot;我的名字叫&quot; + name;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">2. 最主要的是安全性，对于类是一个封闭的黑盒子，才能符合安全性的规范。使得我们的类可以自定义一些只读或者只能写的权限。  </span><br><span class="line">### 面向对象的知识点总览  </span><br><span class="line">1. 引用  </span><br><span class="line">2. 继承  </span><br><span class="line">3. 方法重载  </span><br><span class="line">4. 构造函数  </span><br><span class="line">5. this  </span><br><span class="line">6. 传参  </span><br><span class="line">7. 包  _注意import_    </span><br><span class="line">8. 访问修饰符  private public protected default  </span><br><span class="line">9. 类属性 和对象属性的区别。注意一下静态关键字static  属性一旦被该关键字修饰,那么该属性被所有的对象共享，使用同一个值。  </span><br><span class="line">10. 类方法  静态方法。访问该方法不必建立在对象上面，使用类便可直接进行方法的访问。  </span><br><span class="line">11. 属性初始化  </span><br><span class="line">对象属性初始化：  </span><br><span class="line">声明该属性的时候初始化，构造函数中进行初始化，初始化块</span><br></pre></td></tr></table></figure>
+<p>package charactor;</p>
+<p>public class Hero {<br>    public String name = “some hero”; //声明该属性的时候初始化<br>    protected float hp;<br>    float maxHP;</p>
+<pre><code>{
+    maxHP = 200; //初始化块
+}    
+
+public Hero(){
+    hp = 100; //构造方法中初始化
+
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">功能相同，但是执行顺序是什么样的呢？  </span><br><span class="line">类属性初始化：  </span><br><span class="line">声明该属性的时候初始化、静态初始化块</span><br></pre></td></tr></table></figure>
+<p>package charactor;</p>
+<p>public class Hero {<br>    public String name;<br>    protected float hp;<br>    float maxHP;</p>
+<pre><code>//物品栏的容量
+public static int itemCapacity=8; //声明的时候 初始化
+
+static{
+    itemCapacity = 6;//静态初始化块 初始化
+}
+
+public Hero(){
+
+}
+
+public static void main(String[] args) {
+    System.out.println(Hero.itemCapacity);
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">12. 单例模式  </span><br><span class="line"></span><br><span class="line">&gt; 单例模式又叫做 Singleton模式，指的是一个类，在一个JVM里，只有一个实例存在。  </span><br><span class="line"></span><br><span class="line">比如说：  </span><br><span class="line">LOL里有一个怪叫大龙GiantDragon，只有一只，所以该类，只能被实例化一次  </span><br><span class="line"> **饿汉式单例模式**</span><br></pre></td></tr></table></figure>
+<p>package charactor;</p>
+<p>public class GiantDragon {</p>
+<pre><code>//私有化构造方法使得该类无法在外部通过new 进行实例化
+private GiantDragon(){
+
+}
+
+//准备一个类属性，指向一个实例化对象。 因为是类属性，所以只有一个
+
+private static GiantDragon instance = new GiantDragon();
+
+//public static 方法，提供给调用者获取12行定义的对象
+public static GiantDragon getInstance(){
+    return instance;
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>package charactor;</p>
+<p>public class TestGiantDragon {</p>
+<pre><code>public static void main(String[] args) {
+    //通过new实例化会报错
+</code></pre><p>//        GiantDragon g = new GiantDragon();</p>
+<pre><code>    //只能通过getInstance得到对象
+
+    GiantDragon g1 = GiantDragon.getInstance();
+    GiantDragon g2 = GiantDragon.getInstance();
+    GiantDragon g3 = GiantDragon.getInstance();
+
+    //都是同一个对象
+    System.out.println(g1==g2);
+    System.out.println(g1==g3);
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**懒汉式单例模式**</span><br></pre></td></tr></table></figure>
+<p>package charactor;</p>
+<p>public class GiantDragon {</p>
+<pre><code>//私有化构造方法使得该类无法在外部通过new 进行实例化
+private GiantDragon(){        
+}
+
+//准备一个类属性，用于指向一个实例化对象，但是暂时指向null
+private static GiantDragon instance;
+
+//public static 方法，返回实例对象
+public static GiantDragon getInstance(){
+    //第一次访问的时候，发现instance没有指向任何对象，这时实例化一个对象
+    if(null==instance){
+        instance = new GiantDragon();
+    }
+    //返回 instance指向的对象
+    return instance;
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>package charactor;</p>
+<p>public class TestGiantDragon {</p>
+<pre><code>public static void main(String[] args) {
+    //通过new实例化会报错
+</code></pre><p>//        GiantDragon g = new GiantDragon();</p>
+<pre><code>    //只能通过getInstance得到对象
+
+    GiantDragon g1 = GiantDragon.getInstance();
+    GiantDragon g2 = GiantDragon.getInstance();
+    GiantDragon g3 = GiantDragon.getInstance();
+
+    //都是同一个对象
+    System.out.println(g1==g2);
+    System.out.println(g1==g3);
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> **什么时候使用饿汉式，什么时候使用懒汉式**   </span><br><span class="line">饿汉式是立即加载的方式，无论是否会用到这个对象，都会加载.  </span><br><span class="line">如果在构造方法里写了性能消耗较大，占时较久的代码，比如建立与数据库的连接，那么就会在启动的时候感觉稍微有些卡顿。  </span><br><span class="line"></span><br><span class="line">懒汉式，是延迟加载的方式，只有使用的时候才会加载。 并且有线程安全的考量(鉴于同学们学习的进度，暂时不对线程的章节做展开)。  </span><br><span class="line">使用懒汉式，在启动的时候，会感觉到比饿汉式略快，因为并没有做对象的实例化。 但是在第一次调用的时候，会进行实例化操作，感觉上就略慢。  </span><br><span class="line"></span><br><span class="line">看业务需求，如果业务上允许有比较充分的启动和初始化时间，就使用饿汉式，否则就使用懒汉式  </span><br><span class="line"></span><br><span class="line"> _什么是单例模式？_   </span><br><span class="line">1. 构造方法私有化  </span><br><span class="line">2. 静态属性指向实例  </span><br><span class="line">3. public static的 getInstance方法，返回第二步的静态属性  </span><br><span class="line"></span><br><span class="line">13. 枚举类型  </span><br><span class="line">&gt; 预先定义的常量  </span><br><span class="line"></span><br><span class="line">枚举enum是一种特殊的类(还是类)，使用枚举可以很方便的定义常量  </span><br><span class="line">比如设计一个枚举类型 季节，里面有4种常量</span><br></pre></td></tr></table></figure>
+<p>public enum Season {<br>    SPRING,SUMMER,AUTUMN,WINTER<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">主要用于switch语句。</span><br></pre></td></tr></table></figure></p>
+<p>public class HelloWorld {<br>    public static void main(String[] args) {<br>        Season season = Season.SPRING;<br>        switch (season) {<br>        case SPRING:<br>            System.out.println(“春天”);<br>            break;<br>        case SUMMER:<br>            System.out.println(“夏天”);<br>            break;<br>        case AUTUMN:<br>            System.out.println(“秋天”);<br>            break;<br>        case WINTER:<br>            System.out.println(“冬天”);<br>            break;<br>        }<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 使用枚举类型的好处  </span><br><span class="line"></span><br><span class="line">假设在使用switch的时候，不是使用枚举，而是使用int，而int的取值范围就不只是1-4，有可能取一个超出1-4之间的值，这样判断结果就似是而非了。（因为只有4个季节）</span><br></pre></td></tr></table></figure>
+<p>public class HelloWorld {<br>    public static void main(String[] args) {<br>        int season = 5;<br>        switch (season) {<br>        case 1:<br>            System.out.println(“春天”);<br>            break;<br>        case 2:<br>            System.out.println(“夏天”);<br>            break;<br>        case 3:<br>            System.out.println(“秋天”);<br>            break;<br>        case 4:<br>            System.out.println(“冬天”);<br>            break;<br>        }<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 枚举类型的遍历  </span><br><span class="line"></span><br><span class="line">使用增强型for循环：</span><br></pre></td></tr></table></figure>
+<p>public class HelloWorld {<br>    public static void main(String[] args) {<br>        for (Season s : Season.values()) {<br>            System.out.println(s);<br>        }<br>    }<br>}</p>
+<p>```</p>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><ol>
+<li>用户输入一个日期，月份即可，计算出该日期属于哪个季节(使用枚举)。  </li>
+<li>练习set和get方法，改造图书管理系统的类（图书类，学生类，教师类，图书管理员类）。</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> java深入探索 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[第十节JFRAME图形界面简介]]></title>
       <url>/2018/09/13/%E7%AC%AC%E5%8D%81%E8%8A%82JFRAME%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E7%AE%80%E4%BB%8B/</url>
       <content type="html"><![CDATA[<h3 id="基础知识总结（第一阶段）"><a href="#基础知识总结（第一阶段）" class="headerlink" title="基础知识总结（第一阶段）"></a>基础知识总结（第一阶段）</h3><ol>
@@ -1476,11 +3856,11 @@ public static void main(String[] args) {
             
             <tag> spring </tag>
             
-            <tag> 注解 </tag>
-            
             <tag> autowired </tag>
             
             <tag> resource </tag>
+            
+            <tag> 注解 </tag>
             
         </tags>
         
@@ -1658,9 +4038,9 @@ public static void main(String[] args) {
             
             <tag> springmvc </tag>
             
-            <tag> sitemesh </tag>
-            
             <tag> 注解 </tag>
+            
+            <tag> sitemesh </tag>
             
         </tags>
         

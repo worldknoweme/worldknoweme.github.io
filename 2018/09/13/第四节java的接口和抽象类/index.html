@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringBoot, Java, Android, Html5" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="温习一个接口的例子 设计一个英雄类   设计一个物理攻击的接口。   设计一类英雄，能够使用物理攻击   设计一个魔法攻击的接口   设计一类英雄，能够使用魔法攻击   设计一类应用，既能使用物理攻击，又可以使用魔法攻击   思考一个问题，什么情况下使用接口呢？   对于第七个问题，我们暂时只有一个初步的感官，对接口仅仅理解其使用场景，真正意义上为什么使用接口现在还是一知半解结合我们之前学习的多态">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第四节java的接口和抽象类">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/09/13/第四节java的接口和抽象类/index.html">
+<meta property="og:site_name" content="为七七写本书">
+<meta property="og:description" content="温习一个接口的例子 设计一个英雄类   设计一个物理攻击的接口。   设计一类英雄，能够使用物理攻击   设计一个魔法攻击的接口   设计一类英雄，能够使用魔法攻击   设计一类应用，既能使用物理攻击，又可以使用魔法攻击   思考一个问题，什么情况下使用接口呢？   对于第七个问题，我们暂时只有一个初步的感官，对接口仅仅理解其使用场景，真正意义上为什么使用接口现在还是一知半解结合我们之前学习的多态">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/100957_103e8f8c_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/101012_22b07da3_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/101035_7fa6a33a_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/132126_12cc903e_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/134327_5425df03_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/141934_f1faf645_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/145710_1259b59f_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/152955_4b4a41d8_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/153318_c16bbcbb_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/165748_e05f332b_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/165947_0e4852d4_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/170058_5b3ba05a_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0810/171035_251c5333_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0811/063147_5ba91b37_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0811/063309_940b52c6_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0811/063441_d279a3cc_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0811/072732_ef09e45a_87680.png">
+<meta property="og:updated_time" content="2018-09-13T05:59:03.246Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第四节java的接口和抽象类">
+<meta name="twitter:description" content="温习一个接口的例子 设计一个英雄类   设计一个物理攻击的接口。   设计一类英雄，能够使用物理攻击   设计一个魔法攻击的接口   设计一类英雄，能够使用魔法攻击   设计一类应用，既能使用物理攻击，又可以使用魔法攻击   思考一个问题，什么情况下使用接口呢？   对于第七个问题，我们暂时只有一个初步的感官，对接口仅仅理解其使用场景，真正意义上为什么使用接口现在还是一知半解结合我们之前学习的多态">
+<meta name="twitter:image" content="https://images.gitee.com/uploads/images/2018/0810/100957_103e8f8c_87680.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/09/13/第四节java的接口和抽象类/"/>
+
+
+
+
+
+  <title>第四节java的接口和抽象类 | 为七七写本书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。W一两愿你江南多雨带油伞。二两愿你酷暑可以轻摇扇。三两愿你入冬莫忘添衣衫。四两愿你年年多聚无离散。五两愿你无病无忧心常宽。六两愿你无风无雨长相欢。六两三。余下三。我在西北，一关接一关。与你相隔，一山又一山。最后只愿我，知道你平安。W人生两苦，想要却不得，拥有却失去。W春有风筝，夏有鱼。秋有青鸟，冬有雁。书信一来一往间，日子就这样过去了。W不存在虚妄的希望,自然也就没有虚妄的失望,更没有什么绝望。人生如题各种痴,就是各种喜欢,喜欢什么那便做下去,这道题目总会有答案的。不管是小人物还是富贵子孙，要成功，都得眼睛看远一点，度量放大一点，脑子多想一点，然后怀六分恶毒，三分炎凉，还得给自己给子孙剩一分善心。W世界上一半人在嘲笑另一半,其实全世界都是傻瓜。W我告诉你什么事最可悲，你遇见一个人，犯了一个错，你想弥补想还清，到最后才发现你根本无力回天，犯下的罪过永远无法弥补。我们永远无法还清犯下的…W一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪。W不乱于心，不困于情。不畏将来，不念过往。如此，安好！";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">为七七写本书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle" id="helloTitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/09/13/第四节java的接口和抽象类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="为七七写本书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第四节java的接口和抽象类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T13:58:15+08:00">
+                2018-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java深入探索/" itemprop="url" rel="index">
+                    <span itemprop="name">java深入探索</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,162
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="温习一个接口的例子"><a href="#温习一个接口的例子" class="headerlink" title="温习一个接口的例子"></a>温习一个接口的例子</h3><ol>
+<li>设计一个英雄类  </li>
+<li>设计一个物理攻击的接口。  </li>
+<li>设计一类英雄，能够使用物理攻击  </li>
+<li>设计一个魔法攻击的接口  </li>
+<li>设计一类英雄，能够使用魔法攻击  </li>
+<li>设计一类应用，既能使用物理攻击，又可以使用魔法攻击  </li>
+<li><p>思考一个问题，什么情况下使用接口呢？  </p>
+<p><strong>对于第七个问题，我们暂时只有一个初步的感官，对接口仅仅理解其使用场景，真正意义上为什么使用接口现在还是一知半解</strong><br><strong>结合我们之前学习的多态的知识点，我们可以更加深入的认识接口</strong><br><em>尝试编写程序</em><br>新建一个英雄，盖伦。<br>新建三个英雄，分别为物理攻击英雄、魔法攻击英雄和物理魔法攻击英雄。<br>盖伦干掉三个英雄。  </p>
+</li>
+</ol>
+<p>使用接口去实现：  </p>
+<ol>
+<li>设计一个接口<br>接口叫做Mortal,其中有一个方法叫做die  </li>
+<li>实现接口<br>分别让ADHero,APHero,ADAPHero这三个类，实现Mortal接口，不同的类实现die方法的时候，都打印出不一样的字符串  </li>
+<li>为Hero类，添加一个方法,在这个方法中调用 m的die方法。 </li>
+<li>在主方法中测试  </li>
+</ol>
+<h3 id="接口的由来"><a href="#接口的由来" class="headerlink" title="接口的由来"></a>接口的由来</h3><p><img src="https://images.gitee.com/uploads/images/2018/0810/100957_103e8f8c_87680.png" alt="输入图片说明" title="屏幕截图.png"><img src="https://images.gitee.com/uploads/images/2018/0810/101012_22b07da3_87680.png" alt="输入图片说明" title="屏幕截图.png"><img src="https://images.gitee.com/uploads/images/2018/0810/101035_7fa6a33a_87680.png" alt="输入图片说明" title="屏幕截图.png"><br>如何解决上述问题呢？  </p>
+<p>限制只有他的子类才可以被初始化．通过这种限制来解决上述问题．<br>让类不可以被new出来，就实现了我们所说的需求．<br>使用abstract关键字进行抽象类的声明，语法结构如下：<br><img src="https://images.gitee.com/uploads/images/2018/0810/132126_12cc903e_87680.png" alt="输入图片说明" title="2018-08-10 13-21-16屏幕截图.png"><br> <strong>尝试练习，新建animal的抽象类，测试一下该抽象类是否可以被new</strong><br> <strong>尝试练习，新建animal的子类，观察其子类的特点，能否可以new一个子类之后，将new出来的地址指向父类的引用类型呢？</strong>  </p>
+<blockquote>
+<p>抽象类除了被继承过之外，是没有用途，没有值，没有目的的．  </p>
+</blockquote>
+<p> <img src="https://images.gitee.com/uploads/images/2018/0810/134327_5425df03_87680.png" alt="输入图片说明" title="2018-08-10 13-43-16屏幕截图.png">  </p>
+<p> <strong>除此之外，方法也有抽象方法．抽象方法必须存在与抽象类里面，不可以出现在普通里面．</strong>  </p>
+<p>抽象方法的语法结构：<br><img src="https://images.gitee.com/uploads/images/2018/0810/141934_f1faf645_87680.png" alt="输入图片说明" title="2018-08-10 14-19-23屏幕截图.png"><br> <em>继承了抽象类的子类，必须实现抽象类所有的抽象方法</em>  </p>
+<h3 id="我们学习了抽象类，继承和接口，那么到底这么做有哪些好处呢？"><a href="#我们学习了抽象类，继承和接口，那么到底这么做有哪些好处呢？" class="headerlink" title="我们学习了抽象类，继承和接口，那么到底这么做有哪些好处呢？"></a>我们学习了抽象类，继承和接口，那么到底这么做有哪些好处呢？</h3><p> <strong>就是为了使用多态</strong><br>典型实例：<br>我们考虑一下arrayList这个类，他可以放置任何类型的对象或者任何类型的基础数据类型．<br>假如，我们从功能的角度触发，去开发一个arraylist类，那么需要怎么去做呢？  </p>
+<ol>
+<li>创建一个Dog专用的list<br>数据用来保存数据，nextIndex作为下标，只要下标小于数组长度便可以进行数据的存入<br><img src="https://images.gitee.com/uploads/images/2018/0810/145710_1259b59f_87680.png" alt="输入图片说明" title="2018-08-10 14-56-59屏幕截图.png"><br><strong>尝试根据上述类图进行代码的实现</strong>  </li>
+</ol>
+<p><img src="https://images.gitee.com/uploads/images/2018/0810/152955_4b4a41d8_87680.png" alt="输入图片说明" title="2018-08-10 15-29-44屏幕截图.png">  </p>
+<ol>
+<li>如果要求我们的list支持cat对象的存入呢？<br>有如下几种方案：<br>创建一个单独的MyCatList专门用来存放cat类<br>创建一个单独的MyCatAndDogList类，分别有两个方法，用来存放dog和cat<br>编写一个AnimalList类，可以处理当前animal对应的所以子类  </li>
+</ol>
+<p>选择第几种方案呢？第三种方案基于继承的原理，如何去实现呢？  </p>
+<p> <img src="https://images.gitee.com/uploads/images/2018/0810/153318_c16bbcbb_87680.png" alt="输入图片说明" title="2018-08-10 15-33-09屏幕截图.png">  </p>
+<p> <strong>思考一下，假如在整个动物的设计类里面，引入一个宠物类，我们需要如何进行相关设计呢？</strong><br>方法一：<br><img src="https://images.gitee.com/uploads/images/2018/0810/165748_e05f332b_87680.png" alt="输入图片说明" title="2018-08-10 16-57-20屏幕截图.png"><br>方法二：<br><img src="https://images.gitee.com/uploads/images/2018/0810/165947_0e4852d4_87680.png" alt="输入图片说明" title="2018-08-10 16-59-28屏幕截图.png"><br>方法三：<br><img src="https://images.gitee.com/uploads/images/2018/0810/170058_5b3ba05a_87680.png" alt="输入图片说明" title="2018-08-10 17-00-38屏幕截图.png"><br>我们是不是需要继承两个类呢？  </p>
+<blockquote>
+<p>显然，java没有这种设计，他有更好的设计，那就是接口.  </p>
+</blockquote>
+<p>接口是百分之百的抽象类，在其中没有任何的实现方法．  </p>
+<p>接口的定义：<br><img src="https://images.gitee.com/uploads/images/2018/0810/171035_251c5333_87680.png" alt="输入图片说明" title="2018-08-10 17-07-48屏幕截图.png"><br>接口的实现：<br><img src="https://images.gitee.com/uploads/images/2018/0811/063147_5ba91b37_87680.png" alt="输入图片说明" title="2018-08-11 06-31-37屏幕截图.png"><br>设计和实现宠物接口：<br><img src="https://images.gitee.com/uploads/images/2018/0811/063309_940b52c6_87680.png" alt="输入图片说明" title="2018-08-11 06-32-37屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/0811/063441_d279a3cc_87680.png" alt="输入图片说明" title="2018-08-11 06-34-33屏幕截图.png">  </p>
+<p>总结：  </p>
+<blockquote>
+<p>extends只能有一个,implement可以有多个．类来自单亲家庭（supperclass），单可以扮演多种角色（implement）  </p>
+</blockquote>
+<h3 id="概念延伸"><a href="#概念延伸" class="headerlink" title="概念延伸"></a>概念延伸</h3><ol>
+<li>隐藏<br>重写是子类覆盖父类的对象方法，隐藏则是子类覆盖父类的类方法．  </li>
+<li>super<br>该关键字在子类中使用，表示子类去调用父类的属性或者方法．  </li>
+<li>Object<br>该类是所有对象的父类<br>默认新建的所以子类均继承该类，该类提供一个默认的toString()方法．<br>finalize也是其默认提供的方法之一，实现类的回收，这个方法是jvm自动触发的．<br>equals(),==(非object的方法，进行两个对象引用的判断)  </li>
+<li>final<br>为修饰符，当类为final的时候，该类不可以被继承<br>修饰方法的时候，表示该方法不可以被重写<br>修饰基本数据类型，该变量值可以被赋值一次．<br>修饰引用，则只可以被指向实际对象一次<br>可以设计一个常量，表示不会改变，始终确定的一个值  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static final int itemTotalNumber = 6;//物品栏的数量</span><br></pre></td></tr></table></figure>
+<ol>
+<li>内部类<br>非静态内部类<br>语法: new 外部类().new 内部类()  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">package charactor;</span><br><span class="line"> </span><br><span class="line">public class Hero &#123;</span><br><span class="line">    private String name; // 姓名</span><br><span class="line"> </span><br><span class="line">    float hp; // 血量</span><br><span class="line"> </span><br><span class="line">    float armor; // 护甲</span><br><span class="line"> </span><br><span class="line">    int moveSpeed; // 移动速度</span><br><span class="line"> </span><br><span class="line">    // 非静态内部类，只有一个外部类对象存在的时候，才有意义</span><br><span class="line">    // 战斗成绩只有在一个英雄对象存在的时候才有意义</span><br><span class="line">    class BattleScore &#123;</span><br><span class="line">        int kill;</span><br><span class="line">        int die;</span><br><span class="line">        int assit;</span><br><span class="line"> </span><br><span class="line">        public void legendary() &#123;</span><br><span class="line">            if (kill &gt;= 8)</span><br><span class="line">                System.out.println(name + &quot;超神！&quot;);</span><br><span class="line">            else</span><br><span class="line">                System.out.println(name + &quot;尚未超神！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Hero garen = new Hero();</span><br><span class="line">        garen.name = &quot;盖伦&quot;;</span><br><span class="line">        // 实例化内部类</span><br><span class="line">        // BattleScore对象只有在一个英雄对象存在的时候才有意义</span><br><span class="line">        // 所以其实例化必须建立在一个外部类对象的基础之上</span><br><span class="line">        BattleScore score = garen.new BattleScore();</span><br><span class="line">        score.kill = 9;</span><br><span class="line">        score.legendary();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">静态内部类  </span><br><span class="line">与非静态内部类不同，静态内部类水晶类的实例化 不需要一个外部类的实例为基础，可以直接实例化  </span><br><span class="line">语法：  </span><br><span class="line">new 外部类.静态内部类();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>package charactor;</p>
+<p>public class Hero {<br>    public String name;<br>    protected float hp;</p>
+<pre><code>private static void battleWin(){
+    System.out.println(&quot;battle win&quot;);
+}
+
+//敌方的水晶
+static class EnemyCrystal{
+    int hp=5000;
+
+    //如果水晶的血量为0，则宣布胜利
+    public void checkIfVictory(){
+        if(hp==0){
+            Hero.battleWin();
+
+            //静态内部类不能直接访问外部类的对象属性
+            System.out.println(name + &quot; win this game&quot;);
+        }
+    }
+}
+
+public static void main(String[] args) {
+    //实例化静态内部类
+    Hero.EnemyCrystal crystal = new Hero.EnemyCrystal();
+    crystal.checkIfVictory();
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6. 默认方法  </span><br><span class="line">jdk8新增特性</span><br></pre></td></tr></table></figure></p>
+<p>package charactor;</p>
+<p>public interface Mortal {<br>    public void die();</p>
+<pre><code>default public void revive() {
+    System.out.println(&quot;本英雄复活了&quot;);
+}
+</code></pre><p>}<br>```<br>假设没有默认方法这种机制，那么如果要为Mortal增加一个新的方法revive,那么所有实现了Mortal接口的类，都需要做改动.  </p>
+<p>但是引入了默认方法后，原来的类，不需要做任何改动，并且还能得到这个默认方法  </p>
+<p>通过这种手段，就能够很好的扩展新的类，并且做到不影响原来的类  </p>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><p><img src="https://images.gitee.com/uploads/images/2018/0811/072732_ef09e45a_87680.png" alt="输入图片说明" title="2018-08-11 07-27-07屏幕截图.png"><br> <strong>作业１</strong>  </p>
+<ol>
+<li>创建Animal类，它是所有动物的抽象父类。  </li>
+<li>声明一个受保护的整数类型属性legs，它记录动物的腿的数目。  </li>
+<li>定义一个受保护的构造器，用来初始化legs属性。  </li>
+<li>声明抽象方法eat。  </li>
+<li>声明具体方法walk来打印动物是如何行走的（包括腿的数目）。<br><strong>作业２</strong>  </li>
+<li>Spider继承Animal类。  </li>
+<li>定义默认构造器，它调用父类构造器来指明所有蜘蛛都是8条腿。  </li>
+<li>实现eat方法<br><strong>作业３</strong><br>根据UML类创建pet（宠物）接口  </li>
+<li>提供getName() 返回该宠物的名字  </li>
+<li>提供setName(String name) 为该宠物命名  </li>
+<li>提供 play()方法<br><strong>作业４</strong><br>Cat类  </li>
+<li>该类必须包含String属性来存宠物的名字。  </li>
+<li>定义一个构造器，它使用String参数指定猫的名字；该构造器必须调用超类构造器来指明所有的猫都是四条腿。  </li>
+<li>另定义一个无参的构造器。该构造器调用前一个构造器（用this关键字）并传递一个空字符串作为参数  </li>
+<li>实现Pet接口方法。  </li>
+<li>实现eat方法。<br><strong>作业５</strong>  </li>
+<li>创建Fish类，它继承Animal类  </li>
+<li>重写Animal的walk方法以表明鱼不能走且没有腿。   </li>
+<li>实现Pet接口  </li>
+<li>无参构造方法  </li>
+<li>提供一个private 的name属性  </li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/09/13/第四节java的接口和抽象类/">第四节java的接口和抽象类</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
+  <p><span>发布时间:</span>2018年09月13日 - 13:09</p>
+  <p><span>最后更新:</span>2018年09月13日 - 13:09</p>
+  <p><span>原始链接:</span><a href="/2018/09/13/第四节java的接口和抽象类/" title="第四节java的接口和抽象类">http://wangjianlin1989.top/2018/09/13/第四节java的接口和抽象类/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/09/13/第四节java的接口和抽象类/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ony Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ony Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/13/第三节java多态/" rel="next" title="第三节java多态">
+                <i class="fa fa-chevron-left"></i> 第三节java多态
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/13/第五节mysql基础/" rel="prev" title="第五节mysql基础">
+                第五节mysql基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjU2Mi85MTIz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ony Wang" />
+            
+              <p class="site-author-name" itemprop="name">Ony Wang</p>
+              <p class="site-description motion-element" itemprop="description">仙人抚我顶，结发授长生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/worldknoweme" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/wang-jian-lin-89-48" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/55861dcef833" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#温习一个接口的例子"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6E29;&#x4E60;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x4F8B;&#x5B50;" class="headerlink" title="&#x6E29;&#x4E60;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x4F8B;&#x5B50;"></a>&#x6E29;&#x4E60;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x4F8B;&#x5B50;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口的由来"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x63A5;&#x53E3;&#x7684;&#x7531;&#x6765;" class="headerlink" title="&#x63A5;&#x53E3;&#x7684;&#x7531;&#x6765;"></a>&#x63A5;&#x53E3;&#x7684;&#x7531;&#x6765;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们学习了抽象类，继承和接口，那么到底这么做有哪些好处呢？"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x4E86;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x7EE7;&#x627F;&#x548C;&#x63A5;&#x53E3;&#xFF0C;&#x90A3;&#x4E48;&#x5230;&#x5E95;&#x8FD9;&#x4E48;&#x505A;&#x6709;&#x54EA;&#x4E9B;&#x597D;&#x5904;&#x5462;&#xFF1F;" class="headerlink" title="&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x4E86;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x7EE7;&#x627F;&#x548C;&#x63A5;&#x53E3;&#xFF0C;&#x90A3;&#x4E48;&#x5230;&#x5E95;&#x8FD9;&#x4E48;&#x505A;&#x6709;&#x54EA;&#x4E9B;&#x597D;&#x5904;&#x5462;&#xFF1F;"></a>&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x4E86;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x7EE7;&#x627F;&#x548C;&#x63A5;&#x53E3;&#xFF0C;&#x90A3;&#x4E48;&#x5230;&#x5E95;&#x8FD9;&#x4E48;&#x505A;&#x6709;&#x54EA;&#x4E9B;&#x597D;&#x5904;&#x5462;&#xFF1F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念延伸"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x6982;&#x5FF5;&#x5EF6;&#x4F38;" class="headerlink" title="&#x6982;&#x5FF5;&#x5EF6;&#x4F38;"></a>&#x6982;&#x5FF5;&#x5EF6;&#x4F38;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#课下作业"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;" class="headerlink" title="&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;"></a>&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; Tue Dec 12 2017 08:00:00 GMT+0800 (CST) &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ony Wang</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共62.2k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script type="text/javascript" src="/js/src/heheda.js"></script>

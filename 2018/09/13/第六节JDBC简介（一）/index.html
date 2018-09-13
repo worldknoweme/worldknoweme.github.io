@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringBoot, Java, Android, Html5" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JDBC简介JDBC (Java DataBase Connection) 是通过JAVA访问数据库   JDBC如何连接数据库？ 借助java提供的mysql操作的jar包进行jdbc的操作，该jar包属于第三方jar包，需要将该jar包引入项目之后才可以进行jar包的使用。也就是说可以使用该jar内对应类的方法和接口。分享一个下载jdk的网页，此网页为阿里的maven对外仓库。http://m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第六节JDBC简介（一）">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/09/13/第六节JDBC简介（一）/index.html">
+<meta property="og:site_name" content="为七七写本书">
+<meta property="og:description" content="JDBC简介JDBC (Java DataBase Connection) 是通过JAVA访问数据库   JDBC如何连接数据库？ 借助java提供的mysql操作的jar包进行jdbc的操作，该jar包属于第三方jar包，需要将该jar包引入项目之后才可以进行jar包的使用。也就是说可以使用该jar内对应类的方法和接口。分享一个下载jdk的网页，此网页为阿里的maven对外仓库。http://m">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0814/140729_3b6798ef_87680.png">
+<meta property="og:updated_time" content="2018-09-13T06:00:36.242Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第六节JDBC简介（一）">
+<meta name="twitter:description" content="JDBC简介JDBC (Java DataBase Connection) 是通过JAVA访问数据库   JDBC如何连接数据库？ 借助java提供的mysql操作的jar包进行jdbc的操作，该jar包属于第三方jar包，需要将该jar包引入项目之后才可以进行jar包的使用。也就是说可以使用该jar内对应类的方法和接口。分享一个下载jdk的网页，此网页为阿里的maven对外仓库。http://m">
+<meta name="twitter:image" content="https://images.gitee.com/uploads/images/2018/0814/140729_3b6798ef_87680.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/09/13/第六节JDBC简介（一）/"/>
+
+
+
+
+
+  <title>第六节JDBC简介（一） | 为七七写本书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。W一两愿你江南多雨带油伞。二两愿你酷暑可以轻摇扇。三两愿你入冬莫忘添衣衫。四两愿你年年多聚无离散。五两愿你无病无忧心常宽。六两愿你无风无雨长相欢。六两三。余下三。我在西北，一关接一关。与你相隔，一山又一山。最后只愿我，知道你平安。W人生两苦，想要却不得，拥有却失去。W春有风筝，夏有鱼。秋有青鸟，冬有雁。书信一来一往间，日子就这样过去了。W不存在虚妄的希望,自然也就没有虚妄的失望,更没有什么绝望。人生如题各种痴,就是各种喜欢,喜欢什么那便做下去,这道题目总会有答案的。不管是小人物还是富贵子孙，要成功，都得眼睛看远一点，度量放大一点，脑子多想一点，然后怀六分恶毒，三分炎凉，还得给自己给子孙剩一分善心。W世界上一半人在嘲笑另一半,其实全世界都是傻瓜。W我告诉你什么事最可悲，你遇见一个人，犯了一个错，你想弥补想还清，到最后才发现你根本无力回天，犯下的罪过永远无法弥补。我们永远无法还清犯下的…W一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪。W不乱于心，不困于情。不畏将来，不念过往。如此，安好！";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">为七七写本书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle" id="helloTitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/09/13/第六节JDBC简介（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="为七七写本书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第六节JDBC简介（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T14:00:17+08:00">
+                2018-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java深入探索/" itemprop="url" rel="index">
+                    <span itemprop="name">java深入探索</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,912
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="JDBC简介"><a href="#JDBC简介" class="headerlink" title="JDBC简介"></a>JDBC简介</h3><p>JDBC (Java DataBase Connection) 是通过JAVA访问数据库  </p>
+<h3 id="JDBC如何连接数据库？"><a href="#JDBC如何连接数据库？" class="headerlink" title="JDBC如何连接数据库？"></a>JDBC如何连接数据库？</h3><p> <strong>借助java提供的mysql操作的jar包进行jdbc的操作，该jar包属于第三方jar包，需要将该jar包引入项目之后才可以进行jar包的使用。也就是说可以使用该jar内对应类的方法和接口。</strong><br>分享一个下载jdk的网页，此网页为阿里的maven对外仓库。<br><a href="http://mvnrepository.com/artifact/com.aliyun" target="_blank" rel="noopener">http://mvnrepository.com/artifact/com.aliyun</a><br> <strong>导入mysql连接jar包的意义</strong><br>我们不必自己去考虑实际的连接，已有先人为我们写好，我们需要学习的是jar包对应的方法和接口，说白了就是调用方法以及如何传入实际的参数。<br> <strong>使用步骤</strong>  </p>
+<ol>
+<li>导入jar包<br>如下图所示，在project structure里面进行相关设置导入即可。<br><img src="https://images.gitee.com/uploads/images/2018/0814/140729_3b6798ef_87680.png" alt="输入图片说明" title="屏幕截图.png"></li>
+<li>驱动初始化<br>使用反射原理，获取操作类即可，Class.forName()方法。<br>对应的类名为： com.mysql.jdbc.Driver<br>代码参考：  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package jdbc;</span><br><span class="line">   </span><br><span class="line">public class TestJDBC &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">           </span><br><span class="line">        //初始化驱动</span><br><span class="line">        try &#123;</span><br><span class="line">            //驱动类com.mysql.jdbc.Driver</span><br><span class="line">            //就在 mysql-connector-java-5.0.8-bin.jar中</span><br><span class="line">            //如果忘记了第一个步骤的导包，就会抛出ClassNotFoundException</span><br><span class="line">            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">              </span><br><span class="line">            System.out.println(&quot;数据库驱动加载成功 ！&quot;);</span><br><span class="line">   </span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            // TODO Auto-generated catch block</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">           </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">3. 建立数据库连接  </span><br><span class="line">建立与数据库的Connection连接  </span><br><span class="line">这里需要提供：  </span><br><span class="line">数据库所处于的ip:127.0.0.1 (本机)  </span><br><span class="line">数据库的端口号： 3306 （mysql专用端口号）  </span><br><span class="line">数据库名称 lol  </span><br><span class="line">编码方式 UTF-8  </span><br><span class="line">账号 root  </span><br><span class="line">密码 root  </span><br><span class="line">参考代码：</span><br></pre></td></tr></table></figure>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+
+        // 建立与数据库的Connection连接
+        // 这里需要提供：
+        // 数据库所处于的ip:127.0.0.1 (本机)
+        // 数据库的端口号： 3306 （mysql专用端口号）
+        // 数据库名称 how2java
+        // 编码方式 UTF-8
+        // 账号 root
+        // 密码 admin
+
+        Connection c = DriverManager
+                .getConnection(
+                        &quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,
+                        &quot;root&quot;, &quot;admin&quot;);
+
+        System.out.println(&quot;连接成功，获取连接对象： &quot; + c);
+
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4. 创建Statement  </span><br><span class="line">Statement是用于执行SQL语句的，比如增加，删除  </span><br><span class="line">参考代码：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+
+        Connection c = DriverManager
+                .getConnection(
+                        &quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,
+                        &quot;root&quot;, &quot;admin&quot;);
+
+        // 注意：使用的是 java.sql.Statement
+        // 不要不小心使用到： com.mysql.jdbc.Statement;
+        Statement s = c.createStatement();
+
+        System.out.println(&quot;获取 Statement对象： &quot; + s);
+
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">5. 执行SQL语句  </span><br><span class="line">s.execute执行sql语句  </span><br><span class="line">参考代码：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+
+        Connection c = DriverManager
+                .getConnection(
+                        &quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,
+                        &quot;root&quot;, &quot;admin&quot;);
+
+        Statement s = c.createStatement();
+
+        // 准备sql语句
+        // 注意： 字符串要用单引号&apos;
+        String sql = &quot;insert into hero values(null,&quot;+&quot;&apos;提莫&apos;&quot;+&quot;,&quot;+313.0f+&quot;,&quot;+50+&quot;)&quot;;
+        s.execute(sql);
+
+        System.out.println(&quot;执行插入语句成功&quot;);
+
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">6. 关闭连接  </span><br><span class="line">数据库的连接是有限资源，相关操作结束后，养成关闭数据库的好习惯  </span><br><span class="line">先关闭Statement  </span><br><span class="line">后关闭Connection  </span><br><span class="line">参考代码：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    Connection c = null;
+    Statement s = null;
+    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+
+        c = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;, &quot;root&quot;,
+                &quot;admin&quot;);
+
+        s = c.createStatement();
+
+        String sql = &quot;insert into hero values(null,&quot; + &quot;&apos;提莫&apos;&quot; + &quot;,&quot; + 313.0f + &quot;,&quot; + 50 + &quot;)&quot;;
+
+        s.execute(sql);
+
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } finally {
+        // 数据库的连接时有限资源，相关操作结束后，养成关闭数据库的好习惯
+        // 先关闭Statement
+        if (s != null)
+            try {
+                s.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        // 后关闭Connection
+        if (c != null)
+            try {
+                c.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">7. 使用try-with-resource的方式自动关闭连接  </span><br><span class="line">自jdk7开始，可以将需要关闭的连接放到try的括号内，这样可以不用再进行手动关闭。  </span><br><span class="line">语法结构：  </span><br><span class="line">try()&#123;&#125;catch(Exception e)&#123;&#125;  </span><br><span class="line">例子：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    try (
+        Connection c = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,
+            &quot;root&quot;, &quot;admin&quot;);
+        Statement s = c.createStatement();             
+    )
+    {
+        String sql = &quot;insert into hero values(null,&quot; + &quot;&apos;提莫&apos;&quot; + &quot;,&quot; + 313.0f + &quot;,&quot; + 50 + &quot;)&quot;;
+        s.execute(sql);
+
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> **尝试练习：**  </span><br><span class="line">数据库内插入10条英雄数据。  </span><br><span class="line">### 增删改  </span><br><span class="line"> **增加**  </span><br><span class="line">往数据库表内插入一条数据  </span><br><span class="line">使用statement指向execute()即可．  </span><br><span class="line"> **修改**  </span><br><span class="line">和增加类似，需要自己构造一个修改的sql语句.  </span><br><span class="line">String sql = &quot;update hero set name = &apos;name 5&apos; where id = 3&quot;;  </span><br><span class="line"> **删除**  </span><br><span class="line">和增加类似，构建sql语句  </span><br><span class="line">String sql = &quot;delete from hero where id = 5&quot;;  </span><br><span class="line">### 查询  </span><br><span class="line">之所以将查询单独拿出来，和增删改区分开，是因为查询相对比较复杂，情况也比较多．  </span><br><span class="line">后期查询我们还会学习多表查询或者join连表查询,当然还有按组查询．  </span><br><span class="line">查询需要使用statement执行executeQuery方法，返回的数据放在了ResultSet里面．  </span><br><span class="line">之后，我们需要遍历ResultSet将数据全部打印或者去指向其他操作．</span><br></pre></td></tr></table></figure></p>
+<p>while (rs.next()) {<br>                int id = rs.getInt(“id”);// 可以使用字段名<br>                String name = rs.getString(2);// 也可以使用字段的顺序<br>                float hp = rs.getFloat(“hp”);<br>                int damage = rs.getInt(4);<br>                System.out.printf(“%d\t%s\t%f\t%d%n”, id, name, hp, damage);<br>            }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ResultSet也需要去关闭，但是一般来说，关闭statement的时候，他也会随着自动关闭了．  </span><br><span class="line"> **尝试：使用查询语句完成一个登录页面的编写**  </span><br><span class="line"> **获取查询列表的总数**  </span><br><span class="line">1. 遍历以后自己计算  </span><br><span class="line">2. 直接使用sql语句查询  </span><br><span class="line">使用select count(*)  </span><br><span class="line"> **尝试进行分页查询，查询第一页，也就是前五条数据**  </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">### 使用使用PreparedStatement进行数据查询  </span><br><span class="line">同样是查询语句，但是他相对于statement来说，需要使用方法进行参数的传入．  </span><br><span class="line">示例代码：</span><br></pre></td></tr></table></figure></p>
+<p>String sql = “insert into hero values(null,?,?,?)”;<br>        try (Connection c = DriverManager.getConnection(“jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8”,”root”, “admin”);<br>            // 根据sql语句创建PreparedStatement<br>            PreparedStatement ps = c.prepareStatement(sql);<br>       　 ) {</p>
+<pre><code>// 设置参数
+ps.setString(1, &quot;提莫&quot;);
+ps.setFloat(2, 313.0f);
+ps.setInt(3, 50);
+// 执行
+ps.execute();
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">优势：  </span><br><span class="line">1. 可读性比较好  </span><br><span class="line">2. 性能相对比较好查询速度比较快  </span><br><span class="line">3. 防止sql注入式攻击  </span><br><span class="line">第三点的话，注入式的攻击是由于整个sql语句都是传入式的，这就导致黑客或者别用用心的攻击者，对我们的程序传入一个恒成立的值，比如：  </span><br><span class="line">select * from hero where name = &apos;盖伦&apos; OR 1=1  </span><br><span class="line">这条语句就会把所以的数据查询出来  </span><br><span class="line">假如我们的数据是百万级别的,进行持续的查询，就会损耗内存和cpu，导致程序变得卡顿.  </span><br><span class="line">假如我们的参数式传入的,sql仅仅是传入一个骨架，就会将这种攻击避免掉.  </span><br><span class="line"> **尝试使用PreparedStatement进行英雄的查询** </span><br><span class="line"></span><br><span class="line">### execute与executeUpdate  </span><br><span class="line">这两个执行方法都可以进行sql语句的增加、修改和删除。  </span><br><span class="line">我们将之前例子中的execute方法修改为executeUpdate也是可以执行，并且正确运行出最终的执行结果的。  </span><br><span class="line">那么他们有什么区别呢？  </span><br><span class="line">区别1：  </span><br><span class="line">execute可以运行查询语句，并且最终将结果通过statement.getResultSet获取到，最终的结果放到了ResultSet结果集里面.  </span><br><span class="line">但是executeUpdate则不能执行查询语句。  </span><br><span class="line">区别2：  </span><br><span class="line">execute执行增删改之后，返回值为boolean类型，表示sql语句是否执行成功。  </span><br><span class="line">executeUpdate则返回int类型，表示受影响的数据有多少条。  </span><br><span class="line">例子：</span><br></pre></td></tr></table></figure>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DriverManager;<br>import java.sql.ResultSet;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {<br>    public static void main(String[] args) {</p>
+<pre><code>    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    try (Connection c = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,&quot;root&quot;, &quot;admin&quot;);
+        Statement s = c.createStatement();) {
+
+        // 不同1：execute可以执行查询语句
+        // 然后通过getResultSet，把结果集取出来
+        String sqlSelect = &quot;select * from hero&quot;;
+
+        s.execute(sqlSelect);
+        ResultSet rs = s.getResultSet();
+        while (rs.next()) {
+            System.out.println(rs.getInt(&quot;id&quot;));
+        }
+
+        // executeUpdate不能执行查询语句
+        // s.executeUpdate(sqlSelect);
+
+        // 不同2:
+        // execute返回boolean类型，true表示执行的是查询语句，false表示执行的是insert,delete,update等等
+        boolean isSelect = s.execute(sqlSelect);
+        System.out.println(isSelect);
+
+        // executeUpdate返回的是int，表示有多少条数据受到了影响
+        String sqlUpdate = &quot;update Hero set hp = 300 where id &lt; 100&quot;;
+        int number = s.executeUpdate(sqlUpdate);
+        System.out.println(number);
+
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> **尝试练习：分页查询，使用executeUpdate方法执行，而非execute方法**  </span><br><span class="line"> </span><br><span class="line">### 特殊操作  </span><br><span class="line"> **获取自增id**  </span><br><span class="line">在执行插入语句之后，可以获取到自增id的值，不过前提是该id是自动增长的字段。  </span><br><span class="line">获取方法：  </span><br><span class="line">使用statement的getGeneratedKeys()即可。  </span><br><span class="line">该方法获取到的数据会放入一个resultset集合。  </span><br><span class="line">使用next()方法便可依次去除该id值（当然，这个地方的值仅有一个）   </span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>// 在执行完插入语句后，MySQL会为新插入的数据分配一个自增长id<br>            // JDBC通过getGeneratedKeys获取该id<br>            ResultSet rs = ps.getGeneratedKeys();<br>            if (rs.next()) {<br>                int id = rs.getInt(1);<br>                System.out.println(id);<br>            }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### 获取表的元数据  </span><br><span class="line">所谓的元数据就是跟数据库有关的相关配置数据。  </span><br><span class="line">获取方法是使用connect的getMetaData()获取到DatabaseMetaData元数据库的数据模型。  </span><br><span class="line">之后，获取元数据对应的成员变量（类属性）  </span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>package jdbc;</p>
+<p>import java.sql.Connection;<br>import java.sql.DatabaseMetaData;<br>import java.sql.DriverManager;<br>import java.sql.ResultSet;<br>import java.sql.SQLException;<br>import java.sql.Statement;</p>
+<p>public class TestJDBC {</p>
+<pre><code>public static void main(String[] args) throws Exception {
+    try {
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    try (Connection c = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;,&quot;root&quot;, &quot;admin&quot;);) {
+
+        // 查看数据库层面的元数据
+        // 即数据库服务器版本，驱动版本，都有哪些数据库等等
+
+        DatabaseMetaData dbmd = c.getMetaData();
+
+        // 获取数据库服务器产品名称
+        System.out.println(&quot;数据库产品名称:\t&quot;+dbmd.getDatabaseProductName());
+        // 获取数据库服务器产品版本号
+        System.out.println(&quot;数据库产品版本:\t&quot;+dbmd.getDatabaseProductVersion());
+        // 获取数据库服务器用作类别和表名之间的分隔符 如test.user
+        System.out.println(&quot;数据库和表分隔符:\t&quot;+dbmd.getCatalogSeparator());
+        // 获取驱动版本
+        System.out.println(&quot;驱动版本:\t&quot;+dbmd.getDriverVersion());
+
+        System.out.println(&quot;可用的数据库列表：&quot;);
+        // 获取数据库名称
+        ResultSet rs = dbmd.getCatalogs();
+
+        while (rs.next()) {
+            System.out.println(&quot;数据库名称:\t&quot;+rs.getString(1));
+        }
+
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+}
+</code></pre><p>}<br>```<br> <strong>尝试练习：当插入一条数据之后，通过获取自增长id，得到这条数据的id，比如说是55，删除这条数据的前一条，54.如果54不存在，则删除53，以此类推直到删除上一条数据。</strong>  </p>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><p>图书管理系统，在可视化界面里面，完成图书的增加、修改、删除和查询操作。</p>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/09/13/第六节JDBC简介（一）/">第六节JDBC简介（一）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
+  <p><span>发布时间:</span>2018年09月13日 - 14:09</p>
+  <p><span>最后更新:</span>2018年09月13日 - 14:09</p>
+  <p><span>原始链接:</span><a href="/2018/09/13/第六节JDBC简介（一）/" title="第六节JDBC简介（一）">http://wangjianlin1989.top/2018/09/13/第六节JDBC简介（一）/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/09/13/第六节JDBC简介（一）/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ony Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ony Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/13/第五节mysql基础/" rel="next" title="第五节mysql基础">
+                <i class="fa fa-chevron-left"></i> 第五节mysql基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/13/第七节-JDBC简介（二）/" rel="prev" title="第七节　JDBC简介（二）">
+                第七节　JDBC简介（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjU2Mi85MTIz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ony Wang" />
+            
+              <p class="site-author-name" itemprop="name">Ony Wang</p>
+              <p class="site-description motion-element" itemprop="description">仙人抚我顶，结发授长生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/worldknoweme" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/wang-jian-lin-89-48" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/55861dcef833" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC简介"><span class="nav-number">1.</span> <span class="nav-text"><a href="#JDBC&#x7B80;&#x4ECB;" class="headerlink" title="JDBC&#x7B80;&#x4ECB;"></a>JDBC&#x7B80;&#x4ECB;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC如何连接数据库？"><span class="nav-number">2.</span> <span class="nav-text"><a href="#JDBC&#x5982;&#x4F55;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#xFF1F;" class="headerlink" title="JDBC&#x5982;&#x4F55;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#xFF1F;"></a>JDBC&#x5982;&#x4F55;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#xFF1F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#课下作业"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;" class="headerlink" title="&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;"></a>&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; Tue Dec 12 2017 08:00:00 GMT+0800 (CST) &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ony Wang</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共62.2k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script type="text/javascript" src="/js/src/heheda.js"></script>

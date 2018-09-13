@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringBoot, Java, Android, Html5" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="事务事务指的是一系列的sql操作，比如增加之后，再次操作数据库完成删除一条数据的操作。那么，这里说的增加数据、删除数据两个sql语句结合在一起就可以称为一个事务. 不使用事务的情况假如我们的英雄表里面的一个英雄，加血之后马上又被队友补了一刀，那么两次操作之后，该英雄血量不变。但是，如果我们在实际编码过程中，update第一次加血之后。第二次update的时候sql语句写错了。这就会造成减血失败。从">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第七节　JDBC简介（二）">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/09/13/第七节-JDBC简介（二）/index.html">
+<meta property="og:site_name" content="为七七写本书">
+<meta property="og:description" content="事务事务指的是一系列的sql操作，比如增加之后，再次操作数据库完成删除一条数据的操作。那么，这里说的增加数据、删除数据两个sql语句结合在一起就可以称为一个事务. 不使用事务的情况假如我们的英雄表里面的一个英雄，加血之后马上又被队友补了一刀，那么两次操作之后，该英雄血量不变。但是，如果我们在实际编码过程中，update第一次加血之后。第二次update的时候sql语句写错了。这就会造成减血失败。从">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0815/131936_5977fe97_87680.png">
+<meta property="og:updated_time" content="2018-09-13T06:01:17.955Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第七节　JDBC简介（二）">
+<meta name="twitter:description" content="事务事务指的是一系列的sql操作，比如增加之后，再次操作数据库完成删除一条数据的操作。那么，这里说的增加数据、删除数据两个sql语句结合在一起就可以称为一个事务. 不使用事务的情况假如我们的英雄表里面的一个英雄，加血之后马上又被队友补了一刀，那么两次操作之后，该英雄血量不变。但是，如果我们在实际编码过程中，update第一次加血之后。第二次update的时候sql语句写错了。这就会造成减血失败。从">
+<meta name="twitter:image" content="https://images.gitee.com/uploads/images/2018/0815/131936_5977fe97_87680.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/09/13/第七节-JDBC简介（二）/"/>
+
+
+
+
+
+  <title>第七节　JDBC简介（二） | 为七七写本书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。W一两愿你江南多雨带油伞。二两愿你酷暑可以轻摇扇。三两愿你入冬莫忘添衣衫。四两愿你年年多聚无离散。五两愿你无病无忧心常宽。六两愿你无风无雨长相欢。六两三。余下三。我在西北，一关接一关。与你相隔，一山又一山。最后只愿我，知道你平安。W人生两苦，想要却不得，拥有却失去。W春有风筝，夏有鱼。秋有青鸟，冬有雁。书信一来一往间，日子就这样过去了。W不存在虚妄的希望,自然也就没有虚妄的失望,更没有什么绝望。人生如题各种痴,就是各种喜欢,喜欢什么那便做下去,这道题目总会有答案的。不管是小人物还是富贵子孙，要成功，都得眼睛看远一点，度量放大一点，脑子多想一点，然后怀六分恶毒，三分炎凉，还得给自己给子孙剩一分善心。W世界上一半人在嘲笑另一半,其实全世界都是傻瓜。W我告诉你什么事最可悲，你遇见一个人，犯了一个错，你想弥补想还清，到最后才发现你根本无力回天，犯下的罪过永远无法弥补。我们永远无法还清犯下的…W一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪。W不乱于心，不困于情。不畏将来，不念过往。如此，安好！";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">为七七写本书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle" id="helloTitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/09/13/第七节-JDBC简介（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="为七七写本书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第七节　JDBC简介（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T14:00:57+08:00">
+                2018-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java深入探索/" itemprop="url" rel="index">
+                    <span itemprop="name">java深入探索</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,997
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>事务指的是一系列的sql操作，比如增加之后，再次操作数据库完成删除一条数据的操作。<br>那么，这里说的增加数据、删除数据两个sql语句结合在一起就可以称为一个事务.<br> <strong>不使用事务的情况</strong><br>假如我们的英雄表里面的一个英雄，加血之后马上又被队友补了一刀，那么两次操作之后，该英雄血量不变。<br>但是，如果我们在实际编码过程中，update第一次加血之后。第二次update的时候sql语句写错了。<br>这就会造成减血失败。<br>从而，使得我们的英雄血量比实际情况增加了。<br>显然，这和我们的业务需求是严重不符合的。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//没有事务的前提下</span><br><span class="line">            //假设业务操作时，加血，减血各做一次</span><br><span class="line">            //结束后，英雄的血量不变</span><br><span class="line">              </span><br><span class="line">            //加血的SQL</span><br><span class="line">            String sql1 = &quot;update hero set hp = hp +1 where id = 22&quot;;</span><br><span class="line">            s.execute(sql1);</span><br><span class="line">              </span><br><span class="line">            //减血的SQL</span><br><span class="line">            //不小心写错写成了 updata(而非update)</span><br><span class="line">              </span><br><span class="line">            String sql2 = &quot;updata hero set hp = hp -1 where id = 22&quot;;</span><br><span class="line">            s.execute(sql2);</span><br></pre></td></tr></table></figure>
+<p> <strong>使用事务</strong><br>对该事务中的多次sql操作保持一致性。<br>即-全部执行成功或者全部执行失败，假如其中一条sql执行失败，那么事务会进行回滚，即之前的加血操作也会自动回到原来的状态（不加血的状态）。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> // 有事务的前提下</span><br><span class="line">            // 在事务中的多个操作，要么都成功，要么都失败</span><br><span class="line">  </span><br><span class="line">            c.setAutoCommit(false);</span><br><span class="line">  </span><br><span class="line">            // 加血的SQL</span><br><span class="line">            String sql1 = &quot;update hero set hp = hp +1 where id = 22&quot;;</span><br><span class="line">            s.execute(sql1);</span><br><span class="line">  </span><br><span class="line">            // 减血的SQL</span><br><span class="line">            // 不小心写错写成了 updata(而非update)</span><br><span class="line">  </span><br><span class="line">            String sql2 = &quot;updata hero set hp = hp -1 where id = 22&quot;;</span><br><span class="line">            s.execute(sql2);</span><br><span class="line">  </span><br><span class="line">            // 手动提交</span><br><span class="line">            c.commit();</span><br><span class="line">```  </span><br><span class="line"> _使用事务需要一个前提条件，即开启INNODB引擎支持_  </span><br><span class="line"> **尝试练习：模拟借书，目前有两个表即图书表和用户表，借书的时候，需要修改图书的状态，同时借书人借书的数量也需要加一。如果实际的操作过程中，修改借书人借书的数量失败，则需要将图书的状态回滚至未出借的状态**  </span><br><span class="line">  </span><br><span class="line">### ORM  </span><br><span class="line">ORM=Object Relationship Database Mapping  </span><br><span class="line"></span><br><span class="line">对象和关系数据库的映射   </span><br><span class="line"></span><br><span class="line">简单说，一个对象，对应数据库里的一条记录  </span><br><span class="line">这是一种设计模式，相当于把数据对象化了，使得数据库的操作变得面向对象起来。  </span><br><span class="line">首先，把表变得面向对象，即一个表对应一个class类。</span><br></pre></td></tr></table></figure>
+<p>package charactor;</p>
+<p>public class Hero {<br>    //增加id属性<br>    public int id;<br>    public String name;<br>    public float hp;<br>    public int damage;</p>
+<p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后，在获取到数据库数据之后，将数据进行类对应属性的赋值。</span><br></pre></td></tr></table></figure></p>
+<p>// 因为id是唯一的，ResultSet最多只能有一条记录<br>            // 所以使用if代替while<br>            if (rs.next()) {<br>                hero = new Hero();<br>                String name = rs.getString(2);<br>                float hp = rs.getFloat(“hp”);<br>                int damage = rs.getInt(4);<br>                hero.name = name;<br>                hero.hp = hp;<br>                hero.damage = damage;<br>                hero.id = id;<br>            }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">综上，我们完成了orm的面向对象操作数据库的操作。  </span><br><span class="line"> **尝试一下ORM来实现lol英雄的增删改查操作**  </span><br><span class="line">### DAO</span><br><span class="line">DAO=DataAccess Object   </span><br><span class="line">数据库访问对象   </span><br><span class="line"> **设计模式的再一次升华，通过dao将对数据库的操作再一次封装起来，放到一个特定的类里面，使得代码更容易理解，更容易扩展**  </span><br><span class="line">首先，提供一个DAO的接口，该接口封装数据库的所有操作接口。</span><br></pre></td></tr></table></figure></p>
+<p>public interface DAO{<br>    //增加<br>    public void add(Hero hero);<br>    //修改<br>    public void update(Hero hero);<br>    //删除<br>    public void delete(int id);<br>    //获取<br>    public Hero get(int id);<br>    //查询<br>    public List<hero> list();<br>    //分页查询<br>    public List<hero> list(int start, int count);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第二，添加实现类，可以有多个实现类，lol里面我们暂时实现HeroDAO类，图书管理系统呢？则需要添加BookDAO和AdminDAO。  </span><br><span class="line">也就是说，存在几个表就需要添加几个对象，当然也需要添加几个DAO的实现类。</span><br></pre></td></tr></table></figure></hero></hero></p>
+<p> public HeroDAO() {<br>        try {<br>            Class.forName(“com.mysql.jdbc.Driver”);<br>        } catch (ClassNotFoundException e) {<br>            e.printStackTrace();<br>        }<br>    }</p>
+<pre><code>public Connection getConnection() throws SQLException {
+    return DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8&quot;, &quot;root&quot;,
+            &quot;admin&quot;);
+}
+
+public int getTotal() {
+    int total = 0;
+    try (Connection c = getConnection(); Statement s = c.createStatement();) {
+
+        String sql = &quot;select count(*) from hero&quot;;
+
+        ResultSet rs = s.executeQuery(sql);
+        while (rs.next()) {
+            total = rs.getInt(1);
+        }
+
+        System.out.println(&quot;total:&quot; + total);
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+    return total;
+}
+
+public void add(Hero hero) {
+
+    String sql = &quot;insert into hero values(null,?,?,?)&quot;;
+    try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+        ps.setString(1, hero.name);
+        ps.setFloat(2, hero.hp);
+        ps.setInt(3, hero.damage);
+
+        ps.execute();
+
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            int id = rs.getInt(1);
+            hero.id = id;
+        }
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+}
+
+public void update(Hero hero) {
+
+    String sql = &quot;update hero set name= ?, hp = ? , damage = ? where id = ?&quot;;
+    try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+        ps.setString(1, hero.name);
+        ps.setFloat(2, hero.hp);
+        ps.setInt(3, hero.damage);
+        ps.setInt(4, hero.id);
+
+        ps.execute();
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+
+}
+
+public void delete(int id) {
+
+    try (Connection c = getConnection(); Statement s = c.createStatement();) {
+
+        String sql = &quot;delete from hero where id = &quot; + id;
+
+        s.execute(sql);
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+}
+
+public Hero get(int id) {
+    Hero hero = null;
+
+    try (Connection c = getConnection(); Statement s = c.createStatement();) {
+
+        String sql = &quot;select * from hero where id = &quot; + id;
+
+        ResultSet rs = s.executeQuery(sql);
+
+        if (rs.next()) {
+            hero = new Hero();
+            String name = rs.getString(2);
+            float hp = rs.getFloat(&quot;hp&quot;);
+            int damage = rs.getInt(4);
+            hero.name = name;
+            hero.hp = hp;
+            hero.damage = damage;
+            hero.id = id;
+        }
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+    return hero;
+}
+
+public List&lt;Hero&gt; list() {
+    return list(0, Short.MAX_VALUE);
+}
+
+public List&lt;Hero&gt; list(int start, int count) {
+    List&lt;Hero&gt; heros = new ArrayList&lt;Hero&gt;();
+
+    String sql = &quot;select * from hero order by id desc limit ?,? &quot;;
+
+    try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+        ps.setInt(1, start);
+        ps.setInt(2, count);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Hero hero = new Hero();
+            int id = rs.getInt(1);
+            String name = rs.getString(2);
+            float hp = rs.getFloat(&quot;hp&quot;);
+            int damage = rs.getInt(4);
+            hero.id = id;
+            hero.name = name;
+            hero.hp = hp;
+            hero.damage = damage;
+            heros.add(hero);
+        }
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+    return heros;
+}
+</code></pre><p>```  </p>
+<p> <strong>尝试添加物品表item，添加其对应的类，添加其实现类</strong> </p>
+<h3 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h3><p>简单了解，数据库连接池的概念的前提是多线程。<br>对多线程的理解，现在大家暂时可以理解成同一时间多个工作同时进行。<br>假如，目前有一个多线程的连接连接我们的数据库，可能有100个连接或者更多同时跟我的数据库进行了连接。<br>这样的话，我们需要打开数据库100次，之后再进行数据库的相关操作。<br>打开关闭数据库本身就十分耗费资源，会造成cpu和内存的负载，造成整体的卡顿。<br>并且，目前多线程的连接的意思是说同一时间这100个连接跟我的数据库建立关系，肯定会卡顿上天了。<br>关键的问题是，数据库的连接是有数量限制的，超过限制就连接失败了，也就是说100个连接里面可能会有50或者90个连接连接失败，丢了。  </p>
+<p>以上说的问题，我们是决不允许发生的，于是伴随着线程池的概念，数据库连接池也出现了。<br> <strong>数据库连接池原理</strong><br>与传统方式不同，连接池在使用之前，就会创建好一定数量的连接。<br>如果有任何线程需要使用连接，那么就从连接池里面借用，而不是自己重新创建.<br>使用完毕后，又把这个连接归还给连接池供下一次或者其他线程使用。<br>倘若发生多线程并发情况，连接池里的连接被借用光了，那么其他线程就会临时等待，直到有连接被归还回来，再继续使用。<br>整个过程，这些连接都不会被关闭，而是不断的被循环使用，从而节约了启动和关闭连接的时间。<br><img src="https://images.gitee.com/uploads/images/2018/0815/131936_5977fe97_87680.png" alt="输入图片说明" title="屏幕截图.png"></p>
+<h3 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h3><ol>
+<li>通过orm来实现图书管理系统图书的增加修改删除和查询功能。 </li>
+<li>针对图书管理系统，进行DAO设计的实现，增加对应的DAO实现类。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/09/13/第七节-JDBC简介（二）/">第七节　JDBC简介（二）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
+  <p><span>发布时间:</span>2018年09月13日 - 14:09</p>
+  <p><span>最后更新:</span>2018年09月13日 - 14:09</p>
+  <p><span>原始链接:</span><a href="/2018/09/13/第七节-JDBC简介（二）/" title="第七节　JDBC简介（二）">http://wangjianlin1989.top/2018/09/13/第七节-JDBC简介（二）/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/09/13/第七节-JDBC简介（二）/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ony Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ony Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/13/第六节JDBC简介（一）/" rel="next" title="第六节JDBC简介（一）">
+                <i class="fa fa-chevron-left"></i> 第六节JDBC简介（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/13/第八节项目实战图书管理系统/" rel="prev" title="第八节项目实战图书管理系统">
+                第八节项目实战图书管理系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjU2Mi85MTIz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ony Wang" />
+            
+              <p class="site-author-name" itemprop="name">Ony Wang</p>
+              <p class="site-description motion-element" itemprop="description">仙人抚我顶，结发授长生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/worldknoweme" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/wang-jian-lin-89-48" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/55861dcef833" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x4E8B;&#x52A1;" class="headerlink" title="&#x4E8B;&#x52A1;"></a>&#x4E8B;&#x52A1;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库连接池"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;"></a>&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#课下作业"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;" class="headerlink" title="&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;"></a>&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; Tue Dec 12 2017 08:00:00 GMT+0800 (CST) &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ony Wang</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共62.2k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script type="text/javascript" src="/js/src/heheda.js"></script>

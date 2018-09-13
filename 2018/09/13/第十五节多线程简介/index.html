@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringBoot, Java, Android, Html5" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介所谓多线程就是在同一时间,可以做多件事情.创建多线程主要有三种方式,分别为:    继承线程类   实现runnable接口   匿名类首先,明确线程概念.了解线程概念之前需要搞清楚进程的概念.进程：启动一个LOL.exe就叫一个进程。 接着又启动一个DOTA.exe，这叫两个进程。线程：线程是在进程内部同时做的事情，比如在LOL里，有很多事情要同时做，比如”盖伦” 击杀“提莫”，同时“赏金猎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十五节多线程简介">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/09/13/第十五节多线程简介/index.html">
+<meta property="og:site_name" content="为七七写本书">
+<meta property="og:description" content="简介所谓多线程就是在同一时间,可以做多件事情.创建多线程主要有三种方式,分别为:    继承线程类   实现runnable接口   匿名类首先,明确线程概念.了解线程概念之前需要搞清楚进程的概念.进程：启动一个LOL.exe就叫一个进程。 接着又启动一个DOTA.exe，这叫两个进程。线程：线程是在进程内部同时做的事情，比如在LOL里，有很多事情要同时做，比如”盖伦” 击杀“提莫”，同时“赏金猎">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-13T06:07:00.008Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第十五节多线程简介">
+<meta name="twitter:description" content="简介所谓多线程就是在同一时间,可以做多件事情.创建多线程主要有三种方式,分别为:    继承线程类   实现runnable接口   匿名类首先,明确线程概念.了解线程概念之前需要搞清楚进程的概念.进程：启动一个LOL.exe就叫一个进程。 接着又启动一个DOTA.exe，这叫两个进程。线程：线程是在进程内部同时做的事情，比如在LOL里，有很多事情要同时做，比如”盖伦” 击杀“提莫”，同时“赏金猎">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/09/13/第十五节多线程简介/"/>
+
+
+
+
+
+  <title>第十五节多线程简介 | 为七七写本书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。W一两愿你江南多雨带油伞。二两愿你酷暑可以轻摇扇。三两愿你入冬莫忘添衣衫。四两愿你年年多聚无离散。五两愿你无病无忧心常宽。六两愿你无风无雨长相欢。六两三。余下三。我在西北，一关接一关。与你相隔，一山又一山。最后只愿我，知道你平安。W人生两苦，想要却不得，拥有却失去。W春有风筝，夏有鱼。秋有青鸟，冬有雁。书信一来一往间，日子就这样过去了。W不存在虚妄的希望,自然也就没有虚妄的失望,更没有什么绝望。人生如题各种痴,就是各种喜欢,喜欢什么那便做下去,这道题目总会有答案的。不管是小人物还是富贵子孙，要成功，都得眼睛看远一点，度量放大一点，脑子多想一点，然后怀六分恶毒，三分炎凉，还得给自己给子孙剩一分善心。W世界上一半人在嘲笑另一半,其实全世界都是傻瓜。W我告诉你什么事最可悲，你遇见一个人，犯了一个错，你想弥补想还清，到最后才发现你根本无力回天，犯下的罪过永远无法弥补。我们永远无法还清犯下的…W一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪。W不乱于心，不困于情。不畏将来，不念过往。如此，安好！";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">为七七写本书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle" id="helloTitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/09/13/第十五节多线程简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="为七七写本书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第十五节多线程简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T14:06:40+08:00">
+                2018-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java深入探索/" itemprop="url" rel="index">
+                    <span itemprop="name">java深入探索</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,092
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>所谓多线程就是在同一时间,可以做多件事情.<br>创建多线程主要有三种方式,分别为:  </p>
+<ol>
+<li>继承线程类  </li>
+<li>实现runnable接口  </li>
+<li>匿名类<br>首先,明确线程概念.了解线程概念之前需要搞清楚进程的概念.<br><strong>进程：</strong>启动一个LOL.exe就叫一个进程。 接着又启动一个DOTA.exe，这叫两个进程。<br><strong>线程：</strong>线程是在进程内部同时做的事情，比如在LOL里，有很多事情要同时做，比如”盖伦” 击杀“提莫”，同时“赏金猎人”又在击杀“盲僧”，这就是由多线程来实现的。<br>一个非多线程的例子:  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package charactor;</span><br><span class="line"> </span><br><span class="line">import java.io.Serializable;</span><br><span class="line">  </span><br><span class="line">public class Hero&#123;</span><br><span class="line">    public String name;</span><br><span class="line">    public float hp;</span><br><span class="line">     </span><br><span class="line">    public int damage;</span><br><span class="line">     </span><br><span class="line">    public void attackHero(Hero h) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //为了表示攻击需要时间，每次攻击暂停1000毫秒</span><br><span class="line">            Thread.sleep(1000);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            // TODO Auto-generated catch block</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        h.hp-=damage;</span><br><span class="line">        System.out.format(&quot;%s 正在攻击 %s, %s的血变成了 %.0f%n&quot;,name,h.name,h.name,h.hp);</span><br><span class="line">         </span><br><span class="line">        if(h.isDead())</span><br><span class="line">            System.out.println(h.name +&quot;死了！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public boolean isDead() &#123;</span><br><span class="line">        return 0&gt;=hp?true:false;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">模拟测试类:</span><br></pre></td></tr></table></figure>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    //盖伦攻击提莫
+    while(!teemo.isDead()){
+        gareen.attackHero(teemo);
+    }
+
+    //赏金猎人攻击盲僧
+    while(!leesin.isDead()){
+        bh.attackHero(leesin);
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上述代码,我们会发现,盖伦在攻击完提莫之后,赏金猎人才会攻击盲僧.  </span><br><span class="line"> **多线程的形式进行攻击**</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class KillThread extends Thread{</p>
+<pre><code>private Hero h1;
+private Hero h2;
+
+public KillThread(Hero h1, Hero h2){
+    this.h1 = h1;
+    this.h2 = h2;
+}
+
+public void run(){
+    while(!h2.isDead()){
+        h1.attackHero(h2);
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">主线程进行代码测试</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    KillThread killThread1 = new KillThread(gareen,teemo);
+    killThread1.start();
+    KillThread killThread2 = new KillThread(bh,leesin);
+    killThread2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">以上为继承thread的方式进行的多线程的代码实现.  </span><br><span class="line"></span><br><span class="line"> **使用实现runnable接口的形式进行多线程的实现**</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class Battle implements Runnable{</p>
+<pre><code>private Hero h1;
+private Hero h2;
+
+public Battle(Hero h1, Hero h2){
+    this.h1 = h1;
+    this.h2 = h2;
+}
+
+public void run(){
+    while(!h2.isDead()){
+        h1.attackHero(h2);
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">主线程测试类:</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    Battle battle1 = new Battle(gareen,teemo);
+
+    new Thread(battle1).start();
+
+    Battle battle2 = new Battle(bh,leesin);
+    new Thread(battle2).start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**匿名类**</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    //匿名类
+    Thread t1= new Thread(){
+        public void run(){
+            //匿名类中用到外部的局部变量teemo，必须把teemo声明为final
+            //但是在JDK7以后，就不是必须加final的了
+            while(!teemo.isDead()){
+                gareen.attackHero(teemo);
+            }              
+        }
+    };
+
+    t1.start();
+
+    Thread t2= new Thread(){
+        public void run(){
+            while(!leesin.isDead()){
+                bh.attackHero(leesin);
+            }              
+        }
+    };
+    t2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> _start方法和run方法的区别?_  </span><br><span class="line">### 常见线程操作方法  </span><br><span class="line"> **线程暂停**  </span><br><span class="line">Thread.sleep(1000); 表示当前线程暂停1000毫秒 ，其他线程不受影响   </span><br><span class="line">Thread.sleep(1000); 会抛出InterruptedException 中断异常，因为当前线程sleep的时候，有可能被停止，这时就会抛出 InterruptedException</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Thread t1= new Thread(){
+        public void run(){
+            int seconds =0;
+            while(true){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.printf(&quot;已经玩了LOL %d 秒%n&quot;, seconds++);
+            }              
+        }
+    };
+    t1.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> **加入到当前线程**  </span><br><span class="line">首先解释一下主线程的概念  </span><br><span class="line">所有进程，至少会有一个线程即主线程，即main方法开始执行，就会有一个看不见的主线程存在。  </span><br><span class="line">在42行执行t.join，即表明在主线程中加入该线程。  </span><br><span class="line">主线程会等待该线程结束完毕， 才会往下运行。</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    final Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 616;
+    gareen.damage = 50;
+
+    final Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 300;
+    teemo.damage = 30;
+
+    final Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 500;
+    bh.damage = 65;
+
+    final Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 455;
+    leesin.damage = 80;
+
+    Thread t1= new Thread(){
+        public void run(){
+            while(!teemo.isDead()){
+                gareen.attackHero(teemo);
+            }              
+        }
+    };
+
+    t1.start();
+
+    //代码执行到这里，一直是main线程在运行
+    try {
+        //t1线程加入到main线程中来，只有t1线程运行结束，才会继续往下走
+        t1.join();
+    } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+    Thread t2= new Thread(){
+        public void run(){
+            while(!leesin.isDead()){
+                bh.attackHero(leesin);
+            }              
+        }
+    };
+    //会观察到盖伦把提莫杀掉后，才运行t2线程
+    t2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> **线程优先级**   </span><br><span class="line">当线程处于竞争关系的时候，优先级高的线程会有更大的几率获得CPU资源 </span><br><span class="line">为了演示该效果，要把暂停时间去掉，多条线程各自会尽力去占有CPU资源 </span><br><span class="line">同时把英雄的血量增加100倍，攻击减低到1，才有足够的时间观察到优先级的演示 </span><br><span class="line">如图可见，线程1的优先级是MAX_PRIORITY，所以它争取到了更多的CPU资源执行代码</span><br></pre></td></tr></table></figure></p>
+<p>package charactor;</p>
+<p>import java.io.Serializable;</p>
+<p>public class Hero{<br>    public String name;<br>    public float hp;</p>
+<pre><code>public int damage;
+
+public void attackHero(Hero h) {
+    //把暂停时间去掉，多条线程各自会尽力去占有CPU资源
+    //线程的优先级效果才可以看得出来
+</code></pre><p>//        try {<br>//<br>//            Thread.sleep(0);<br>//        } catch (InterruptedException e) {<br>//            // TODO Auto-generated catch block<br>//            e.printStackTrace();<br>//        }<br>        h.hp-=damage;<br>        System.out.format(“%s 正在攻击 %s, %s的血变成了 %.0f%n”,name,h.name,h.name,h.hp);</p>
+<pre><code>    if(h.isDead())
+        System.out.println(h.name +&quot;死了！&quot;);
+}
+
+public boolean isDead() {
+    return 0&gt;=hp?true:false;
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    final Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 6160;
+    gareen.damage = 1;
+
+    final Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 3000;
+    teemo.damage = 1;
+
+    final Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 5000;
+    bh.damage = 1;
+
+    final Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 4505;
+    leesin.damage = 1;
+
+    Thread t1= new Thread(){
+        public void run(){
+
+            while(!teemo.isDead()){
+                gareen.attackHero(teemo);
+            }              
+        }
+    };
+
+    Thread t2= new Thread(){
+        public void run(){
+            while(!leesin.isDead()){
+                bh.attackHero(leesin);
+            }              
+        }
+    };
+
+    t1.setPriority(Thread.MAX_PRIORITY);
+    t2.setPriority(Thread.MIN_PRIORITY);
+    t1.start();
+    t2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> **临时暂停**   </span><br><span class="line">当前线程，临时暂停，使得其他线程可以有更多的机会占用CPU资源</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>import charactor.Hero;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    final Hero gareen = new Hero();
+    gareen.name = &quot;盖伦&quot;;
+    gareen.hp = 61600;
+    gareen.damage = 1;
+
+    final Hero teemo = new Hero();
+    teemo.name = &quot;提莫&quot;;
+    teemo.hp = 30000;
+    teemo.damage = 1;
+
+    final Hero bh = new Hero();
+    bh.name = &quot;赏金猎人&quot;;
+    bh.hp = 50000;
+    bh.damage = 1;
+
+    final Hero leesin = new Hero();
+    leesin.name = &quot;盲僧&quot;;
+    leesin.hp = 45050;
+    leesin.damage = 1;
+
+    Thread t1= new Thread(){
+        public void run(){
+
+            while(!teemo.isDead()){
+                gareen.attackHero(teemo);
+            }              
+        }
+    };
+
+    Thread t2= new Thread(){
+        public void run(){
+            while(!leesin.isDead()){
+                //临时暂停，使得t1可以占用CPU资源
+                Thread.yield();
+
+                bh.attackHero(leesin);
+            }              
+        }
+    };
+
+    t1.setPriority(5);
+    t2.setPriority(5);
+    t1.start();
+    t2.start();
+
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> **守护线程**  </span><br><span class="line">守护线程的概念是： 当一个进程里，所有的线程都是守护线程的时候，结束当前进程。</span><br><span class="line"></span><br><span class="line">就好像一个公司有销售部，生产部这些和业务挂钩的部门。</span><br><span class="line">除此之外，还有后勤，行政等这些支持部门。</span><br><span class="line"></span><br><span class="line">如果一家公司销售部，生产部都解散了，那么只剩下后勤和行政，那么这家公司也可以解散了。</span><br><span class="line"></span><br><span class="line">守护线程就相当于那些支持部门，如果一个进程只剩下守护线程，那么进程就会自动结束。</span><br><span class="line"></span><br><span class="line">守护线程通常会被用来做日志，性能统计等工作。</span><br></pre></td></tr></table></figure></p>
+<p>package multiplethread;</p>
+<p>public class TestThread {</p>
+<pre><code>public static void main(String[] args) {
+
+    Thread t1= new Thread(){
+        public void run(){
+            int seconds =0;
+
+            while(true){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.printf(&quot;已经玩了LOL %d 秒%n&quot;, seconds++);
+
+            }              
+        }
+    };
+    t1.setDaemon(true);
+    t1.start();
+
+}
+</code></pre><p>}<br>```  </p>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/09/13/第十五节多线程简介/">第十五节多线程简介</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
+  <p><span>发布时间:</span>2018年09月13日 - 14:09</p>
+  <p><span>最后更新:</span>2018年09月13日 - 14:09</p>
+  <p><span>原始链接:</span><a href="/2018/09/13/第十五节多线程简介/" title="第十五节多线程简介">http://wangjianlin1989.top/2018/09/13/第十五节多线程简介/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/09/13/第十五节多线程简介/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ony Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ony Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/13/第十四节网络编程/" rel="next" title="第十四节网络编程">
+                <i class="fa fa-chevron-left"></i> 第十四节网络编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/13/第十六节java的集合/" rel="prev" title="第十六节java的集合">
+                第十六节java的集合 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjU2Mi85MTIz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ony Wang" />
+            
+              <p class="site-author-name" itemprop="name">Ony Wang</p>
+              <p class="site-description motion-element" itemprop="description">仙人抚我顶，结发授长生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/worldknoweme" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/wang-jian-lin-89-48" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/55861dcef833" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; Tue Dec 12 2017 08:00:00 GMT+0800 (CST) &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ony Wang</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共62.2k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script type="text/javascript" src="/js/src/heheda.js"></script>
