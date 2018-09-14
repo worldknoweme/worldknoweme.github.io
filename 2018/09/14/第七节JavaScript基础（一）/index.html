@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringBoot, Java, Android, Html5" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="说明平时我们说的js就是JavaScript.为啥叫js呢?因为对于的JavaScript文件都是js结尾的.js主要由语言基础 bom和dom组成.首先,通过一个例子感受一下js的作用.123&amp;lt;script&amp;gt;  document.write(&amp;quot;Hello Javascript&amp;quot;);&amp;lt;/script&amp;gt; 有人可能会说,以上仅仅是显示一段文字,我完全可以使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第七节JavaScript基础（一）">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/09/14/第七节JavaScript基础（一）/index.html">
+<meta property="og:site_name" content="为七七写本书">
+<meta property="og:description" content="说明平时我们说的js就是JavaScript.为啥叫js呢?因为对于的JavaScript文件都是js结尾的.js主要由语言基础 bom和dom组成.首先,通过一个例子感受一下js的作用.123&amp;lt;script&amp;gt;  document.write(&amp;quot;Hello Javascript&amp;quot;);&amp;lt;/script&amp;gt; 有人可能会说,以上仅仅是显示一段文字,我完全可以使用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0912/122012_af7d8463_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0912/123103_3c4f64e3_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0912/130203_43c0fccd_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0912/130416_806b30c7_87680.png">
+<meta property="og:updated_time" content="2018-09-14T07:17:04.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第七节JavaScript基础（一）">
+<meta name="twitter:description" content="说明平时我们说的js就是JavaScript.为啥叫js呢?因为对于的JavaScript文件都是js结尾的.js主要由语言基础 bom和dom组成.首先,通过一个例子感受一下js的作用.123&amp;lt;script&amp;gt;  document.write(&amp;quot;Hello Javascript&amp;quot;);&amp;lt;/script&amp;gt; 有人可能会说,以上仅仅是显示一段文字,我完全可以使用">
+<meta name="twitter:image" content="https://images.gitee.com/uploads/images/2018/0912/122012_af7d8463_87680.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/09/14/第七节JavaScript基础（一）/"/>
+
+
+
+
+
+  <title>第七节JavaScript基础（一） | 为七七写本书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。W一两愿你江南多雨带油伞。二两愿你酷暑可以轻摇扇。三两愿你入冬莫忘添衣衫。四两愿你年年多聚无离散。五两愿你无病无忧心常宽。六两愿你无风无雨长相欢。六两三。余下三。我在西北，一关接一关。与你相隔，一山又一山。最后只愿我，知道你平安。W人生两苦，想要却不得，拥有却失去。W春有风筝，夏有鱼。秋有青鸟，冬有雁。书信一来一往间，日子就这样过去了。W不存在虚妄的希望,自然也就没有虚妄的失望,更没有什么绝望。人生如题各种痴,就是各种喜欢,喜欢什么那便做下去,这道题目总会有答案的。不管是小人物还是富贵子孙，要成功，都得眼睛看远一点，度量放大一点，脑子多想一点，然后怀六分恶毒，三分炎凉，还得给自己给子孙剩一分善心。W世界上一半人在嘲笑另一半,其实全世界都是傻瓜。W我告诉你什么事最可悲，你遇见一个人，犯了一个错，你想弥补想还清，到最后才发现你根本无力回天，犯下的罪过永远无法弥补。我们永远无法还清犯下的…W一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪。W不乱于心，不困于情。不畏将来，不念过往。如此，安好！";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">为七七写本书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle" id="helloTitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/09/14/第七节JavaScript基础（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="为七七写本书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第七节JavaScript基础（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T15:10:12+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web基础/" itemprop="url" rel="index">
+                    <span itemprop="name">web基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,208
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>平时我们说的js就是JavaScript.<br>为啥叫js呢?因为对于的JavaScript文件都是js结尾的.<br>js主要由语言基础 bom和dom组成.<br>首先,通过一个例子感受一下js的作用.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  document.write(&quot;Hello Javascript&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>有人可能会说,以上仅仅是显示一段文字,我完全可以使用html标签来实现啊.<br>但是html标签是死的,就是说我只能存入一个常量,写死.而js呢,可以将变量进行输出,使得页面变成活的,可变的.<br>所以说呢,html又叫做静态网页.<br>js呢,则是客户和程序交互的一种脚本语言,因为js的存在,使得静态网页动了起来.</p>
+<h2 id="dom"><a href="#dom" class="headerlink" title="dom"></a>dom</h2><p>dom是啥呢?简单来说,就是html元素的一种层级关系,通过dom呢,可以方便的找到我们关注的元素.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;document.getElementById(&apos;text&apos;).style.display=&apos;none&apos;&quot;&gt;隐藏文本&lt;/button&gt;</span><br><span class="line">&lt;button onclick=&quot;document.getElementById(&apos;text&apos;).style.display=&apos;block&apos;&quot;&gt;显示文本&lt;/button&gt;</span><br><span class="line">&lt;p id=&quot;text&quot;&gt; 这个是一段可以被javascript隐藏的文本&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h2><p><img src="https://images.gitee.com/uploads/images/2018/0912/122012_af7d8463_87680.png" alt="输入图片说明" title="2018-09-12 12-16-59屏幕截图.png"></p>
+<h2 id="script标签"><a href="#script标签" class="headerlink" title="script标签"></a>script标签</h2><p>使用script标签来包围js代码,在该标签内的代码,html才会认为这是一段js代码,按照js的逻辑去执行.<br>script标签是html的一个标签<br>看一下刚开始的第一个程序,通过js向网页上输出一段字符串.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">   &lt;script&gt;</span><br><span class="line">      document.write(&quot;这是 javascript&quot;);</span><br><span class="line">   &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="js顺序执行"><a href="#js顺序执行" class="headerlink" title="js顺序执行"></a>js顺序执行</h2><p>需要注意js的代码是顺序执行的,和java类型,一行一行的执行.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">   document.write(&quot;第一段javascript&quot;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">   document.write(&quot;第二段javascript&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="使用外部js"><a href="#使用外部js" class="headerlink" title="使用外部js"></a>使用外部js</h2><p>同css类型,我们可以将js代码放入一个指定的js文件里面,之后将文件引入到我们的html网页里.<br>网页里面去执行js代码.<br><code>&lt;html&gt;
+  &lt;script src=&quot;/hello.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;</code></p>
+<h2 id="js注释"><a href="#js注释" class="headerlink" title="js注释"></a>js注释</h2><p>主要分为两种,单行注释和多行注释.<br>和java注释相同,单行使用//多行使用/*</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>使用var来声明一个变量.不需要指定变量类型.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var x = 10;</span><br><span class="line">  var y = &quot;高鸿宇&quot;;</span><br><span class="line">  document.write(&quot;变量x的值:&quot;+x);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>js的写法比较天马星空,这主要得益于浏览器的强大.比如,不是有var去声明一个变量,浏览器也可以进行解析.</p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><ol>
+<li>使用chrome进行代码调试</li>
+<li>使用alert进行弹框调试</li>
+<li>使用console.log()进行控制台信息输出调试<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><img src="https://images.gitee.com/uploads/images/2018/0912/123103_3c4f64e3_87680.png" alt="输入图片说明" title="2018-09-12 12-30-54屏幕截图.png"><h3 id="实例1"><a href="#实例1" class="headerlink" title="实例1:"></a>实例1:</h3></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var x; //声明了变量x,但是没有赋值</span><br><span class="line">  document.write(&apos;声明了，但是没有赋值的变量 x: &apos;+x);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="实例2"><a href="#实例2" class="headerlink" title="实例2:"></a>实例2:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var x=true;</span><br><span class="line">  var y=false;</span><br><span class="line">  document.write(&quot;布尔值:&quot;+x);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;布尔值:&quot;+y);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="实例3"><a href="#实例3" class="headerlink" title="实例3:"></a>实例3:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var a=10; //十进制</span><br><span class="line">  var b=012;//第一位是0，表示八进制</span><br><span class="line">  var c=0xA;//0x开头表示十六进制</span><br><span class="line">  var d=3.14;//有小数点表示浮点数</span><br><span class="line">  var e=3.14e2;//使用e的幂表示科学计数法</span><br><span class="line">  document.write(&quot;十进制 10 的值: &quot;+a);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;八进制 012 的值: &quot;+b);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;十六进制 0xA 的值: &quot;+c);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;浮点数 3.14 的值: &quot;+d);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;科学记数法 3.14e2 的值: &quot;+e);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="实例4"><a href="#实例4" class="headerlink" title="实例4:"></a>实例4:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var x=&apos;hello &apos;; //单引号</span><br><span class="line">  var y=&quot;javascript&quot;; //双引号</span><br><span class="line">  document.write(&quot;单引号的字符串:&quot;+x);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;双引号的字符串:&quot;+y);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="实例5"><a href="#实例5" class="headerlink" title="实例5:"></a>实例5:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var x=10; //Number类型</span><br><span class="line">  document.write(&quot;此时 x的值是 &quot;+x+&quot; 类型是数字&quot;);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  x = &quot;hello javascript&quot;; //String类型</span><br><span class="line">  document.write(&quot;此时 x的值是 &quot;+x+&quot; 类型是字符串&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="实例6"><a href="#实例6" class="headerlink" title="实例6:"></a>实例6:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var x;</span><br><span class="line">  document.write(&apos;声明了但是未赋值的时候，类型是： &apos;+typeof x);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  x=5;</span><br><span class="line">  document.write(&apos;赋值为5之后，类型是： &apos;+typeof x);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  x=5.1;</span><br><span class="line">  document.write(&apos;赋值为5.1之后，类型是： &apos;+typeof x);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  x=true;</span><br><span class="line">  document.write(&apos;赋值为true之后，类型是： &apos;+typeof x);</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  x=&quot;hello&quot;;</span><br><span class="line">  document.write(&apos;赋值为hello之后，类型是： &apos;+typeof x);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>使用toString()方法进行转字符串操作.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var a=10;</span><br><span class="line">  document.write(&quot;数字 &quot;+a+&quot; 转换为字符串&quot;+a.toString());</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  var b=true;</span><br><span class="line">  document.write(&quot;布尔 &quot;+b+&quot; 转换为字符串&quot;+b.toString());</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  var c=&quot;hello javascript&quot;;</span><br><span class="line">  document.write(&quot;字符串 &quot;+c+&quot; 转换为字符串 &quot;+c.toString());</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>数字转字符串,主要分为默认模式和基模式转换.默认转换为十进制,基模式可以转为其他进制.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var a=10;</span><br><span class="line">  document.write(&apos;默认模式下，数字10转换为十进制的&apos;+a.toString()); //默认模式，即十进制</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&apos;基模式下，数字10转换为二进制的&apos;+a.toString(2)); //基模式，二进制</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&apos;基模式下，数字10转换为八进制的&apos;+a.toString(8)); //基模式，八进制</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&apos;基模式下，数字10转换为十六进制的&apos;+a.toString(16)); //基模式，十六进制</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="转数字-使用parseInt-和parseFloat"><a href="#转数字-使用parseInt-和parseFloat" class="headerlink" title="转数字,使用parseInt()和parseFloat()"></a>转数字,使用parseInt()和parseFloat()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  document.write(&quot;字符串的\&quot;10\&quot;转换为数字的:&quot;+parseInt(&quot;10&quot;)); //转换整数</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;字符串的\&quot;3.14\&quot;转换为数字的:&quot;+parseFloat(&quot;3.14&quot;));//转换浮点数</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;字符串的\&quot;10abc\&quot;转换为数字的:&quot;+parseInt(&quot;10abc&quot;)); //判断每一位，直到发现不是数字的那一位</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;字符串的\&quot;hello javascript\&quot;转换为数字的:&quot;+parseInt(&quot;hello javascript&quot;)); //如果完全不包含数字，则返回NaN - Not a Number</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="转波尔-使用Boolean-即可"><a href="#转波尔-使用Boolean-即可" class="headerlink" title="转波尔,使用Boolean()即可."></a>转波尔,使用Boolean()即可.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  document.write(&quot;空字符串&apos;&apos;转换为布尔后的值:&quot;+Boolean(&quot;&quot;));  //空字符串</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;非空字符&apos;hello javascript &apos;串转换为布尔后的值:&quot;+Boolean(&quot;hello javascript&quot;));  //非空字符串</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;数字 0 转换为布尔后的值:&quot;+Boolean(0));  //0</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;数字 3.14 转换为布尔后的值:&quot;+Boolean(3.14)); //非0</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;空对象 null 转换为布尔后的值:&quot;+Boolean(null));  //null</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;非空对象 new Object() 转换为布尔后的值:&quot;+Boolean(new Object()));  //对象存在</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Number-和parseInt-的区别"><a href="#Number-和parseInt-的区别" class="headerlink" title="Number()和parseInt()的区别"></a>Number()和parseInt()的区别</h2><p>Number的话,只要转换的数据存在非数字的元素,则会返回NAN.<br>parseInt的话,数字开头的会返回开头数字,非数字开头才会返回NAN.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  document.write(&quot;通过Number() 函数转换字符串&apos;123&apos; 后得到的数字：&quot;+Number(&quot;123&quot;));   //正常的</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;通过Number() 函数转换字符串&apos;123abc&apos; 后得到的数字：&quot;+Number(&quot;123abc&quot;));   //包含非数字</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;通过Number() 函数转换字符串&apos;abc123&apos; 后得到的数字：&quot;+Number(&quot;abc123&quot;));   //包含非数字</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;通过parseInt() 函数转换字符串&apos;123&apos; 后得到的数字：&quot;+parseInt(&quot;123&quot;));   //正常的</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;通过parseInt() 函数转换字符串&apos;123abc&apos; 后得到的数字：&quot;+parseInt(&quot;123abc&quot;));   //包含非数字,返回开头的合法数字部分</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&quot;通过parseInt() 函数转换字符串&apos;abc123&apos; 后得到的数字：&quot;+parseInt(&quot;abc123&quot;));   //包含非数字,以非数字开头，返回NaN</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="String-和toString-的区别"><a href="#String-和toString-的区别" class="headerlink" title="String()和toString()的区别"></a>String()和toString()的区别</h2><p>String()和toString()一样都会返回字符串，区别在于对null的处理<br>String()会返回字符串”null”<br>toString() 就会报错，无法执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var a = null;</span><br><span class="line">  document.write(&apos;String(null) 把空对象转换为字符串：&apos;+String(a));</span><br><span class="line">  document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">  document.write(&apos;null.toString() 就会报错，所以后面的代码不能执行&apos;);</span><br><span class="line">  document.write(a.toString());</span><br><span class="line">  document.write(&quot;因为第5行报错，所以这一段文字不会显示&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>function关键字用于定义一个函数<br>print即函数的名称<br>()表示参数列表，像这样就指没有参数<br>{ 表示函数开始<br>} 表示函数结束</p>
+<h2 id="实例1-1"><a href="#实例1-1" class="headerlink" title="实例1:"></a>实例1:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function print()&#123;</span><br><span class="line">  document.write(&quot;这一句话是由一个自定义函数打印&quot;);</span><br><span class="line">&#125;</span><br><span class="line">print();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="实例2-1"><a href="#实例2-1" class="headerlink" title="实例2:"></a>实例2:</h2><p>带参数的函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function print(message)&#123;</span><br><span class="line">  document.write(message);</span><br><span class="line">&#125;</span><br><span class="line">print(&quot;第一句话&quot;);</span><br><span class="line">print(&quot;&lt;br&gt;&quot;);</span><br><span class="line">print(&quot;第二句话&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="实例3-带返回值的函数"><a href="#实例3-带返回值的函数" class="headerlink" title="实例3(带返回值的函数):"></a>实例3(带返回值的函数):</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function print(message)&#123;</span><br><span class="line">  document.write(message);</span><br><span class="line">&#125;</span><br><span class="line">function calc(x,y)&#123;</span><br><span class="line">  return x+y;</span><br><span class="line">&#125;</span><br><span class="line">var sum = calc(500,20);</span><br><span class="line">print(sum);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="课下作业"><a href="#课下作业" class="headerlink" title="课下作业"></a>课下作业</h1><ol>
+<li>实现一个加法计算器<br><img src="https://images.gitee.com/uploads/images/2018/0912/130203_43c0fccd_87680.png" alt="输入图片说明" title="2018-09-12 13-01-56屏幕截图.png"></li>
+<li>黄鹤王八蛋口号生成器<br><img src="https://images.gitee.com/uploads/images/2018/0912/130416_806b30c7_87680.png" alt="输入图片说明" title="2018-09-12 13-04-04屏幕截图.png"></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/09/14/第七节JavaScript基础（一）/">第七节JavaScript基础（一）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
+  <p><span>发布时间:</span>2018年09月14日 - 15:09</p>
+  <p><span>最后更新:</span>2018年09月14日 - 15:09</p>
+  <p><span>原始链接:</span><a href="/2018/09/14/第七节JavaScript基础（一）/" title="第七节JavaScript基础（一）">http://wangjianlin1989.top/2018/09/14/第七节JavaScript基础（一）/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/09/14/第七节JavaScript基础（一）/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ony Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ony Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/14/第六节css基础（三）/" rel="next" title="第六节css基础（三）">
+                <i class="fa fa-chevron-left"></i> 第六节css基础（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/14/第八节JavaScript基础（二）/" rel="prev" title="第八节JavaScript基础（二）">
+                第八节JavaScript基础（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjU2Mi85MTIz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ony Wang" />
+            
+              <p class="site-author-name" itemprop="name">Ony Wang</p>
+              <p class="site-description motion-element" itemprop="description">仙人抚我顶，结发授长生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/worldknoweme" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/wang-jian-lin-89-48" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/55861dcef833" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x8BF4;&#x660E;" class="headerlink" title="&#x8BF4;&#x660E;"></a>&#x8BF4;&#x660E;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dom"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#dom" class="headerlink" title="dom"></a>dom</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总体结构"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x603B;&#x4F53;&#x7ED3;&#x6784;" class="headerlink" title="&#x603B;&#x4F53;&#x7ED3;&#x6784;"></a>&#x603B;&#x4F53;&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#script标签"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#script&#x6807;&#x7B7E;" class="headerlink" title="script&#x6807;&#x7B7E;"></a>script&#x6807;&#x7B7E;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js顺序执行"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#js&#x987A;&#x5E8F;&#x6267;&#x884C;" class="headerlink" title="js&#x987A;&#x5E8F;&#x6267;&#x884C;"></a>js&#x987A;&#x5E8F;&#x6267;&#x884C;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用外部js"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;&#x5916;&#x90E8;js" class="headerlink" title="&#x4F7F;&#x7528;&#x5916;&#x90E8;js"></a>&#x4F7F;&#x7528;&#x5916;&#x90E8;js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js注释"><span class="nav-number">1.6.</span> <span class="nav-text"><a href="#js&#x6CE8;&#x91CA;" class="headerlink" title="js&#x6CE8;&#x91CA;"></a>js&#x6CE8;&#x91CA;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.7.</span> <span class="nav-text"><a href="#&#x53D8;&#x91CF;" class="headerlink" title="&#x53D8;&#x91CF;"></a>&#x53D8;&#x91CF;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试"><span class="nav-number">1.8.</span> <span class="nav-text"><a href="#&#x8C03;&#x8BD5;" class="headerlink" title="&#x8C03;&#x8BD5;"></a>&#x8C03;&#x8BD5;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.9.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;" class="headerlink" title="&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;"></a>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1"><span class="nav-number">1.9.1.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;1" class="headerlink" title="&#x5B9E;&#x4F8B;1:"></a>&#x5B9E;&#x4F8B;1:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例2"><span class="nav-number">1.9.2.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;2" class="headerlink" title="&#x5B9E;&#x4F8B;2:"></a>&#x5B9E;&#x4F8B;2:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例3"><span class="nav-number">1.9.3.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;3" class="headerlink" title="&#x5B9E;&#x4F8B;3:"></a>&#x5B9E;&#x4F8B;3:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例4"><span class="nav-number">1.9.4.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;4" class="headerlink" title="&#x5B9E;&#x4F8B;4:"></a>&#x5B9E;&#x4F8B;4:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例5"><span class="nav-number">1.9.5.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;5" class="headerlink" title="&#x5B9E;&#x4F8B;5:"></a>&#x5B9E;&#x4F8B;5:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例6"><span class="nav-number">1.9.6.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;6" class="headerlink" title="&#x5B9E;&#x4F8B;6:"></a>&#x5B9E;&#x4F8B;6:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-number">1.10.</span> <span class="nav-text"><a href="#&#x7C7B;&#x578B;&#x8F6C;&#x6362;" class="headerlink" title="&#x7C7B;&#x578B;&#x8F6C;&#x6362;"></a>&#x7C7B;&#x578B;&#x8F6C;&#x6362;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#转数字-使用parseInt-和parseFloat"><span class="nav-number">1.10.1.</span> <span class="nav-text"><a href="#&#x8F6C;&#x6570;&#x5B57;-&#x4F7F;&#x7528;parseInt-&#x548C;parseFloat" class="headerlink" title="&#x8F6C;&#x6570;&#x5B57;,&#x4F7F;&#x7528;parseInt()&#x548C;parseFloat()"></a>&#x8F6C;&#x6570;&#x5B57;,&#x4F7F;&#x7528;parseInt()&#x548C;parseFloat()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转波尔-使用Boolean-即可"><span class="nav-number">1.10.2.</span> <span class="nav-text"><a href="#&#x8F6C;&#x6CE2;&#x5C14;-&#x4F7F;&#x7528;Boolean-&#x5373;&#x53EF;" class="headerlink" title="&#x8F6C;&#x6CE2;&#x5C14;,&#x4F7F;&#x7528;Boolean()&#x5373;&#x53EF;."></a>&#x8F6C;&#x6CE2;&#x5C14;,&#x4F7F;&#x7528;Boolean()&#x5373;&#x53EF;.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-和parseInt-的区别"><span class="nav-number">1.11.</span> <span class="nav-text"><a href="#Number-&#x548C;parseInt-&#x7684;&#x533A;&#x522B;" class="headerlink" title="Number()&#x548C;parseInt()&#x7684;&#x533A;&#x522B;"></a>Number()&#x548C;parseInt()&#x7684;&#x533A;&#x522B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-和toString-的区别"><span class="nav-number">1.12.</span> <span class="nav-text"><a href="#String-&#x548C;toString-&#x7684;&#x533A;&#x522B;" class="headerlink" title="String()&#x548C;toString()&#x7684;&#x533A;&#x522B;"></a>String()&#x548C;toString()&#x7684;&#x533A;&#x522B;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;" class="headerlink" title="&#x51FD;&#x6570;"></a>&#x51FD;&#x6570;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例1-1"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;1-1" class="headerlink" title="&#x5B9E;&#x4F8B;1:"></a>&#x5B9E;&#x4F8B;1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例2-1"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;2-1" class="headerlink" title="&#x5B9E;&#x4F8B;2:"></a>&#x5B9E;&#x4F8B;2:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例3-带返回值的函数"><span class="nav-number">2.3.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;3-&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x51FD;&#x6570;" class="headerlink" title="&#x5B9E;&#x4F8B;3(&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x51FD;&#x6570;):"></a>&#x5B9E;&#x4F8B;3(&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x51FD;&#x6570;):</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课下作业"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;" class="headerlink" title="&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;"></a>&#x8BFE;&#x4E0B;&#x4F5C;&#x4E1A;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; Tue Dec 12 2017 08:00:00 GMT+0800 (CST) &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ony Wang</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共77.0k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script type="text/javascript" src="/js/src/heheda.js"></script>
