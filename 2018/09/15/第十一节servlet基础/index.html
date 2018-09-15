@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringBoot, Java, Android, Html5" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="定义之前讲解html的form表单的时候,曾经说过action的相关内容,一笔带过的提了一下.servlet就是接收提交表单的后台服务,可以将用户输入的相关信息获取,然后做接下来的业务处理等操作. 一个简单的实例 定义一个后台服务,普通java类继承HttpServlet即可. 在web.xml里面定义servlet即可.相关代码如下:  12345678910111213141516import">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十一节servlet基础">
+<meta property="og:url" content="http://wangjianlin1989.top/2018/09/15/第十一节servlet基础/index.html">
+<meta property="og:site_name" content="为七七写本书">
+<meta property="og:description" content="定义之前讲解html的form表单的时候,曾经说过action的相关内容,一笔带过的提了一下.servlet就是接收提交表单的后台服务,可以将用户输入的相关信息获取,然后做接下来的业务处理等操作. 一个简单的实例 定义一个后台服务,普通java类继承HttpServlet即可. 在web.xml里面定义servlet即可.相关代码如下:  12345678910111213141516import">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0915/135735_33f8090a_87680.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0915/140942_7d48629b_87680.png">
+<meta property="og:updated_time" content="2018-09-15T06:47:28.638Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第十一节servlet基础">
+<meta name="twitter:description" content="定义之前讲解html的form表单的时候,曾经说过action的相关内容,一笔带过的提了一下.servlet就是接收提交表单的后台服务,可以将用户输入的相关信息获取,然后做接下来的业务处理等操作. 一个简单的实例 定义一个后台服务,普通java类继承HttpServlet即可. 在web.xml里面定义servlet即可.相关代码如下:  12345678910111213141516import">
+<meta name="twitter:image" content="https://images.gitee.com/uploads/images/2018/0915/135735_33f8090a_87680.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangjianlin1989.top/2018/09/15/第十一节servlet基础/"/>
+
+
+
+
+
+  <title>第十一节servlet基础 | 为七七写本书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/worldknoweme"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "我喝过最烈的酒，也放过不该放的手。从前不会回头，往后不会将就。W人生当苦无妨，良人当归即可。W世间文字八万个，唯有情字最杀人。W一两愿你江南多雨带油伞。二两愿你酷暑可以轻摇扇。三两愿你入冬莫忘添衣衫。四两愿你年年多聚无离散。五两愿你无病无忧心常宽。六两愿你无风无雨长相欢。六两三。余下三。我在西北，一关接一关。与你相隔，一山又一山。最后只愿我，知道你平安。W人生两苦，想要却不得，拥有却失去。W春有风筝，夏有鱼。秋有青鸟，冬有雁。书信一来一往间，日子就这样过去了。W不存在虚妄的希望,自然也就没有虚妄的失望,更没有什么绝望。人生如题各种痴,就是各种喜欢,喜欢什么那便做下去,这道题目总会有答案的。不管是小人物还是富贵子孙，要成功，都得眼睛看远一点，度量放大一点，脑子多想一点，然后怀六分恶毒，三分炎凉，还得给自己给子孙剩一分善心。W世界上一半人在嘲笑另一半,其实全世界都是傻瓜。W我告诉你什么事最可悲，你遇见一个人，犯了一个错，你想弥补想还清，到最后才发现你根本无力回天，犯下的罪过永远无法弥补。我们永远无法还清犯下的…W一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪。W不乱于心，不困于情。不畏将来，不念过往。如此，安好！";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">为七七写本书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle" id="helloTitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjianlin1989.top/2018/09/15/第十一节servlet基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ony Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="为七七写本书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第十一节servlet基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-15T14:41:49+08:00">
+                2018-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web基础/" itemprop="url" rel="index">
+                    <span itemprop="name">web基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,258
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>之前讲解html的form表单的时候,曾经说过action的相关内容,一笔带过的提了一下.<br>servlet就是接收提交表单的后台服务,可以将用户输入的相关信息获取,然后做接下来的业务处理等操作.</p>
+<h2 id="一个简单的实例"><a href="#一个简单的实例" class="headerlink" title="一个简单的实例"></a>一个简单的实例</h2><ol>
+<li>定义一个后台服务,普通java类继承HttpServlet即可.</li>
+<li>在web.xml里面定义servlet即可.<br>相关代码如下:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">public class HelloServlet extends HttpServlet&#123;</span><br><span class="line">    public void doGet(HttpServletRequest request, HttpServletResponse response)&#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            response.getWriter().println(&quot;&lt;h1&gt;Hello Servlet!&lt;/h1&gt;&quot;);</span><br><span class="line">            response.getWriter().println(new Date().toLocaleString());</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            // TODO Auto-generated catch block</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>web.xml配置信息如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;test&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;com.cx.servlet.MyServlet&lt;/servlet-class&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;test&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/test&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+<p>其中,serlet标签可以去配置name和class,class用来指定处理的java类<br>servlet-mapping定义请求的url,其中servlet-name指定servlet,url-pattern指定请求url<br>最后,在tomcat里面运行.</p>
+<h1 id="获取参数"><a href="#获取参数" class="headerlink" title="获取参数"></a>获取参数</h1><p>可以通过登录界面来学习此部分内容.<br>操作步骤如下:</p>
+<ol>
+<li>新建登录界面,input指定name</li>
+<li>新建servlet类,通过request.getParameter(“password”)去获取参数</li>
+<li>配置web.xml的servlet<h1 id="返回参数"><a href="#返回参数" class="headerlink" title="返回参数"></a>返回参数</h1>通过response响应流返回数据<br>主要代码如下:<br>PrintWriter pw = response.getWriter();<br>pw.println(html);<br>这里可以返回一段html代码<h1 id="调用流程"><a href="#调用流程" class="headerlink" title="调用流程"></a>调用流程</h1><img src="https://images.gitee.com/uploads/images/2018/0915/135735_33f8090a_87680.png" alt="输入图片说明" title="2018-09-15 13-57-25 的屏幕截图.png"><h1 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h1>servlet提供后台服务,接收前端的请求,获取参数并进行处理<br>请求服务主要分为两种get和post<br>两者的区别:<br>get通过url传参,post则放在body里面传参<br>get有长度限制,而post则一般无限制<br>字面意思上来看,get是用来获取数据的,post则是提交.<br>get可以直接在url查看,但是post则不可以.<h1 id="中文乱码"><a href="#中文乱码" class="headerlink" title="中文乱码"></a>中文乱码</h1>想要正常使用中文,我们需要注意如下的条件:</li>
+<li>html需要指定编码格式为utf8</li>
+<li>提交方式需要改成post,get的话参数会在url里面乱码的形式传递</li>
+<li>servlet里面进行中文转码,iso转为utf8<br>另外,可以处理请求的编码格式:<br>request.setCharacterEncoding(“UTF-8”);<br>这行代码一定要放在获取参数之前request.getParameter()<br>中文响应的话,也需要指定响应编码格式response.setContentType(“text/html; charset=UTF-8”);<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><img src="https://images.gitee.com/uploads/images/2018/0915/140942_7d48629b_87680.png" alt="输入图片说明" title="2018-09-15 14-09-31 的屏幕截图.png"><h2 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h2>可以使用构造函数去实例化一个servlet<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2>即重写init方法<h2 id="提供服务"><a href="#提供服务" class="headerlink" title="提供服务"></a>提供服务</h2>即service方法<br>执行service()方法，然后通过浏览器传递过来的信息进行判断，是调用doGet()还是doPost()方法<br>这里会自动判断是get还是post,重写service之后就不必再重写doget和dopost了<h2 id="销毁"><a href="#销毁" class="headerlink" title="销毁"></a>销毁</h2>重写destroy()方法即可<h2 id="被回收"><a href="#被回收" class="headerlink" title="被回收"></a>被回收</h2>垃圾回收机制在servlet被销毁之后,会自动回收该服务<h1 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h1><h2 id="服务端跳转"><a href="#服务端跳转" class="headerlink" title="服务端跳转"></a>服务端跳转</h2>request.getRequestDispatcher(“success.html”).forward(request, response);<br>这样跳转的话,url地址不会改变<h2 id="客户端跳转"><a href="#客户端跳转" class="headerlink" title="客户端跳转"></a>客户端跳转</h2>response.sendRedirect(“fail.html”);<br>浏览器的url会发生改变<h1 id="启动优先级"><a href="#启动优先级" class="headerlink" title="启动优先级"></a>启动优先级</h1>配置servlet的配置文件里面<br>使用load-on-startup标签来定义优先级,数字越小优先级越高,也就会越早启动<h1 id="request常用方法"><a href="#request常用方法" class="headerlink" title="request常用方法"></a>request常用方法</h1><h2 id="获取信息"><a href="#获取信息" class="headerlink" title="获取信息"></a>获取信息</h2>request.getRequestURL(): 浏览器发出请求时的完整URL，包括协议 主机名 端口(如果有)”<br>request.getRequestURI(): 浏览器发出请求的资源名部分，去掉了协议和主机名”<br>request.getQueryString(): 请求行中的参数部分，只能显示以get方式发出的参数，post方式的看不到<br>request.getRemoteAddr(): 浏览器所处于的客户机的IP地址<br>request.getRemoteHost(): 浏览器所处于的客户机的主机名<br>request.getRemotePort(): 浏览器所处于的客户机使用的网络端口<br>request.getLocalAddr(): 服务器的IP地址<br>request.getLocalName(): 服务器的主机名<br>request.getMethod(): 得到客户机请求方式一般是GET或者POST</li>
+</ol>
+<h2 id="获取参数-1"><a href="#获取参数-1" class="headerlink" title="获取参数"></a>获取参数</h2><p>request.getParameter(): 是常见的方法，用于获取单值的参数<br>request.getParameterValues(): 用于获取具有多值的参数，比如注册时候提交的 “hobits”，可以是多选的。checkbox控件<br>request.getParameterMap(): 用于遍历所有的参数，并返回Map类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.Set;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">public class RegisterServlet extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">    protected void service(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">            throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;获取单值参数name:&quot; + request.getParameter(&quot;name&quot;));</span><br><span class="line"></span><br><span class="line">        String[] hobits = request.getParameterValues(&quot;hobits&quot;);</span><br><span class="line">        System.out.println(&quot;获取具有多值的参数hobits: &quot; + Arrays.asList(hobits));</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;通过 getParameterMap 遍历所有的参数： &quot;);</span><br><span class="line">        Map&lt;String, String[]&gt; parameters = request.getParameterMap();</span><br><span class="line"></span><br><span class="line">        Set&lt;String&gt; paramNames = parameters.keySet();</span><br><span class="line">        for (String param : paramNames) &#123;</span><br><span class="line">            String[] value = parameters.get(param);</span><br><span class="line">            System.out.println(param + &quot;:&quot; + Arrays.asList(value));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h1><p>作为一个探索<br>学习如何去上传图片或者文件</p>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/09/15/第十一节servlet基础/">第十一节servlet基础</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Ony Wang 的个人博客">Ony Wang</a></p>
+  <p><span>发布时间:</span>2018年09月15日 - 14:09</p>
+  <p><span>最后更新:</span>2018年09月15日 - 14:09</p>
+  <p><span>原始链接:</span><a href="/2018/09/15/第十一节servlet基础/" title="第十一节servlet基础">http://wangjianlin1989.top/2018/09/15/第十一节servlet基础/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangjianlin1989.top/2018/09/15/第十一节servlet基础/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ony Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ony Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/15/第十节jquery简介/" rel="next" title="第十节jquery简介">
+                <i class="fa fa-chevron-left"></i> 第十节jquery简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjU2Mi85MTIz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ony Wang" />
+            
+              <p class="site-author-name" itemprop="name">Ony Wang</p>
+              <p class="site-description motion-element" itemprop="description">仙人抚我顶，结发授长生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/worldknoweme" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/wang-jian-lin-89-48" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/55861dcef833" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5B9A;&#x4E49;" class="headerlink" title="&#x5B9A;&#x4E49;"></a>&#x5B9A;&#x4E49;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个简单的实例"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5B9E;&#x4F8B;" class="headerlink" title="&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5B9E;&#x4F8B;"></a>&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5B9E;&#x4F8B;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取参数"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x83B7;&#x53D6;&#x53C2;&#x6570;" class="headerlink" title="&#x83B7;&#x53D6;&#x53C2;&#x6570;"></a>&#x83B7;&#x53D6;&#x53C2;&#x6570;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#返回参数"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x8FD4;&#x56DE;&#x53C2;&#x6570;" class="headerlink" title="&#x8FD4;&#x56DE;&#x53C2;&#x6570;"></a>&#x8FD4;&#x56DE;&#x53C2;&#x6570;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用流程"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x8C03;&#x7528;&#x6D41;&#x7A0B;" class="headerlink" title="&#x8C03;&#x7528;&#x6D41;&#x7A0B;"></a>&#x8C03;&#x7528;&#x6D41;&#x7A0B;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x670D;&#x52A1;" class="headerlink" title="&#x670D;&#x52A1;"></a>&#x670D;&#x52A1;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中文乱码"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x4E2D;&#x6587;&#x4E71;&#x7801;" class="headerlink" title="&#x4E2D;&#x6587;&#x4E71;&#x7801;"></a>&#x4E2D;&#x6587;&#x4E71;&#x7801;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期"><span class="nav-number">7.</span> <span class="nav-text"><a href="#&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="&#x751F;&#x547D;&#x5468;&#x671F;"></a>&#x751F;&#x547D;&#x5468;&#x671F;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例化"><span class="nav-number">7.1.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;&#x5316;" class="headerlink" title="&#x5B9E;&#x4F8B;&#x5316;"></a>&#x5B9E;&#x4F8B;&#x5316;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">7.2.</span> <span class="nav-text"><a href="#&#x521D;&#x59CB;&#x5316;" class="headerlink" title="&#x521D;&#x59CB;&#x5316;"></a>&#x521D;&#x59CB;&#x5316;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提供服务"><span class="nav-number">7.3.</span> <span class="nav-text"><a href="#&#x63D0;&#x4F9B;&#x670D;&#x52A1;" class="headerlink" title="&#x63D0;&#x4F9B;&#x670D;&#x52A1;"></a>&#x63D0;&#x4F9B;&#x670D;&#x52A1;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#销毁"><span class="nav-number">7.4.</span> <span class="nav-text"><a href="#&#x9500;&#x6BC1;" class="headerlink" title="&#x9500;&#x6BC1;"></a>&#x9500;&#x6BC1;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#被回收"><span class="nav-number">7.5.</span> <span class="nav-text"><a href="#&#x88AB;&#x56DE;&#x6536;" class="headerlink" title="&#x88AB;&#x56DE;&#x6536;"></a>&#x88AB;&#x56DE;&#x6536;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跳转"><span class="nav-number">8.</span> <span class="nav-text"><a href="#&#x8DF3;&#x8F6C;" class="headerlink" title="&#x8DF3;&#x8F6C;"></a>&#x8DF3;&#x8F6C;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端跳转"><span class="nav-number">8.1.</span> <span class="nav-text"><a href="#&#x670D;&#x52A1;&#x7AEF;&#x8DF3;&#x8F6C;" class="headerlink" title="&#x670D;&#x52A1;&#x7AEF;&#x8DF3;&#x8F6C;"></a>&#x670D;&#x52A1;&#x7AEF;&#x8DF3;&#x8F6C;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端跳转"><span class="nav-number">8.2.</span> <span class="nav-text"><a href="#&#x5BA2;&#x6237;&#x7AEF;&#x8DF3;&#x8F6C;" class="headerlink" title="&#x5BA2;&#x6237;&#x7AEF;&#x8DF3;&#x8F6C;"></a>&#x5BA2;&#x6237;&#x7AEF;&#x8DF3;&#x8F6C;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动优先级"><span class="nav-number">9.</span> <span class="nav-text"><a href="#&#x542F;&#x52A8;&#x4F18;&#x5148;&#x7EA7;" class="headerlink" title="&#x542F;&#x52A8;&#x4F18;&#x5148;&#x7EA7;"></a>&#x542F;&#x52A8;&#x4F18;&#x5148;&#x7EA7;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#request常用方法"><span class="nav-number">10.</span> <span class="nav-text"><a href="#request&#x5E38;&#x7528;&#x65B9;&#x6CD5;" class="headerlink" title="request&#x5E38;&#x7528;&#x65B9;&#x6CD5;"></a>request&#x5E38;&#x7528;&#x65B9;&#x6CD5;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取信息"><span class="nav-number">10.1.</span> <span class="nav-text"><a href="#&#x83B7;&#x53D6;&#x4FE1;&#x606F;" class="headerlink" title="&#x83B7;&#x53D6;&#x4FE1;&#x606F;"></a>&#x83B7;&#x53D6;&#x4FE1;&#x606F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取参数-1"><span class="nav-number">10.2.</span> <span class="nav-text"><a href="#&#x83B7;&#x53D6;&#x53C2;&#x6570;-1" class="headerlink" title="&#x83B7;&#x53D6;&#x53C2;&#x6570;"></a>&#x83B7;&#x53D6;&#x53C2;&#x6570;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传文件"><span class="nav-number">11.</span> <span class="nav-text"><a href="#&#x4E0A;&#x4F20;&#x6587;&#x4EF6;" class="headerlink" title="&#x4E0A;&#x4F20;&#x6587;&#x4EF6;"></a>&#x4E0A;&#x4F20;&#x6587;&#x4EF6;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; Tue Dec 12 2017 08:00:00 GMT+0800 (CST) &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ony Wang</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共85.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script type="text/javascript" src="/js/src/heheda.js"></script>
